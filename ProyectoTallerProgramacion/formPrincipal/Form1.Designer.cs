@@ -30,9 +30,10 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.agregarCorreoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Emisor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,17 +69,6 @@
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "ejemplo@ejemplo.com",
-            "example@example.noseqonda.com"});
-            this.listBox1.Location = new System.Drawing.Point(12, 36);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(238, 199);
-            this.listBox1.TabIndex = 1;
-            // 
             // agregarCorreoToolStripMenuItem
             // 
             this.agregarCorreoToolStripMenuItem.Name = "agregarCorreoToolStripMenuItem";
@@ -91,6 +80,23 @@
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.salirToolStripMenuItem.Text = "Quitar correo";
+            // 
+            // salirToolStripMenuItem1
+            // 
+            this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
+            this.salirToolStripMenuItem1.Text = "Salir";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Items.AddRange(new object[] {
+            "ejemplo@ejemplo.com",
+            "example@example.noseqonda.com"});
+            this.listBox1.Location = new System.Drawing.Point(12, 36);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(238, 199);
+            this.listBox1.TabIndex = 1;
             // 
             // button1
             // 
@@ -156,12 +162,7 @@
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(713, 199);
             this.dataGridView1.TabIndex = 10;
-            // 
-            // salirToolStripMenuItem1
-            // 
-            this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
-            this.salirToolStripMenuItem1.Text = "Salir";
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Descripcion
             // 
@@ -183,10 +184,10 @@
             // Visto
             // 
             this.Visto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Visto.HeaderText = "Visto";
+            this.Visto.HeaderText = "Leido";
             this.Visto.Name = "Visto";
             this.Visto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Visto.Width = 36;
+            this.Visto.Width = 39;
             // 
             // Form1
             // 

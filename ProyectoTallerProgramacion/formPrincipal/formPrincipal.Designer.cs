@@ -1,6 +1,6 @@
 ﻿namespace formPrincipal
 {
-    partial class Form1
+    partial class formPrincipal
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -186,10 +186,11 @@
             this.Visto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Visto.HeaderText = "Leido";
             this.Visto.Name = "Visto";
+            this.Visto.ReadOnly = true;
             this.Visto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Visto.Width = 39;
             // 
-            // Form1
+            // formPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -204,7 +205,7 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "formPrincipal";
             this.Text = "Gestor de correos ";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

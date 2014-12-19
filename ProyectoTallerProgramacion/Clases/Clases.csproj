@@ -42,12 +42,14 @@
     <Compile Include="CorreoDTO.cs" />
     <Compile Include="CuentaCorreoDTO.cs" />
     <Compile Include="DAOException.cs" />
+    <Compile Include="DAOFactory.cs" />
     <Compile Include="ICorreoDAO.cs" />
     <Compile Include="ICuentaCorreoDAO.cs" />
     <Compile Include="IServicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLServerCorreoDAO.cs" />
     <Compile Include="SQLServerCuentaCorreoDAO.cs" />
+    <Compile Include="SQLServerDAOFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

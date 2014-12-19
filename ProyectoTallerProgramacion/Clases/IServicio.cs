@@ -8,8 +8,8 @@ namespace Clases
 {
     public interface IServicio
     {
-        public abstract List<Correo> ObtenerCorreos();
+        public abstract List<CorreoDTO> ObtenerCorreos();
 
-        public abstract void EnviarCorreo(Correo pCorreo);
+        public abstract void EnviarCorreo(CorreoDTO pCorreo);
     }
 }

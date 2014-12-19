@@ -27,16 +27,35 @@ namespace Clases.DTO
         private string iContraseña;     // <-------------- ¿va?
 
         /// <summary>
-        /// Constructor de la clase CuentaCorreo.
+        /// Constructor de una instancia de la clase CuentaCorreo .
         /// </summary>
-        /// <param name="pNombre">string que representa el nombre de la cuenta de correo.</param>
-        /// <param name="pDireccion">string que representa la direccion de la cuenta de correo.</param>
-        /// <param name="pContraseña">string que representa la contraseña de la cuenta de correo.</param>
-        public CuentaCorreoDTO(string pNombre, string pDireccion, string pContraseña)
+        public CuentaCorreoDTO() {}
+
+        /// <summary>
+        /// Propiedad de lectura y escritura del Nombre.
+        /// </summary>
+        public string Nombre
         {
-            this.iNombre = pNombre;
-            this.iDireccion = pDireccion;
-            this.iContraseña = pContraseña;
+            get { return this.iNombre; }
+            set { this.iNombre = value; }
+        }
+        
+        /// <summary>
+        /// Propiedad de lectura y escritura de la Direccion.
+        /// </summary>
+        public string Direccion
+        {
+            get { return this.iDireccion; }
+            set { this.iDireccion = value; }
+        }
+
+        /// <summary>
+        /// Propiedad de lectura y escritura de la Contraseña.
+        /// </summary>
+        public string Contraseña
+        {
+            get { return this.iContraseña; }
+            set { this.iContraseña = value; }
         }
     }
 }

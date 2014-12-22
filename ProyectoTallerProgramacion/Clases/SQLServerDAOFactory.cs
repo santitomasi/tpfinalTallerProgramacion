@@ -39,9 +39,9 @@ namespace Clases.Persistencia.SQLServer
         /// <summary>
         /// Propiedad de solo lectura que devuelve una instancia de la clase CuentaCorreoDAO.
         /// </summary>
-        public override ICuentaCorreoDAO CuentaCorreoDAO
+        public override ICuentaDAO CuentaDAO
         {
-            get { return new SQLServerCuentaCorreoDAO(iConexion, iTransaccion); }
+            get { return new SQLServerCuentaDAO(iConexion, iTransaccion); }
         }
 
         /// <summary>

@@ -34,17 +34,26 @@ namespace Clases.DTO
         /// <summary>
         /// Atributo origen.
         /// </summary>
-        private string iOrigen;      // <----- en vez de STRING es CUENTACORREO
+        private int iOrigenID;      
 
         /// <summary>
         /// Atributo destino.
         /// </summary>
-        private string iDestino;      // <----- en vez de STRING es CUENTACORREO
+        private int iDestinoID;     
 
         /// <summary>
         /// Constructor de una instancia de la clase Correo .
         /// </summary>
         public CorreoDTO() {}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string toString()
+        {
+            return "falta desarrollar el metodo";
+        }
 
         /// <summary>
         /// Propiedad de lectura y escritura del ID.
@@ -85,19 +94,19 @@ namespace Clases.DTO
         /// <summary>
         /// Propiedad de lectura y escritura del Origen.
         /// </summary>
-        public string Origen
+        public int OrigenID
         {
-            get { return this.iOrigen; }
-            set { this.iOrigen = value; }
+            get { return this.iOrigenID; }
+            set { this.iOrigenID = value; }
         }
 
         /// <summary>
         /// Propiedad de lectura y escritura del Destino.
         /// </summary>
-        public string Destino
+        public int DestinoID
         {
-            get { return this.iDestino; }
-            set { this.iOrigen = value; }
+            get { return this.iDestinoID; }
+            set { this.iDestinoID = value; }
         }
     }
 }

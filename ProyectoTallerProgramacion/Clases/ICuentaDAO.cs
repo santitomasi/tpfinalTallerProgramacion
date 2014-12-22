@@ -10,30 +10,30 @@ namespace Clases.Persistencia
     /// <summary>
     /// Interfaz que declara los metodos basicos para persistir una cuenta de correo en la Base de Datos.
     /// </summary>
-    public interface ICuentaCorreoDAO
+    public interface ICuentaDAO
     {
         /// <summary>
         /// Metodo para insertar una cuenta de correo en la Base de Datos.
         /// </summary>
         /// <param name="pCorreo">Dato de tipo CuentaCorreo a ser agregado en la Base de Datos.</param>
-        void AgregarCuentaCorreo(CuentaCorreoDTO pCuentaCorreo);
+        void AgregarCuenta(CuentaDTO pCuentaCorreo);
 
         /// <summary>
         /// Metodo para actualizar una cuenta de correo de la Base de Datos.
         /// </summary>
         /// <param name="pLibro">Dato de tipo CuentaCorreo a ser actualizado de la Base de Datos.</param>
-        void ModificarCuentaCorreo(CuentaCorreoDTO pCuentaCorreo);
+        void ModificarCuenta(CuentaDTO pCuentaCorreo);
 
         /// <summary>
         /// Metodo para eliminar una cuenta de correo de la Base de Datos.
         /// </summary>
         /// <param name="pLibro">Dato de tipo CuentaCorreo a ser eliminado de la Base de Datos.</param>
-        void EliminarCuentaCorreo(CuentaCorreoDTO pCuentaCorreo);
+        void EliminarCuenta(CuentaDTO pCuentaCorreo);
 
         /// <summary>
         /// Metodo para obtener las Cuentas de Correo de la Base de Datos.
         /// </summary>
         /// <returns>Retorna una lista de cuentas de correo de la clase CuentaCorreo.</returns>
-        IList<CorreoDTO> ObtenerCuentasCorreo();
+        IList<CuentaDTO> ObtenerCuentas();
     }
 }

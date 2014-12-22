@@ -19,7 +19,7 @@ namespace Clases.Persistencia.SQLServer
         /// <summary>
         /// Propiedad de solo lectura que devuelve una instancia de la clase CuentaCorreoDAO.
         /// </summary>
-        public abstract ICuentaCorreoDAO CuentaCorreoDAO { get; }
+        public abstract ICuentaDAO CuentaDAO { get; }
 
         /// <summary>
         /// Método que inicia una conexion con la Base de Datos.

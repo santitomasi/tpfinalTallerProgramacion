@@ -21,13 +21,13 @@ namespace Clases.Persistencia
         /// <summary>
         /// Metodo para actualizar una cuenta de correo de la Base de Datos.
         /// </summary>
-        /// <param name="pLibro">Dato de tipo CuentaCorreo a ser actualizado de la Base de Datos.</param>
+        /// <param name="pCorreo">Dato de tipo CuentaCorreo a ser actualizado de la Base de Datos.</param>
         void ModificarCuenta(CuentaDTO pCuentaCorreo);
 
         /// <summary>
         /// Metodo para eliminar una cuenta de correo de la Base de Datos.
         /// </summary>
-        /// <param name="pLibro">Dato de tipo CuentaCorreo a ser eliminado de la Base de Datos.</param>
+        /// <param name="pCorreo">Dato de tipo CuentaCorreo a ser eliminado de la Base de Datos.</param>
         void EliminarCuenta(CuentaDTO pCuentaCorreo);
 
         /// <summary>

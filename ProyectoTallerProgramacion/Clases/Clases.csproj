@@ -43,6 +43,8 @@
     <Compile Include="CuentaDTO.cs" />
     <Compile Include="DAOException.cs" />
     <Compile Include="DAOFactory.cs" />
+    <Compile Include="FachadaABMCuenta.cs" />
+    <Compile Include="FachadaCorreo.cs" />
     <Compile Include="ICorreoDAO.cs" />
     <Compile Include="ICuentaDAO.cs" />
     <Compile Include="IServicio.cs" />

@@ -23,5 +23,11 @@ namespace formPrincipal
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form frm = new formEnvioCorreo();
+            frm.Show();
+        }
+
     }
 }

@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="formEnvioCorreo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formEnvioCorreo.Designer.cs">
+      <DependentUpon>formEnvioCorreo.cs</DependentUpon>
+    </Compile>
     <Compile Include="formPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -52,6 +58,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formEnvioCorreo.resx">
+      <DependentUpon>formEnvioCorreo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formPrincipal.resx">
       <DependentUpon>formPrincipal.cs</DependentUpon>
     </EmbeddedResource>

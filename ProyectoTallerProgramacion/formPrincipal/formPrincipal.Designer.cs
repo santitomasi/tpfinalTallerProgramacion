@@ -41,10 +41,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Emisor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Visto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -58,6 +54,10 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Emisor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Visto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -89,20 +89,20 @@
             // agregarCorreoToolStripMenuItem
             // 
             this.agregarCorreoToolStripMenuItem.Name = "agregarCorreoToolStripMenuItem";
-            this.agregarCorreoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.agregarCorreoToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.agregarCorreoToolStripMenuItem.Text = "---";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.salirToolStripMenuItem.Text = "---";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem1
             // 
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(94, 22);
             this.salirToolStripMenuItem1.Text = "----";
             // 
             // button1
@@ -170,32 +170,7 @@
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(726, 210);
             this.dataGridView1.TabIndex = 10;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Asunto";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Emisor
-            // 
-            this.Emisor.HeaderText = "De";
-            this.Emisor.Name = "Emisor";
-            // 
-            // Fecha
-            // 
-            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.Width = 70;
-            // 
-            // Visto
-            // 
-            this.Visto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Visto.HeaderText = "Leido";
-            this.Visto.Name = "Visto";
-            this.Visto.ReadOnly = true;
-            this.Visto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Visto.Width = 39;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button4
             // 
@@ -318,6 +293,32 @@
             this.listBox1.Size = new System.Drawing.Size(217, 238);
             this.listBox1.TabIndex = 1;
             // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Asunto";
+            this.Descripcion.Name = "Descripcion";
+            // 
+            // Emisor
+            // 
+            this.Emisor.HeaderText = "Para";
+            this.Emisor.Name = "Emisor";
+            // 
+            // Fecha
+            // 
+            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 70;
+            // 
+            // Visto
+            // 
+            this.Visto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Visto.HeaderText = "Leido";
+            this.Visto.Name = "Visto";
+            this.Visto.ReadOnly = true;
+            this.Visto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Visto.Width = 39;
+            // 
             // formPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,10 +365,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Emisor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Visto;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
@@ -381,6 +378,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Emisor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Visto;
 
     }
 }

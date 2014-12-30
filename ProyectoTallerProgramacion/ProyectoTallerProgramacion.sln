@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Windows Desktop
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formularios", "formPrincipal\Formularios.csproj", "{15BE9E9D-6D43-4440-AE0A-1831C9385505}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clases", "Clases\Clases.csproj", "{8578941E-AB61-4421-8A26-37213355FCDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formularios", "Formularios\Formularios.csproj", "{15BE9E9D-6D43-4440-AE0A-1831C9385505}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{15BE9E9D-6D43-4440-AE0A-1831C9385505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15BE9E9D-6D43-4440-AE0A-1831C9385505}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15BE9E9D-6D43-4440-AE0A-1831C9385505}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15BE9E9D-6D43-4440-AE0A-1831C9385505}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8578941E-AB61-4421-8A26-37213355FCDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8578941E-AB61-4421-8A26-37213355FCDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8578941E-AB61-4421-8A26-37213355FCDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8578941E-AB61-4421-8A26-37213355FCDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15BE9E9D-6D43-4440-AE0A-1831C9385505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15BE9E9D-6D43-4440-AE0A-1831C9385505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15BE9E9D-6D43-4440-AE0A-1831C9385505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15BE9E9D-6D43-4440-AE0A-1831C9385505}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

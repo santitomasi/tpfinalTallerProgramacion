@@ -26,10 +26,11 @@ namespace formPrincipal
             correo.Subject = textBox2.Text;
             correo.Body = textBox3.Text;
 
+            
             SmtpClient cliente = new SmtpClient("smtp.gmail.com");
-            cliente.Port = 587;
-            cliente.Credentials = new System.Net.NetworkCredential("santiagotommasi92@gmail.com", "password");
             cliente.EnableSsl = true;
+            cliente.Port = 587;
+            cliente.Credentials = new System.Net.NetworkCredential("santiagotommasi92@gmail.com", "marlou1006");
             cliente.Send(correo);
             Close();
             MessageBox.Show("Enviado con exito!");

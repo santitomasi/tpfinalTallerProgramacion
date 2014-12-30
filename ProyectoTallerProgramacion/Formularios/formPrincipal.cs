@@ -12,13 +12,14 @@ using System.IO;
 using Clases;
 using Clases.DTO;
 using Clases.Controladores;
-using SmtPop;
-using Limilabs;
+using OpenPop.Pop3;
 
 namespace formPrincipal
 {
     public partial class formPrincipal : Form
     {
+        private static List<OpenPop.Mime.Message> mensajes;
+
         public formPrincipal()
         {
             InitializeComponent();
@@ -42,94 +43,30 @@ namespace formPrincipal
 
         private void button4_Click(object sender, EventArgs e)
         {
-            /*
-            Pop
-            pop3.Connect("mail.host.com");      
-            pop3.Login("user", "password");
-            foreach (string uid in pop3.GetAll())
+            progressBar1.Visible = true;
+            
+            Pop3Client pop = new Pop3Client();
+            pop.Connect("pop.gmail.com", 995, true);
+            pop.Authenticate("santiagotommasi92", "password");
+            int cantidadMensajes = pop.GetMessageCount();
+            mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
+
+            for (int i = cantidadMensajes; i > 0; i--)       //nose si son necesarios dos ciclos!!!
             {
-                IMail email = new MailBuilder()
-                    .CreateFromEml(pop3.GetMessageByUID(uid));
-                Console.WriteLine(email.Subject);
+                mensajes.Add(pop.GetMessage(i));
+                progressBar1.PerformStep();                
             }
-            pop3.Close(false);   
-            */
 
-
-            /*
-            SmtPop.POP3Client pop = new SmtPop.POP3Client ();
-            pop.ReceiveTimeout = 3 * 60000;
-            pop.Open("pop.gmail.com",110,"santiagotommasi92","marlou1006");
-            SmtPop.POPMessageId[] messages = pop.GetMailList();
-            */
-
-            /*if (messages != null)
+            foreach (OpenPop.Mime.Message mensaje in mensajes)     //nose si son necesarios dos ciclos!!!
             {
-                // Walk attachment list
-                foreach (SmtPop.POPMessageId id in messages)
-                {
-                    SmtPop.POPReader reader = pop.GetMailReader(id);
-                    SmtPop.MimeMessage msg = new SmtPop.MimeMessage ();
- 
-                    // read message
-                    msg.Read(reader);
-                    if (msg.Attachments != null)
-                    {
-                        // do something with first attachment
-                        SmtPop.MimeAttachment attach = msg.Attachments[0];
-                        if (attach.Filename == "data")
-                        {
-                            // read data from attachment
-                            Byte[] b = Convert.FromBase64String (attach.Body);
-                            System.IO.MemoryStream mem = new System.IO.MemoryStream (b, false);
-                            BinaryFormatter f = new BinaryFormatter ();
-                            DataClass data = (DataClass) f.Deserialize(mem); 
-                            mem.Close();
-                         }                          
-                        //delete message
-                        pop.Dele (id.Id);
-                    }
-                }
-            }*/
-
-            /*if (messages != null)
-            {
-                // run through available messages in POP3 server
-                foreach (POPMessageId id in messages)
-                {
-                    POPReader reader = pop.GetMailReader(id);
-                    MimeMessage msg = new MimeMessage();
-
-                    // read the message
-                    msg.Read(reader);
-                    if (msg.Attachments != null)
-                    {
-                        // retrieve attachements
-                        foreach (MimeAttachment attach in msg.Attachments)
-                        {
-                            if (attach.Filename != "")
-                            {
-                                // read data from attachment
-                                Byte[] b = Convert.FromBase64String(attach.Body);
-                                // save attachment to disk
-                                System.IO.MemoryStream mem = new System.IO.MemoryStream(b, false);
-                                FileStream outStream = File.OpenWrite(attach.Filename);
-                                mem.WriteTo(outStream);
-                                mem.Close();
-                                outStream.Flush();
-                                outStream.Close();
-                            }
-                        }
-                    }
-                    //delete message
-                    pop.Dele(id.Id);
-                }
+                string[] row = { mensaje.Headers.Subject, Convert.ToString(mensaje.Headers.From),
+                                 mensaje.Headers.Date};
+                dataGridView2.Rows.Add(row);
             }
-            //close the connection to POP3 server
-            pop.Quit();  */
 
+            progressBar1.Visible = false;
         }
-
+         
         private void agregarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listBox1.Visible = false;
@@ -167,21 +104,6 @@ namespace formPrincipal
             textBox4.Text = "";
         }
 
-        private void formPrincipal_Load(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button8_Click(object sender, EventArgs e)
         {
             listBox1.Visible = true;
@@ -197,6 +119,27 @@ namespace formPrincipal
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexSelected = dataGridView2.Rows[e.RowIndex].Index;
+
+            textBox1.Text = mensajes[indexSelected].Headers.ContentDescription;
         } 
+
+        private void progressBar_VisibleChanged(object sender, EventArgs e)
+        {
+            Pop3Client pop = new Pop3Client();
+            pop.Connect("pop.gmail.com", 995, true);
+            pop.Authenticate("santiagotommasi92", "password");
+            int cantidadMensajes = pop.GetMessageCount();
+            mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
+         
+            progressBar1.Minimum = 1;
+            progressBar1.Maximum = cantidadMensajes;
+            progressBar1.Value = 1;
+            progressBar1.Step = 1;
+        }
     }
 }

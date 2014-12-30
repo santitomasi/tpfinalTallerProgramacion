@@ -32,12 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mail, Version=3.0.14345.2014, Culture=neutral, PublicKeyToken=6dc438ab78a525b3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Limilabs\Mail\Redistributables\Mail.dll</HintPath>
-    </Reference>
-    <Reference Include="smtpop">
-      <HintPath>..\..\..\..\..\Desktop\Smtpop.Net\smtpop.dll</HintPath>
+    <Reference Include="OpenPop">
+      <HintPath>..\..\..\..\..\Downloads\OpenPop.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

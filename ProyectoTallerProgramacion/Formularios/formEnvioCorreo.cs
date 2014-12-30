@@ -13,7 +13,6 @@ namespace formPrincipal
 {
     public partial class formEnvioCorreo : Form
     {
-        private bool adj = false;
         private List<string> archivos = new List<string>();
 
         public formEnvioCorreo()
@@ -54,7 +53,6 @@ namespace formPrincipal
 
         private void button2_Click(object sender, EventArgs e)
         {
-            adj = true;
             OpenFileDialog file = new OpenFileDialog();
             file.Title = "Seleccione Archivo";
             file.InitialDirectory = @"C:\";

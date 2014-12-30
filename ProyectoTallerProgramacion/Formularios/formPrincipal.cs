@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Clases;
+using Clases.DTO;
+using Clases.Controladores;
 using SmtPop;
 using Limilabs;
 
@@ -126,6 +128,75 @@ namespace formPrincipal
             //close the connection to POP3 server
             pop.Quit();  */
 
+        }
+
+        private void agregarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listBox1.Visible = false;
+            tabControl1.Visible = false;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            button7.Visible = true;
+            button8.Visible = true;
+            textBox2.Visible = true;
+            textBox3.Visible = true;
+            textBox4.Visible = true;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            CuentaDTO cuenta = new CuentaDTO();
+            cuenta.Direccion = textBox2.Text;
+            cuenta.Contraseña = textBox3.Text;
+            cuenta.Nombre = textBox4.Text;
+            FachadaABMCuenta.Instancia.CrearCuenta(cuenta);
+
+            listBox1.Visible = true;
+            tabControl1.Visible = true;
+            label1.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+            button7.Visible = false;
+            button8.Visible = false;
+            textBox2.Visible = false;
+            textBox3.Visible = false;
+            textBox4.Visible = false;
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+        }
+
+        private void formPrincipal_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            listBox1.Visible = true;
+            tabControl1.Visible = true;
+            label1.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+            button7.Visible = false;
+            button8.Visible = false;
+            textBox2.Visible = false;
+            textBox3.Visible = false;
+            textBox4.Visible = false;
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
         } 
     }
 }

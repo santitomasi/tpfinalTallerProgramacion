@@ -13,6 +13,9 @@ namespace formPrincipal
 {
     public partial class formEnvioCorreo : Form
     {
+        private bool adj = false;
+        private List<string> archivos = new List<string>();
+
         public formEnvioCorreo()
         {
             InitializeComponent();
@@ -26,14 +29,41 @@ namespace formPrincipal
             correo.Subject = textBox2.Text;
             correo.Body = textBox3.Text;
 
+            if (archivos != null)
+            {
+                foreach (string archivo in archivos)
+                {
+                    Attachment attach = new Attachment(@archivo);
+                    correo.Attachments.Add(attach);
+                }
+                archivos.Clear();
+            }
+
             
             SmtpClient cliente = new SmtpClient("smtp.gmail.com");
             cliente.EnableSsl = true;
             cliente.Port = 587;
-            cliente.Credentials = new System.Net.NetworkCredential("santiagotommasi92@gmail.com", "marlou1006");
+            cliente.Credentials = new System.Net.NetworkCredential("santiagotommasi92@gmail.com", "password");
+            
+            //Aca tendriamos que poner un try-catch
             cliente.Send(correo);
+
             Close();
             MessageBox.Show("Enviado con exito!");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            adj = true;
+            OpenFileDialog file = new OpenFileDialog();
+            file.Title = "Seleccione Archivo";
+            file.InitialDirectory = @"C:\";
+            file.Filter = "All files(*.*)|*.*";
+            file.FilterIndex = 1;
+            file.RestoreDirectory = true;
+            file.ShowDialog();
+            archivos.Add(file.FileName);
+            label3.Text = file.SafeFileName;
         }
 
     }

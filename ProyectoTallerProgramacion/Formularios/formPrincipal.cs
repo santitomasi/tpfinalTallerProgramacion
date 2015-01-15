@@ -43,7 +43,9 @@ namespace formPrincipal
         /// <param name="e"></param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            int indexSelected = e.RowIndex;
+            // Falta marcar el correo como leido en la base y en la lista!!
+            textBox1.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
         }
 
         /// <summary>
@@ -53,11 +55,9 @@ namespace formPrincipal
         /// <param name="e"></param>
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //int indexSelected = listaRecibidos.Rows[e.RowIndex].Index;
             int indexSelected = e.RowIndex;
-
-            //textBox1.Text = mensajes[indexSelected].Headers.ContentDescription;
-            //textBox1.Text = listaRecibidos.Rows[indexSelected].Cell
+            // Falta marcar el correo como leido en la base y en la lista!!
+            textBox1.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
         } 
 
         private void button4_Click(object sender, EventArgs e)
@@ -88,7 +88,7 @@ namespace formPrincipal
          
         private void agregarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            listaCuentas.Visible = false;
+            listaCuentas2.Visible = false;
             tabControl1.Visible = false;
             label1.Visible = true;
             label2.Visible = true;
@@ -108,7 +108,7 @@ namespace formPrincipal
             cuenta.Nombre = textBox4.Text;
             FachadaABMCuenta.Instancia.CrearCuenta(cuenta);
 
-            listaCuentas.Visible = true;
+            listaCuentas2.Visible = true;
             tabControl1.Visible = true;
             label1.Visible = false;
             label2.Visible = false;
@@ -125,7 +125,7 @@ namespace formPrincipal
 
         private void button8_Click(object sender, EventArgs e)
         {
-            listaCuentas.Visible = true;
+            listaCuentas2.Visible = true;
             tabControl1.Visible = true;
             label1.Visible = false;
             label2.Visible = false;
@@ -169,9 +169,14 @@ namespace formPrincipal
             {
                 string[] row = { aCuenta.Nombre};
                 listaCuentas2.Rows.Add(row);
+                //Esta linea es para probar usar un combobox
+                comboBox1.Items.Add(aCuenta.Nombre);
             }
             string[] row2 = { "Todas las cuentas" };
             listaCuentas2.Rows.Add(row2);
+            //Esta linea es para probar usar un combobox
+            comboBox1.Items.Add("Todas las cuentas");
+            
         }
 
         /// <summary>
@@ -184,15 +189,24 @@ namespace formPrincipal
             listaRecibidos.Rows.Clear();
             foreach (CorreoDTO aCorreo in FachadaCorreo.Instancia.ListarCorreos())
             {
+                object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, Convert.ToString(aCorreo.Fecha), aCorreo.Texto, aCorreo.Leido };
                 if (aCorreo.TipoCorreo == "Enviado")
-                {
-                    object[] row = { aCorreo.Asunto, aCorreo.CuentaDestino , Convert.ToString(aCorreo.Fecha) };
+                {                    
                     listaEnviados.Rows.Add(row);
+                    if (aCorreo.Leido != 0)
+                    {
+                        int posicion = listaEnviados.Rows.Count - 2;
+                        listaEnviados.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
+                    }
                 }
                 else
                 {
-                    object[] row = { aCorreo.Asunto, aCorreo.CuentaOrigen, Convert.ToString(aCorreo.Fecha) };
                     listaRecibidos.Rows.Add(row);
+                    if (aCorreo.Leido != 0)
+                    {
+                        int posicion = listaRecibidos.Rows.Count - 2;
+                        listaRecibidos.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
+                    }
                 }
                 
             }
@@ -208,13 +222,13 @@ namespace formPrincipal
             listaRecibidos.Rows.Clear();
             foreach (CorreoDTO aCorreo in FachadaCorreo.Instancia.ListarCorreos(pCuenta))
             {
+                object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, Convert.ToString(aCorreo.Fecha), aCorreo.Texto, aCorreo.Leido };
                 if (aCorreo.TipoCorreo == "Enviado")
                 {
-                    object[] row = { aCorreo.Asunto, aCorreo.CuentaDestino, Convert.ToString(aCorreo.Fecha) };
-                    listaEnviados.Rows.Add(row);
-                    int posicion = listaEnviados.Rows.Count - 2;
+                    listaEnviados.Rows.Add(row);                
                     if (aCorreo.Leido != 0)
                     {
+                        int posicion = listaEnviados.Rows.Count - 2;
                         //listaEnviados.Rows[posicion].DefaultCellStyle.Font = new Font(listaEnviados.DefaultCellStyle.Font, FontStyle.Bold);
                         listaEnviados.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
                        // listaEnviados.Rows[posicion].Cells[1].Style
@@ -222,13 +236,12 @@ namespace formPrincipal
                 }
                 else
                 {
-                    object[] row = { aCorreo.Asunto, aCorreo.CuentaOrigen, Convert.ToString(aCorreo.Fecha) };
                     listaRecibidos.Rows.Add(row);
                     if (aCorreo.Leido != 0)
                     {
                         int posicion = listaRecibidos.Rows.Count - 2;
-                        //listaEnviados.Rows[posicion].DefaultCellStyle.Font = new Font(listaEnviados.DefaultCellStyle.Font, FontStyle.Bold);
-                        
+                        listaRecibidos.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
+                        //listaEnviados.Rows[posicion].DefaultCellStyle.Font = new Font(listaEnviados.DefaultCellStyle.Font, FontStyle.Bold);                       
                         //listaRecibidos.Rows[posicion].Cells[0].Style.Font = new Font(listaEnviados.DefaultCellStyle.Font, FontStyle.Bold); //DefaultCellStyle.BackColor = Color.Gray;
                     }
                 }
@@ -238,6 +251,7 @@ namespace formPrincipal
         private void formPrincipal_Load(object sender, EventArgs e)
         {
             MostrarCuentas();
+            
         }
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -264,7 +278,7 @@ namespace formPrincipal
             //form.Show();
             //Close();
             //MessageBox.Show(Convert.ToString(listaCuentas2.Rows[row].Cells[0].Value));
-            string cuentaSeleccionada = Convert.ToString(listaCuentas2.Rows[row].Cells[0].Value);
+            string cuentaSeleccionada = Convert.ToString(listaCuentas2.Rows[row].Cells["cuenta"].Value);
             if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) // si la cuenta seleccionada es distinta de "Todas las cuentas"
             {
                 MostrarCorreos(cuentaSeleccionada);
@@ -274,6 +288,34 @@ namespace formPrincipal
                 MostrarCorreos();
             }
             
+        }
+
+        private void listaCuentas2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Int32 row = listaCuentas2.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+            string cuentaSeleccionada = Convert.ToString(listaCuentas2.Rows[row].Cells["cuenta"].Value);
+            if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) // si la cuenta seleccionada es distinta de "Todas las cuentas"
+            {
+                MostrarCorreos(cuentaSeleccionada);
+            }
+            else
+            {
+                MostrarCorreos();
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Int32 row = comboBox1.SelectedIndex;
+            string cuentaSeleccionada = Convert.ToString(comboBox1.Items[row]);
+            if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) // si la cuenta seleccionada es distinta de "Todas las cuentas"
+            {
+                MostrarCorreos(cuentaSeleccionada);
+            }
+            else
+            {
+                MostrarCorreos();
+            }
         }
 
     }

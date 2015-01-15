@@ -40,6 +40,14 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listaEnviados = new System.Windows.Forms.DataGridView();
+            this.correoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.texto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -48,7 +56,14 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listaRecibidos = new System.Windows.Forms.DataGridView();
-            this.listaCuentas = new System.Windows.Forms.ListBox();
+            this.correoIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoCorreoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asuntoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaOrigenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaDestinoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -59,14 +74,8 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.listaCuentas2 = new System.Windows.Forms.DataGridView();
-            this.Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Emisor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEnviados)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -161,9 +170,14 @@
             this.listaEnviados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.listaEnviados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaEnviados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.correoId,
+            this.tipoCorreo,
             this.Descripcion,
-            this.Emisor,
-            this.Fecha});
+            this.cuentaOrigen,
+            this.cuentaDestino,
+            this.Fecha,
+            this.texto,
+            this.leido});
             this.listaEnviados.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listaEnviados.Location = new System.Drawing.Point(0, 0);
             this.listaEnviados.Name = "listaEnviados";
@@ -172,6 +186,56 @@
             this.listaEnviados.Size = new System.Drawing.Size(726, 210);
             this.listaEnviados.TabIndex = 10;
             this.listaEnviados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // correoId
+            // 
+            this.correoId.HeaderText = "correoid";
+            this.correoId.Name = "correoId";
+            this.correoId.Visible = false;
+            // 
+            // tipoCorreo
+            // 
+            this.tipoCorreo.HeaderText = "Tipo Correo";
+            this.tipoCorreo.Name = "tipoCorreo";
+            this.tipoCorreo.Visible = false;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Asunto";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // cuentaOrigen
+            // 
+            this.cuentaOrigen.HeaderText = "De";
+            this.cuentaOrigen.Name = "cuentaOrigen";
+            this.cuentaOrigen.Visible = false;
+            // 
+            // cuentaDestino
+            // 
+            this.cuentaDestino.HeaderText = "Para";
+            this.cuentaDestino.Name = "cuentaDestino";
+            this.cuentaDestino.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 70;
+            // 
+            // texto
+            // 
+            this.texto.HeaderText = "Mensaje";
+            this.texto.Name = "texto";
+            this.texto.Visible = false;
+            // 
+            // leido
+            // 
+            this.leido.HeaderText = "Leido";
+            this.leido.Name = "leido";
+            this.leido.Visible = false;
             // 
             // button4
             // 
@@ -246,9 +310,14 @@
             this.listaRecibidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.listaRecibidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaRecibidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
+            this.correoIdR,
+            this.tipoCorreoR,
+            this.asuntoR,
+            this.cuentaOrigenR,
+            this.cuentaDestinoR,
+            this.fechaR,
+            this.textoR,
+            this.leidoR});
             this.listaRecibidos.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listaRecibidos.Location = new System.Drawing.Point(0, 0);
             this.listaRecibidos.Name = "listaRecibidos";
@@ -258,17 +327,55 @@
             this.listaRecibidos.TabIndex = 11;
             this.listaRecibidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // listaCuentas
+            // correoIdR
             // 
-            this.listaCuentas.FormattingEnabled = true;
-            this.listaCuentas.Items.AddRange(new object[] {
-            "ejemplo@ejemplo.com",
-            "example@example.noseqonda.com"});
-            this.listaCuentas.Location = new System.Drawing.Point(12, 205);
-            this.listaCuentas.Name = "listaCuentas";
-            this.listaCuentas.Size = new System.Drawing.Size(217, 69);
-            this.listaCuentas.TabIndex = 1;
-            this.listaCuentas.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.correoIdR.HeaderText = "Correo ID";
+            this.correoIdR.Name = "correoIdR";
+            this.correoIdR.Visible = false;
+            // 
+            // tipoCorreoR
+            // 
+            this.tipoCorreoR.HeaderText = "Tipo Correo";
+            this.tipoCorreoR.Name = "tipoCorreoR";
+            this.tipoCorreoR.Visible = false;
+            // 
+            // asuntoR
+            // 
+            this.asuntoR.HeaderText = "Asunto";
+            this.asuntoR.Name = "asuntoR";
+            this.asuntoR.ReadOnly = true;
+            // 
+            // cuentaOrigenR
+            // 
+            this.cuentaOrigenR.HeaderText = "De";
+            this.cuentaOrigenR.Name = "cuentaOrigenR";
+            this.cuentaOrigenR.ReadOnly = true;
+            // 
+            // cuentaDestinoR
+            // 
+            this.cuentaDestinoR.HeaderText = "Para";
+            this.cuentaDestinoR.Name = "cuentaDestinoR";
+            this.cuentaDestinoR.Visible = false;
+            // 
+            // fechaR
+            // 
+            this.fechaR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.fechaR.HeaderText = "Fecha";
+            this.fechaR.Name = "fechaR";
+            this.fechaR.ReadOnly = true;
+            this.fechaR.Width = 70;
+            // 
+            // textoR
+            // 
+            this.textoR.HeaderText = "Mensaje";
+            this.textoR.Name = "textoR";
+            this.textoR.Visible = false;
+            // 
+            // leidoR
+            // 
+            this.leidoR.HeaderText = "Leido";
+            this.leidoR.Name = "leidoR";
+            this.leidoR.Visible = false;
             // 
             // label1
             // 
@@ -360,68 +467,34 @@
             // 
             this.listaCuentas2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listaCuentas2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.listaCuentas2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.listaCuentas2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaCuentas2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Cuenta});
+            this.cuenta});
             this.listaCuentas2.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listaCuentas2.Location = new System.Drawing.Point(12, 36);
             this.listaCuentas2.Name = "listaCuentas2";
+            this.listaCuentas2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.listaCuentas2.Size = new System.Drawing.Size(217, 163);
             this.listaCuentas2.TabIndex = 24;
+            this.listaCuentas2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas2_CellClick);
             this.listaCuentas2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             this.listaCuentas2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.listaCuentas2_CellMouseDoubleClick);
             // 
-            // Cuenta
+            // cuenta
             // 
-            this.Cuenta.HeaderText = "Cuenta";
-            this.Cuenta.Name = "Cuenta";
+            this.cuenta.HeaderText = "Cuenta";
+            this.cuenta.Name = "cuenta";
+            this.cuenta.ReadOnly = true;
             // 
-            // treeView1
+            // comboBox1
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 280);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(217, 204);
-            this.treeView1.TabIndex = 25;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Asunto";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // Emisor
-            // 
-            this.Emisor.HeaderText = "Para";
-            this.Emisor.Name = "Emisor";
-            this.Emisor.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Asunto";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "De";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Fecha";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 70;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 208);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(217, 21);
+            this.comboBox1.TabIndex = 26;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // formPrincipal
             // 
@@ -429,7 +502,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(981, 518);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listaCuentas2);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.textBox4);
@@ -440,7 +513,6 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listaCuentas);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -488,7 +560,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView listaRecibidos;
-        private System.Windows.Forms.ListBox listaCuentas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
@@ -499,14 +570,24 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.DataGridView listaCuentas2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cuenta;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn correoIdR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoCorreoR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn asuntoR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaOrigenR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaDestinoR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn textoR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn leidoR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn correoId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoCorreo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Emisor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaOrigen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaDestino;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn texto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn leido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuenta;
+        private System.Windows.Forms.ComboBox comboBox1;
 
     }
 }

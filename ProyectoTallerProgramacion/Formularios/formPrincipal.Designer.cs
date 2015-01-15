@@ -49,7 +49,6 @@
             this.texto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -125,38 +124,53 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(798, 315);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(15, 121);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 29);
+            this.button1.Size = new System.Drawing.Size(131, 29);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Nuevo";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "Redactar";
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(798, 385);
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(15, 191);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(171, 29);
+            this.button2.Size = new System.Drawing.Size(131, 29);
             this.button2.TabIndex = 6;
             this.button2.Text = "Reenviar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(798, 350);
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(15, 156);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(171, 29);
+            this.button3.Size = new System.Drawing.Size(131, 29);
             this.button3.TabIndex = 7;
             this.button3.Text = "Eliminar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(235, 280);
+            this.textBox1.Location = new System.Drawing.Point(156, 280);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(557, 204);
+            this.textBox1.Size = new System.Drawing.Size(813, 204);
             this.textBox1.TabIndex = 8;
             // 
             // listaEnviados
@@ -181,7 +195,7 @@
             this.listaEnviados.Name = "listaEnviados";
             this.listaEnviados.RowHeadersWidth = 20;
             this.listaEnviados.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.listaEnviados.Size = new System.Drawing.Size(726, 210);
+            this.listaEnviados.Size = new System.Drawing.Size(806, 210);
             this.listaEnviados.TabIndex = 10;
             this.listaEnviados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -237,31 +251,32 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(798, 280);
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button4.Location = new System.Drawing.Point(15, 86);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(171, 29);
+            this.button4.Size = new System.Drawing.Size(131, 29);
             this.button4.TabIndex = 11;
-            this.button4.Text = "Actualizar Recibidos";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Text = "Actualizar";
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(798, 420);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(171, 29);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "Enviados";
-            this.button5.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(798, 455);
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button6.Location = new System.Drawing.Point(15, 226);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(171, 29);
+            this.button6.Size = new System.Drawing.Size(131, 29);
             this.button6.TabIndex = 13;
             this.button6.Text = "Exportar";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
             // 
             // contextMenuStrip1
             // 
@@ -272,10 +287,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(235, 36);
+            this.tabControl1.Location = new System.Drawing.Point(152, 36);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(734, 238);
+            this.tabControl1.Size = new System.Drawing.Size(817, 238);
             this.tabControl1.TabIndex = 15;
             // 
             // tabPage1
@@ -284,7 +299,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(726, 212);
+            this.tabPage1.Size = new System.Drawing.Size(809, 212);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Enviados";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -295,7 +310,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(726, 212);
+            this.tabPage2.Size = new System.Drawing.Size(809, 212);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Recibidos";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -321,7 +336,7 @@
             this.listaRecibidos.Name = "listaRecibidos";
             this.listaRecibidos.RowHeadersWidth = 20;
             this.listaRecibidos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.listaRecibidos.Size = new System.Drawing.Size(726, 210);
+            this.listaRecibidos.Size = new System.Drawing.Size(806, 210);
             this.listaRecibidos.TabIndex = 11;
             this.listaRecibidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -466,7 +481,7 @@
             this.listaCuentas.FormattingEnabled = true;
             this.listaCuentas.Location = new System.Drawing.Point(12, 58);
             this.listaCuentas.Name = "listaCuentas";
-            this.listaCuentas.Size = new System.Drawing.Size(217, 21);
+            this.listaCuentas.Size = new System.Drawing.Size(134, 21);
             this.listaCuentas.TabIndex = 26;
             this.listaCuentas.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -500,7 +515,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button3);
@@ -537,7 +551,6 @@
         private System.Windows.Forms.DataGridView listaEnviados;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TabControl tabControl1;

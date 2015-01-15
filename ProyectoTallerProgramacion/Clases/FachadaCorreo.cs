@@ -73,6 +73,27 @@ namespace Clases.Controladores
         }
 
         /// <summary>
+        /// Método para listar todos los correos de la cuenta <paramref name="pCuenta"/>.
+        /// </summary>
+        /// <returns>Una lista con todos los correos de la cuenta <paramref name="pCuenta"/>.</returns>
+        public IList<CorreoDTO> ListarCorreos(string pCuenta)
+        {
+            try
+            {
+                factory = DAOFactory.Instancia;
+                factory.IniciarConexion();
+
+                //Se devuelven los correos.
+                return factory.CorreoDAO.ObtenerCorreos(pCuenta);
+            }
+            finally
+            {
+                //Haya o no un error, se cierra la transacción.
+                factory.FinalizarConexion();
+            }
+        }
+
+        /// <summary>
         /// Método para eliminar un correo.
         /// </summary>
         /// <param name="pCorreo">Clase DTO con los datos del correo a eliminar.</param>

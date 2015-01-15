@@ -27,7 +27,13 @@ namespace Clases.Persistencia
         /// <summary>
         /// Metodo para obtener los correos de la Base de Datos.
         /// </summary>
-        /// <returns>Retorna una lista de correos de la clase Correo.</returns>
+        /// <returns>Retorna una lista de correos con todos los corros de la base de datos.</returns>
         IList<CorreoDTO> ObtenerCorreos();
+
+        /// <summary>
+        /// Metodo para obtener los correos de la cuenta <paramref name="pCuenta"/>.
+        /// </summary>
+        /// <returns>Retorna una lista de correos con los correos de la cuenta <paramref name="pCuenta"/>.</returns>
+        IList<CorreoDTO> ObtenerCorreos(string pCuenta);
     }
 }

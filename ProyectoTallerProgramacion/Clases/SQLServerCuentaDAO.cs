@@ -45,7 +45,7 @@ namespace Clases.Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = "select * from CuentaCorreo";
+                comando.CommandText = "select * from Cuenta";
                 DataTable tabla = new DataTable();
                 using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
                 {
@@ -77,7 +77,7 @@ namespace Clases.Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"insert into Correo(Nombre,Direccion,Contraseña)
+                comando.CommandText = @"insert into Cuenta(Nombre,Direccion,Contraseña)
                                                    values(@Nombre,@Direccion,@Contraseña)";
                 comando.Parameters.AddWithValue("@Nombre", pCuentaCorreo.Nombre);
                 comando.Parameters.AddWithValue("@Direccion", pCuentaCorreo.Direccion);
@@ -100,7 +100,7 @@ namespace Clases.Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"update CuentaCorreo set Direccion= @Direccion,
+                comando.CommandText = @"update Cuenta set Direccion= @Direccion,
                                                                 Contraseña= @Contraseña 
                                                                 where Nombre = @Nombre";
                 comando.Parameters.AddWithValue("@Nombre", pCuentaCorreo.Nombre);
@@ -124,7 +124,7 @@ namespace Clases.Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"delete from CuentaCorreo where Nombre = @Nombre";
+                comando.CommandText = @"delete from Cuenta where Nombre = @Nombre";
                 comando.Parameters.AddWithValue("@ID", pCuentaCorreo.Nombre);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();

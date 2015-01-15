@@ -52,15 +52,57 @@ namespace Clases.Persistencia.SQLServer
                     adaptador.Fill(tabla);
                     foreach (DataRow fila in tabla.Rows)
                     {
-                        mCorreos.Add(new CorreoDTO
+                        mCorreos.Add(new CorreoDTO()
                         {
-                            Id = Convert.ToInt32(fila["Id"]),
-                            Fecha = Convert.ToDateTime(fila["Fecha"]),
-                            Hora = Convert.ToDateTime(fila["Hora"]),
-                            Texto = Convert.ToString(fila["Texto"]),
-                            OrigenID = Convert.ToInt32(fila["Origen"]),
-                            DestinoID = Convert.ToInt32(fila["Destino"]),
+                            Id = Convert.ToInt32(fila["correoId"]),
+                            Fecha = Convert.ToDateTime(fila["fecha"]),
+                            TipoCorreo = Convert.ToString(fila["tipocorreo"]),
+                            Texto = Convert.ToString(fila["texto"]),
+                            CuentaOrigen = Convert.ToString(fila["cuentaOrigen"]),
+                            CuentaDestino = Convert.ToString(fila["cuentaDestino"]),
+                            Asunto = Convert.ToString(fila["Asunto"]),
+                            Leido = Convert.ToInt32(fila["leido"])
                         });
+                    }
+                }
+                return mCorreos;
+            }
+            catch (SqlException pSqlException)
+            {
+                throw new DAOException("Error en la obtención de datos de correo", pSqlException);
+            }
+        }
+
+        /// <summary>
+        /// Metodo para obtener los correos de la cuenta <paramref name="pCuenta"/>.
+        /// </summary>
+        /// <returns>Retorna una lista de correos con los correos de la cuenta <paramref name="pCuenta"/>.</returns>
+        public IList<CorreoDTO> ObtenerCorreos(string pCuenta)
+        {
+            List<CorreoDTO> mCorreos = new List<CorreoDTO>();
+            try
+            {
+                SqlCommand comando = this.iConexion.CreateCommand();
+                comando.CommandText = "select * from Correo where (cuentaOrigen = @Cuenta and tipoCorreo = 'Enviado') or (cuentaDestino = @Cuenta and tipoCorreo = 'Recibido')";
+                comando.Parameters.AddWithValue("@Cuenta", pCuenta);
+                DataTable tabla = new DataTable();
+                using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
+                {
+                    adaptador.Fill(tabla);
+                    foreach (DataRow fila in tabla.Rows)
+                    {
+                       mCorreos.Add(new CorreoDTO
+                       {
+                           Id = Convert.ToInt32(fila["correoId"]),
+                           Fecha = Convert.ToDateTime(fila["fecha"]),
+                           TipoCorreo = Convert.ToString(fila["tipocorreo"]),
+                           Texto = Convert.ToString(fila["texto"]),
+                           CuentaOrigen = Convert.ToString(fila["cuentaOrigen"]),
+                           CuentaDestino = Convert.ToString(fila["cuentaDestino"]),
+                           Asunto = Convert.ToString(fila["Asunto"]),
+                           Leido = Convert.ToInt32(fila["leido"])
+                        });
+                        
                     }
                 }
                 return mCorreos;
@@ -80,14 +122,16 @@ namespace Clases.Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"insert into Correo(Id,Fecha,Hora,Texto,Origen,Destino)
-                                                   values(@Id,@Fecha,@Hora,@Texto,@Origen,@Destino)";
+                comando.CommandText = @"insert into Correo(correoId,fecha,tipocorreo,texto,cuentaOrigen,cuentaDestino,asunto,leido)
+                                                   values(@Id,@Fecha,@TipoCorreo,@Texto,@Origen,@Destino,@Asunto,@Leido)";
                 comando.Parameters.AddWithValue("@Id", pCorreo.Id);
                 comando.Parameters.AddWithValue("@Fecha", pCorreo.Fecha);
-                comando.Parameters.AddWithValue("@Hora", pCorreo.Hora);
+                comando.Parameters.AddWithValue("@TipoCorreo", pCorreo.TipoCorreo);
                 comando.Parameters.AddWithValue("@Texto", pCorreo.Texto);
-                comando.Parameters.AddWithValue("@OrigenID", pCorreo.OrigenID);
-                comando.Parameters.AddWithValue("@DestinoID", pCorreo.DestinoID);
+                comando.Parameters.AddWithValue("@Origen", pCorreo.CuentaOrigen);
+                comando.Parameters.AddWithValue("@Destino", pCorreo.CuentaDestino);
+                comando.Parameters.AddWithValue("@Asunto", pCorreo.Asunto);
+                comando.Parameters.AddWithValue("@Leido", pCorreo.Leido);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
             }
@@ -106,7 +150,7 @@ namespace Clases.Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"delete from Correo where Id = @Id";
+                comando.CommandText = @"delete from Correo where correoId = @Id";
                 comando.Parameters.AddWithValue("@ID", pCorreo.Id);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();

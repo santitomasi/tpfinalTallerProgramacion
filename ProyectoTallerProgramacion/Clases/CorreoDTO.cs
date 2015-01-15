@@ -22,9 +22,9 @@ namespace Clases.DTO
         private DateTime iFecha;
 
         /// <summary>
-        /// Atributo hora.
+        /// Atributo tipoCorreo.
         /// </summary>
-        private DateTime iHora;
+        private string iTipoCorreo;
 
         /// <summary>
         /// Atributo texto.
@@ -34,17 +34,42 @@ namespace Clases.DTO
         /// <summary>
         /// Atributo origen.
         /// </summary>
-        private int iOrigenID;      
+        private string iCuentaOrigen;      
 
         /// <summary>
         /// Atributo destino.
         /// </summary>
-        private int iDestinoID;     
+        private string iCuentaDestino;
+
+        /// <summary>
+        /// Atributo asunto.
+        /// </summary>
+        private string iAsunto;
+
+        /// <summary>
+        /// Atributo leido.
+        /// </summary>
+        private int iLeido;
 
         /// <summary>
         /// Constructor de una instancia de la clase Correo .
         /// </summary>
         public CorreoDTO() {}
+
+        /// <summary>
+        /// Constructor de una instancia de la clase Correo .
+        /// </summary>
+        public CorreoDTO(int pId, DateTime pFecha, string pTipoCorreo, string pTexto, string pCuentaOrigen, string pCuentaDestino, string pAsunto, int pLeido) 
+        {
+            iId = pId;
+            iFecha = pFecha;
+            iTipoCorreo = pTipoCorreo;
+            iTexto = pTexto;
+            iCuentaOrigen = pCuentaOrigen;
+            iCuentaDestino = pCuentaDestino;
+            iAsunto = pAsunto;
+            iLeido = pLeido;
+        }
 
         /// <summary>
         /// 
@@ -76,10 +101,10 @@ namespace Clases.DTO
         /// <summary>
         /// Propiedad de lectura y escritura de la Hora.
         /// </summary>
-        public DateTime Hora
+        public string TipoCorreo
         {
-            get { return this.iHora; }
-            set { this.iHora = value; }
+            get { return this.iTipoCorreo; }
+            set { this.iTipoCorreo = value; }
         }
 
         /// <summary>
@@ -94,19 +119,37 @@ namespace Clases.DTO
         /// <summary>
         /// Propiedad de lectura y escritura del Origen.
         /// </summary>
-        public int OrigenID
+        public string CuentaOrigen
         {
-            get { return this.iOrigenID; }
-            set { this.iOrigenID = value; }
+            get { return this.iCuentaOrigen; }
+            set { this.iCuentaOrigen = value; }
         }
 
         /// <summary>
         /// Propiedad de lectura y escritura del Destino.
         /// </summary>
-        public int DestinoID
+        public string CuentaDestino
         {
-            get { return this.iDestinoID; }
-            set { this.iDestinoID = value; }
+            get { return this.iCuentaDestino; }
+            set { this.iCuentaDestino = value; }
+        }
+
+        /// <summary>
+        /// Propiedad de lectura y escritura del Asunto.
+        /// </summary>
+        public string Asunto
+        {
+            get { return this.iAsunto; }
+            set { this.iAsunto = value; }
+        }
+
+        /// <summary>
+        /// Propiedad de lectura y escritura del atributo leído.
+        /// </summary>
+        public int Leido
+        {
+            get { return this.iLeido; }
+            set { this.iLeido = value; }
         }
     }
 }

@@ -73,16 +73,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.listaCuentas2 = new System.Windows.Forms.DataGridView();
-            this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.listaCuentas = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEnviados)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaRecibidos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listaCuentas2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -463,38 +461,25 @@
             this.progressBar1.Visible = false;
             this.progressBar1.VisibleChanged += new System.EventHandler(this.progressBar_VisibleChanged);
             // 
-            // listaCuentas2
+            // listaCuentas
             // 
-            this.listaCuentas2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.listaCuentas2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.listaCuentas2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.listaCuentas2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listaCuentas2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cuenta});
-            this.listaCuentas2.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.listaCuentas2.Location = new System.Drawing.Point(12, 36);
-            this.listaCuentas2.Name = "listaCuentas2";
-            this.listaCuentas2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.listaCuentas2.Size = new System.Drawing.Size(217, 163);
-            this.listaCuentas2.TabIndex = 24;
-            this.listaCuentas2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas2_CellClick);
-            this.listaCuentas2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
-            this.listaCuentas2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.listaCuentas2_CellMouseDoubleClick);
+            this.listaCuentas.FormattingEnabled = true;
+            this.listaCuentas.Location = new System.Drawing.Point(12, 58);
+            this.listaCuentas.Name = "listaCuentas";
+            this.listaCuentas.Size = new System.Drawing.Size(217, 21);
+            this.listaCuentas.TabIndex = 26;
+            this.listaCuentas.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // cuenta
+            // label4
             // 
-            this.cuenta.HeaderText = "Cuenta";
-            this.cuenta.Name = "cuenta";
-            this.cuenta.ReadOnly = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 208);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(217, 21);
-            this.comboBox1.TabIndex = 26;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 16);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Cuentas:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // formPrincipal
             // 
@@ -502,8 +487,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(981, 518);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.listaCuentas2);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.listaCuentas);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label3);
@@ -533,7 +518,6 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listaRecibidos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listaCuentas2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -569,7 +553,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.DataGridView listaCuentas2;
         private System.Windows.Forms.DataGridViewTextBoxColumn correoIdR;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoCorreoR;
         private System.Windows.Forms.DataGridViewTextBoxColumn asuntoR;
@@ -586,8 +569,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn texto;
         private System.Windows.Forms.DataGridViewTextBoxColumn leido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuenta;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox listaCuentas;
+        private System.Windows.Forms.Label label4;
 
     }
 }

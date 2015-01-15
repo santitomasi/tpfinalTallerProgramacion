@@ -88,7 +88,7 @@ namespace formPrincipal
          
         private void agregarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            listaCuentas2.Visible = false;
+            listaCuentas.Visible = false;
             tabControl1.Visible = false;
             label1.Visible = true;
             label2.Visible = true;
@@ -108,7 +108,7 @@ namespace formPrincipal
             cuenta.Nombre = textBox4.Text;
             FachadaABMCuenta.Instancia.CrearCuenta(cuenta);
 
-            listaCuentas2.Visible = true;
+            listaCuentas.Visible = true;
             tabControl1.Visible = true;
             label1.Visible = false;
             label2.Visible = false;
@@ -125,7 +125,7 @@ namespace formPrincipal
 
         private void button8_Click(object sender, EventArgs e)
         {
-            listaCuentas2.Visible = true;
+            listaCuentas.Visible = true;
             tabControl1.Visible = true;
             label1.Visible = false;
             label2.Visible = false;
@@ -167,15 +167,9 @@ namespace formPrincipal
         {
             foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
             {
-                string[] row = { aCuenta.Nombre};
-                listaCuentas2.Rows.Add(row);
-                //Esta linea es para probar usar un combobox
-                comboBox1.Items.Add(aCuenta.Nombre);
+                listaCuentas.Items.Add(aCuenta.Nombre);
             }
-            string[] row2 = { "Todas las cuentas" };
-            listaCuentas2.Rows.Add(row2);
-            //Esta linea es para probar usar un combobox
-            comboBox1.Items.Add("Todas las cuentas");
+            listaCuentas.Items.Add("Todas las cuentas");
             
         }
 
@@ -261,53 +255,14 @@ namespace formPrincipal
 
         /// <summary>
         /// Método para mostrar los correos de una cuenta. 
-        /// Se dispara al hacer doble click sobre la fila de una cuenta.
+        /// Se dispara al elegir una cuenta en el combobox.
         /// </summary>
         /// <param name="sender">Objeto que dispara el evento.</param>
         /// <param name="e"></param>
-        private void listaCuentas2_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            Int32 row = listaCuentas2.Rows.GetFirstRow(DataGridViewElementStates.Selected);
-            //CuentaDTO cuenta = new CuentaDTO();
-            //cuenta.Nombre = Convert.ToString(listaCuentas2.Rows[row].Cells[0].Value);
-            //libro.Id = Convert.ToInt32(listaLibros.Rows[row].Cells[0].Value);
-            //libro.Titulo = Convert.ToString(listaLibros.Rows[row].Cells[1].Value);
-            //libro.Autor = Convert.ToString(listaLibros.Rows[row].Cells[2].Value);
-            //libro.Isbn = Convert.ToString(listaLibros.Rows[row].Cells[3].Value);
-           // Form form = new formLibro(libro);
-            //form.Show();
-            //Close();
-            //MessageBox.Show(Convert.ToString(listaCuentas2.Rows[row].Cells[0].Value));
-            string cuentaSeleccionada = Convert.ToString(listaCuentas2.Rows[row].Cells["cuenta"].Value);
-            if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) // si la cuenta seleccionada es distinta de "Todas las cuentas"
-            {
-                MostrarCorreos(cuentaSeleccionada);
-            }
-            else
-            {
-                MostrarCorreos();
-            }
-            
-        }
-
-        private void listaCuentas2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Int32 row = listaCuentas2.Rows.GetFirstRow(DataGridViewElementStates.Selected);
-            string cuentaSeleccionada = Convert.ToString(listaCuentas2.Rows[row].Cells["cuenta"].Value);
-            if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) // si la cuenta seleccionada es distinta de "Todas las cuentas"
-            {
-                MostrarCorreos(cuentaSeleccionada);
-            }
-            else
-            {
-                MostrarCorreos();
-            }
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Int32 row = comboBox1.SelectedIndex;
-            string cuentaSeleccionada = Convert.ToString(comboBox1.Items[row]);
+            Int32 row = listaCuentas.SelectedIndex;
+            string cuentaSeleccionada = Convert.ToString(listaCuentas.Items[row]);
             if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) // si la cuenta seleccionada es distinta de "Todas las cuentas"
             {
                 MostrarCorreos(cuentaSeleccionada);
@@ -315,7 +270,18 @@ namespace formPrincipal
             else
             {
                 MostrarCorreos();
+                //ESTAS LINEAS SON PARA PROBAR USAR EL MISMO DATAGRIDVIEW PARA ENVIADOS Y RECIBIDOS
+                // LISTAENVIADOS Y LISTARECIBIDOS AHORA TIENEN TODAS LAS COLUMNAS DE LOS
+                // ATRIBUTOS DE CORREO, SOLO QUE TIENEN VISIVILIDAD EN FALSE LAS COLUMNAS QUE NO SE VEN
+                // SI USAMOS UNA MISMA LISTA PARA LOS DOS, CUANDO QUERES VER LOS ENVIADOS HABILITAS EL PARA
+                // CUANDO QUERES VER EL RECIBIDO HABILITAS EL DE
+                //listaCuentas2.Columns[1].Visible = true; 
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

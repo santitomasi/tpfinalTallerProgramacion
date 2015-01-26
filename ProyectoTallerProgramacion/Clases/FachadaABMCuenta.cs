@@ -130,7 +130,7 @@ namespace Clases.Controladores
         }
 
         /// <summary>
-        /// Propiedad utilizada para lograr mantener una únca instancia de la clase.
+        /// Propiedad utilizada para lograr mantener una única instancia de la clase.
         /// </summary>
         public static FachadaABMCuenta Instancia
         {

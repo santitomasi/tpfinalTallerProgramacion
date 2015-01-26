@@ -16,7 +16,7 @@ namespace Exportador
         private string iNombre;
 
         /// <summary>
-        /// Constructor de la clase Exportaodr tomando como parametro el nombre
+        /// Constructor de la clase Exportador tomando como parametro el nombre
         /// del exportador que se instancia.
         /// </summary>
         /// <param name="pNombre"></param>

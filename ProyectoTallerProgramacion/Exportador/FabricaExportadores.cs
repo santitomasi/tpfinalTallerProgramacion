@@ -25,11 +25,11 @@ namespace Exportador
         {
             this.iExportadores = new Dictionary<string, IExportador>();
 
-            ExportadorA exportadorA = new ExportadorA();
-            EXportadorB exportadorB = new ExportadorB();
+            ExportadorEML exportadorEML = new ExportadorEML();
+            ExportadorTextoPlano exportadorTextoPlano = new ExportadorTextoPlano();
 
-            this.iExportadores.Add("", exportadorA);
-            this.iExportadores.Add("", exportadorB);
+            this.iExportadores.Add("", exportadorEML);
+            this.iExportadores.Add("", exportadorTextoPlano);
         }
 
 

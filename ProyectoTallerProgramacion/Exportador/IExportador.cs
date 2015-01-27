@@ -14,9 +14,10 @@ namespace Exportador
     public interface IExportador
     {
         /// <summary>
-        /// Metodo utilizar para exportar un correo al sistema de archivos.
+        /// Metodo utilizado para exportar un correo al sistema de archivos.
         /// </summary>
-        /// <param name="pCorreo"></param>
-        void Exportar(CorreoDTO pCorreo);
+        /// <param name="pCorreo">correo a exportar.</param>
+        /// <param name="pRuta">ruta donde se exportará el correo.</param>
+        void Exportar(CorreoDTO pCorreo, string pRuta);
     }
 }

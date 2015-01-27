@@ -21,7 +21,7 @@ namespace Exportador
         {
         }
 
-        public override void Exportar(CorreoDTO pCorreo)
+        public override void Exportar(CorreoDTO pCorreo, string pRuta)
         { 
         }
 

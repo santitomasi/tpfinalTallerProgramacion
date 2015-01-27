@@ -36,7 +36,8 @@ namespace Exportador
         /// <summary>
         /// Metodo abstracto que exporta un correo al sistema de archivos.
         /// </summary>
-        /// <param name="pCorreo">correo a ser exportado.</param>
-        public abstract void Exportar(CorreoDTO pCorreo);
+        /// <param name="pCorreo">correo a exportar.</param>
+        /// <param name="pRuta">ruta donde exportar el correo.</param>
+        public abstract void Exportar(CorreoDTO pCorreo, string pRuta);
     }
 }

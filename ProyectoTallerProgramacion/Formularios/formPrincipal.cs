@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using Clases;
-using Clases.DTO;
+using DataTransferObject;
 using Clases.Controladores;
-using OpenPop.Pop3; 
+using OpenPop.Pop3;
+using Clases;
+
 
 namespace formPrincipal
 {
@@ -25,11 +26,6 @@ namespace formPrincipal
             InitializeComponent();
         }
 
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Form frm = new formEnvioCorreo();
@@ -37,19 +33,21 @@ namespace formPrincipal
         }
 
         /// <summary>
-        /// Método que se dispara al hacer click sobre un correo  de la lista de correos Enviados
+        /// Método que se dispara al hacer click sobre un correo de la lista de correos Enviados
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int indexSelected = e.RowIndex;
+
             // Falta marcar el correo como leido en la base y en la lista!!
+
             textBox1.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
         }
 
         /// <summary>
-        /// Método que se dispara al hacer click sobre un correo  de la lista de correos Recibidos
+        /// Método que se dispara al hacer click sobre un correo de la lista de correos Recibidos
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -66,7 +64,7 @@ namespace formPrincipal
             
             Pop3Client pop = new Pop3Client();
             pop.Connect("pop.gmail.com", 995, true);
-            pop.Authenticate("santiagotommasi92", "password");
+            pop.Authenticate("santiagotommasi92", "marlou1006");
             int cantidadMensajes = pop.GetMessageCount();
             mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
 
@@ -140,12 +138,11 @@ namespace formPrincipal
             textBox4.Text = "";
         }
 
-
         private void progressBar_VisibleChanged(object sender, EventArgs e)
         {
             Pop3Client pop = new Pop3Client();
             pop.Connect("pop.gmail.com", 995, true);
-            pop.Authenticate("estebanschab", "password");
+            pop.Authenticate("santiagotommasi92", "marlou1006");
             int cantidadMensajes = pop.GetMessageCount();
             mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
          
@@ -153,11 +150,6 @@ namespace formPrincipal
             progressBar1.Maximum = cantidadMensajes;
             progressBar1.Value = 1;
             progressBar1.Step = 1;
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -245,12 +237,6 @@ namespace formPrincipal
         private void formPrincipal_Load(object sender, EventArgs e)
         {
             MostrarCuentas();
-            
-        }
-
-        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -275,13 +261,44 @@ namespace formPrincipal
                 // ATRIBUTOS DE CORREO, SOLO QUE TIENEN VISIVILIDAD EN FALSE LAS COLUMNAS QUE NO SE VEN
                 // SI USAMOS UNA MISMA LISTA PARA LOS DOS, CUANDO QUERES VER LOS ENVIADOS HABILITAS EL PARA
                 // CUANDO QUERES VER EL RECIBIDO HABILITAS EL DE
+
+                //CREO QUE EN ENVIADOS TAMBIEN NECESITAS EL DE, TENIENDO EN CUENTA QUE PODES ESTAR VIENDO
+                //LOS CORREO DE VARIAS CUENTAS 
+                //by Tommasi
+
                 //listaCuentas2.Columns[1].Visible = true; 
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
+            label6.Visible = true;
+            radioButton1.Visible = true;
+            radioButton2.Visible = true;
+            button5.Visible = true;
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string path;
+            //listaRecibidos.Rows[indexSelected].
+  
+            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                path = folderBrowserDialog1.SelectedPath;
+                if (radioButton1.Checked == true)
+                {
+                    //FachadaCorreo.Instancia.ExportarCorreo( --->  CORREO  <--- ,path,radioButton1.Text);
+                    //FALTA VER COMO SELECCIONAR EL CORREO Y TRANSFORMARLO A TIPO correoDTO
+                }
+                else
+                {
+                    //FachadaCorreo.Instancia.ExportarCorreo( --->  CORREO  <--- ,path,radioButton2.Text);
+                    //FALTA VER COMO SELECCIONAR EL CORREO Y TRANSFORMARLO A TIPO correoDTO
+                }
+            }
         }
 
     }

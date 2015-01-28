@@ -74,6 +74,10 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.listaCuentas = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEnviados)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -114,7 +118,6 @@
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.salirToolStripMenuItem.Text = "---";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem1
             // 
@@ -277,6 +280,7 @@
             this.button6.TabIndex = 13;
             this.button6.Text = "Exportar";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // contextMenuStrip1
             // 
@@ -494,7 +498,56 @@
             this.label4.Size = new System.Drawing.Size(68, 16);
             this.label4.TabIndex = 27;
             this.label4.Text = "Cuentas:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 311);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 13);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "Seleccione formato:";
+            this.label6.Visible = false;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(31, 360);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(47, 17);
+            this.radioButton2.TabIndex = 31;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "EML";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.Visible = false;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(31, 337);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(82, 17);
+            this.radioButton1.TabIndex = 30;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Texto Plano";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.Visible = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button5.Location = new System.Drawing.Point(12, 394);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(131, 29);
+            this.button5.TabIndex = 32;
+            this.button5.Text = "Siguiente";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Visible = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // formPrincipal
             // 
@@ -502,6 +555,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(981, 518);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listaCuentas);
             this.Controls.Add(this.progressBar1);
@@ -584,6 +641,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn leido;
         private System.Windows.Forms.ComboBox listaCuentas;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button button5;
 
     }
 }

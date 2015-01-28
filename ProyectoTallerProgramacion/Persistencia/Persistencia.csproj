@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8578941E-AB61-4421-8A26-37213355FCDE}</ProjectGuid>
+    <ProjectGuid>{E12416F4-B399-4375-969A-3870EF16F7F7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Clases</RootNamespace>
-    <AssemblyName>Clases</AssemblyName>
+    <RootNamespace>Persistencia</RootNamespace>
+    <AssemblyName>Persistencia</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,16 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAOException.cs" />
+    <Compile Include="DAOFactory.cs" />
+    <Compile Include="ICorreoDAO.cs" />
+    <Compile Include="ICuentaDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLServerCorreoDAO.cs" />
+    <Compile Include="SQLServerCuentaDAO.cs" />
+    <Compile Include="SQLServerDAOFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataTransferObject\DataTransferObject.csproj">
       <Project>{eed775d4-1eaf-4961-88ba-5c0f227db624}</Project>
       <Name>DataTransferObject</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Exportador\Exportacion.csproj">
-      <Project>{d0127c49-3ce6-4846-91c3-ad1273440535}</Project>
-      <Name>Exportacion</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

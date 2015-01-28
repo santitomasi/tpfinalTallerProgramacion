@@ -10,9 +10,8 @@ using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using DataTransferObject;
-using Clases.Controladores;
 using OpenPop.Pop3;
-using Clases;
+using Controladores;
 
 
 namespace formPrincipal
@@ -276,7 +275,7 @@ namespace formPrincipal
             radioButton1.Visible = true;
             radioButton2.Visible = true;
             button5.Visible = true;
-
+            groupBox1.Visible = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -299,6 +298,12 @@ namespace formPrincipal
                     //FALTA VER COMO SELECCIONAR EL CORREO Y TRANSFORMARLO A TIPO correoDTO
                 }
             }
+
+            label6.Visible = false;
+            radioButton1.Visible = false;
+            radioButton2.Visible = false;
+            button5.Visible = false;
+            groupBox1.Visible = false;
         }
 
     }

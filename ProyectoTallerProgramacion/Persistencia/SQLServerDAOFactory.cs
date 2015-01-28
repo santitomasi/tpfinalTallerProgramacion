@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace Clases.Persistencia.SQLServer
+namespace Persistencia.SQLServer
 {
     /// <summary>
     /// Clase que mantiene los datos e implementa los metodos basicos para la conexion con 

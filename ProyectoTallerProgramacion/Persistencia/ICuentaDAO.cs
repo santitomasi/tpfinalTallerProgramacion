@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataTransferObject;
 
-namespace Clases.Persistencia
+namespace Persistencia
 {
     /// <summary>
     /// Interfaz que declara los metodos basicos para persistir una cuenta de correo en la Base de Datos.

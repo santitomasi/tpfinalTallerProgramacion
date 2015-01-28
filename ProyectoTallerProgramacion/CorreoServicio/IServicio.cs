@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataTransferObject;
 
-namespace Clases
+namespace CorreoServicio
 {
     public interface IServicio
     {

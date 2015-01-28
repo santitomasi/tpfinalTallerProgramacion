@@ -91,9 +91,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Clases\Clases.csproj">
-      <Project>{8578941e-ab61-4421-8a26-37213355fcde}</Project>
-      <Name>Clases</Name>
+    <ProjectReference Include="..\Controladores\Controladores.csproj">
+      <Project>{5dde57f2-c6e5-4d40-93fc-a34f50ee69b6}</Project>
+      <Name>Controladores</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataTransferObject\DataTransferObject.csproj">
       <Project>{eed775d4-1eaf-4961-88ba-5c0f227db624}</Project>

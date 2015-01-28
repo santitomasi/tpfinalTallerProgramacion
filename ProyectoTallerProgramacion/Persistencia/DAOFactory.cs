@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Clases.Persistencia.SQLServer;
+using Persistencia.SQLServer;
 
-namespace Clases.Persistencia
+namespace Persistencia
 {
     /// <summary>
     /// Clase que determina el comportamiento básico para comunicarse con una Base de Datos.

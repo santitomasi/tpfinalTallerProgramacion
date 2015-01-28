@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Clases.Persistencia
+namespace Persistencia
 {
     /// <summary>
     /// Excepción que representa un error en la capa DAO

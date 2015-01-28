@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using DataTransferObject;
 using System.Data;
 
-namespace Clases.Persistencia.SQLServer
+namespace Persistencia.SQLServer
 {
     /// <summary>
     /// Clase para interactuar con la informacion de la Base de Datos.

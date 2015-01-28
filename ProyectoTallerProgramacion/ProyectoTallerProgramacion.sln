@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Windows Desktop
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clases", "Clases\Clases.csproj", "{8578941E-AB61-4421-8A26-37213355FCDE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formularios", "Formularios\Formularios.csproj", "{15BE9E9D-6D43-4440-AE0A-1831C9385505}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exportacion", "Exportador\Exportacion.csproj", "{D0127C49-3CE6-4846-91C3-AD1273440535}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferObject", "DataTransferObject\DataTransferObject.csproj", "{EED775D4-1EAF-4961-88BA-5C0F227DB624}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controladores", "Controladores\Controladores.csproj", "{5DDE57F2-C6E5-4D40-93FC-A34F50EE69B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "Persistencia\Persistencia.csproj", "{E12416F4-B399-4375-969A-3870EF16F7F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorreoServicio", "CorreoServicio\CorreoServicio.csproj", "{47672E18-6CE8-4F66-B8D1-9BD8E886B392}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8578941E-AB61-4421-8A26-37213355FCDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8578941E-AB61-4421-8A26-37213355FCDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8578941E-AB61-4421-8A26-37213355FCDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8578941E-AB61-4421-8A26-37213355FCDE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{15BE9E9D-6D43-4440-AE0A-1831C9385505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{15BE9E9D-6D43-4440-AE0A-1831C9385505}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15BE9E9D-6D43-4440-AE0A-1831C9385505}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +33,18 @@ Global
 		{EED775D4-1EAF-4961-88BA-5C0F227DB624}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EED775D4-1EAF-4961-88BA-5C0F227DB624}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EED775D4-1EAF-4961-88BA-5C0F227DB624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DDE57F2-C6E5-4D40-93FC-A34F50EE69B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DDE57F2-C6E5-4D40-93FC-A34F50EE69B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DDE57F2-C6E5-4D40-93FC-A34F50EE69B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DDE57F2-C6E5-4D40-93FC-A34F50EE69B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E12416F4-B399-4375-969A-3870EF16F7F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E12416F4-B399-4375-969A-3870EF16F7F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E12416F4-B399-4375-969A-3870EF16F7F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E12416F4-B399-4375-969A-3870EF16F7F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47672E18-6CE8-4F66-B8D1-9BD8E886B392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47672E18-6CE8-4F66-B8D1-9BD8E886B392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47672E18-6CE8-4F66-B8D1-9BD8E886B392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47672E18-6CE8-4F66-B8D1-9BD8E886B392}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

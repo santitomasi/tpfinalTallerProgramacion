@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Clases.Persistencia;
+using Persistencia;
 using DataTransferObject;
 using Exportacion;
 
 
-namespace Clases.Controladores
+namespace Controladores
 {
     /// <summary>
     /// Clase controladora de fachada. Interactúa con los Correos entre la persistencia y la interfaz.

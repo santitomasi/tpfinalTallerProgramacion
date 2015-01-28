@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Clases.Persistencia;
-using Clases.DTO;
+using DataTransferObject;
 
 namespace Clases.Controladores
 {

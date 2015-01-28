@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Clases.DTO;
+using DataTransferObject;
 using System.IO;
 
 namespace Exportador
@@ -24,10 +24,9 @@ namespace Exportador
 
         public override void Exportar(CorreoDTO pCorreo,string pRuta)
         {
-            using (StreamWriter file = new StreamWriter("archivo.txt", true))
-            {
-                file.WriteLine(pCorreo.Texto);
-            }
+            string[] lines = {pCorreo.CuentaOrigen, pCorreo.CuentaDestino, Convert.ToString(pCorreo.Fecha), 
+                              pCorreo.Asunto, pCorreo.Texto};
+            System.IO.File.WriteAllLines(pRuta + "\\Correo" + pCorreo.Id +".txt", lines);
         }
 
     }

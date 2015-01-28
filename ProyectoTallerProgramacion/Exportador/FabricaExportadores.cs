@@ -58,16 +58,7 @@ namespace Exportador
             //Le pedimos al diccionario con el nombre como clave que nos devuelva el exportador asociado.
             IExportador exportador = this.iExportadores[nombre];
 
-            //Controlamos la busqueda en el diccionario.
-            if (exportador == null)
-            {
-                //devolvemos el exportador nulo cuando no se encontro el exportador en el diccionario.
-                //return exportadorNulo;
-            }
-            else 
-            { 
-                return exportador;
-            }
+            return exportador;
         }
     }
 }

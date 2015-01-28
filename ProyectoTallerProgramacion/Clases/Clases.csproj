@@ -39,8 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CorreoDTO.cs" />
-    <Compile Include="CuentaDTO.cs" />
     <Compile Include="DAOException.cs" />
     <Compile Include="DAOFactory.cs" />
     <Compile Include="FachadaABMCuenta.cs" />
@@ -52,6 +50,16 @@
     <Compile Include="SQLServerCorreoDAO.cs" />
     <Compile Include="SQLServerCuentaDAO.cs" />
     <Compile Include="SQLServerDAOFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataTransferObject\DataTransferObject.csproj">
+      <Project>{eed775d4-1eaf-4961-88ba-5c0f227db624}</Project>
+      <Name>DataTransferObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Exportador\Exportacion.csproj">
+      <Project>{d0127c49-3ce6-4846-91c3-ad1273440535}</Project>
+      <Name>Exportacion</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

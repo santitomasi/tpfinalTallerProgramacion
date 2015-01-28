@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clases.DTO
+namespace DataTransferObject
 {
     /// <summary>
     /// Clase utilizada para representar un correo electronico.

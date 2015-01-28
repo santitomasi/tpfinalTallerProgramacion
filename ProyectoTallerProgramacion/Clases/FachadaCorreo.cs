@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Clases.Persistencia;
-using Clases.DTO;
+using DataTransferObject;
+using Exportacion;
+
 
 namespace Clases.Controladores
 {
@@ -19,9 +21,26 @@ namespace Clases.Controladores
         private static FachadaCorreo cInstancia = null;
 
         /// <summary>
+        /// Atributo que almacena la instancia del administrador de exportadores-
+        /// </summary>
+        Exportador.FabricaExportadores fabricaExportadores = Exportador.FabricaExportadores.Instancia;
+
+        /// <summary>
         /// Atributo DAOFactory para interactuar con la Base de Datos.
         /// </summary>
         private DAOFactory factory;
+
+        /// <summary>
+        /// Metodo para exportar un correo al sistema de archivos.
+        /// </summary>
+        /// <param name="pCorreo">correo a exportarse.</param>
+        /// <param name="pRuta">ruta en donde exportarse el correo.</param>
+        /// <param name="pExportador">nombre del exportador a ser utilizado.</param>
+        public void ExportarCorreo(CorreoDTO pCorreo,string pRuta, string pExportador)
+        {
+            Exportador.IExportador exportador = fabricaExportadores.GetExportador(pExportador);
+            exportador.Exportar(pCorreo,pRuta);
+        }
 
         /// <summary>
         /// Metodo para dar de alta un correo.

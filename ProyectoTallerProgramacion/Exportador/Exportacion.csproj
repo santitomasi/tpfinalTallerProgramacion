@@ -48,13 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Clases\Clases.csproj">
-      <Project>{8578941e-ab61-4421-8a26-37213355fcde}</Project>
-      <Name>Clases</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Formularios\Formularios.csproj">
-      <Project>{15be9e9d-6d43-4440-ae0a-1831c9385505}</Project>
-      <Name>Formularios</Name>
+    <ProjectReference Include="..\DataTransferObject\DataTransferObject.csproj">
+      <Project>{eed775d4-1eaf-4961-88ba-5c0f227db624}</Project>
+      <Name>DataTransferObject</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

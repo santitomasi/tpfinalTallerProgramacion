@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formularios", "Formularios\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exportacion", "Exportador\Exportacion.csproj", "{D0127C49-3CE6-4846-91C3-AD1273440535}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferObject", "DataTransferObject\DataTransferObject.csproj", "{EED775D4-1EAF-4961-88BA-5C0F227DB624}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D0127C49-3CE6-4846-91C3-AD1273440535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0127C49-3CE6-4846-91C3-AD1273440535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0127C49-3CE6-4846-91C3-AD1273440535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EED775D4-1EAF-4961-88BA-5C0F227DB624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EED775D4-1EAF-4961-88BA-5C0F227DB624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EED775D4-1EAF-4961-88BA-5C0F227DB624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EED775D4-1EAF-4961-88BA-5C0F227DB624}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

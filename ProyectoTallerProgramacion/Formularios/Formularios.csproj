@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCuenta.Designer.cs">
+      <DependentUpon>FormCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="formEnvioCorreo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCuenta.resx">
+      <DependentUpon>FormCuenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formEnvioCorreo.resx">
       <DependentUpon>formEnvioCorreo.cs</DependentUpon>
     </EmbeddedResource>

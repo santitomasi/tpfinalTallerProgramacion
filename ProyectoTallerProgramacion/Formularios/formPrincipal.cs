@@ -43,6 +43,10 @@ namespace formPrincipal
             // Falta marcar el correo como leido en la base y en la lista!!
 
             textBox1.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
+            correo_asunto.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
+            correo_cuentaDestino.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
+            correo_cuentaOrigen.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
+            correo_fecha.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["Fecha"].Value);
         }
 
         /// <summary>
@@ -55,6 +59,10 @@ namespace formPrincipal
             int indexSelected = e.RowIndex;
             // Falta marcar el correo como leido en la base y en la lista!!
             textBox1.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
+            correo_asunto.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
+            correo_cuentaDestino.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
+            correo_cuentaOrigen.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
+            correo_fecha.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
         } 
 
         private void button4_Click(object sender, EventArgs e)
@@ -304,6 +312,17 @@ namespace formPrincipal
             radioButton2.Visible = false;
             button5.Visible = false;
             groupBox1.Visible = false;
+        }
+
+        private void configuracionCuentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new FormCuenta();
+            frm.ShowDialog();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

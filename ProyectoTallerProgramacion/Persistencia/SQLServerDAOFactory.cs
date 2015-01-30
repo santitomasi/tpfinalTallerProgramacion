@@ -27,7 +27,7 @@ namespace Persistencia.SQLServer
         /// Atributo que mantiene la cadena de conexion con la Base de Datos SQLServer.
         /// </summary>
        // private string STRING_CONEXION = "Data Source=USER-PC; Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
-        private string STRING_CONEXION = "Data Source=User-PC; Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
+        private string STRING_CONEXION = "Data Source=ACER-V3-571; Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
        
 
         /// <summary>

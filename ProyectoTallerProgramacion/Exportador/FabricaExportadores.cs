@@ -28,8 +28,8 @@ namespace Exportador
             ExportadorEML exportadorEML = new ExportadorEML();
             ExportadorTextoPlano exportadorTextoPlano = new ExportadorTextoPlano();
 
-            this.iExportadores.Add("", exportadorEML);
-            this.iExportadores.Add("", exportadorTextoPlano);
+            this.iExportadores.Add("EML", exportadorEML);
+            this.iExportadores.Add("TXT", exportadorTextoPlano);
         }
 
 

@@ -12,7 +12,9 @@ namespace Exportador
     /// </summary>
     public abstract class Exportador : IExportador
     {
-        //Atributo nombre del exportador que se construye.
+        /// <summary>
+        /// Atributo nombre del exportador que se construye.
+        /// </summary>
         private string iNombre;
 
         /// <summary>

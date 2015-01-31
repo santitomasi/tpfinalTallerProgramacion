@@ -52,6 +52,11 @@ namespace DataTransferObject
         private int iLeido;
 
         /// <summary>
+        /// Atributo para archivos adjuntos.
+        /// </summary>
+        private List<string> iAdjuntos;
+
+        /// <summary>
         /// Constructor de una instancia de la clase Correo .
         /// </summary>
         public CorreoDTO() {}
@@ -59,7 +64,8 @@ namespace DataTransferObject
         /// <summary>
         /// Constructor de una instancia de la clase Correo .
         /// </summary>
-        public CorreoDTO(int pId, DateTime pFecha, string pTipoCorreo, string pTexto, string pCuentaOrigen, string pCuentaDestino, string pAsunto, int pLeido) 
+        public CorreoDTO(int pId, DateTime pFecha, string pTipoCorreo, string pTexto, string pCuentaOrigen,
+                         string pCuentaDestino, string pAsunto, int pLeido, List<string> pAdjuntos) 
         {
             iId = pId;
             iFecha = pFecha;
@@ -69,6 +75,7 @@ namespace DataTransferObject
             iCuentaDestino = pCuentaDestino;
             iAsunto = pAsunto;
             iLeido = pLeido;
+            iAdjuntos = pAdjuntos;
         }
 
         /// <summary>
@@ -150,6 +157,15 @@ namespace DataTransferObject
         {
             get { return this.iLeido; }
             set { this.iLeido = value; }
+        }
+
+        /// <summary>
+        /// Propiedad de lectura y escritura del atributo que representa los archivos adjuntos.
+        /// </summary>
+        public List<string> Adjuntos
+        {
+            get { return this.iAdjuntos; }
+            set { this.iAdjuntos = value; }
         }
     }
 }

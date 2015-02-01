@@ -23,7 +23,7 @@ namespace Exportador
         /// <summary>
         /// Metodo para exportar un correo al sistema de archivos.
         /// </summary>
-        /// <param name="pCorreo">correoa a ser exportado.</param>
+        /// <param name="pCorreo">correo a ser exportado.</param>
         /// <param name="pRuta">ruta en donde se exportará el correo.</param>
         public override void Exportar(CorreoDTO pCorreo,string pRuta)
         {

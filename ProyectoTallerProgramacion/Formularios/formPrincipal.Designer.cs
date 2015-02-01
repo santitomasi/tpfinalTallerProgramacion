@@ -31,12 +31,21 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formPrincipal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.configuraciónDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listaEnviados = new System.Windows.Forms.DataGridView();
+            this.correoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.texto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -68,22 +77,13 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.configuraciónDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.correo_asunto = new System.Windows.Forms.Label();
-            this.correo_cuentaOrigen = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.correo_fecha = new System.Windows.Forms.Label();
             this.correo_cuentaDestino = new System.Windows.Forms.Label();
-            this.correoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.texto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.correo_fecha = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.correo_cuentaOrigen = new System.Windows.Forms.Label();
+            this.correo_asunto = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEnviados)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -104,6 +104,14 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // configuraciónDeCuentasToolStripMenuItem
+            // 
+            this.configuraciónDeCuentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("configuraciónDeCuentasToolStripMenuItem.Image")));
+            this.configuraciónDeCuentasToolStripMenuItem.Name = "configuraciónDeCuentasToolStripMenuItem";
+            this.configuraciónDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(173, 20);
+            this.configuraciónDeCuentasToolStripMenuItem.Text = "Configuración de Cuentas";
+            this.configuraciónDeCuentasToolStripMenuItem.Click += new System.EventHandler(this.configuracionCuentasToolStripMenuItem_Click);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -111,6 +119,8 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(15, 121);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(131, 29);
@@ -126,9 +136,11 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(15, 191);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 29);
+            this.button2.Size = new System.Drawing.Size(128, 29);
             this.button2.TabIndex = 6;
             this.button2.Text = "Reenviar";
             this.button2.UseVisualStyleBackColor = false;
@@ -140,6 +152,8 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(15, 156);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(131, 29);
@@ -181,6 +195,56 @@
             this.listaEnviados.TabIndex = 10;
             this.listaEnviados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // correoId
+            // 
+            this.correoId.HeaderText = "correoid";
+            this.correoId.Name = "correoId";
+            this.correoId.Visible = false;
+            // 
+            // tipoCorreo
+            // 
+            this.tipoCorreo.HeaderText = "Tipo Correo";
+            this.tipoCorreo.Name = "tipoCorreo";
+            this.tipoCorreo.Visible = false;
+            // 
+            // asunto
+            // 
+            this.asunto.HeaderText = "Asunto";
+            this.asunto.Name = "asunto";
+            this.asunto.ReadOnly = true;
+            // 
+            // cuentaOrigen
+            // 
+            this.cuentaOrigen.HeaderText = "De";
+            this.cuentaOrigen.Name = "cuentaOrigen";
+            this.cuentaOrigen.Visible = false;
+            // 
+            // cuentaDestino
+            // 
+            this.cuentaDestino.HeaderText = "Para";
+            this.cuentaDestino.Name = "cuentaDestino";
+            this.cuentaDestino.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 70;
+            // 
+            // texto
+            // 
+            this.texto.HeaderText = "Mensaje";
+            this.texto.Name = "texto";
+            this.texto.Visible = false;
+            // 
+            // leido
+            // 
+            this.leido.HeaderText = "Leido";
+            this.leido.Name = "leido";
+            this.leido.Visible = false;
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -188,6 +252,8 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.Location = new System.Drawing.Point(15, 86);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(131, 29);
@@ -203,6 +269,8 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button6.Location = new System.Drawing.Point(15, 226);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(131, 29);
@@ -492,14 +560,6 @@
             this.groupBox1.Text = "Exportar";
             this.groupBox1.Visible = false;
             // 
-            // configuraciónDeCuentasToolStripMenuItem
-            // 
-            this.configuraciónDeCuentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("configuraciónDeCuentasToolStripMenuItem.Image")));
-            this.configuraciónDeCuentasToolStripMenuItem.Name = "configuraciónDeCuentasToolStripMenuItem";
-            this.configuraciónDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(173, 20);
-            this.configuraciónDeCuentasToolStripMenuItem.Text = "Configuración de Cuentas";
-            this.configuraciónDeCuentasToolStripMenuItem.Click += new System.EventHandler(this.configuracionCuentasToolStripMenuItem_Click);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
@@ -515,42 +575,14 @@
             this.panel1.Size = new System.Drawing.Size(817, 235);
             this.panel1.TabIndex = 34;
             // 
-            // correo_asunto
+            // correo_cuentaDestino
             // 
-            this.correo_asunto.AutoSize = true;
-            this.correo_asunto.Location = new System.Drawing.Point(12, 11);
-            this.correo_asunto.Name = "correo_asunto";
-            this.correo_asunto.Size = new System.Drawing.Size(40, 13);
-            this.correo_asunto.TabIndex = 9;
-            this.correo_asunto.Text = "Asunto";
-            this.correo_asunto.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // correo_cuentaOrigen
-            // 
-            this.correo_cuentaOrigen.AutoSize = true;
-            this.correo_cuentaOrigen.Location = new System.Drawing.Point(38, 28);
-            this.correo_cuentaOrigen.Name = "correo_cuentaOrigen";
-            this.correo_cuentaOrigen.Size = new System.Drawing.Size(38, 13);
-            this.correo_cuentaOrigen.TabIndex = 10;
-            this.correo_cuentaOrigen.Text = "Origen";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 28);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "De: ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(260, 28);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Para:";
+            this.correo_cuentaDestino.AutoSize = true;
+            this.correo_cuentaDestino.Location = new System.Drawing.Point(298, 28);
+            this.correo_cuentaDestino.Name = "correo_cuentaDestino";
+            this.correo_cuentaDestino.Size = new System.Drawing.Size(43, 13);
+            this.correo_cuentaDestino.TabIndex = 14;
+            this.correo_cuentaDestino.Text = "Destino";
             // 
             // correo_fecha
             // 
@@ -561,64 +593,42 @@
             this.correo_fecha.TabIndex = 13;
             this.correo_fecha.Text = "Fecha";
             // 
-            // correo_cuentaDestino
+            // label7
             // 
-            this.correo_cuentaDestino.AutoSize = true;
-            this.correo_cuentaDestino.Location = new System.Drawing.Point(298, 28);
-            this.correo_cuentaDestino.Name = "correo_cuentaDestino";
-            this.correo_cuentaDestino.Size = new System.Drawing.Size(43, 13);
-            this.correo_cuentaDestino.TabIndex = 14;
-            this.correo_cuentaDestino.Text = "Destino";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(260, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Para:";
             // 
-            // correoId
+            // label5
             // 
-            this.correoId.HeaderText = "correoid";
-            this.correoId.Name = "correoId";
-            this.correoId.Visible = false;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 28);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(27, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "De: ";
             // 
-            // tipoCorreo
+            // correo_cuentaOrigen
             // 
-            this.tipoCorreo.HeaderText = "Tipo Correo";
-            this.tipoCorreo.Name = "tipoCorreo";
-            this.tipoCorreo.Visible = false;
+            this.correo_cuentaOrigen.AutoSize = true;
+            this.correo_cuentaOrigen.Location = new System.Drawing.Point(38, 28);
+            this.correo_cuentaOrigen.Name = "correo_cuentaOrigen";
+            this.correo_cuentaOrigen.Size = new System.Drawing.Size(38, 13);
+            this.correo_cuentaOrigen.TabIndex = 10;
+            this.correo_cuentaOrigen.Text = "Origen";
             // 
-            // asunto
+            // correo_asunto
             // 
-            this.asunto.HeaderText = "Asunto";
-            this.asunto.Name = "asunto";
-            this.asunto.ReadOnly = true;
-            // 
-            // cuentaOrigen
-            // 
-            this.cuentaOrigen.HeaderText = "De";
-            this.cuentaOrigen.Name = "cuentaOrigen";
-            this.cuentaOrigen.Visible = false;
-            // 
-            // cuentaDestino
-            // 
-            this.cuentaDestino.HeaderText = "Para";
-            this.cuentaDestino.Name = "cuentaDestino";
-            this.cuentaDestino.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Width = 70;
-            // 
-            // texto
-            // 
-            this.texto.HeaderText = "Mensaje";
-            this.texto.Name = "texto";
-            this.texto.Visible = false;
-            // 
-            // leido
-            // 
-            this.leido.HeaderText = "Leido";
-            this.leido.Name = "leido";
-            this.leido.Visible = false;
+            this.correo_asunto.AutoSize = true;
+            this.correo_asunto.Location = new System.Drawing.Point(12, 11);
+            this.correo_asunto.Name = "correo_asunto";
+            this.correo_asunto.Size = new System.Drawing.Size(40, 13);
+            this.correo_asunto.TabIndex = 9;
+            this.correo_asunto.Text = "Asunto";
+            this.correo_asunto.Click += new System.EventHandler(this.label5_Click);
             // 
             // formPrincipal
             // 

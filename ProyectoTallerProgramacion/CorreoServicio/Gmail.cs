@@ -51,7 +51,7 @@ namespace CorreoServicio
             SmtpClient cliente = new SmtpClient("smtp.gmail.com");
             cliente.EnableSsl = true;
             cliente.Port = 587;
-            cliente.Credentials = new System.Net.NetworkCredential(pCorreo.CuentaOrigen,"contrseña");
+            cliente.Credentials = new System.Net.NetworkCredential(pCorreo.CuentaOrigen,"contraseña");
 
             //Aca tendriamos que poner un try-catch
             cliente.Send(correo);

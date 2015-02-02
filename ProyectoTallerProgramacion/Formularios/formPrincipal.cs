@@ -108,7 +108,7 @@ namespace formPrincipal
         private void button7_Click(object sender, EventArgs e)
         {
             CuentaDTO cuenta = new CuentaDTO();
-            cuenta.Direccion = textBox2.Text;
+            cuenta.Usuario = textBox2.Text;
             cuenta.Contraseña = textBox3.Text;
             cuenta.Nombre = textBox4.Text;
             FachadaABMCuenta.Instancia.CrearCuenta(cuenta);

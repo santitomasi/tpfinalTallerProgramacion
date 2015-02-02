@@ -108,7 +108,7 @@ namespace formPrincipal
         private void button7_Click(object sender, EventArgs e)
         {
             CuentaDTO cuenta = new CuentaDTO();
-            cuenta.Usuario = textBox2.Text;
+            cuenta.Direccion = textBox2.Text;
             cuenta.Contraseña = textBox3.Text;
             cuenta.Nombre = textBox4.Text;
             FachadaABMCuenta.Instancia.CrearCuenta(cuenta);
@@ -164,11 +164,22 @@ namespace formPrincipal
         /// </summary>
         private void MostrarCuentas()
         {
-            foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
+            try
             {
-                listaCuentas.Items.Add(aCuenta.Nombre);
+                foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
+                {
+                    listaCuentas.Items.Add(aCuenta.Nombre);
+                }
             }
-            listaCuentas.Items.Add("Todas las cuentas");
+            catch
+            {
+                // VER QUE HACER ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            }
+            finally
+            {
+                listaCuentas.Items.Add("Todas las cuentas");
+            }
+            
             
         }
 

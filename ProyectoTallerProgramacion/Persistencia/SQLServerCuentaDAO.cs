@@ -54,8 +54,8 @@ namespace Persistencia.SQLServer
                     {
                         mCuentasCorreo.Add(new CuentaDTO
                         {
-                            Nombre = Convert.ToString(fila["Nombre"]),
-                            Usuario = Convert.ToString(fila["Usuario"]),
+                            Nombre = Convert.ToString(fila["nombre"]),
+                            Direccion = Convert.ToString(fila["Direccion"]),
                             Contraseña = Convert.ToString(fila["Contraseña"]),
                         });
                     }
@@ -80,7 +80,7 @@ namespace Persistencia.SQLServer
                 comando.CommandText = @"insert into Cuenta(Nombre,Direccion,Contraseña)
                                                    values(@Nombre,@Direccion,@Contraseña)";
                 comando.Parameters.AddWithValue("@Nombre", pCuentaCorreo.Nombre);
-                comando.Parameters.AddWithValue("@Direccion", pCuentaCorreo.Usuario);
+                comando.Parameters.AddWithValue("@Direccion", pCuentaCorreo.Direccion);
                 comando.Parameters.AddWithValue("@Contraseña", pCuentaCorreo.Contraseña);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
@@ -104,7 +104,7 @@ namespace Persistencia.SQLServer
                                                                 Contraseña= @Contraseña 
                                                                 where Nombre = @Nombre";
                 comando.Parameters.AddWithValue("@Nombre", pCuentaCorreo.Nombre);
-                comando.Parameters.AddWithValue("@Direccion", pCuentaCorreo.Usuario);
+                comando.Parameters.AddWithValue("@Direccion", pCuentaCorreo.Direccion);
                 comando.Parameters.AddWithValue("@Contraseña", pCuentaCorreo.Contraseña);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();

@@ -22,9 +22,9 @@ namespace DataTransferObject
         private string iNombre;
 
         /// <summary>
-        /// Atributo usuario.
+        /// Atributo direccion.
         /// </summary>
-        private string iUsuario;
+        private string iDireccion;
 
         /// <summary>
         /// Atributo contraseña.
@@ -67,10 +67,10 @@ namespace DataTransferObject
         /// <summary>
         /// Propiedad de lectura y escritura de la Direccion.
         /// </summary>
-        public string Usuario
+        public string Direccion
         {
-            get { return this.iUsuario; }
-            set { this.iUsuario = value; }
+            get { return this.iDireccion; }
+            set { this.iDireccion = value; }
         }
 
         /// <summary>

@@ -32,5 +32,19 @@ namespace CorreoServicio
         {
 
         }
+
+        /// <summary>
+        /// Metodo que descarga los correos del Servicio de correo que pertenecen a la cuenta <paramref name="pCuenta"/>.
+        /// </summary>
+        /// <param name="pCuenta">Cuenta de la cual se descargan los correos.</param>
+        /// <returns>Retorna una lista de correos.</returns>
+        public override IList<CorreoDTO> DescargarCorreos(CuentaDTO pCuenta)
+        {
+            //metodo a implementar
+            return new List<CorreoDTO>();
+        }
+  
+
+
     }
 }

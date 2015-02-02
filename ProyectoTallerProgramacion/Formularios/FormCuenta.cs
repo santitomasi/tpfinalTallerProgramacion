@@ -51,11 +51,11 @@ namespace formPrincipal
         {
 
             CuentaDTO pCuenta = new CuentaDTO();
-            pCuenta.Usuario = cuenta_usuario.Text;
+            pCuenta.Direccion = cuenta_usuario.Text;
             pCuenta.Contraseña = cuenta_contraseña.Text;
             pCuenta.Nombre = cuenta_nombre.Text;
             pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
-            if (pCuenta.Id == null)
+            if (pCuenta.Id == -1) // ACORDARSE DE PONER -1 cuando en el form se estacreando una
             {
                 FachadaABMCuenta.Instancia.CrearCuenta(pCuenta);
             }
@@ -83,9 +83,10 @@ namespace formPrincipal
         {
             foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
             {
-                 object[] row = { aCuenta.Id,aCuenta.Nombre,aCuenta.Usuario,aCuenta.Contraseña };                              
+                object[] row = { aCuenta.Id, aCuenta.Nombre, aCuenta.Direccion, aCuenta.Contraseña };                              
                  listaCuentas.Rows.Add(row);
               //  listaCuentas.//Items.Add(aCuenta.Nombre);
+                
             }
            // listaCuentas.Items.Add("Todas las cuentas");
 

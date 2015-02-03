@@ -79,15 +79,15 @@
             this.texto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listaRecibidos = new System.Windows.Forms.DataGridView();
-            this.button6 = new System.Windows.Forms.Button();
-            this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaDestinoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaOrigenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.asuntoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoCorreoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.correoIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoCorreoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asuntoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaOrigenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaDestinoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.opcionesExportar.SuspendLayout();
             this.panelCorreo.SuspendLayout();
@@ -429,6 +429,7 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
             this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button9.Location = new System.Drawing.Point(15, 125);
             this.button9.Name = "button9";
@@ -445,6 +446,7 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
             this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.Location = new System.Drawing.Point(15, 160);
             this.button10.Name = "button10";
@@ -610,6 +612,56 @@
             this.listaRecibidos.TabIndex = 38;
             this.listaRecibidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellClick);
             // 
+            // correoIdR
+            // 
+            this.correoIdR.HeaderText = "Correo ID";
+            this.correoIdR.Name = "correoIdR";
+            this.correoIdR.Visible = false;
+            // 
+            // tipoCorreoR
+            // 
+            this.tipoCorreoR.HeaderText = "Tipo Correo";
+            this.tipoCorreoR.Name = "tipoCorreoR";
+            this.tipoCorreoR.Visible = false;
+            // 
+            // asuntoR
+            // 
+            this.asuntoR.HeaderText = "Asunto";
+            this.asuntoR.Name = "asuntoR";
+            this.asuntoR.ReadOnly = true;
+            // 
+            // cuentaOrigenR
+            // 
+            this.cuentaOrigenR.HeaderText = "De";
+            this.cuentaOrigenR.Name = "cuentaOrigenR";
+            this.cuentaOrigenR.ReadOnly = true;
+            // 
+            // cuentaDestinoR
+            // 
+            this.cuentaDestinoR.HeaderText = "Para";
+            this.cuentaDestinoR.Name = "cuentaDestinoR";
+            this.cuentaDestinoR.Visible = false;
+            // 
+            // fechaR
+            // 
+            this.fechaR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.fechaR.HeaderText = "Fecha";
+            this.fechaR.Name = "fechaR";
+            this.fechaR.ReadOnly = true;
+            this.fechaR.Width = 70;
+            // 
+            // textoR
+            // 
+            this.textoR.HeaderText = "Mensaje";
+            this.textoR.Name = "textoR";
+            this.textoR.Visible = false;
+            // 
+            // leidoR
+            // 
+            this.leidoR.HeaderText = "Leido";
+            this.leidoR.Name = "leidoR";
+            this.leidoR.Visible = false;
+            // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -625,56 +677,6 @@
             this.button6.TabIndex = 39;
             this.button6.Text = "Exportar";
             this.button6.UseVisualStyleBackColor = false;
-            // 
-            // leidoR
-            // 
-            this.leidoR.HeaderText = "Leido";
-            this.leidoR.Name = "leidoR";
-            this.leidoR.Visible = false;
-            // 
-            // textoR
-            // 
-            this.textoR.HeaderText = "Mensaje";
-            this.textoR.Name = "textoR";
-            this.textoR.Visible = false;
-            // 
-            // fechaR
-            // 
-            this.fechaR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.fechaR.HeaderText = "Fecha";
-            this.fechaR.Name = "fechaR";
-            this.fechaR.ReadOnly = true;
-            this.fechaR.Width = 70;
-            // 
-            // cuentaDestinoR
-            // 
-            this.cuentaDestinoR.HeaderText = "Para";
-            this.cuentaDestinoR.Name = "cuentaDestinoR";
-            this.cuentaDestinoR.Visible = false;
-            // 
-            // cuentaOrigenR
-            // 
-            this.cuentaOrigenR.HeaderText = "De";
-            this.cuentaOrigenR.Name = "cuentaOrigenR";
-            this.cuentaOrigenR.ReadOnly = true;
-            // 
-            // asuntoR
-            // 
-            this.asuntoR.HeaderText = "Asunto";
-            this.asuntoR.Name = "asuntoR";
-            this.asuntoR.ReadOnly = true;
-            // 
-            // tipoCorreoR
-            // 
-            this.tipoCorreoR.HeaderText = "Tipo Correo";
-            this.tipoCorreoR.Name = "tipoCorreoR";
-            this.tipoCorreoR.Visible = false;
-            // 
-            // correoIdR
-            // 
-            this.correoIdR.HeaderText = "Correo ID";
-            this.correoIdR.Name = "correoIdR";
-            this.correoIdR.Visible = false;
             // 
             // formPrincipal
             // 

@@ -31,39 +31,7 @@ namespace formPrincipal
             frm.Show();
         }
 
-        /// <summary>
-        /// Método que se dispara al hacer click sobre un correo de la lista de correos Enviados
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int indexSelected = e.RowIndex;
 
-            // Falta marcar el correo como leido en la base y en la lista!!
-
-            textBox1.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
-            correo_asunto.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
-            correo_cuentaDestino.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
-            correo_cuentaOrigen.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
-            correo_fecha.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["Fecha"].Value);
-        }
-
-        /// <summary>
-        /// Método que se dispara al hacer click sobre un correo de la lista de correos Recibidos
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int indexSelected = e.RowIndex;
-            // Falta marcar el correo como leido en la base y en la lista!!
-            textBox1.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
-            correo_asunto.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
-            correo_cuentaDestino.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
-            correo_cuentaOrigen.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
-            correo_fecha.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
-        } 
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -94,7 +62,7 @@ namespace formPrincipal
         private void agregarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listaCuentas.Visible = false;
-            tabControl1.Visible = false;
+            
             label1.Visible = true;
             label2.Visible = true;
             label3.Visible = true;
@@ -114,7 +82,7 @@ namespace formPrincipal
             FachadaABMCuenta.Instancia.CrearCuenta(cuenta);
 
             listaCuentas.Visible = true;
-            tabControl1.Visible = true;
+            
             label1.Visible = false;
             label2.Visible = false;
             label3.Visible = false;
@@ -131,7 +99,7 @@ namespace formPrincipal
         private void button8_Click(object sender, EventArgs e)
         {
             listaCuentas.Visible = true;
-            tabControl1.Visible = true;
+            
             label1.Visible = false;
             label2.Visible = false;
             label3.Visible = false;
@@ -177,7 +145,10 @@ namespace formPrincipal
             }
             finally
             {
+                // Coloca la opción de Todas las cuentas
                 listaCuentas.Items.Add("Todas las cuentas");
+                // marca como seleccionada a la opción Todas las cuentas.
+                listaCuentas.SelectedIndex = listaCuentas.Items.Count-1;
             }
             
             
@@ -255,6 +226,7 @@ namespace formPrincipal
         private void formPrincipal_Load(object sender, EventArgs e)
         {
             MostrarCuentas();
+
         }
 
         /// <summary>
@@ -286,6 +258,11 @@ namespace formPrincipal
 
                 //listaCuentas2.Columns[1].Visible = true; 
             }
+            //Siempre al cargar una o todas las cuentas muestra la lista de correos recibidos.
+            listaEnviados.Visible = false;
+            listaRecibidos.Visible = true;
+            panelCorreo.Visible = false;
+            opcionesExportar.Visible = false;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -294,7 +271,7 @@ namespace formPrincipal
             radioButton1.Visible = true;
             radioButton2.Visible = true;
             button5.Visible = true;
-            groupBox1.Visible = true;
+            opcionesExportar.Visible = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -322,7 +299,7 @@ namespace formPrincipal
             radioButton1.Visible = false;
             radioButton2.Visible = false;
             button5.Visible = false;
-            groupBox1.Visible = false;
+            opcionesExportar.Visible = false;
         }
 
         private void configuracionCuentasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -335,6 +312,88 @@ namespace formPrincipal
         {
 
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// Método que se ejecuta al hacer click sobre el botón recibidos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button9_Click(object sender, EventArgs e)
+        {
+            listaEnviados.Visible = false;
+            listaRecibidos.Visible = true;
+            panelCorreo.Visible = false;
+            opcionesExportar.Visible = false;
+        }
+
+        /// <summary>
+        /// Método que se ejecuta al hacer click sobre el botón enviados.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button10_Click(object sender, EventArgs e)
+        {
+            listaEnviados.Visible = true;
+            listaRecibidos.Visible = false;
+            panelCorreo.Visible = false;
+            opcionesExportar.Visible = false;
+        }
+
+        /// <summary>
+        /// Método que se dispara al hacer click sobre un correo de la lista de correos Recibidos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listaRecibidos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexSelected = e.RowIndex;
+            // Falta marcar el correo como leido en la base y en la lista!!
+            textBox1.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
+            correo_asunto.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
+            correo_cuentaDestino.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
+            correo_cuentaOrigen.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
+            correo_fecha.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
+            panelCorreo.Visible = true;
+            listaRecibidos.Visible = false;
+            opcionesExportar.Visible = true;
+        }
+
+        /// <summary>
+        /// Método que se dispara al hacer click sobre un correo de la lista de correos Enviados
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listaEnviados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexSelected = e.RowIndex;
+
+            // Falta marcar el correo como leido en la base y en la lista!!
+
+            textBox1.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
+            correo_asunto.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
+            correo_cuentaDestino.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
+            correo_cuentaOrigen.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
+            correo_fecha.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["Fecha"].Value);
+            panelCorreo.Visible = true;
+            listaEnviados.Visible = false;
+            opcionesExportar.Visible = true;
+        }
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        } 
 
     }
 }

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
+using Controladores;
+using DataTransferObject;
 
 namespace formPrincipal
 {
@@ -18,13 +20,14 @@ namespace formPrincipal
         public formEnvioCorreo()
         {
             InitializeComponent();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             MailMessage correo = new MailMessage();
             correo.From = new MailAddress("santiagotommasi92@gmail.com");
-            correo.To.Add(textBox1.Text);
+            correo.To.Add(textBox4.Text);
             correo.Subject = textBox2.Text;
             correo.Body = textBox3.Text;
 
@@ -62,6 +65,38 @@ namespace formPrincipal
             file.ShowDialog();
             archivos.Add(file.FileName);
             label3.Text = file.SafeFileName;
+        }
+
+        /// <summary>
+        /// Metodo para cargar la informacion de las cuentas.
+        /// </summary>
+        private void MostrarCuentas()
+        {
+            try
+            {
+                foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
+                {
+                    listaCuentas.Items.Add(aCuenta.Nombre);
+                }
+            }
+            catch
+            {
+                // VER QUE HACER ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            }
+            finally
+            {
+                // Coloca la opción de Seleccionar Cuenta
+                listaCuentas.Items.Add("Seleccionar Cuenta");
+                // marca como seleccionada a la opción Seleccionar Cuenta.
+                listaCuentas.SelectedIndex = listaCuentas.Items.Count - 1;
+            }
+
+
+        }
+
+        private void formEnvioCorreo_Load(object sender, EventArgs e)
+        {
+            MostrarCuentas();
         }
 
     }

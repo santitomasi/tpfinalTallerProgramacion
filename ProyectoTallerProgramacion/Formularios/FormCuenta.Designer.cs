@@ -118,6 +118,7 @@
             this.listaCuentas.Size = new System.Drawing.Size(653, 156);
             this.listaCuentas.TabIndex = 0;
             this.listaCuentas.TabStop = false;
+            this.listaCuentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_CellClick);
             // 
             // cuentaId
             // 
@@ -229,7 +230,6 @@
             this.Name = "FormCuenta";
             this.Text = "FormCuenta";
             this.Load += new System.EventHandler(this.FormCuenta_Load);
-            this.Shown += new System.EventHandler(this.FormCuenta_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.listaCuentas)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

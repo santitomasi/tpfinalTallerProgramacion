@@ -129,18 +129,6 @@
   <metadata name="contraseña.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="cuentaId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="nombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="usuario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="contraseña.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -148,7 +136,7 @@
   <data name="nuevoToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAGiSURBVDhPldCxSwJhGAbwb+xPiAiOhAyCiKCxoLWpWQiH
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAGiSURBVDhPldCxSwJhGAbwb+xPiAiOhAyCiKCxoLWpWQiH
         oCXMRSvC4iOMhg6yxKGhoqElIzECU0i7zrxM6ZLLLpVTFFHQdGt/Oks4lOTwhd/2Ps/38ZJ8Pr/YbDbr
         qq9eGo3Gl9lsdpP/plAoUHUJeux2O0wm01E7po2iKFR9AXpcLhdsNhssFsthO/o3rYJ6vQ491WoV5XIZ
         lUoFLMsy7TghuVyO1mo19MPj8WgFsizTVns/On6QTqdp62v96CiQJIkWi0Xo4UosQqVNKMWPzgJRFKl6
@@ -161,7 +149,7 @@
   <data name="guardarToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAH3SURBVDhPlZM/aBNhHIYPJ6GDIFhEEQcdqjg4SSvokTMN
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAH3SURBVDhPlZM/aBNhHIYPJ6GDIFhEEQcdqjg4SSvokTMN
         WME/VUFBhLZUHTIl4tzBIJo2elrT05i6ZQkZAq4NVmO5iiU4yA2mw9HhsCQEA0kxKXn93u/Az+oh9eCd
         fs/zDHecxiccDu+K6PpAJBQ6GQ6FRgI2OmwYVw1dv0hG1/W9UuQzGInsPhAtfO6bcnHncRGu625ZdXUV
         0WgUZwwDiUQC44/y6I+V1o5fjp+VgVPnrp/Yed+DlgJuZ8ro9Xq/1ul00Gq3EY/HZcA0TYzNliS75+7i
@@ -176,7 +164,7 @@
   <data name="borrarToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAGzSURBVFhH7ZbdbYMwFIU7QibAkQLqazagSRfoCBkhG5DQ
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAGzSURBVFhH7ZbdbYMwFIU7QibAkQLqazagSRfoCBkhG5DQ
         ATpCR2AEpILUR0boAiCPkPrA5R//gOGpPdJ5get7PoyNedLJD9LjOUy58GOm+eme3KjNMlmENz7d04ja
         zdM4PMle35MXE5/DrzfUt2PTC7U109STiyeJ6baR/CDeCYifamzySZf1kk37XAAIY2aNVb3zzQF0C25T
         AF04vBmASTi8GYAo0IbDSz4qpgAUkmQonHSYflD5LGGsMQA+IHRpNf0D/A0Azp73BTvccuaNDpwpgFG9

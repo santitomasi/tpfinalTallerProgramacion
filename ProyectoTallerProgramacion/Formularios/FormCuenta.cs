@@ -84,12 +84,8 @@ namespace formPrincipal
             foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
             {
                 object[] row = { aCuenta.Id, aCuenta.Nombre, aCuenta.Direccion, aCuenta.Contraseña };                              
-                 listaCuentas.Rows.Add(row);
-              //  listaCuentas.//Items.Add(aCuenta.Nombre);
-                
+                 listaCuentas.Rows.Add(row);            
             }
-           // listaCuentas.Items.Add("Todas las cuentas");
-
         }
 
         private void FormCuenta_Load(object sender, EventArgs e)
@@ -97,10 +93,18 @@ namespace formPrincipal
             MostrarCuentas();
         }
 
-        private void FormCuenta_Shown(object sender, EventArgs e)
+        private void listaCuentas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            MostrarCuentas();
+            int indexSelected = e.RowIndex;
+
+            cuenta_id.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["cuentaId"].Value);
+            cuenta_nombre.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["nombre"].Value);
+            cuenta_usuario.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["usuario"].Value);
+            cuenta_contraseña.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["contraseña"].Value);
+            cuenta_contraseña2.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["contraseña"].Value);
         }
+
+
 
 
 

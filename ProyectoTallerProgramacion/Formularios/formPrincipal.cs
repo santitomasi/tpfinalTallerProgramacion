@@ -31,15 +31,13 @@ namespace formPrincipal
             frm.Show();
         }
 
-
-
         private void button4_Click(object sender, EventArgs e)
         {
             progressBar1.Visible = true;
             
             Pop3Client pop = new Pop3Client();
             pop.Connect("pop.gmail.com", 995, true);
-            pop.Authenticate("santiagotommasi92", "marlou1006");
+            pop.Authenticate("santiagotommasi92", "password");
             int cantidadMensajes = pop.GetMessageCount();
             mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
 
@@ -62,62 +60,13 @@ namespace formPrincipal
         private void agregarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listaCuentas.Visible = false;
-            
-            label1.Visible = true;
-            label2.Visible = true;
-            label3.Visible = true;
-            button7.Visible = true;
-            button8.Visible = true;
-            textBox2.Visible = true;
-            textBox3.Visible = true;
-            textBox4.Visible = true;
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            CuentaDTO cuenta = new CuentaDTO();
-            cuenta.Direccion = textBox2.Text;
-            cuenta.Contraseña = textBox3.Text;
-            cuenta.Nombre = textBox4.Text;
-            FachadaABMCuenta.Instancia.CrearCuenta(cuenta);
-
-            listaCuentas.Visible = true;
-            
-            label1.Visible = false;
-            label2.Visible = false;
-            label3.Visible = false;
-            button7.Visible = false;
-            button8.Visible = false;
-            textBox2.Visible = false;
-            textBox3.Visible = false;
-            textBox4.Visible = false;
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            listaCuentas.Visible = true;
-            
-            label1.Visible = false;
-            label2.Visible = false;
-            label3.Visible = false;
-            button7.Visible = false;
-            button8.Visible = false;
-            textBox2.Visible = false;
-            textBox3.Visible = false;
-            textBox4.Visible = false;
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
         }
 
         private void progressBar_VisibleChanged(object sender, EventArgs e)
         {
             Pop3Client pop = new Pop3Client();
             pop.Connect("pop.gmail.com", 995, true);
-            pop.Authenticate("santiagotommasi92", "marlou1006");
+            pop.Authenticate("santiagotommasi92", "password");
             int cantidadMensajes = pop.GetMessageCount();
             mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
          
@@ -226,7 +175,6 @@ namespace formPrincipal
         private void formPrincipal_Load(object sender, EventArgs e)
         {
             MostrarCuentas();
-
         }
 
         /// <summary>
@@ -308,15 +256,6 @@ namespace formPrincipal
             frm.ShowDialog();
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
         /// <summary>
         /// Método que se ejecuta al hacer click sobre el botón recibidos.
         /// </summary>
@@ -382,18 +321,6 @@ namespace formPrincipal
             listaEnviados.Visible = false;
             opcionesExportar.Visible = true;
         }
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        } 
 
     }
 }

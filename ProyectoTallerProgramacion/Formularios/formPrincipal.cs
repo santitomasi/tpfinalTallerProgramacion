@@ -31,13 +31,13 @@ namespace formPrincipal
             frm.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btActualizar_Click(object sender, EventArgs e)
         {
             progressBar1.Visible = true;
             
             Pop3Client pop = new Pop3Client();
             pop.Connect("pop.gmail.com", 995, true);
-            pop.Authenticate("santiagotommasi92", "password");
+            pop.Authenticate("santiagotommasi92", "marlou1006");
             int cantidadMensajes = pop.GetMessageCount();
             mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
 
@@ -66,7 +66,7 @@ namespace formPrincipal
         {
             Pop3Client pop = new Pop3Client();
             pop.Connect("pop.gmail.com", 995, true);
-            pop.Authenticate("santiagotommasi92", "password");
+            pop.Authenticate("santiagotommasi92", "marlou1006");
             int cantidadMensajes = pop.GetMessageCount();
             mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
          
@@ -215,18 +215,9 @@ namespace formPrincipal
 
         private void button6_Click(object sender, EventArgs e)
         {
-            label6.Visible = true;
-            radioButton1.Visible = true;
-            radioButton2.Visible = true;
-            button5.Visible = true;
-            opcionesExportar.Visible = true;
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
             string path;
             //listaRecibidos.Rows[indexSelected].
-  
+
             FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -242,12 +233,6 @@ namespace formPrincipal
                     //FALTA VER COMO SELECCIONAR EL CORREO Y TRANSFORMARLO A TIPO correoDTO
                 }
             }
-
-            label6.Visible = false;
-            radioButton1.Visible = false;
-            radioButton2.Visible = false;
-            button5.Visible = false;
-            opcionesExportar.Visible = false;
         }
 
         private void configuracionCuentasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -299,6 +284,9 @@ namespace formPrincipal
             panelCorreo.Visible = true;
             listaRecibidos.Visible = false;
             opcionesExportar.Visible = true;
+            label6.Visible = true;
+            radioButton1.Visible = true;
+            radioButton2.Visible = true;
         }
 
         /// <summary>

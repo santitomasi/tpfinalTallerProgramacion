@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataTransferObject;
+using System.Net.Mail;
 
 namespace CorreoServicio
 {
@@ -30,7 +31,28 @@ namespace CorreoServicio
         /// <param name="pCorreo">Correo a ser enviado.</param>
         public override void EnviarCorreo(CorreoDTO pCorreo)
         {
+            MailMessage correo = new MailMessage();
+            correo.From = new MailAddress(pCorreo.CuentaOrigen);  // <--- ¿¿¿Cuenta origen???
+            correo.To.Add(pCorreo.CuentaDestino);
+            correo.Subject = pCorreo.Asunto;
+            correo.Body = pCorreo.Texto;
+            /*
+            if (pCorreo.Adjuntos != null) 
+            {
+                foreach (string archivo in pCorreo.Adjuntos)
+                {
+                    Attachment attach = new Attachment(@archivo);
+                    correo.Attachments.Add(attach);
+                }
+            }
+            */
+            SmtpClient cliente = new SmtpClient("smtp.mail.yahoo.com");
+            cliente.EnableSsl = true;
+            cliente.Port = 587;
+            cliente.Credentials = new System.Net.NetworkCredential(pCorreo.CuentaOrigen, "contraseña");
 
+            //Aca tendriamos que poner un try-catch
+            cliente.Send(correo);
         }
 
         /// <summary>

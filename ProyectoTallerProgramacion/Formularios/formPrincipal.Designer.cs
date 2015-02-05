@@ -231,9 +231,9 @@
             this.button6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(10, 100);
+            this.button6.Location = new System.Drawing.Point(5, 100);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(118, 29);
+            this.button6.Size = new System.Drawing.Size(122, 29);
             this.button6.TabIndex = 39;
             this.button6.Text = "Exportar";
             this.button6.UseVisualStyleBackColor = false;
@@ -597,7 +597,7 @@
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(12, 264);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 29);
+            this.button2.Size = new System.Drawing.Size(128, 33);
             this.button2.TabIndex = 6;
             this.button2.Text = "   Reenviar";
             this.button2.UseVisualStyleBackColor = false;

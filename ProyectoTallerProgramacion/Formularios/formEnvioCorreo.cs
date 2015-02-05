@@ -23,6 +23,11 @@ namespace formPrincipal
 
         }
 
+        /// <summary>
+        /// Metodo que se dispara al hacer click en el boton ENVIAR.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             MailMessage correo = new MailMessage();
@@ -97,6 +102,11 @@ namespace formPrincipal
         private void formEnvioCorreo_Load(object sender, EventArgs e)
         {
             MostrarCuentas();
+        }
+
+        private void listaCuentas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

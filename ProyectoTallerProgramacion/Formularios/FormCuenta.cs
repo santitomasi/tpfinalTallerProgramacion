@@ -55,7 +55,7 @@ namespace formPrincipal
             pCuenta.Contraseña = cuenta_contraseña.Text;
             pCuenta.Nombre = cuenta_nombre.Text;
             pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
-            if (pCuenta.Id == -1) // ACORDARSE DE PONER -1 cuando en el form se estacreando una
+            if (pCuenta.Id == -1) // ACORDARSE DE PONER -1 cuando en el form se está creando una
             {
                 FachadaABMCuenta.Instancia.CrearCuenta(pCuenta);
             }
@@ -93,6 +93,11 @@ namespace formPrincipal
             MostrarCuentas();
         }
 
+        /// <summary>
+        /// Metodo que se dispara al seleccionar una cuenta de listaCuentas, y que muestra la informacion de esa cuenta.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listaCuentas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indexSelected = e.RowIndex;

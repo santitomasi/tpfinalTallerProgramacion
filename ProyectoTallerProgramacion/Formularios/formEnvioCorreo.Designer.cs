@@ -125,6 +125,7 @@
             this.listaCuentas.Name = "listaCuentas";
             this.listaCuentas.Size = new System.Drawing.Size(382, 21);
             this.listaCuentas.TabIndex = 11;
+            this.listaCuentas.SelectedIndexChanged += new System.EventHandler(this.listaCuentas_SelectedIndexChanged);
             // 
             // formEnvioCorreo
             // 

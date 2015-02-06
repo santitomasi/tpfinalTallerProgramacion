@@ -76,9 +76,14 @@
             // 
             // button2
             // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Location = new System.Drawing.Point(28, 368);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(133, 39);
+            this.button2.Size = new System.Drawing.Size(191, 39);
             this.button2.TabIndex = 6;
             this.button2.Text = "Agregar archivo adjunto";
             this.button2.UseVisualStyleBackColor = true;
@@ -86,12 +91,18 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(398, 368);
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(358, 368);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 39);
+            this.button1.Size = new System.Drawing.Size(121, 39);
             this.button1.TabIndex = 7;
-            this.button1.Text = "ENVIAR";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "Enviar";
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3

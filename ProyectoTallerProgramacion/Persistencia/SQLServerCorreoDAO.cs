@@ -122,9 +122,8 @@ namespace Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"insert into Correo(correoId,fecha,tipocorreo,texto,cuentaOrigen,cuentaDestino,asunto,leido)
-                                                   values(@Id,@Fecha,@TipoCorreo,@Texto,@Origen,@Destino,@Asunto,@Leido)";
-                comando.Parameters.AddWithValue("@Id", pCorreo.Id);
+                comando.CommandText = @"insert into Correo(fecha,tipocorreo,texto,cuentaOrigen,cuentaDestino,asunto,leido)
+                                                   values(@Fecha,@TipoCorreo,@Texto,@Origen,@Destino,@Asunto,@Leido)";
                 comando.Parameters.AddWithValue("@Fecha", pCorreo.Fecha);
                 comando.Parameters.AddWithValue("@TipoCorreo", pCorreo.TipoCorreo);
                 comando.Parameters.AddWithValue("@Texto", pCorreo.Texto);
@@ -150,8 +149,9 @@ namespace Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"delete from Correo where correoId = @Id";
-                comando.Parameters.AddWithValue("@ID", pCorreo.Id);
+                comando.CommandText = @"delete from adjunto where correoId = @Id;
+                                            delete from Correo where correoId = @Id;";
+                comando.Parameters.AddWithValue("@ID", pCorreo.Id);                
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
             }

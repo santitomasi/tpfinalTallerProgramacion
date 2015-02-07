@@ -30,6 +30,23 @@ namespace formPrincipal
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+
+            CorreoDTO pCorreo = new CorreoDTO();
+            pCorreo.Leido = 0;
+            pCorreo.CuentaOrigen = Convert.ToString(listaCuentas.SelectedItem);
+            pCorreo.CuentaDestino = textBox4.Text;
+            pCorreo.Asunto = textBox2.Text;
+            pCorreo.Fecha = DateTime.Today;
+            pCorreo.Texto = textBox3.Text;
+            pCorreo.TipoCorreo = "Enviado";
+            pCorreo.Adjuntos = archivos;
+            FachadaCorreo.Instancia.CrearCorreo(pCorreo);
+
+            MessageBox.Show("Enviado con exito!");
+
+
+
+
             MailMessage correo = new MailMessage();
             correo.From = new MailAddress("santiagotommasi92@gmail.com");
             correo.To.Add(textBox4.Text);
@@ -56,7 +73,9 @@ namespace formPrincipal
             cliente.Send(correo);
 
             Close();
-            MessageBox.Show("Enviado con exito!");
+
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)

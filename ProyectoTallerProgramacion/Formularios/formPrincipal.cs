@@ -267,34 +267,26 @@ namespace formPrincipal
             opcionesExportar.Visible = false;
         }
 
-        /// <summary>
-        /// Método que se dispara al hacer click sobre un correo de la lista de correos Recibidos
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void listaRecibidos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int indexSelected = e.RowIndex;
-            // Falta marcar el correo como leido en la base y en la lista!!
-            textBox1.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
-            correo_asunto.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
-            correo_cuentaDestino.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
-            correo_cuentaOrigen.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
-            correo_fecha.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
-            panelCorreo.Visible = true;
-            listaRecibidos.Visible = false;
-            opcionesExportar.Visible = true;
-            label6.Visible = true;
-            radioButton1.Visible = true;
-            radioButton2.Visible = true;
+            // Método en desuso
         }
 
+
+        private void listaEnviados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Método en desuso
+        }
+
+
+
         /// <summary>
-        /// Método que se dispara al hacer click sobre un correo de la lista de correos Enviados
+        /// Método que se dispara al hacer doble click sobre un correo de la lista de correos Enviados
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void listaEnviados_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void listaEnviados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int indexSelected = e.RowIndex;
 
@@ -305,9 +297,88 @@ namespace formPrincipal
             correo_cuentaDestino.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
             correo_cuentaOrigen.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
             correo_fecha.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["Fecha"].Value);
+            correo_id.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["correoId"].Value);
             panelCorreo.Visible = true;
             listaEnviados.Visible = false;
             opcionesExportar.Visible = true;
+        }
+
+        /// <summary>
+        /// Método que se dispara al hacer doble click sobre un correo de la lista de correos Recibidos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listaRecibidos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexSelected = e.RowIndex;
+
+            // Falta marcar el correo como leido en la base y en la lista!!
+
+            textBox1.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
+            correo_asunto.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
+            correo_cuentaDestino.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
+            correo_cuentaOrigen.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
+            correo_fecha.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
+            correo_id.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
+            panelCorreo.Visible = true;
+            listaRecibidos.Visible = false;
+            opcionesExportar.Visible = true;
+            label6.Visible = true;
+            radioButton1.Visible = true;
+            radioButton2.Visible = true;
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            //
+            // PREGUNTAR SI DESEA ELIMINAR!!!!!!
+            //
+
+            if (listaEnviados.Visible) 
+            {
+                //Busca el indice de la fila seleccionada en la lista de correos enviados.
+                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
+                // entonces tomamos el primer elemento.
+                int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
+                CorreoDTO pCorreo = new CorreoDTO();
+                pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
+                MessageBox.Show(Convert.ToString(pCorreo.Id));
+                FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
+
+                MessageBox.Show("Eliminado con exito!");
+
+                
+            }
+            else if (listaRecibidos.Visible)
+            {
+                //Busca el indice de la fila seleccionada en la lista de correos recibidos.
+                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
+                // entonces tomamos el primer elemento.
+                int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
+                CorreoDTO pCorreo = new CorreoDTO();
+                pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
+                FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
+                MessageBox.Show("Eliminado con exito!");
+            }
+            else // esta visible el form de correo
+            {
+                CorreoDTO pCorreo = new CorreoDTO();
+                pCorreo.Id = Convert.ToInt32(correo_id.Text);
+                FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
+                MessageBox.Show("Eliminado con exito!");
+            }
+
+
+            //
+            //REVISAR ESTO!!!! EL METODO DE CARGAR CUENTAS DEBERIA SER INDEPENDIENTE DEL EVENTO SELECTEDINDEXCHANGED
+            // LO CUAL FACILITARIA EL PODER LLAMARLO DESDE CUALQUIER LADO
+            //
+
+            // actualiza el infice del combobox para que se lence el evento SelectionIndexChanged
+            listaCuentas.SelectedIndex = 0;
+            listaCuentas.SelectedIndex = listaCuentas.Items.Count - 1;
+
+
         }
 
     }

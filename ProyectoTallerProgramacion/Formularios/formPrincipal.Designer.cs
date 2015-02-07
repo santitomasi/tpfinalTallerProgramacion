@@ -81,9 +81,10 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.btActualizar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonEliminar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.correo_id = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.opcionesExportar.SuspendLayout();
             this.panelCorreo.SuspendLayout();
@@ -242,13 +243,14 @@
             // panelCorreo
             // 
             this.panelCorreo.BackColor = System.Drawing.SystemColors.Window;
+            this.panelCorreo.Controls.Add(this.correo_id);
+            this.panelCorreo.Controls.Add(this.textBox1);
             this.panelCorreo.Controls.Add(this.correo_cuentaDestino);
             this.panelCorreo.Controls.Add(this.correo_fecha);
             this.panelCorreo.Controls.Add(this.label7);
             this.panelCorreo.Controls.Add(this.label5);
             this.panelCorreo.Controls.Add(this.correo_cuentaOrigen);
             this.panelCorreo.Controls.Add(this.correo_asunto);
-            this.panelCorreo.Controls.Add(this.textBox1);
             this.panelCorreo.Location = new System.Drawing.Point(152, 27);
             this.panelCorreo.Name = "panelCorreo";
             this.panelCorreo.Size = new System.Drawing.Size(817, 488);
@@ -359,6 +361,7 @@
             this.listaRecibidos.Size = new System.Drawing.Size(817, 488);
             this.listaRecibidos.TabIndex = 38;
             this.listaRecibidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellClick);
+            this.listaRecibidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellDoubleClick);
             // 
             // correoIdR
             // 
@@ -513,6 +516,7 @@
             this.listaEnviados.Size = new System.Drawing.Size(817, 488);
             this.listaEnviados.TabIndex = 37;
             this.listaEnviados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellClick);
+            this.listaEnviados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellDoubleClick);
             // 
             // button10
             // 
@@ -568,22 +572,23 @@
             this.btActualizar.UseVisualStyleBackColor = false;
             this.btActualizar.Click += new System.EventHandler(this.btActualizar_Click);
             // 
-            // button3
+            // buttonEliminar
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(9, 221);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(131, 37);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "   Eliminar";
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.buttonEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonEliminar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.buttonEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("buttonEliminar.Image")));
+            this.buttonEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonEliminar.Location = new System.Drawing.Point(9, 221);
+            this.buttonEliminar.Name = "buttonEliminar";
+            this.buttonEliminar.Size = new System.Drawing.Size(131, 37);
+            this.buttonEliminar.TabIndex = 7;
+            this.buttonEliminar.Text = "   Eliminar";
+            this.buttonEliminar.UseVisualStyleBackColor = false;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // button2
             // 
@@ -621,6 +626,14 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // correo_id
+            // 
+            this.correo_id.Location = new System.Drawing.Point(628, 15);
+            this.correo_id.Name = "correo_id";
+            this.correo_id.Size = new System.Drawing.Size(100, 20);
+            this.correo_id.TabIndex = 16;
+            this.correo_id.Visible = false;
+            // 
             // formPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -633,13 +646,13 @@
             this.Controls.Add(this.listaCuentas);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btActualizar);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelCorreo);
             this.Controls.Add(this.listaEnviados);
             this.Controls.Add(this.listaRecibidos);
-            this.Controls.Add(this.panelCorreo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formPrincipal";
@@ -663,7 +676,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btActualizar;
@@ -708,6 +721,7 @@
         private System.Windows.Forms.ToolStripMenuItem administrarCuentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem1;
+        private System.Windows.Forms.TextBox correo_id;
 
     }
 }

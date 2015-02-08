@@ -119,6 +119,8 @@
             this.listaCuentas.TabIndex = 0;
             this.listaCuentas.TabStop = false;
             this.listaCuentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_CellClick);
+            this.listaCuentas.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.listaCuentas_RowsAdded);
+            this.listaCuentas.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.listaCuentas_UserAddedRow);
             // 
             // cuentaId
             // 

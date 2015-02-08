@@ -22,16 +22,6 @@ namespace formPrincipal
             InitializeComponent();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// Método que se dispara al hacer click en el botón Nuevo del Menú
         /// </summary>
@@ -39,10 +29,8 @@ namespace formPrincipal
         /// <param name="e"></param>
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //object[] row = { "", "", "", "" };
-            //listaCuentas.Rows.Add(row); 
-           
-            listaCuentas.CurrentRow.Selected = false;
+            object[] row = { "", "", "", "" };
+            listaCuentas.Rows.Add(row); 
             listaCuentas.Rows[listaCuentas.Rows.Count-1].Selected = true;
 
             cuenta_contraseña.Text = "";
@@ -50,8 +38,6 @@ namespace formPrincipal
             cuenta_nombre.Text = "";
             cuenta_usuario.Text = "";
             cuenta_id.Text = "";
-
-
         }
 
         /// <summary>
@@ -84,7 +70,22 @@ namespace formPrincipal
         /// <param name="e"></param>
         private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //PREGUNTAR SI ESTA SEGuROOOOOOOOOOOOOOOOOOOOOOOOOOO
+            //
 
+            if (cuenta_id.Text == "")
+            {
+                listaCuentas.Rows.Remove(listaCuentas.SelectedRows[0]);
+                // Marca como seleccionada la ultima fila
+                listaCuentas.Rows[listaCuentas.Rows.Count - 1].Selected = true;
+            }
+            else
+            {
+                CuentaDTO pCuenta = new CuentaDTO();
+                pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
+                MessageBox.Show("Id de la cuenta a borrar: "+pCuenta.Id);
+                FachadaABMCuenta.Instancia.ModificarCuenta(pCuenta);
+            }
         }
 
 
@@ -95,7 +96,8 @@ namespace formPrincipal
         {
             foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
             {
-                object[] row = { aCuenta.Id, aCuenta.Nombre, aCuenta.Direccion, aCuenta.Contraseña };                              
+                object[] row = { aCuenta.Id, aCuenta.Nombre, aCuenta.Direccion, aCuenta.Contraseña };
+                MessageBox.Show("Id de la cuenta a añadir: " + aCuenta.Id);          
                  listaCuentas.Rows.Add(row);            
             }
         }
@@ -113,6 +115,7 @@ namespace formPrincipal
         private void listaCuentas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indexSelected = e.RowIndex;
+           
 
             //Selecciona toda la fila
             listaCuentas.Rows[indexSelected].Selected = true;
@@ -124,22 +127,38 @@ namespace formPrincipal
             cuenta_contraseña2.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["contraseña"].Value);
         }
 
-        private void listaCuentas_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        private void cuenta_nombre_TextChanged(object sender, EventArgs e)
         {
-            //VER si no esmejor el evento RowsAdded
-
-           // int indexSelected = listaCuentas.Rows.IndexOf(e.Row);
-           // listaCuentas.Rows[indexSelected].Selected = true;
+            listaCuentas.SelectedRows[0].Cells["nombre"].Value = cuenta_nombre.Text;              
         }
 
-        private void listaCuentas_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void cuenta_usuario_TextChanged(object sender, EventArgs e)
         {
-            //listaCuentas.Rows[e.RowIndex - 1].Selected = false;
-           // listaCuentas.Rows[e.RowIndex].Selected = true;
+            listaCuentas.SelectedRows[0].Cells["usuario"].Value = cuenta_usuario.Text;
         }
 
+        private void cuenta_contraseña_TextChanged(object sender, EventArgs e)
+        {
+            listaCuentas.SelectedRows[0].Cells["contraseña"].Value = cuenta_contraseña.Text;
+        }
 
+        /// <summary>
+        /// Método que se ejecuta cuando se entra a una fila (Haciendo uso de las flechas)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listaCuentas_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexSelected = e.RowIndex;
+            //Selecciona toda la fila
+            listaCuentas.Rows[indexSelected].Selected = true;
 
+            cuenta_id.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["cuentaId"].Value);
+            cuenta_nombre.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["nombre"].Value);
+            cuenta_usuario.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["usuario"].Value);
+            cuenta_contraseña.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["contraseña"].Value);
+            cuenta_contraseña2.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["contraseña"].Value);
+        }
 
 
 

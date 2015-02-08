@@ -55,8 +55,9 @@ namespace Persistencia.SQLServer
                         mCuentasCorreo.Add(new CuentaDTO
                         {
                             Nombre = Convert.ToString(fila["nombre"]),
-                            Direccion = Convert.ToString(fila["Direccion"]),
-                            Contraseña = Convert.ToString(fila["Contraseña"]),
+                            Direccion = Convert.ToString(fila["direccion"]),
+                            Contraseña = Convert.ToString(fila["contraseña"]),
+                            Id = Convert.ToInt32(fila["cuentaId"])
                         });
                     }
                 }
@@ -100,12 +101,13 @@ namespace Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"update Cuenta set Direccion= @Direccion,
-                                                                Contraseña= @Contraseña 
-                                                                where Nombre = @Nombre";
+                comando.CommandText = @"update Cuenta set direccion= @Direccion,
+                                                                contraseña= @Contraseña, nombre = @Nombre                         
+                                                                where cuentaId = @ID";
                 comando.Parameters.AddWithValue("@Nombre", pCuentaCorreo.Nombre);
                 comando.Parameters.AddWithValue("@Direccion", pCuentaCorreo.Direccion);
                 comando.Parameters.AddWithValue("@Contraseña", pCuentaCorreo.Contraseña);
+                comando.Parameters.AddWithValue("@ID", pCuentaCorreo.Id);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
             }
@@ -124,8 +126,8 @@ namespace Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"delete from Cuenta where Nombre = @Nombre";
-                comando.Parameters.AddWithValue("@ID", pCuentaCorreo.Nombre);
+                comando.CommandText = @"delete from Cuenta where cuentaId = @ID";
+                comando.Parameters.AddWithValue("@ID", pCuentaCorreo.Id);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
             }

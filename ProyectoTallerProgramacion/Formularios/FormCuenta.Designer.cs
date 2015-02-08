@@ -57,6 +57,7 @@
             this.cuenta_nombre.Name = "cuenta_nombre";
             this.cuenta_nombre.Size = new System.Drawing.Size(188, 20);
             this.cuenta_nombre.TabIndex = 1;
+            this.cuenta_nombre.TextChanged += new System.EventHandler(this.cuenta_nombre_TextChanged);
             // 
             // label3
             // 
@@ -74,6 +75,7 @@
             this.cuenta_contraseña.Size = new System.Drawing.Size(154, 20);
             this.cuenta_contraseña.TabIndex = 3;
             this.cuenta_contraseña.UseSystemPasswordChar = true;
+            this.cuenta_contraseña.TextChanged += new System.EventHandler(this.cuenta_contraseña_TextChanged);
             // 
             // cuenta_usuario
             // 
@@ -81,7 +83,7 @@
             this.cuenta_usuario.Name = "cuenta_usuario";
             this.cuenta_usuario.Size = new System.Drawing.Size(188, 20);
             this.cuenta_usuario.TabIndex = 2;
-            this.cuenta_usuario.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.cuenta_usuario.TextChanged += new System.EventHandler(this.cuenta_usuario_TextChanged);
             // 
             // label2
             // 
@@ -103,6 +105,7 @@
             // 
             // listaCuentas
             // 
+            this.listaCuentas.AllowUserToAddRows = false;
             this.listaCuentas.AllowUserToResizeColumns = false;
             this.listaCuentas.AllowUserToResizeRows = false;
             this.listaCuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -112,6 +115,7 @@
             this.usuario,
             this.contraseña});
             this.listaCuentas.Location = new System.Drawing.Point(2, 166);
+            this.listaCuentas.MultiSelect = false;
             this.listaCuentas.Name = "listaCuentas";
             this.listaCuentas.ReadOnly = true;
             this.listaCuentas.RowHeadersVisible = false;
@@ -119,8 +123,7 @@
             this.listaCuentas.TabIndex = 0;
             this.listaCuentas.TabStop = false;
             this.listaCuentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_CellClick);
-            this.listaCuentas.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.listaCuentas_RowsAdded);
-            this.listaCuentas.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.listaCuentas_UserAddedRow);
+            this.listaCuentas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_RowEnter);
             // 
             // cuentaId
             // 

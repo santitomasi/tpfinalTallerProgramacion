@@ -88,7 +88,11 @@ namespace Persistencia.SQLServer
             }
             catch (SqlException pSqlException)
             {
-                new DAOException("Error en la inserción de datos de Cuenta de correo", pSqlException);
+                if (pSqlException.Errors[0].Number == 2627)
+                {
+                    throw new DAOException("Error de datos duplicados. Crear una excepcion aparete para esto!!", pSqlException);
+                }
+                throw new DAOException("Error en la inserción de datos de Cuenta de correo", pSqlException);
             }
         }
 
@@ -113,6 +117,10 @@ namespace Persistencia.SQLServer
             }
             catch (SqlException pSqlException)
             {
+                if (pSqlException.Errors[0].Number == 2627)
+                {
+                    throw new DAOException("Error de datos duplicados. Crear una excepcion aparete para esto!!", pSqlException);
+                }
                 throw new DAOException("Error en la actualizacion de datos de cuenta de correo", pSqlException);
             }
         }

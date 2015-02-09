@@ -15,7 +15,7 @@ namespace CorreoServicio
         private static FabricaServicios cInstancia = null;
 
         //Atributo de tipo diccionario responsable de relacionar los nombres de los servicios con los mismos.
-        private IDictionary<string, IServicio> iServicios;
+        private IDictionary<string, IServicioCorreo> iServicios;
 
         /// <summary>
         /// Constructor de la clase FabricaExportadores responsable de colocar en el diccionario
@@ -23,7 +23,7 @@ namespace CorreoServicio
         /// </summary>
         private FabricaServicios()
             {
-                this.iServicios = new Dictionary<string, IServicio>();
+                this.iServicios = new Dictionary<string, IServicioCorreo>();
 
                 Gmail servicioGmail = new Gmail();
                 Yahoo servicioYahoo = new Yahoo();
@@ -52,10 +52,10 @@ namespace CorreoServicio
         /// </summary>
         /// <param name="nombre">nombre de tipo string que hace referencia al servicio a buscar.</param>
         /// <returns>Devuelve un servicio de tipo IServicio buscado.</returns>
-        public IServicio GetServicio(string nombre)
+        public IServicioCorreo GetServicio(string nombre)
         {
             //Le pedimos al diccionario con el nombre como clave que nos devuelva el servicio asociado.
-            IServicio servicio = this.iServicios[nombre];
+            IServicioCorreo servicio = this.iServicios[nombre];
 
             return servicio;
         }

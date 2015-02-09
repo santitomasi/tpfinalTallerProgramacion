@@ -12,6 +12,8 @@ using System.IO;
 using DataTransferObject;
 using OpenPop.Pop3;
 using Controladores;
+using Persistencia; // Revisar esto!! Las Excepciones deberian estar aparte!!
+using System.Data.SqlClient;
 
 namespace formPrincipal
 {
@@ -52,14 +54,28 @@ namespace formPrincipal
             pCuenta.Direccion = cuenta_usuario.Text;
             pCuenta.Contraseña = cuenta_contraseña.Text;
             pCuenta.Nombre = cuenta_nombre.Text;
-            if (cuenta_id.Text == "")
+            try
             {
-                FachadaABMCuenta.Instancia.CrearCuenta(pCuenta);
+                if (cuenta_id.Text == "")
+                {
+                    FachadaABMCuenta.Instancia.CrearCuenta(pCuenta);
+
+                }
+                else
+                {
+                    pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
+                    FachadaABMCuenta.Instancia.ModificarCuenta(pCuenta);
+                }
             }
-            else
+            catch (Exception exeption)
             {
-                pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
-                FachadaABMCuenta.Instancia.ModificarCuenta(pCuenta);
+                // 
+                //SqlException pSQLException = (SqlException)exeption.InnerException;
+
+                //Convert.ToString(pSqlException.Errors[0].Number
+                // MessageBox.Show( exeption.InnerException.Message);
+                MessageBox.Show(exeption.Message);
+                //MessageBox.Show(Convert.ToString(pSQLException.Errors[0].Number));
             }
         }
 
@@ -83,8 +99,9 @@ namespace formPrincipal
             {
                 CuentaDTO pCuenta = new CuentaDTO();
                 pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
-                MessageBox.Show("Id de la cuenta a borrar: "+pCuenta.Id);
-                FachadaABMCuenta.Instancia.ModificarCuenta(pCuenta);
+                //MessageBox.Show("Id de la cuenta a borrar: "+pCuenta.Id);
+                FachadaABMCuenta.Instancia.EliminarCuenta(pCuenta);
+                MostrarCuentas();
             }
         }
 
@@ -94,10 +111,11 @@ namespace formPrincipal
         /// </summary>
         private void MostrarCuentas()
         {
+            listaCuentas.Rows.Clear();
             foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
             {
                 object[] row = { aCuenta.Id, aCuenta.Nombre, aCuenta.Direccion, aCuenta.Contraseña };
-                MessageBox.Show("Id de la cuenta a añadir: " + aCuenta.Id);          
+               // MessageBox.Show("Id de la cuenta a añadir: " + aCuenta.Id);          
                  listaCuentas.Rows.Add(row);            
             }
         }
@@ -158,6 +176,17 @@ namespace formPrincipal
             cuenta_usuario.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["usuario"].Value);
             cuenta_contraseña.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["contraseña"].Value);
             cuenta_contraseña2.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["contraseña"].Value);
+        }
+
+        /// <summary>
+        /// Método que se ejecuta al hacer doble click sobre una celda
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listaCuentas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //marca la fila como seleccionada, para no perder la fila seleccionada actual.
+            listaCuentas.Rows[e.RowIndex].Selected = true;
         }
 
 

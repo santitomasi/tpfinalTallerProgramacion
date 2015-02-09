@@ -123,6 +123,7 @@
             this.listaCuentas.TabIndex = 0;
             this.listaCuentas.TabStop = false;
             this.listaCuentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_CellClick);
+            this.listaCuentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_CellDoubleClick);
             this.listaCuentas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_RowEnter);
             // 
             // cuentaId

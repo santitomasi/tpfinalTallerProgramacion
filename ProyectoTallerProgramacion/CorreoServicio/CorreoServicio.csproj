@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OpenPop">
+      <HintPath>..\packages\OpenPop.NET.2.0.6.1076\lib\net40\OpenPop.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,9 +44,9 @@
   <ItemGroup>
     <Compile Include="FabricaServicios.cs" />
     <Compile Include="Gmail.cs" />
-    <Compile Include="IServicio.cs" />
+    <Compile Include="IServicioCorreo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servicio.cs" />
+    <Compile Include="ServicioCorreo.cs" />
     <Compile Include="ServicioCorreoException.cs" />
     <Compile Include="Yahoo.cs" />
   </ItemGroup>

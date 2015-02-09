@@ -49,8 +49,9 @@ namespace formPrincipal
 
             foreach (OpenPop.Mime.Message mensaje in mensajes)     //nose si son necesarios dos ciclos!!!
             {
-                string[] row = { mensaje.Headers.Subject, Convert.ToString(mensaje.Headers.From),
-                                 mensaje.Headers.Date};
+                // id tipo asunto de para fecha mensaje leido
+                string[] row = { "", "Recibido", mensaje.Headers.Subject, mensaje.Headers.From.Address, "cuenta.nombre",
+                                 mensaje.Headers.Date, mensaje.ToMailMessage().Body, "0"};
                 listaRecibidos.Rows.Add(row);
             }
 
@@ -119,7 +120,7 @@ namespace formPrincipal
                     listaEnviados.Rows.Add(row);
                     if (aCorreo.Leido != 0)
                     {
-                        int posicion = listaEnviados.Rows.Count - 2;
+                        int posicion = listaEnviados.Rows.Count - 1;
                         listaEnviados.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
                     }
                 }
@@ -128,7 +129,7 @@ namespace formPrincipal
                     listaRecibidos.Rows.Add(row);
                     if (aCorreo.Leido != 0)
                     {
-                        int posicion = listaRecibidos.Rows.Count - 2;
+                        int posicion = listaRecibidos.Rows.Count - 1;
                         listaRecibidos.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
                     }
                 }
@@ -152,7 +153,7 @@ namespace formPrincipal
                     listaEnviados.Rows.Add(row);                
                     if (aCorreo.Leido != 0)
                     {
-                        int posicion = listaEnviados.Rows.Count - 2;
+                        int posicion = listaEnviados.Rows.Count - 1;
                         //listaEnviados.Rows[posicion].DefaultCellStyle.Font = new Font(listaEnviados.DefaultCellStyle.Font, FontStyle.Bold);
                         listaEnviados.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
                        // listaEnviados.Rows[posicion].Cells[1].Style
@@ -163,7 +164,7 @@ namespace formPrincipal
                     listaRecibidos.Rows.Add(row);
                     if (aCorreo.Leido != 0)
                     {
-                        int posicion = listaRecibidos.Rows.Count - 2;
+                        int posicion = listaRecibidos.Rows.Count - 1;
                         listaRecibidos.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
                         //listaEnviados.Rows[posicion].DefaultCellStyle.Font = new Font(listaEnviados.DefaultCellStyle.Font, FontStyle.Bold);                       
                         //listaRecibidos.Rows[posicion].Cells[0].Style.Font = new Font(listaEnviados.DefaultCellStyle.Font, FontStyle.Bold); //DefaultCellStyle.BackColor = Color.Gray;
@@ -209,8 +210,8 @@ namespace formPrincipal
             //Siempre al cargar una o todas las cuentas muestra la lista de correos recibidos.
             listaEnviados.Visible = false;
             listaRecibidos.Visible = true;
-            panelCorreo.Visible = false;
-            opcionesExportar.Visible = false;
+            //panelCorreo.Visible = false;
+            //opcionesExportar.Visible = false;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -250,8 +251,8 @@ namespace formPrincipal
         {
             listaEnviados.Visible = false;
             listaRecibidos.Visible = true;
-            panelCorreo.Visible = false;
-            opcionesExportar.Visible = false;
+           // panelCorreo.Visible = false;
+           // opcionesExportar.Visible = false;
         }
 
         /// <summary>
@@ -263,8 +264,8 @@ namespace formPrincipal
         {
             listaEnviados.Visible = true;
             listaRecibidos.Visible = false;
-            panelCorreo.Visible = false;
-            opcionesExportar.Visible = false;
+           // panelCorreo.Visible = false;
+           // opcionesExportar.Visible = false;
         }
 
 
@@ -297,9 +298,9 @@ namespace formPrincipal
             correo_cuentaDestino.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
             correo_cuentaOrigen.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
             correo_fecha.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["Fecha"].Value);
-            correo_id.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["correoId"].Value);
+            correo_id.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
             panelCorreo.Visible = true;
-            listaEnviados.Visible = false;
+            //listaEnviados.Visible = false;
             opcionesExportar.Visible = true;
         }
 
@@ -321,11 +322,11 @@ namespace formPrincipal
             correo_fecha.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
             correo_id.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
             panelCorreo.Visible = true;
-            listaRecibidos.Visible = false;
+            //listaRecibidos.Visible = false;
             opcionesExportar.Visible = true;
-            label6.Visible = true;
-            radioButton1.Visible = true;
-            radioButton2.Visible = true;
+            //label6.Visible = true;
+            //radioButton1.Visible = true;
+            //radioButton2.Visible = true;
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)

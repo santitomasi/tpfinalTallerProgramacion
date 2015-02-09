@@ -10,7 +10,7 @@ namespace CorreoServicio
     /// <summary>
     /// Clase abstracta que sirve de base para los distintos exportadores que se deseen implementar.
     /// </summary>
-    public abstract class Servicio : IServicio
+    public abstract class ServicioCorreo : IServicioCorreo
     {
         /// <summary>
         /// Atributo Nombre del servicio que se construye.
@@ -22,7 +22,7 @@ namespace CorreoServicio
         /// del Servicio de correo que se instancia.
         /// </summary>
         /// <param name="pNombre"></param>
-        public Servicio(string pNombre)
+        public ServicioCorreo(string pNombre)
         {
             this.iNombre = pNombre;
         }

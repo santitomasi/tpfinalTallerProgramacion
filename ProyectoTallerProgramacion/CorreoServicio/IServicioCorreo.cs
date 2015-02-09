@@ -11,7 +11,7 @@ namespace CorreoServicio
     /// Clase abstracta que sirve para establecer lo minimo a implementar 
     /// por todos los algoritmos de Servicio de Correo.
     /// </summary>
-    public interface IServicio
+    public interface IServicioCorreo
     {
         /// <summary>
         /// Metodo para obtener los correos de una cuenta en un Servicio.

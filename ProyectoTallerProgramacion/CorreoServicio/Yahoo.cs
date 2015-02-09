@@ -11,7 +11,7 @@ namespace CorreoServicio
     /// <summary>
     /// Clase utilizada para relacionar el programa con el servicio de correo correspondiente a Yahoo.
     /// </summary>
-    public class Yahoo : Servicio
+    public class Yahoo : ServicioCorreo
     {
         /// <summary>
         /// Constructor de la clase. Llama al constructor de la superclase pasandole como parametro

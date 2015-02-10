@@ -25,6 +25,11 @@ namespace formPrincipal
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Metodo que se dispara al hacer click en el boton Redactar, y abre una ventana para enviar un correo.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             Form frm = new formEnvioCorreo();
@@ -214,6 +219,11 @@ namespace formPrincipal
             //opcionesExportar.Visible = false;
         }
 
+        /// <summary>
+        /// Metodo para exportar un correo en un tipo de exportador, que se dispara al hacer click en el boton Exportar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button6_Click(object sender, EventArgs e)
         {
             string path;
@@ -236,6 +246,11 @@ namespace formPrincipal
             }
         }
 
+        /// <summary>
+        /// Metodo que se dispara al hacer click en el boton Administrar Cuentas del menu, y abre una ventana para administrar las cuentas. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void configuracionCuentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frm = new FormCuenta();
@@ -243,7 +258,7 @@ namespace formPrincipal
         }
 
         /// <summary>
-        /// Método que se ejecuta al hacer click sobre el botón recibidos.
+        /// Método que se ejecuta al hacer click sobre el botón Recibidos.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -256,7 +271,7 @@ namespace formPrincipal
         }
 
         /// <summary>
-        /// Método que se ejecuta al hacer click sobre el botón enviados.
+        /// Método que se ejecuta al hacer click sobre el botón Enviados.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -329,6 +344,11 @@ namespace formPrincipal
             //radioButton2.Visible = true;
         }
 
+        /// <summary>
+        /// Metodo que se dispara al hacer click en el boton Eliminar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
 
@@ -378,6 +398,11 @@ namespace formPrincipal
             listaCuentas.SelectedIndex = 0;
             listaCuentas.SelectedIndex = listaCuentas.Items.Count - 1;
 
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
 
         }
 

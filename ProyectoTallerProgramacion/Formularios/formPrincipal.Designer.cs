@@ -70,15 +70,15 @@
             this.fechaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.texto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.correoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listaEnviados = new System.Windows.Forms.DataGridView();
+            this.correoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.texto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.btActualizar = new System.Windows.Forms.Button();
@@ -431,56 +431,6 @@
             this.leidoR.Name = "leidoR";
             this.leidoR.Visible = false;
             // 
-            // leido
-            // 
-            this.leido.HeaderText = "Leido";
-            this.leido.Name = "leido";
-            this.leido.Visible = false;
-            // 
-            // texto
-            // 
-            this.texto.HeaderText = "Mensaje";
-            this.texto.Name = "texto";
-            this.texto.Visible = false;
-            // 
-            // Fecha
-            // 
-            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Width = 70;
-            // 
-            // cuentaDestino
-            // 
-            this.cuentaDestino.HeaderText = "Para";
-            this.cuentaDestino.Name = "cuentaDestino";
-            this.cuentaDestino.ReadOnly = true;
-            // 
-            // cuentaOrigen
-            // 
-            this.cuentaOrigen.HeaderText = "De";
-            this.cuentaOrigen.Name = "cuentaOrigen";
-            this.cuentaOrigen.Visible = false;
-            // 
-            // asunto
-            // 
-            this.asunto.HeaderText = "Asunto";
-            this.asunto.Name = "asunto";
-            this.asunto.ReadOnly = true;
-            // 
-            // tipoCorreo
-            // 
-            this.tipoCorreo.HeaderText = "Tipo Correo";
-            this.tipoCorreo.Name = "tipoCorreo";
-            this.tipoCorreo.Visible = false;
-            // 
-            // correoId
-            // 
-            this.correoId.HeaderText = "correoid";
-            this.correoId.Name = "correoId";
-            this.correoId.Visible = false;
-            // 
             // listaEnviados
             // 
             this.listaEnviados.AllowUserToAddRows = false;
@@ -536,6 +486,56 @@
             this.listaEnviados.TabIndex = 37;
             this.listaEnviados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellClick);
             this.listaEnviados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellDoubleClick);
+            // 
+            // correoId
+            // 
+            this.correoId.HeaderText = "correoid";
+            this.correoId.Name = "correoId";
+            this.correoId.Visible = false;
+            // 
+            // tipoCorreo
+            // 
+            this.tipoCorreo.HeaderText = "Tipo Correo";
+            this.tipoCorreo.Name = "tipoCorreo";
+            this.tipoCorreo.Visible = false;
+            // 
+            // asunto
+            // 
+            this.asunto.HeaderText = "Asunto";
+            this.asunto.Name = "asunto";
+            this.asunto.ReadOnly = true;
+            // 
+            // cuentaOrigen
+            // 
+            this.cuentaOrigen.HeaderText = "De";
+            this.cuentaOrigen.Name = "cuentaOrigen";
+            this.cuentaOrigen.Visible = false;
+            // 
+            // cuentaDestino
+            // 
+            this.cuentaDestino.HeaderText = "Para";
+            this.cuentaDestino.Name = "cuentaDestino";
+            this.cuentaDestino.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 75;
+            // 
+            // texto
+            // 
+            this.texto.HeaderText = "Mensaje";
+            this.texto.Name = "texto";
+            this.texto.Visible = false;
+            // 
+            // leido
+            // 
+            this.leido.HeaderText = "Leido";
+            this.leido.Name = "leido";
+            this.leido.Visible = false;
             // 
             // button10
             // 
@@ -625,6 +625,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "   Reenviar";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -718,14 +719,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaR;
         private System.Windows.Forms.DataGridViewTextBoxColumn textoR;
         private System.Windows.Forms.DataGridViewTextBoxColumn leidoR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn leido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn texto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaDestino;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaOrigen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn asunto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoCorreo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn correoId;
         private System.Windows.Forms.DataGridView listaEnviados;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
@@ -733,6 +726,14 @@
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem1;
         private System.Windows.Forms.TextBox correo_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn correoId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoCorreo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn asunto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaOrigen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaDestino;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn texto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn leido;
 
     }
 }

@@ -29,7 +29,12 @@ namespace DataTransferObject
         /// <summary>
         /// Atributo contraseña.
         /// </summary>
-        private string iContraseña;  
+        private string iContraseña;
+
+        /// <summary>
+        /// Atributo servicio.
+        /// </summary>
+        private string iServicio; 
 
         /// <summary>
         /// Constructor de una instancia de la clase CuentaCorreo .
@@ -42,7 +47,7 @@ namespace DataTransferObject
         /// <returns></returns>
         public string toString()
         {
-            return "falta desarrollar el metodo";
+            return "Método a desarrollar";
         }
         
         
@@ -81,5 +86,15 @@ namespace DataTransferObject
             get { return this.iContraseña; }
             set { this.iContraseña = value; }
         }
+
+        /// <summary>
+        /// Propiedad de lectura y escritura del Servicio.
+        /// </summary>
+        public string Servicio
+        {
+            get { return this.iServicio; }
+            set { this.iServicio = value; }
+        }
+
     }
 }

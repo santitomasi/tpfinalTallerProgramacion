@@ -35,6 +35,9 @@ namespace formPrincipal
             listaCuentas.Rows.Add(row); 
             listaCuentas.Rows[listaCuentas.Rows.Count-1].Selected = true;
 
+            // Marca como seleccionada a la opción Seleccione un servicio.
+            listaServicios.SelectedIndex = 0;
+
             cuenta_contraseña.Text = "";
             cuenta_contraseña2.Text = "";
             cuenta_nombre.Text = "";
@@ -49,34 +52,51 @@ namespace formPrincipal
         /// <param name="e"></param>
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            CuentaDTO pCuenta = new CuentaDTO();
-            pCuenta.Direccion = cuenta_usuario.Text;
-            pCuenta.Contraseña = cuenta_contraseña.Text;
-            pCuenta.Nombre = cuenta_nombre.Text;
-            try
+            if (cuenta_contraseña.Text == cuenta_contraseña2.Text) 
             {
-                if (cuenta_id.Text == "")
+                if (Convert.ToString(listaServicios.SelectedItem) != "Seleccione un servicio")
                 {
-                    FachadaABMCuenta.Instancia.CrearCuenta(pCuenta);
+                    CuentaDTO pCuenta = new CuentaDTO();
+                    pCuenta.Direccion = cuenta_usuario.Text;
+                    pCuenta.Contraseña = cuenta_contraseña.Text;
+                    pCuenta.Nombre = cuenta_nombre.Text;
+                    pCuenta.Servicio = Convert.ToString(listaServicios.SelectedItem);
+                    try
+                    {
+                        if (cuenta_id.Text == "")
+                        {
+                            FachadaABMCuenta.Instancia.CrearCuenta(pCuenta);
 
+                        }
+                        else
+                        {
+                            pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
+                            FachadaABMCuenta.Instancia.ModificarCuenta(pCuenta);
+                        }
+                    }
+                    catch (Exception exeption)
+                    {
+                        // 
+                        //SqlException pSQLException = (SqlException)exeption.InnerException;
+
+                        //Convert.ToString(pSqlException.Errors[0].Number
+                        // MessageBox.Show( exeption.InnerException.Message);
+                        MessageBox.Show(exeption.Message);
+                        //MessageBox.Show(Convert.ToString(pSQLException.Errors[0].Number));
+                    }
                 }
                 else
                 {
-                    pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
-                    FachadaABMCuenta.Instancia.ModificarCuenta(pCuenta);
+                    MessageBox.Show("Debe seleccionar un Servicio");
                 }
+ 
             }
-            catch (Exception exeption)
+            else
             {
-                // 
-                //SqlException pSQLException = (SqlException)exeption.InnerException;
-
-                //Convert.ToString(pSqlException.Errors[0].Number
-                // MessageBox.Show( exeption.InnerException.Message);
-                MessageBox.Show(exeption.Message);
-                //MessageBox.Show(Convert.ToString(pSQLException.Errors[0].Number));
+                MessageBox.Show("Verifique las contraseñas");
             }
+
+            
         }
 
         /// <summary>
@@ -114,14 +134,28 @@ namespace formPrincipal
             listaCuentas.Rows.Clear();
             foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
             {
-                object[] row = { aCuenta.Id, aCuenta.Nombre, aCuenta.Direccion, aCuenta.Contraseña };
+                object[] row = { aCuenta.Id, aCuenta.Nombre, aCuenta.Direccion, aCuenta.Contraseña , aCuenta.Servicio};
                // MessageBox.Show("Id de la cuenta a añadir: " + aCuenta.Id);          
                  listaCuentas.Rows.Add(row);            
             }
         }
 
+        /// <summary>
+        /// Metodo para cargar la informacion de los servicios.
+        /// </summary>
+        private void CargarServicios()
+        {
+            // Coloca las opciones de servicios
+            listaServicios.Items.Add("Seleccione un servicio");
+            listaServicios.Items.Add("Gmail");
+            listaServicios.Items.Add("Yahoo");
+            // Marca como seleccionada a la opción Seleccione un servicio.
+            listaServicios.SelectedIndex = 0;
+        }
+
         private void FormCuenta_Load(object sender, EventArgs e)
         {
+            CargarServicios();
             MostrarCuentas();
         }
 
@@ -133,7 +167,6 @@ namespace formPrincipal
         private void listaCuentas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indexSelected = e.RowIndex;
-           
 
             //Selecciona toda la fila
             listaCuentas.Rows[indexSelected].Selected = true;
@@ -143,21 +176,62 @@ namespace formPrincipal
             cuenta_usuario.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["usuario"].Value);
             cuenta_contraseña.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["contraseña"].Value);
             cuenta_contraseña2.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["contraseña"].Value);
+            
+            for (int i = 0;  i < listaServicios.Items.Count; i++)
+            {
+                if (Convert.ToString(listaServicios.Items[i]) == Convert.ToString(listaCuentas.Rows[indexSelected].Cells["servicio"].Value))
+                {
+                    listaServicios.SelectedIndex = i;
+                    break;
+                }
+            }
         }
 
+        /// <summary>
+        /// Método que se ejecuta cuando cambia el valor del TextBox cuenta_nombre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cuenta_nombre_TextChanged(object sender, EventArgs e)
         {
             listaCuentas.SelectedRows[0].Cells["nombre"].Value = cuenta_nombre.Text;              
         }
 
+        /// <summary>
+        /// Método que se ejecuta cuando cambia el valor del TextBox cuenta_usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cuenta_usuario_TextChanged(object sender, EventArgs e)
         {
             listaCuentas.SelectedRows[0].Cells["usuario"].Value = cuenta_usuario.Text;
         }
 
+
+        /// <summary>
+        /// Método que se ejecuta cuando cambia el valor del TextBox cuenta_contraseña
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cuenta_contraseña_TextChanged(object sender, EventArgs e)
         {
             listaCuentas.SelectedRows[0].Cells["contraseña"].Value = cuenta_contraseña.Text;
+        }
+
+
+        /// <summary>
+        /// Método que se ejecuta cuando cambia el valor del ComboBox listaServicios
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listaServicios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Cambia el valor en la fila seleccionada de listaCuntas solo si hay una fila seleccionada
+            if (listaCuentas.SelectedRows.Count==1)
+            {
+                listaCuentas.SelectedRows[0].Cells["servicio"].Value = Convert.ToString(listaServicios.SelectedItem);
+            }
+           
         }
 
         /// <summary>
@@ -176,6 +250,15 @@ namespace formPrincipal
             cuenta_usuario.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["usuario"].Value);
             cuenta_contraseña.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["contraseña"].Value);
             cuenta_contraseña2.Text = Convert.ToString(listaCuentas.Rows[indexSelected].Cells["contraseña"].Value);
+
+            for (int i = 0; i < listaServicios.Items.Count; i++)
+            {
+                if (Convert.ToString(listaServicios.Items[i]) == Convert.ToString(listaCuentas.Rows[indexSelected].Cells["servicio"].Value))
+                {
+                    listaServicios.SelectedIndex = i;
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -188,6 +271,8 @@ namespace formPrincipal
             //marca la fila como seleccionada, para no perder la fila seleccionada actual.
             listaCuentas.Rows[e.RowIndex].Selected = true;
         }
+
+
 
 
 

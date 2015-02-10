@@ -57,7 +57,8 @@ namespace Persistencia.SQLServer
                             Nombre = Convert.ToString(fila["nombre"]),
                             Direccion = Convert.ToString(fila["direccion"]),
                             Contraseña = Convert.ToString(fila["contraseña"]),
-                            Id = Convert.ToInt32(fila["cuentaId"])
+                            Id = Convert.ToInt32(fila["cuentaId"]),
+                            Servicio = Convert.ToString(fila["servicio"])
                         });
                     }
                 }
@@ -78,11 +79,12 @@ namespace Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"insert into Cuenta(Nombre,Direccion,Contraseña)
-                                                   values(@Nombre,@Direccion,@Contraseña)";
+                comando.CommandText = @"insert into Cuenta(Nombre,Direccion,Contraseña,Servicio)
+                                                   values(@Nombre,@Direccion,@Contraseña,@Servicio)";
                 comando.Parameters.AddWithValue("@Nombre", pCuentaCorreo.Nombre);
                 comando.Parameters.AddWithValue("@Direccion", pCuentaCorreo.Direccion);
                 comando.Parameters.AddWithValue("@Contraseña", pCuentaCorreo.Contraseña);
+                comando.Parameters.AddWithValue("@Servicio", pCuentaCorreo.Servicio);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
             }
@@ -105,13 +107,14 @@ namespace Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"update Cuenta set direccion= @Direccion,
-                                                                contraseña= @Contraseña, nombre = @Nombre                         
+                comando.CommandText = @"update Cuenta set direccion= @Direccion, contraseña= @Contraseña,
+                                                                 nombre = @Nombre, servicio = @Servicio                        
                                                                 where cuentaId = @ID";
                 comando.Parameters.AddWithValue("@Nombre", pCuentaCorreo.Nombre);
                 comando.Parameters.AddWithValue("@Direccion", pCuentaCorreo.Direccion);
                 comando.Parameters.AddWithValue("@Contraseña", pCuentaCorreo.Contraseña);
                 comando.Parameters.AddWithValue("@ID", pCuentaCorreo.Id);
+                comando.Parameters.AddWithValue("@Servicio", pCuentaCorreo.Servicio);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
             }

@@ -210,7 +210,7 @@ namespace formPrincipal
             //Siempre al cargar una o todas las cuentas muestra la lista de correos recibidos.
             listaEnviados.Visible = false;
             listaRecibidos.Visible = true;
-            //panelCorreo.Visible = false;
+            panelCorreo.Visible = false;
             //opcionesExportar.Visible = false;
         }
 
@@ -251,8 +251,8 @@ namespace formPrincipal
         {
             listaEnviados.Visible = false;
             listaRecibidos.Visible = true;
-           // panelCorreo.Visible = false;
-           // opcionesExportar.Visible = false;
+            panelCorreo.Visible = false;
+            //opcionesExportar.Visible = false;
         }
 
         /// <summary>
@@ -264,8 +264,8 @@ namespace formPrincipal
         {
             listaEnviados.Visible = true;
             listaRecibidos.Visible = false;
-           // panelCorreo.Visible = false;
-           // opcionesExportar.Visible = false;
+            panelCorreo.Visible = false;
+            //opcionesExportar.Visible = false;
         }
 
 
@@ -300,7 +300,7 @@ namespace formPrincipal
             correo_fecha.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["Fecha"].Value);
             correo_id.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
             panelCorreo.Visible = true;
-            //listaEnviados.Visible = false;
+            listaEnviados.Visible = false;
             opcionesExportar.Visible = true;
         }
 
@@ -322,7 +322,7 @@ namespace formPrincipal
             correo_fecha.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
             correo_id.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
             panelCorreo.Visible = true;
-            //listaRecibidos.Visible = false;
+            listaRecibidos.Visible = false;
             opcionesExportar.Visible = true;
             //label6.Visible = true;
             //radioButton1.Visible = true;

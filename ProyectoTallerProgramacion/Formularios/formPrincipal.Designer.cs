@@ -153,7 +153,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(745, 173);
+            this.textBox1.Size = new System.Drawing.Size(745, 338);
             this.textBox1.TabIndex = 8;
             // 
             // contextMenuStrip1
@@ -223,7 +223,6 @@
             this.opcionesExportar.TabIndex = 33;
             this.opcionesExportar.TabStop = false;
             this.opcionesExportar.Text = "Exportar";
-            this.opcionesExportar.Visible = false;
             // 
             // button6
             // 
@@ -257,7 +256,7 @@
             this.panelCorreo.Controls.Add(this.correo_asunto);
             this.panelCorreo.Location = new System.Drawing.Point(152, 27);
             this.panelCorreo.Name = "panelCorreo";
-            this.panelCorreo.Size = new System.Drawing.Size(817, 270);
+            this.panelCorreo.Size = new System.Drawing.Size(817, 488);
             this.panelCorreo.TabIndex = 34;
             // 
             // correo_id
@@ -364,7 +363,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.listaRecibidos.DefaultCellStyle = dataGridViewCellStyle2;
             this.listaRecibidos.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.listaRecibidos.Location = new System.Drawing.Point(152, 303);
+            this.listaRecibidos.Location = new System.Drawing.Point(152, 27);
             this.listaRecibidos.Name = "listaRecibidos";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -377,7 +376,7 @@
             this.listaRecibidos.RowHeadersVisible = false;
             this.listaRecibidos.RowHeadersWidth = 20;
             this.listaRecibidos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.listaRecibidos.Size = new System.Drawing.Size(817, 212);
+            this.listaRecibidos.Size = new System.Drawing.Size(817, 488);
             this.listaRecibidos.TabIndex = 38;
             this.listaRecibidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellClick);
             this.listaRecibidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellDoubleClick);
@@ -519,7 +518,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.listaEnviados.DefaultCellStyle = dataGridViewCellStyle5;
             this.listaEnviados.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.listaEnviados.Location = new System.Drawing.Point(152, 303);
+            this.listaEnviados.Location = new System.Drawing.Point(152, 27);
             this.listaEnviados.Name = "listaEnviados";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
@@ -533,7 +532,7 @@
             this.listaEnviados.RowHeadersWidth = 20;
             this.listaEnviados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.listaEnviados.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.listaEnviados.Size = new System.Drawing.Size(817, 212);
+            this.listaEnviados.Size = new System.Drawing.Size(817, 488);
             this.listaEnviados.TabIndex = 37;
             this.listaEnviados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellClick);
             this.listaEnviados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellDoubleClick);
@@ -662,9 +661,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.listaEnviados);
             this.Controls.Add(this.listaRecibidos);
             this.Controls.Add(this.panelCorreo);
-            this.Controls.Add(this.listaEnviados);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formPrincipal";

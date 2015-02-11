@@ -20,12 +20,6 @@ namespace CorreoServicio
         public Yahoo() : base("Yahoo") {}
 
         /// <summary>
-        /// Metodo utilizado para descargar correos de internet.
-        /// </summary>
-        /// <returns>Se devuelve un lista de correos.</returns>
-        //public override IList<CorreoDTO> DescargarCorreos(CuentaDTO pCuenta) { }
-
-        /// <summary>
         /// Metodo utilizado para enviar un correo.
         /// </summary>
         /// <param name="pCorreo">Correo a ser enviado.</param>
@@ -36,7 +30,6 @@ namespace CorreoServicio
             correo.To.Add(pCorreo.CuentaDestino);
             correo.Subject = pCorreo.Asunto;
             correo.Body = pCorreo.Texto;
-            /*
             if (pCorreo.Adjuntos != null) 
             {
                 foreach (string archivo in pCorreo.Adjuntos)
@@ -45,7 +38,6 @@ namespace CorreoServicio
                     correo.Attachments.Add(attach);
                 }
             }
-            */
             SmtpClient cliente = new SmtpClient("smtp.mail.yahoo.com");
             cliente.EnableSsl = true;
             cliente.Port = 587;

@@ -36,6 +36,40 @@ namespace Persistencia.SQLServer
         }
 
         /// <summary>
+        /// Metodo para obtener una cuenta de correo de la Base de Datos.
+        /// </summary>
+        /// <param name="pCuentaCorreo"></param>
+        /// <returns></returns>
+        public CuentaDTO ObtenerCuenta(CuentaDTO pCuentaCorreo)
+        {
+            try
+            {
+                SqlCommand comando = this.iConexion.CreateCommand();
+                comando.CommandText = @"select * from Cuenta where cuentaId = @ID or nombre = @Nombre";
+                comando.Parameters.AddWithValue("@ID", pCuentaCorreo.Id);
+                comando.Parameters.AddWithValue("@Nombre", pCuentaCorreo.Nombre);
+                DataTable tabla = new DataTable();
+                using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
+                {
+                    adaptador.Fill(tabla);
+                    foreach (DataRow fila in tabla.Rows)
+                    {
+                       pCuentaCorreo.Nombre = Convert.ToString(fila["nombre"]);
+                       pCuentaCorreo.Direccion = Convert.ToString(fila["direccion"]);
+                       pCuentaCorreo.Contraseña = Convert.ToString(fila["contraseña"]);
+                       pCuentaCorreo.Id = Convert.ToInt32(fila["cuentaId"]);
+                       pCuentaCorreo.Servicio = Convert.ToString(fila["servicio"]);
+                    }
+                }
+                return pCuentaCorreo;
+            }
+            catch (SqlException pSqlException)
+            {
+                throw new DAOException("Error en la obtención de una cuenta de correo", pSqlException);
+            }
+        }
+
+        /// <summary>
         /// Metodo para obtener la lista de cuentas de correo de la Base de Datos.
         /// </summary>
         /// <returns></returns>

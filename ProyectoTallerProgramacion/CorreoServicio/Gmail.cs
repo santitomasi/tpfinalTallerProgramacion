@@ -21,24 +21,16 @@ namespace CorreoServicio
         public Gmail() : base("Gmail") {}
 
         /// <summary>
-        /// Metodo utilizado para descargar correos de internet.
-        /// </summary>
-        /// <returns>Se devuelve un lista de correos.</returns>
-        //public override IList<CorreoDTO> DescargarCorreos(CuentaDTO pCuenta) { }
-
-        /// <summary>
         /// Metodo utilizado para enviar un correo.
         /// </summary>
         /// <param name="pCorreo">Correo a ser enviado.</param>
         public override void EnviarCorreo(CorreoDTO pCorreo)
         {
             MailMessage correo = new MailMessage();
-            correo.From = new MailAddress(pCorreo.CuentaOrigen);  // <--- ¿¿¿Cuenta origen???  _Rta: SII :D
+            correo.From = new MailAddress(pCorreo.CuentaOrigen);
             correo.To.Add(pCorreo.CuentaDestino);
             correo.Subject = pCorreo.Asunto;
             correo.Body = pCorreo.Texto;
-
-            /*
             if (pCorreo.Adjuntos != null) 
             {
                 foreach (string archivo in pCorreo.Adjuntos)
@@ -47,8 +39,6 @@ namespace CorreoServicio
                     correo.Attachments.Add(attach);
                 }
             }
-            */
-
             SmtpClient cliente = new SmtpClient("smtp.gmail.com");
             cliente.EnableSsl = true;
             cliente.Port = 587;
@@ -67,7 +57,7 @@ namespace CorreoServicio
         {
             Pop3Client pop = new Pop3Client();
             pop.Connect("pop.gmail.com", 995, true);
-            pop.Authenticate("santiagotommasi92", "marlou1006");
+            pop.Authenticate(pCuenta.Direccion, pCuenta.Contraseña);
             int cantidadMensajes = pop.GetMessageCount();
             List<CorreoDTO> mCorreos = new List<CorreoDTO>();
             //mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);

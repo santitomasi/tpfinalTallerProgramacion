@@ -53,6 +53,53 @@ namespace Controladores
         }
 
         /// <summary>
+        /// Metodo para completar la información de una cuenta de la Base de Datos.
+        /// </summary>
+        /// <param name="pNombre">Nombre de la cuenta a ser completada.</param>
+        /// <returns></returns>
+        public CuentaDTO ObtenerCuenta(string pNombre)
+        {
+            try
+            {
+                factory = DAOFactory.Instancia;
+                factory.IniciarConexion();
+
+                CuentaDTO cuenta = new CuentaDTO();
+                cuenta.Nombre = pNombre;
+                return factory.CuentaDAO.ObtenerCuenta(cuenta);
+            }
+            finally
+            {
+                //Haya o no un error, se cierra la transacción.
+                factory.FinalizarConexion();
+            }
+        }
+
+        /// <summary>
+        /// Metodo para completar la información de una cuenta de la Base de Datos.
+        /// </summary>
+        /// <param name="pId">Id de la cuenta a ser completada.</param>
+        /// <returns></returns>
+        public CuentaDTO ObtenerCuenta(int pId)
+        {
+            try
+            {
+                factory = DAOFactory.Instancia;
+                factory.IniciarConexion();
+
+                CuentaDTO cuenta = new CuentaDTO();
+                cuenta.Id = pId;
+                return factory.CuentaDAO.ObtenerCuenta(cuenta);
+            }
+            finally
+            {
+                //Haya o no un error, se cierra la transacción.
+                factory.FinalizarConexion();
+            }
+        }
+
+
+        /// <summary>
         /// Método para listar todas las cuentas de correo de la Base de Datos.
         /// </summary>
         /// <returns>Una lista con todos las cuentas de la base de datos.</returns>

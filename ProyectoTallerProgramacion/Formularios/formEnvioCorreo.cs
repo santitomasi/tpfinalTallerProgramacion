@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net.Mail;
 using Controladores;
 using DataTransferObject;
 
@@ -20,17 +19,15 @@ namespace formPrincipal
         public formEnvioCorreo()
         {
             InitializeComponent();
-
         }
 
         /// <summary>
-        /// Metodo que se dispara al hacer click en el boton ENVIAR.
+        /// Metodo que se dispara al hacer click en el boton ENVIAR para enviar un correo.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-
             CorreoDTO pCorreo = new CorreoDTO();
             pCorreo.Leido = 0;
             pCorreo.CuentaOrigen = Convert.ToString(listaCuentas.SelectedItem);
@@ -40,44 +37,31 @@ namespace formPrincipal
             pCorreo.Texto = textBox3.Text;
             pCorreo.TipoCorreo = "Enviado";
             pCorreo.Adjuntos = archivos;
-            FachadaCorreo.Instancia.CrearCorreo(pCorreo);
 
-            MessageBox.Show("Enviado con exito!");
-
-
-
-
-            MailMessage correo = new MailMessage();
-            correo.From = new MailAddress("santiagotommasi92@gmail.com");
-            correo.To.Add(textBox4.Text);
-            correo.Subject = textBox2.Text;
-            correo.Body = textBox3.Text;
-
-            if (archivos != null)
+            try
             {
-                foreach (string archivo in archivos)
-                {
-                    Attachment attach = new Attachment(@archivo);
-                    correo.Attachments.Add(attach);
-                }
-                archivos.Clear();
+                //Guardamos el correo en la base de datos.
+                FachadaCorreo.Instancia.CrearCorreo(pCorreo);
             }
+            catch //CONSIDERAR LA EXCEPCION DE PERSISTENCIA.
+            {}
 
+            try
+            {
+                //Enviamos el correo.
+                FachadaCorreo.Instancia.EnviarCorreo(pCorreo);
+            }
+            catch  //CONSIDERAR LA EXCEPCION DE PERSISTENCIA.
+            {}
             
-            SmtpClient cliente = new SmtpClient("smtp.gmail.com");
-            cliente.EnableSsl = true;
-            cliente.Port = 587;
-            cliente.Credentials = new System.Net.NetworkCredential("santiagotommasi92@gmail.com", "password");
-            
-            //Aca tendriamos que poner un try-catch
-            cliente.Send(correo);
-
-            Close();
-
-
-
+            MessageBox.Show("Enviado con exito!");
         }
 
+        /// <summary>
+        /// Metodo que se dispara al hacer click en el boton Agregar Archivo Adjunto.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();
@@ -114,19 +98,17 @@ namespace formPrincipal
                 // marca como seleccionada a la opción Seleccionar Cuenta.
                 listaCuentas.SelectedIndex = listaCuentas.Items.Count - 1;
             }
-
-
         }
 
+        /// <summary>
+        /// Metodo que se dispara cuando carga el formulario para mostrar las cuentas en el 
+        /// menú desplegable.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void formEnvioCorreo_Load(object sender, EventArgs e)
         {
             MostrarCuentas();
         }
-
-        private void listaCuentas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

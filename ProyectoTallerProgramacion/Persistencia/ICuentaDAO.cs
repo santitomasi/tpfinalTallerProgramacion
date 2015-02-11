@@ -31,6 +31,13 @@ namespace Persistencia
         void EliminarCuenta(CuentaDTO pCuentaCorreo);
 
         /// <summary>
+        /// Metodo para obtener mas informacion sobre una cuenta de la Base de Datos.
+        /// </summary>
+        /// <param name="pCuentaCorreo">Cuenta a ser buscada y completada en la Base de Datos.</param>
+        /// <returns></returns>
+        CuentaDTO ObtenerCuenta(CuentaDTO pCuentaCorreo);
+
+        /// <summary>
         /// Metodo para obtener las Cuentas de Correo de la Base de Datos.
         /// </summary>
         /// <returns>Retorna una lista de cuentas de correo de la clase CuentaCorreo.</returns>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Persistencia;
 using DataTransferObject;
 using Exportacion;
+using CorreoServicio;
 
 
 namespace Controladores
@@ -40,6 +41,16 @@ namespace Controladores
         {
             Exportador.IExportador exportador = fabricaExportadores.GetExportador(pExportador);
             exportador.Exportar(pCorreo,pRuta);
+        }
+
+        /// <summary>
+        /// Metodo para enviar un correo.
+        /// </summary>
+        /// <param name="pCorreo"></param>
+        public void EnviarCorreo(CorreoDTO pCorreo)
+        {
+            string nomServicio = FachadaABMCuenta.Instancia.ObtenerCuenta(pCorreo.CuentaOrigen).Servicio;
+            FabricaServicios.Instancia.GetServicio(nomServicio).EnviarCorreo(pCorreo);
         }
 
         /// <summary>

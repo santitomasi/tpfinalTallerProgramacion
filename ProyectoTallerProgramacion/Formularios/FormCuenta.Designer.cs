@@ -36,6 +36,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listaCuentas = new System.Windows.Forms.DataGridView();
+            this.cuentaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuenta_contraseña2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -45,11 +50,6 @@
             this.cuenta_id = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.listaServicios = new System.Windows.Forms.ComboBox();
-            this.cuentaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.listaCuentas)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -110,8 +110,10 @@
             // listaCuentas
             // 
             this.listaCuentas.AllowUserToAddRows = false;
+            this.listaCuentas.AllowUserToOrderColumns = true;
             this.listaCuentas.AllowUserToResizeColumns = false;
             this.listaCuentas.AllowUserToResizeRows = false;
+            this.listaCuentas.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listaCuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaCuentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cuentaId,
@@ -130,6 +132,40 @@
             this.listaCuentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_CellClick);
             this.listaCuentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_CellDoubleClick);
             this.listaCuentas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_RowEnter);
+            // 
+            // cuentaId
+            // 
+            this.cuentaId.HeaderText = "ID";
+            this.cuentaId.Name = "cuentaId";
+            this.cuentaId.ReadOnly = true;
+            this.cuentaId.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Width = 200;
+            // 
+            // usuario
+            // 
+            this.usuario.HeaderText = "Usuario";
+            this.usuario.Name = "usuario";
+            this.usuario.ReadOnly = true;
+            this.usuario.Width = 250;
+            // 
+            // contraseña
+            // 
+            this.contraseña.HeaderText = "Contraseña";
+            this.contraseña.Name = "contraseña";
+            this.contraseña.ReadOnly = true;
+            this.contraseña.Width = 200;
+            // 
+            // servicio
+            // 
+            this.servicio.HeaderText = "Servicio";
+            this.servicio.Name = "servicio";
+            this.servicio.ReadOnly = true;
             // 
             // cuenta_contraseña2
             // 
@@ -209,40 +245,6 @@
             this.listaServicios.Size = new System.Drawing.Size(188, 21);
             this.listaServicios.TabIndex = 2;
             this.listaServicios.SelectedIndexChanged += new System.EventHandler(this.listaServicios_SelectedIndexChanged);
-            // 
-            // cuentaId
-            // 
-            this.cuentaId.HeaderText = "ID";
-            this.cuentaId.Name = "cuentaId";
-            this.cuentaId.ReadOnly = true;
-            this.cuentaId.Visible = false;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 200;
-            // 
-            // usuario
-            // 
-            this.usuario.HeaderText = "Usuario";
-            this.usuario.Name = "usuario";
-            this.usuario.ReadOnly = true;
-            this.usuario.Width = 250;
-            // 
-            // contraseña
-            // 
-            this.contraseña.HeaderText = "Contraseña";
-            this.contraseña.Name = "contraseña";
-            this.contraseña.ReadOnly = true;
-            this.contraseña.Width = 200;
-            // 
-            // servicio
-            // 
-            this.servicio.HeaderText = "Servicio";
-            this.servicio.Name = "servicio";
-            this.servicio.ReadOnly = true;
             // 
             // label6
             // 

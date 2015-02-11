@@ -261,9 +261,9 @@
             // 
             // correo_id
             // 
-            this.correo_id.Location = new System.Drawing.Point(628, 15);
+            this.correo_id.Location = new System.Drawing.Point(766, 29);
             this.correo_id.Name = "correo_id";
-            this.correo_id.Size = new System.Drawing.Size(100, 20);
+            this.correo_id.Size = new System.Drawing.Size(46, 20);
             this.correo_id.TabIndex = 16;
             this.correo_id.Visible = false;
             // 
@@ -271,7 +271,7 @@
             // 
             this.correo_cuentaDestino.AutoSize = true;
             this.correo_cuentaDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correo_cuentaDestino.Location = new System.Drawing.Point(336, 28);
+            this.correo_cuentaDestino.Location = new System.Drawing.Point(381, 28);
             this.correo_cuentaDestino.Name = "correo_cuentaDestino";
             this.correo_cuentaDestino.Size = new System.Drawing.Size(59, 18);
             this.correo_cuentaDestino.TabIndex = 14;
@@ -281,7 +281,7 @@
             // 
             this.correo_fecha.AutoSize = true;
             this.correo_fecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correo_fecha.Location = new System.Drawing.Point(493, 28);
+            this.correo_fecha.Location = new System.Drawing.Point(633, 28);
             this.correo_fecha.Name = "correo_fecha";
             this.correo_fecha.Size = new System.Drawing.Size(54, 18);
             this.correo_fecha.TabIndex = 13;
@@ -291,7 +291,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(286, 28);
+            this.label7.Location = new System.Drawing.Point(331, 28);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 18);
             this.label7.TabIndex = 12;
@@ -376,6 +376,7 @@
             this.listaRecibidos.RowHeadersVisible = false;
             this.listaRecibidos.RowHeadersWidth = 20;
             this.listaRecibidos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.listaRecibidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaRecibidos.Size = new System.Drawing.Size(817, 488);
             this.listaRecibidos.TabIndex = 38;
             this.listaRecibidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellClick);
@@ -435,12 +436,14 @@
             // 
             this.leido.HeaderText = "Leido";
             this.leido.Name = "leido";
+            this.leido.ReadOnly = true;
             this.leido.Visible = false;
             // 
             // texto
             // 
             this.texto.HeaderText = "Mensaje";
             this.texto.Name = "texto";
+            this.texto.ReadOnly = true;
             this.texto.Visible = false;
             // 
             // Fecha
@@ -461,6 +464,7 @@
             // 
             this.cuentaOrigen.HeaderText = "De";
             this.cuentaOrigen.Name = "cuentaOrigen";
+            this.cuentaOrigen.ReadOnly = true;
             this.cuentaOrigen.Visible = false;
             // 
             // asunto
@@ -473,12 +477,14 @@
             // 
             this.tipoCorreo.HeaderText = "Tipo Correo";
             this.tipoCorreo.Name = "tipoCorreo";
+            this.tipoCorreo.ReadOnly = true;
             this.tipoCorreo.Visible = false;
             // 
             // correoId
             // 
             this.correoId.HeaderText = "correoid";
             this.correoId.Name = "correoId";
+            this.correoId.ReadOnly = true;
             this.correoId.Visible = false;
             // 
             // listaEnviados
@@ -519,7 +525,9 @@
             this.listaEnviados.DefaultCellStyle = dataGridViewCellStyle5;
             this.listaEnviados.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listaEnviados.Location = new System.Drawing.Point(152, 27);
+            this.listaEnviados.MultiSelect = false;
             this.listaEnviados.Name = "listaEnviados";
+            this.listaEnviados.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -532,6 +540,7 @@
             this.listaEnviados.RowHeadersWidth = 20;
             this.listaEnviados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.listaEnviados.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.listaEnviados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaEnviados.Size = new System.Drawing.Size(817, 488);
             this.listaEnviados.TabIndex = 37;
             this.listaEnviados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellClick);
@@ -661,9 +670,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelCorreo);
             this.Controls.Add(this.listaEnviados);
             this.Controls.Add(this.listaRecibidos);
-            this.Controls.Add(this.panelCorreo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formPrincipal";

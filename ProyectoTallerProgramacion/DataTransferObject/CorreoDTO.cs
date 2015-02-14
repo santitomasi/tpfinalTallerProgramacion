@@ -62,23 +62,6 @@ namespace DataTransferObject
         public CorreoDTO() {}
 
         /// <summary>
-        /// Constructor de una instancia de la clase Correo .
-        /// </summary>
-        public CorreoDTO(int pId, DateTime pFecha, string pTipoCorreo, string pTexto, string pCuentaOrigen,
-                         string pCuentaDestino, string pAsunto, int pLeido, List<string> pAdjuntos) 
-        {
-            iId = pId;
-            iFecha = pFecha;
-            iTipoCorreo = pTipoCorreo;
-            iTexto = pTexto;
-            iCuentaOrigen = pCuentaOrigen;
-            iCuentaDestino = pCuentaDestino;
-            iAsunto = pAsunto;
-            iLeido = pLeido;
-            iAdjuntos = pAdjuntos;
-        }
-
-        /// <summary>
         /// Metodo que devuelve el correo en formato string.
         /// </summary>
         /// <returns></returns>

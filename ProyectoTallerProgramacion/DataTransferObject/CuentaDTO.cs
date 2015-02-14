@@ -42,7 +42,7 @@ namespace DataTransferObject
         public CuentaDTO() {}
 
         /// <summary>
-        /// 
+        /// Metodo que devuelva la cuenta en formato String.
         /// </summary>
         /// <returns></returns>
         public string toString()

@@ -8,7 +8,7 @@ using DataTransferObject;
 namespace CorreoServicio
 {
     /// <summary>
-    /// Clase abstracta que sirve de base para los distintos exportadores que se deseen implementar.
+    /// Clase abstracta que sirve de base para los distintos servicios de correo que se deseen implementar.
     /// </summary>
     public abstract class ServicioCorreo : IServicioCorreo
     {
@@ -36,7 +36,7 @@ namespace CorreoServicio
         }
 
         /// <summary>
-        /// Metodo abstracto que descarga los correos de un Servicio de correo refrentes a una cuenta.
+        /// Metodo abstracto que descarga los correos de un Servicio de correo referentes a una cuenta.
         /// </summary>
         /// <param name="pCuenta">Cuenta de la cual se descargan los correos.</param>
         /// <returns>Retorna una lista de correos.</returns>

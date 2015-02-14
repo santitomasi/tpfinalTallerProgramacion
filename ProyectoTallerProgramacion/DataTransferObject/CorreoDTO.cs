@@ -79,7 +79,7 @@ namespace DataTransferObject
         }
 
         /// <summary>
-        /// 
+        /// Metodo que devuelve el correo en formato string.
         /// </summary>
         /// <returns></returns>
         public string toString()
@@ -106,7 +106,7 @@ namespace DataTransferObject
         }
 
         /// <summary>
-        /// Propiedad de lectura y escritura de la Hora.
+        /// Propiedad de lectura y escritura del tipo de correo.
         /// </summary>
         public string TipoCorreo
         {

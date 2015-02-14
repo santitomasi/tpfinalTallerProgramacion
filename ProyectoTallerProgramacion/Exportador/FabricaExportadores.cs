@@ -11,10 +11,15 @@ namespace Exportador
     /// </summary>
     public class FabricaExportadores
     {
-        //Atributo utilizado para lograr mantener una única instancia de la clase.
+        /// <summary>
+        /// Atributo utilizado para lograr mantener una única instancia de la clase.
+        /// </summary>
         private static FabricaExportadores cInstancia = null;
 
-        //Atributo de tipo diccionario responsable de relacionar los nombres de los exportadores con los mismos.
+        /// <summary>
+        /// Atributo de tipo diccionario responsable de relacionar los nombres de los exportadores
+        /// con los mismos.
+        /// </summary>
         private IDictionary<string,IExportador> iExportadores;
 
         /// <summary>
@@ -31,22 +36,6 @@ namespace Exportador
             this.iExportadores.Add("EML", exportadorEML);
             this.iExportadores.Add("TXT", exportadorTextoPlano);
         }
-
-
-        /// <summary>
-        /// Propiedad utilizada para lograr mantener una únca instancia de la clase FabricaExportadores.
-        /// </summary>
-        public static FabricaExportadores Instancia
-        {
-            get 
-            { 
-                if (cInstancia == null)
-                {
-                    cInstancia = new FabricaExportadores();
-                }
-                return cInstancia;
-            }
-        }
         
         /// <summary>
         /// Metodo responsable de buscar y devolverte un exportador dependiendo del nombre como parametro.
@@ -59,6 +48,21 @@ namespace Exportador
             IExportador exportador = this.iExportadores[nombre];
 
             return exportador;
+        }
+
+        /// <summary>
+        /// Propiedad utilizada para lograr mantener una únca instancia de la clase FabricaExportadores.
+        /// </summary>
+        public static FabricaExportadores Instancia
+        {
+            get
+            {
+                if (cInstancia == null)
+                {
+                    cInstancia = new FabricaExportadores();
+                }
+                return cInstancia;
+            }
         }
     }
 }

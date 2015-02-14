@@ -11,15 +11,20 @@ namespace CorreoServicio
     /// </summary>
     public class FabricaServicios 
     {
-        //Atributo utilizado para lograr mantener una única instancia de la clase.
+        /// <summary>
+        /// Atributo utilizado para lograr mantener una única instancia de la clase.
+        /// </summary>
         private static FabricaServicios cInstancia = null;
 
-        //Atributo de tipo diccionario responsable de relacionar los nombres de los servicios con los mismos.
+        /// <summary>
+        /// Atributo de tipo diccionario responsable de relacionar los nombres de los servicios
+        /// con los mismos.
+        /// </summary>
         private IDictionary<string, IServicioCorreo> iServicios;
 
         /// <summary>
-        /// Constructor de la clase FabricaExportadores responsable de colocar en el diccionario
-        /// los exportadores con sus respectivos nombres.
+        /// Constructor de la clase FabricaServicios responsable de colocar en el diccionario
+        /// los servicios con sus respectivos nombres.
         /// </summary>
         private FabricaServicios()
             {
@@ -48,7 +53,7 @@ namespace CorreoServicio
         }
 
         /// <summary>
-        /// Metodo responsable de buscar y devolverte un servicio dependiendo del nombre como parametro.
+        /// Metodo responsable de buscar y devolver un servicio dependiendo del nombre como parametro.
         /// </summary>
         /// <param name="nombre">nombre de tipo string que hace referencia al servicio a buscar.</param>
         /// <returns>Devuelve un servicio de tipo IServicio buscado.</returns>

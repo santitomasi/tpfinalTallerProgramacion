@@ -70,7 +70,7 @@ namespace CorreoServicio
                 mensaje = pop.GetMessage(i);
                 mCorreos.Add(new CorreoDTO()
                 {
-                    Fecha = Convert.ToDateTime(mensaje.Headers.Date),
+                    Fecha = Convert.ToDateTime(mensaje.Headers.DateSent),
                     TipoCorreo = "Recibido",
                     Texto = mensaje.ToMailMessage().Body,                    
                     CuentaOrigen = mensaje.Headers.From.Address,

@@ -33,7 +33,7 @@ namespace Exportador
                                  "de " + pCorreo.Fecha.ToString("MMMM") + " de " + pCorreo.Fecha.ToString("yyyy"), 
                                  " ", pCorreo.Texto};
             //Creamos y escribimos el archivo en la ruta especificada por el usuario.
-            System.IO.File.WriteAllLines(pRuta + "\\" + pCorreo.Asunto.Trim() +".txt", lines);
+            System.IO.File.WriteAllLines(pRuta + "\\" + pCorreo.Asunto +".txt", lines);
         }
 
     }

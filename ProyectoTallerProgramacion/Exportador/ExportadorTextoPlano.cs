@@ -28,10 +28,12 @@ namespace Exportador
         public override void Exportar(CorreoDTO pCorreo,string pRuta)
         {
             //Formamos un array de string para luego escribir en el archivo.
-            string[] lines = {pCorreo.CuentaOrigen, pCorreo.CuentaDestino, Convert.ToString(pCorreo.Fecha), 
-                              pCorreo.Asunto, pCorreo.Texto};
+            string[] lines = {"De: <" + pCorreo.CuentaOrigen + ">", "Para: <" + pCorreo.CuentaDestino + ">", 
+                                 "Asunto: " + pCorreo.Asunto, "Fecha: " + pCorreo.Fecha.ToString("dddd, dd ") +
+                                 "de " + pCorreo.Fecha.ToString("MMMM") + " de " + pCorreo.Fecha.ToString("yyyy"), 
+                                 " ", pCorreo.Texto};
             //Creamos y escribimos el archivo en la ruta especificada por el usuario.
-            System.IO.File.WriteAllLines(pRuta + "\\Correo" + pCorreo.Asunto.Trim() +".txt", lines);
+            System.IO.File.WriteAllLines(pRuta + "\\" + pCorreo.Asunto.Trim() +".txt", lines);
         }
 
     }

@@ -31,7 +31,7 @@ namespace Exportador
             string[] lines = {pCorreo.CuentaOrigen, pCorreo.CuentaDestino, Convert.ToString(pCorreo.Fecha), 
                               pCorreo.Asunto, pCorreo.Texto};
             //Creamos y escribimos el archivo en la ruta especificada por el usuario.
-            System.IO.File.WriteAllLines(pRuta + "\\Correo" + pCorreo.Id +".txt", lines);
+            System.IO.File.WriteAllLines(pRuta + "\\Correo" + pCorreo.Asunto.Trim() +".txt", lines);
         }
 
     }

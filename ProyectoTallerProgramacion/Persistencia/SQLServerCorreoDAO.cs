@@ -35,6 +35,40 @@ namespace Persistencia.SQLServer
             this.iTransaccion = pTransaccion;
         }
 
+
+        /// <summary>
+        /// Metodo para determinar si un correo ya existe en la base de datos.
+        /// </summary>
+        /// <param name="pCorreo">Correo a buscar en la base de datos.</param>
+        /// <returns>False si el correo no existe en la base, true de lo contrario.</returns>
+        public bool Existe(CorreoDTO pCorreo)
+        {
+            bool encontrado = false;
+            try
+            {
+                SqlCommand comando = this.iConexion.CreateCommand();
+                comando.CommandText = @"select * from Correo where (correoId = @ID or correoServicioId = @ServicioId)";
+                comando.Parameters.AddWithValue("@ID", pCorreo.Id);
+                comando.Parameters.AddWithValue("@ServicioId", pCorreo.ServicioId);
+                comando.Transaction = iTransaccion;
+                DataTable tabla = new DataTable();
+                using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
+                {
+                    adaptador.Fill(tabla);
+                    if (tabla.Rows.Count> 0)
+                    {
+                        //Si encuentra un correo con el mismo id o idServicio  en la base marca encontrado como verdadero 
+                        encontrado = true;
+                    }
+                }
+                return encontrado;
+            }
+            catch (SqlException pSqlException)
+            {
+                throw new DAOException("Error en la busqueda del correo", pSqlException);
+            }
+        }
+
         /// <summary>
         /// Metodo para obtener la lista de correos de la Base de Datos.
         /// </summary>
@@ -61,7 +95,8 @@ namespace Persistencia.SQLServer
                             CuentaOrigen = Convert.ToString(fila["cuentaOrigen"]),
                             CuentaDestino = Convert.ToString(fila["cuentaDestino"]),
                             Asunto = Convert.ToString(fila["Asunto"]),
-                            Leido = Convert.ToInt32(fila["leido"])
+                            Leido = Convert.ToInt32(fila["leido"]),
+                            ServicioId = Convert.ToString(fila["correoServicioId"])
                         });
                     }
                 }
@@ -100,7 +135,8 @@ namespace Persistencia.SQLServer
                            CuentaOrigen = Convert.ToString(fila["cuentaOrigen"]),
                            CuentaDestino = Convert.ToString(fila["cuentaDestino"]),
                            Asunto = Convert.ToString(fila["Asunto"]),
-                           Leido = Convert.ToInt32(fila["leido"])
+                           Leido = Convert.ToInt32(fila["leido"]),
+                           ServicioId = Convert.ToString(fila["correoServicioId"])
                         });
                         
                     }
@@ -119,24 +155,26 @@ namespace Persistencia.SQLServer
         /// <param name="pCorreo"></param>
         public void AgregarCorreo(CorreoDTO pCorreo)
         {
+            
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"insert into Correo(fecha,tipocorreo,texto,cuentaOrigen,cuentaDestino,asunto,leido)
-                                                   values(@Fecha,@TipoCorreo,@Texto,@Origen,@Destino,@Asunto,@Leido)";
+                comando.CommandText = @"insert into Correo(fecha,tipocorreo,cuentaOrigen,cuentaDestino,texto,asunto,leido,correoServicioId) 
+                                        values(@Fecha,@TipoCorreo,@CuentaOrigen,@Destino,@Texto,@Asunto,@Leido,@correoServicioId)";
                 comando.Parameters.AddWithValue("@Fecha", pCorreo.Fecha);
                 comando.Parameters.AddWithValue("@TipoCorreo", pCorreo.TipoCorreo);
-                comando.Parameters.AddWithValue("@Texto", pCorreo.Texto);
-                comando.Parameters.AddWithValue("@Origen", pCorreo.CuentaOrigen);
+                comando.Parameters.AddWithValue("@CuentaOrigen", pCorreo.CuentaOrigen);
                 comando.Parameters.AddWithValue("@Destino", pCorreo.CuentaDestino);
+                comando.Parameters.AddWithValue("@Texto", pCorreo.Texto);
                 comando.Parameters.AddWithValue("@Asunto", pCorreo.Asunto);
                 comando.Parameters.AddWithValue("@Leido", pCorreo.Leido);
+                comando.Parameters.AddWithValue("@correoServicioId", pCorreo.ServicioId);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
             }
             catch (SqlException pSqlException)
             {
-                new DAOException("Error en la inserción de datos de correo", pSqlException);
+                throw new DAOException("Error en la inserción de datos de correo", pSqlException);
             }
         }
 

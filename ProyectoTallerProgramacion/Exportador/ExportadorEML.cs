@@ -32,11 +32,10 @@ namespace Exportador
             correo.To.Add(pCorreo.CuentaDestino);
             correo.Subject = pCorreo.Asunto;
             correo.Body = pCorreo.Texto;
-
             SmtpClient client = new SmtpClient("mysmtphost");
-            client.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;
-            client.PickupDirectoryLocation = pRuta;
-            client.Send(correo);
+            client.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;      
+            client.PickupDirectoryLocation = pRuta;           
+            client.Send(correo);          
         }
     }
 }

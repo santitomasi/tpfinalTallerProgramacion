@@ -35,5 +35,13 @@ namespace Persistencia
         /// </summary>
         /// <returns>Retorna una lista de correos con los correos de la cuenta <paramref name="pCuenta"/>.</returns>
         IList<CorreoDTO> ObtenerCorreos(string pCuenta);
+
+        /// <summary>
+        /// Metodo para determinar si un correo ya existe en la base de datos.
+        /// </summary>
+        /// <param name="pCorreo">Correo a buscar en la base de datos.</param>
+        /// <returns>False si el correo no existe en la base, true de lo contrario.</returns>
+        bool Existe(CorreoDTO pCorreo);
+        
     }
 }

@@ -27,10 +27,13 @@ namespace CorreoServicio
         public override void EnviarCorreo(CorreoDTO pCorreo)
         {
             MailMessage correo = new MailMessage();
-            correo.From = new MailAddress(pCorreo.CuentaOrigen);
+            
+            // Ver si ponemos iDireccion o pCorreo.CuentaOrigen
+
+            correo.From = new MailAddress(this.Direccion);
             correo.To.Add(pCorreo.CuentaDestino);
             correo.Subject = pCorreo.Asunto;
-            correo.Body = pCorreo.Texto;
+            correo.Body = pCorreo.Texto;            
             if (pCorreo.Adjuntos != null) 
             {
                 foreach (string archivo in pCorreo.Adjuntos)
@@ -42,7 +45,7 @@ namespace CorreoServicio
             SmtpClient cliente = new SmtpClient("smtp.gmail.com");
             cliente.EnableSsl = true;
             cliente.Port = 587;
-            cliente.Credentials = new System.Net.NetworkCredential(pCorreo.CuentaOrigen,"contraseña");
+            cliente.Credentials = new System.Net.NetworkCredential(this.Direccion,this.Contraseña);
 
             //Aca tendriamos que poner un try-catch
             cliente.Send(correo);
@@ -60,22 +63,21 @@ namespace CorreoServicio
             pop.Authenticate(pCuenta.Direccion, pCuenta.Contraseña);
             int cantidadMensajes = pop.GetMessageCount();
             List<CorreoDTO> mCorreos = new List<CorreoDTO>();
-            //mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
             OpenPop.Mime.Message mensaje;
             
-            for (int i = cantidadMensajes; i > 0; i--)       //nose si son necesarios dos ciclos!!!
+            for (int i = cantidadMensajes; i > 0; i--)      
             {
                 mensaje = pop.GetMessage(i);
-                //mensajes.Add(pop.GetMessage(i));
                 mCorreos.Add(new CorreoDTO()
                 {
                     Fecha = Convert.ToDateTime(mensaje.Headers.Date),
                     TipoCorreo = "Recibido",
-                    Texto = mensaje.ToMailMessage().Body,
+                    Texto = mensaje.ToMailMessage().Body,                    
                     CuentaOrigen = mensaje.Headers.From.Address,
-                    CuentaDestino = "cuenta.nombre",
+                    CuentaDestino = pCuenta.Direccion,    // Reemplazar esto!!!
                     Asunto = mensaje.Headers.Subject,
-                    Leido = 0
+                    Leido = 0,
+                    ServicioId = mensaje.Headers.MessageId
                 });
             }
             

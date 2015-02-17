@@ -67,6 +67,10 @@ namespace formPrincipal
                         {
                             FachadaABMCuenta.Instancia.CrearCuenta(pCuenta);
 
+
+                            // poner un valor en el campo id, sino si se hace 2 veces click en guardar se produce un error jeje
+                            // En realidad  se deberia actualizar el formulario entero y lesto...
+
                         }
                         else
                         {

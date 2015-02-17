@@ -33,8 +33,8 @@ namespace CorreoServicio
                 Gmail servicioGmail = new Gmail();
                 Yahoo servicioYahoo = new Yahoo();
 
-                this.iServicios.Add("GMAIL", servicioGmail);
-                this.iServicios.Add("YAHOO", servicioYahoo);
+                this.iServicios.Add("Gmail", servicioGmail);
+                this.iServicios.Add("Yahoo", servicioYahoo);
             }
 
         /// <summary>

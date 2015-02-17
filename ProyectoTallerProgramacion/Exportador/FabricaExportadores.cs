@@ -34,7 +34,7 @@ namespace Exportador
             ExportadorTextoPlano exportadorTextoPlano = new ExportadorTextoPlano();
 
             this.iExportadores.Add("EML", exportadorEML);
-            this.iExportadores.Add("TXT", exportadorTextoPlano);
+            this.iExportadores.Add("Texto Plano", exportadorTextoPlano);
         }
         
         /// <summary>

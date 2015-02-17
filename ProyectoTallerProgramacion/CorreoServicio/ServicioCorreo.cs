@@ -18,6 +18,16 @@ namespace CorreoServicio
         private string iNombre;
 
         /// <summary>
+        /// Atributo Direccion.
+        /// </summary>
+        private string iDireccion;
+
+        /// <summary>
+        /// Atributo Contraseña.
+        /// </summary>
+        private string iContraseña;
+
+        /// <summary>
         /// Constructor de la clase Servicio tomando como parametro el nombre
         /// del Servicio de correo que se instancia.
         /// </summary>
@@ -25,6 +35,8 @@ namespace CorreoServicio
         public ServicioCorreo(string pNombre)
         {
             this.iNombre = pNombre;
+            this.iContraseña = "";
+            this.iDireccion = "";
         }
 
         /// <summary>
@@ -33,6 +45,24 @@ namespace CorreoServicio
         public string Nombre
         {
             get { return this.iNombre; }
+        }
+
+        /// <summary>
+        /// Propiedad de lectura escritura de la direccion.
+        /// </summary>
+        public string Direccion
+        {
+            get { return this.iDireccion; }
+            set { this.iDireccion = value; }
+        }
+
+        /// <summary>
+        /// Propiedad de lectura escritura de la contraseña.
+        /// </summary>
+        public string Contraseña
+        {
+            get { return this.iContraseña; }
+            set { this.iContraseña = value; }
         }
 
         /// <summary>

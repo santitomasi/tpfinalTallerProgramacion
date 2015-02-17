@@ -17,6 +17,11 @@ namespace DataTransferObject
         private int iId;
 
         /// <summary>
+        /// Atributo ID del correo en el servicio.
+        /// </summary>
+        private string iServicioId;
+
+        /// <summary>
         /// Atributo fecha.
         /// </summary>
         private DateTime iFecha;
@@ -78,7 +83,16 @@ namespace DataTransferObject
             get { return this.iId; }
             set { this.iId = value; }
         }
-        
+
+        /// <summary>
+        /// Propiedad de lectura y escritura del ID del correo en el servicio.
+        /// </summary>
+        public string ServicioId
+        {
+            get { return this.iServicioId; }
+            set { this.iServicioId = value; }
+        }
+
         /// <summary>
         /// Propiedad de lectura y escritura de la Fecha.
         /// </summary>

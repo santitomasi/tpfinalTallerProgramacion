@@ -31,29 +31,49 @@ namespace formPrincipal
             frm.ShowDialog();
         }
 
+
+        private void ActualizarCuenta(CuentaDTO pCuenta)
+        {
+            try
+            {
+                FachadaCorreo.Instancia.DescargarCorreos(pCuenta);
+            }
+            catch (Exception exeption)
+            {
+                // crear una excepcion para esto!!!
+                MessageBox.Show(exeption.Message);
+
+                MessageBox.Show(exeption.InnerException.Message);
+            }
+        }
+
+
         private void btActualizar_Click(object sender, EventArgs e)
         {
-            progressBar1.Visible = true;
-            
-            Pop3Client pop = new Pop3Client();
-            pop.Connect("pop.gmail.com", 995, true);
-            pop.Authenticate("santiagotommasi92", "marlou1006");
-            int cantidadMensajes = pop.GetMessageCount();
-            mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
+            progressBar1.Visible = true;          
+        //  progressBar1.PerformStep();                
 
-            for (int i = cantidadMensajes; i > 0; i--)       //nose si son necesarios dos ciclos!!!
-            {
-                mensajes.Add(pop.GetMessage(i));
-                progressBar1.PerformStep();                
-            }
+            //Busca la o las cuentas seleccionadas en listaCuentas
+            Int32 row = listaCuentas.SelectedIndex;
+            string cuentaSeleccionada = Convert.ToString(listaCuentas.Items[row]);
 
-            foreach (OpenPop.Mime.Message mensaje in mensajes)     //nose si son necesarios dos ciclos!!!
+            // si la cuenta seleccionada es distinta de "Todas las cuentas"
+            if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) 
             {
-                // id tipo asunto de para fecha mensaje leido
-                string[] row = { "", "Recibido", mensaje.Headers.Subject, mensaje.Headers.From.Address, "cuenta.nombre",
-                                 mensaje.Headers.Date, mensaje.ToMailMessage().Body, "0"};
-                listaRecibidos.Rows.Add(row);
+                CuentaDTO pCuenta = FachadaABMCuenta.Instancia.ObtenerCuenta(cuentaSeleccionada);
+                ActualizarCuenta(pCuenta);
             }
+            else
+            {
+                foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
+                {
+                    ActualizarCuenta(aCuenta); 
+                }
+            }     
+
+
+            // HAY QUE REFREZCAR EL FORM ENTERO ACA, O POR LO MENOS LA LISTA
+
 
             progressBar1.Visible = false;
         }
@@ -65,16 +85,16 @@ namespace formPrincipal
 
         private void progressBar_VisibleChanged(object sender, EventArgs e)
         {
-            Pop3Client pop = new Pop3Client();
-            pop.Connect("pop.gmail.com", 995, true);
-            pop.Authenticate("santiagotommasi92", "marlou1006");
-            int cantidadMensajes = pop.GetMessageCount();
-            mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
+            //Pop3Client pop = new Pop3Client();
+            //pop.Connect("pop.gmail.com", 995, true);
+            //pop.Authenticate("santiagotommasi92", "marlou1006");
+            //int cantidadMensajes = pop.GetMessageCount();
+            //mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
          
-            progressBar1.Minimum = 1;
-            progressBar1.Maximum = cantidadMensajes;
-            progressBar1.Value = 1;
-            progressBar1.Step = 1;
+            //progressBar1.Minimum = 1;
+            //progressBar1.Maximum = cantidadMensajes;
+            //progressBar1.Value = 1;
+            //progressBar1.Step = 1;
         }
 
         /// <summary>
@@ -154,9 +174,7 @@ namespace formPrincipal
                     if (aCorreo.Leido != 0)
                     {
                         int posicion = listaEnviados.Rows.Count - 1;
-                        //listaEnviados.Rows[posicion].DefaultCellStyle.Font = new Font(listaEnviados.DefaultCellStyle.Font, FontStyle.Bold);
                         listaEnviados.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
-                       // listaEnviados.Rows[posicion].Cells[1].Style
                     }
                 }
                 else
@@ -166,8 +184,6 @@ namespace formPrincipal
                     {
                         int posicion = listaRecibidos.Rows.Count - 1;
                         listaRecibidos.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
-                        //listaEnviados.Rows[posicion].DefaultCellStyle.Font = new Font(listaEnviados.DefaultCellStyle.Font, FontStyle.Bold);                       
-                        //listaRecibidos.Rows[posicion].Cells[0].Style.Font = new Font(listaEnviados.DefaultCellStyle.Font, FontStyle.Bold); //DefaultCellStyle.BackColor = Color.Gray;
                     }
                 }
             }
@@ -190,23 +206,13 @@ namespace formPrincipal
             string cuentaSeleccionada = Convert.ToString(listaCuentas.Items[row]);
             if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) // si la cuenta seleccionada es distinta de "Todas las cuentas"
             {
-                MostrarCorreos(cuentaSeleccionada);
+                MostrarCorreos(FachadaABMCuenta.Instancia.ObtenerCuenta(cuentaSeleccionada).Direccion);
             }
             else
             {
                 MostrarCorreos();
-                //ESTAS LINEAS SON PARA PROBAR USAR EL MISMO DATAGRIDVIEW PARA ENVIADOS Y RECIBIDOS
-                // LISTAENVIADOS Y LISTARECIBIDOS AHORA TIENEN TODAS LAS COLUMNAS DE LOS
-                // ATRIBUTOS DE CORREO, SOLO QUE TIENEN VISIVILIDAD EN FALSE LAS COLUMNAS QUE NO SE VEN
-                // SI USAMOS UNA MISMA LISTA PARA LOS DOS, CUANDO QUERES VER LOS ENVIADOS HABILITAS EL PARA
-                // CUANDO QUERES VER EL RECIBIDO HABILITAS EL DE
-
-                //CREO QUE EN ENVIADOS TAMBIEN NECESITAS EL DE, TENIENDO EN CUENTA QUE PODES ESTAR VIENDO
-                //LOS CORREO DE VARIAS CUENTAS 
-                //by Tommasi
-
-                //listaCuentas2.Columns[1].Visible = true; 
             }
+
             //Siempre al cargar una o todas las cuentas muestra la lista de correos recibidos.
             listaEnviados.Visible = false;
             listaRecibidos.Visible = true;
@@ -216,6 +222,48 @@ namespace formPrincipal
 
         private void button6_Click(object sender, EventArgs e)
         {
+            CorreoDTO pCorreo = new CorreoDTO();
+
+
+            if (listaEnviados.Visible)
+            {
+                //Busca el indice de la fila seleccionada en la lista de correos enviados.
+                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
+                // entonces tomamos el primer elemento.
+                int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);               
+                pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
+                pCorreo.Asunto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
+                pCorreo.CuentaDestino = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
+                pCorreo.CuentaOrigen = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
+                pCorreo.Fecha = Convert.ToDateTime(listaEnviados.Rows[indexSelected].Cells["fecha"].Value);
+                pCorreo.Leido = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
+                pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
+                pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
+
+
+            }
+            else if (listaRecibidos.Visible)
+            {
+                //Busca el indice de la fila seleccionada en la lista de correos recibidos.
+                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
+                // entonces tomamos el primer elemento.
+                int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
+                pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
+                pCorreo.Asunto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
+                pCorreo.CuentaDestino = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
+                pCorreo.CuentaOrigen = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
+                pCorreo.Fecha = Convert.ToDateTime(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
+                pCorreo.Leido = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value);
+                pCorreo.Texto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
+                pCorreo.TipoCorreo = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["tipoCorreoR"].Value);
+            }
+            else // esta visible el form de correo
+            {
+                pCorreo.Id = Convert.ToInt32(correo_id.Text);
+                
+                // CARGAR LOS DEMAS VALORES!!!
+
+            }
             string path;
             //listaRecibidos.Rows[indexSelected].
 
@@ -223,15 +271,15 @@ namespace formPrincipal
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 path = folderBrowserDialog1.SelectedPath;
+                
                 if (radioButton1.Checked == true)
                 {
-                    //FachadaCorreo.Instancia.ExportarCorreo( --->  CORREO  <--- ,path,radioButton1.Text);
-                    //FALTA VER COMO SELECCIONAR EL CORREO Y TRANSFORMARLO A TIPO correoDTO
+                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo,path,radioButton1.Text);
+                    
                 }
                 else
                 {
-                    //FachadaCorreo.Instancia.ExportarCorreo( --->  CORREO  <--- ,path,radioButton2.Text);
-                    //FALTA VER COMO SELECCIONAR EL CORREO Y TRANSFORMARLO A TIPO correoDTO
+                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo,path,radioButton2.Text);                    
                 }
             }
         }

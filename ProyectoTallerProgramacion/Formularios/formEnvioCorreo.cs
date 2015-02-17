@@ -40,21 +40,24 @@ namespace formPrincipal
 
             try
             {
-                //Guardamos el correo en la base de datos.
-                FachadaCorreo.Instancia.CrearCorreo(pCorreo);
-            }
-            catch //CONSIDERAR LA EXCEPCION DE PERSISTENCIA.
-            {}
-
-            try
-            {
                 //Enviamos el correo.
                 FachadaCorreo.Instancia.EnviarCorreo(pCorreo);
+
+                //Guardamos el correo en la base de datos.
+
+                // Actualiza el valor del campo CuentaOrigen. Se pasa con el nombre de la cuenta pero se debe guardar con la direccion.
+                //REVISAR ESTOOOOO ^
+                pCorreo.CuentaOrigen = FachadaABMCuenta.Instancia.ObtenerCuenta(pCorreo.CuentaOrigen).Direccion;
+                FachadaCorreo.Instancia.CrearCorreo(pCorreo);
             }
-            catch  //CONSIDERAR LA EXCEPCION DE PERSISTENCIA.
-            {}
+            catch (Exception exception) //CONSIDERAR  EXCEPCIONes DE PERSISTENCIA y de envio.
+            {
+                MessageBox.Show(exception.Message);
+            }
             
             MessageBox.Show("Enviado con exito!");
+
+            this.Close();
         }
 
         /// <summary>

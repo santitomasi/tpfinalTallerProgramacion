@@ -15,9 +15,23 @@ namespace formPrincipal
     public partial class formEnvioCorreo : Form
     {
         private List<string> archivos = new List<string>();
+        private CorreoDTO iCorreo;
 
-        public formEnvioCorreo()
+        /// <summary>
+        /// Constructor de una instancia del form de envio de correos .
+        /// </summary>
+        public formEnvioCorreo() 
+        {           
+            InitializeComponent();
+            iCorreo = null;
+        }
+
+        /// <summary>
+        /// Constructor de una instancia del form de envio de correos .
+        /// </summary>
+        public formEnvioCorreo(CorreoDTO pCorreo)
         {
+            iCorreo = pCorreo;
             InitializeComponent();
         }
 
@@ -31,10 +45,10 @@ namespace formPrincipal
             CorreoDTO pCorreo = new CorreoDTO();
             pCorreo.Leido = 0;
             pCorreo.CuentaOrigen = Convert.ToString(listaCuentas.SelectedItem);
-            pCorreo.CuentaDestino = textBox4.Text;
-            pCorreo.Asunto = textBox2.Text;
+            pCorreo.CuentaDestino = correo_Destino.Text;
+            pCorreo.Asunto = correo_Asunto.Text;
             pCorreo.Fecha = DateTime.Today;
-            pCorreo.Texto = textBox3.Text;
+            pCorreo.Texto = correo_Texto.Text;
             pCorreo.TipoCorreo = "Enviado";
             pCorreo.Adjuntos = archivos;
 
@@ -112,6 +126,22 @@ namespace formPrincipal
         private void formEnvioCorreo_Load(object sender, EventArgs e)
         {
             MostrarCuentas();
+            if (iCorreo != null)
+            {
+                correo_Destino.Text = iCorreo.CuentaDestino;
+                correo_Asunto.Text = iCorreo.Asunto;
+                correo_Texto.Text = iCorreo.Texto;
+                // Recorre la lista para encontrar el elemento que debe dejar seleccionado
+                for (int i = 0; i < listaCuentas.Items.Count; i++)
+                {
+                    if (FachadaABMCuenta.Instancia.ObtenerCuenta(Convert.ToString(listaCuentas.Items[i])).Direccion == iCorreo.CuentaOrigen)
+                    {
+                        listaCuentas.SelectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            
         }
     }
 }

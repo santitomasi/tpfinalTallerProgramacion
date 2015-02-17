@@ -44,7 +44,7 @@
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.correo_texto = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.listaCuentas = new System.Windows.Forms.ComboBox();
@@ -62,21 +62,6 @@
             this.correo_cuentaOrigen = new System.Windows.Forms.Label();
             this.correo_asunto = new System.Windows.Forms.Label();
             this.listaRecibidos = new System.Windows.Forms.DataGridView();
-            this.listaEnviados = new System.Windows.Forms.DataGridView();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.btActualizar = new System.Windows.Forms.Button();
-            this.buttonEliminar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.correoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.texto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.correoIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoCorreoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.asuntoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +70,21 @@
             this.fechaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listaEnviados = new System.Windows.Forms.DataGridView();
+            this.correoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.texto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.btActualizar = new System.Windows.Forms.Button();
+            this.buttonEliminar = new System.Windows.Forms.Button();
+            this.botonReenviar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.opcionesExportar.SuspendLayout();
             this.panelCorreo.SuspendLayout();
@@ -144,17 +144,17 @@
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
-            // textBox1
+            // correo_texto
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(41, 57);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(745, 338);
-            this.textBox1.TabIndex = 8;
+            this.correo_texto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.correo_texto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.correo_texto.Location = new System.Drawing.Point(41, 57);
+            this.correo_texto.Multiline = true;
+            this.correo_texto.Name = "correo_texto";
+            this.correo_texto.ReadOnly = true;
+            this.correo_texto.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.correo_texto.Size = new System.Drawing.Size(745, 338);
+            this.correo_texto.TabIndex = 8;
             // 
             // contextMenuStrip1
             // 
@@ -247,7 +247,7 @@
             this.panelCorreo.BackColor = System.Drawing.SystemColors.Window;
             this.panelCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelCorreo.Controls.Add(this.correo_id);
-            this.panelCorreo.Controls.Add(this.textBox1);
+            this.panelCorreo.Controls.Add(this.correo_texto);
             this.panelCorreo.Controls.Add(this.correo_cuentaDestino);
             this.panelCorreo.Controls.Add(this.correo_fecha);
             this.panelCorreo.Controls.Add(this.label7);
@@ -382,6 +382,55 @@
             this.listaRecibidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellClick);
             this.listaRecibidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellDoubleClick);
             // 
+            // correoIdR
+            // 
+            this.correoIdR.HeaderText = "Correo ID";
+            this.correoIdR.Name = "correoIdR";
+            this.correoIdR.Visible = false;
+            // 
+            // tipoCorreoR
+            // 
+            this.tipoCorreoR.HeaderText = "Tipo Correo";
+            this.tipoCorreoR.Name = "tipoCorreoR";
+            this.tipoCorreoR.Visible = false;
+            // 
+            // asuntoR
+            // 
+            this.asuntoR.HeaderText = "Asunto";
+            this.asuntoR.Name = "asuntoR";
+            this.asuntoR.ReadOnly = true;
+            // 
+            // cuentaOrigenR
+            // 
+            this.cuentaOrigenR.HeaderText = "De";
+            this.cuentaOrigenR.Name = "cuentaOrigenR";
+            this.cuentaOrigenR.ReadOnly = true;
+            // 
+            // cuentaDestinoR
+            // 
+            this.cuentaDestinoR.HeaderText = "Para";
+            this.cuentaDestinoR.Name = "cuentaDestinoR";
+            // 
+            // fechaR
+            // 
+            this.fechaR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.fechaR.HeaderText = "Fecha";
+            this.fechaR.Name = "fechaR";
+            this.fechaR.ReadOnly = true;
+            this.fechaR.Width = 70;
+            // 
+            // textoR
+            // 
+            this.textoR.HeaderText = "Mensaje";
+            this.textoR.Name = "textoR";
+            this.textoR.Visible = false;
+            // 
+            // leidoR
+            // 
+            this.leidoR.HeaderText = "Leido";
+            this.leidoR.Name = "leidoR";
+            this.leidoR.Visible = false;
+            // 
             // listaEnviados
             // 
             this.listaEnviados.AllowUserToAddRows = false;
@@ -440,6 +489,60 @@
             this.listaEnviados.TabIndex = 37;
             this.listaEnviados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellClick);
             this.listaEnviados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellDoubleClick);
+            // 
+            // correoId
+            // 
+            this.correoId.HeaderText = "correoid";
+            this.correoId.Name = "correoId";
+            this.correoId.ReadOnly = true;
+            this.correoId.Visible = false;
+            // 
+            // tipoCorreo
+            // 
+            this.tipoCorreo.HeaderText = "Tipo Correo";
+            this.tipoCorreo.Name = "tipoCorreo";
+            this.tipoCorreo.ReadOnly = true;
+            this.tipoCorreo.Visible = false;
+            // 
+            // asunto
+            // 
+            this.asunto.HeaderText = "Asunto";
+            this.asunto.Name = "asunto";
+            this.asunto.ReadOnly = true;
+            // 
+            // cuentaOrigen
+            // 
+            this.cuentaOrigen.HeaderText = "De";
+            this.cuentaOrigen.Name = "cuentaOrigen";
+            this.cuentaOrigen.ReadOnly = true;
+            // 
+            // cuentaDestino
+            // 
+            this.cuentaDestino.HeaderText = "Para";
+            this.cuentaDestino.Name = "cuentaDestino";
+            this.cuentaDestino.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 70;
+            // 
+            // texto
+            // 
+            this.texto.HeaderText = "Mensaje";
+            this.texto.Name = "texto";
+            this.texto.ReadOnly = true;
+            this.texto.Visible = false;
+            // 
+            // leido
+            // 
+            this.leido.HeaderText = "Leido";
+            this.leido.Name = "leido";
+            this.leido.ReadOnly = true;
+            this.leido.Visible = false;
             // 
             // button10
             // 
@@ -513,22 +616,23 @@
             this.buttonEliminar.UseVisualStyleBackColor = false;
             this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
-            // button2
+            // botonReenviar
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 264);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 33);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "   Reenviar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.botonReenviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.botonReenviar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonReenviar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.botonReenviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonReenviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonReenviar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.botonReenviar.Image = ((System.Drawing.Image)(resources.GetObject("botonReenviar.Image")));
+            this.botonReenviar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.botonReenviar.Location = new System.Drawing.Point(12, 264);
+            this.botonReenviar.Name = "botonReenviar";
+            this.botonReenviar.Size = new System.Drawing.Size(128, 33);
+            this.botonReenviar.TabIndex = 6;
+            this.botonReenviar.Text = "   Reenviar";
+            this.botonReenviar.UseVisualStyleBackColor = false;
+            this.botonReenviar.Click += new System.EventHandler(this.botonReenviar_Click);
             // 
             // button1
             // 
@@ -549,109 +653,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // correoId
-            // 
-            this.correoId.HeaderText = "correoid";
-            this.correoId.Name = "correoId";
-            this.correoId.ReadOnly = true;
-            this.correoId.Visible = false;
-            // 
-            // tipoCorreo
-            // 
-            this.tipoCorreo.HeaderText = "Tipo Correo";
-            this.tipoCorreo.Name = "tipoCorreo";
-            this.tipoCorreo.ReadOnly = true;
-            this.tipoCorreo.Visible = false;
-            // 
-            // asunto
-            // 
-            this.asunto.HeaderText = "Asunto";
-            this.asunto.Name = "asunto";
-            this.asunto.ReadOnly = true;
-            // 
-            // cuentaOrigen
-            // 
-            this.cuentaOrigen.HeaderText = "De";
-            this.cuentaOrigen.Name = "cuentaOrigen";
-            this.cuentaOrigen.ReadOnly = true;
-            // 
-            // cuentaDestino
-            // 
-            this.cuentaDestino.HeaderText = "Para";
-            this.cuentaDestino.Name = "cuentaDestino";
-            this.cuentaDestino.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Width = 70;
-            // 
-            // texto
-            // 
-            this.texto.HeaderText = "Mensaje";
-            this.texto.Name = "texto";
-            this.texto.ReadOnly = true;
-            this.texto.Visible = false;
-            // 
-            // leido
-            // 
-            this.leido.HeaderText = "Leido";
-            this.leido.Name = "leido";
-            this.leido.ReadOnly = true;
-            this.leido.Visible = false;
-            // 
-            // correoIdR
-            // 
-            this.correoIdR.HeaderText = "Correo ID";
-            this.correoIdR.Name = "correoIdR";
-            this.correoIdR.Visible = false;
-            // 
-            // tipoCorreoR
-            // 
-            this.tipoCorreoR.HeaderText = "Tipo Correo";
-            this.tipoCorreoR.Name = "tipoCorreoR";
-            this.tipoCorreoR.Visible = false;
-            // 
-            // asuntoR
-            // 
-            this.asuntoR.HeaderText = "Asunto";
-            this.asuntoR.Name = "asuntoR";
-            this.asuntoR.ReadOnly = true;
-            // 
-            // cuentaOrigenR
-            // 
-            this.cuentaOrigenR.HeaderText = "De";
-            this.cuentaOrigenR.Name = "cuentaOrigenR";
-            this.cuentaOrigenR.ReadOnly = true;
-            // 
-            // cuentaDestinoR
-            // 
-            this.cuentaDestinoR.HeaderText = "Para";
-            this.cuentaDestinoR.Name = "cuentaDestinoR";
-            // 
-            // fechaR
-            // 
-            this.fechaR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.fechaR.HeaderText = "Fecha";
-            this.fechaR.Name = "fechaR";
-            this.fechaR.ReadOnly = true;
-            this.fechaR.Width = 70;
-            // 
-            // textoR
-            // 
-            this.textoR.HeaderText = "Mensaje";
-            this.textoR.Name = "textoR";
-            this.textoR.Visible = false;
-            // 
-            // leidoR
-            // 
-            this.leidoR.HeaderText = "Leido";
-            this.leidoR.Name = "leidoR";
-            this.leidoR.Visible = false;
-            // 
             // formPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,12 +666,12 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btActualizar);
             this.Controls.Add(this.buttonEliminar);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.botonReenviar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.listaRecibidos);
             this.Controls.Add(this.panelCorreo);
             this.Controls.Add(this.listaEnviados);
+            this.Controls.Add(this.listaRecibidos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formPrincipal";
@@ -693,10 +694,10 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button botonReenviar;
         private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox correo_texto;
         private System.Windows.Forms.Button btActualizar;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ProgressBar progressBar1;

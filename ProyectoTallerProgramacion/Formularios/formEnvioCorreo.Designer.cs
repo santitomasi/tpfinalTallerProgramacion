@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formEnvioCorreo));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.correo_Asunto = new System.Windows.Forms.TextBox();
+            this.correo_Texto = new System.Windows.Forms.TextBox();
+            this.botonAdjuntar = new System.Windows.Forms.Button();
+            this.botonEnviar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.correo_Destino = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.listaCuentas = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
@@ -59,51 +59,51 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Asunto:";
             // 
-            // textBox2
+            // correo_Asunto
             // 
-            this.textBox2.Location = new System.Drawing.Point(97, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(382, 20);
-            this.textBox2.TabIndex = 3;
+            this.correo_Asunto.Location = new System.Drawing.Point(97, 71);
+            this.correo_Asunto.Name = "correo_Asunto";
+            this.correo_Asunto.Size = new System.Drawing.Size(382, 20);
+            this.correo_Asunto.TabIndex = 3;
             // 
-            // textBox3
+            // correo_Texto
             // 
-            this.textBox3.Location = new System.Drawing.Point(28, 97);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(451, 265);
-            this.textBox3.TabIndex = 5;
+            this.correo_Texto.Location = new System.Drawing.Point(28, 97);
+            this.correo_Texto.Multiline = true;
+            this.correo_Texto.Name = "correo_Texto";
+            this.correo_Texto.Size = new System.Drawing.Size(451, 265);
+            this.correo_Texto.TabIndex = 5;
             // 
-            // button2
+            // botonAdjuntar
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(28, 368);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(191, 39);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Agregar archivo adjunto";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.botonAdjuntar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonAdjuntar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.botonAdjuntar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonAdjuntar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonAdjuntar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.botonAdjuntar.Location = new System.Drawing.Point(28, 368);
+            this.botonAdjuntar.Name = "botonAdjuntar";
+            this.botonAdjuntar.Size = new System.Drawing.Size(191, 39);
+            this.botonAdjuntar.TabIndex = 6;
+            this.botonAdjuntar.Text = "Agregar archivo adjunto";
+            this.botonAdjuntar.UseVisualStyleBackColor = true;
+            this.botonAdjuntar.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // botonEnviar
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(358, 368);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 39);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Enviar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.botonEnviar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonEnviar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.botonEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonEnviar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.botonEnviar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.botonEnviar.Location = new System.Drawing.Point(358, 368);
+            this.botonEnviar.Name = "botonEnviar";
+            this.botonEnviar.Size = new System.Drawing.Size(121, 39);
+            this.botonEnviar.TabIndex = 7;
+            this.botonEnviar.Text = "Enviar";
+            this.botonEnviar.UseVisualStyleBackColor = false;
+            this.botonEnviar.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -113,12 +113,12 @@
             this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 8;
             // 
-            // textBox4
+            // correo_Destino
             // 
-            this.textBox4.Location = new System.Drawing.Point(97, 45);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(382, 20);
-            this.textBox4.TabIndex = 10;
+            this.correo_Destino.Location = new System.Drawing.Point(97, 45);
+            this.correo_Destino.Name = "correo_Destino";
+            this.correo_Destino.Size = new System.Drawing.Size(382, 20);
+            this.correo_Destino.TabIndex = 10;
             // 
             // label4
             // 
@@ -144,13 +144,13 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(502, 424);
             this.Controls.Add(this.listaCuentas);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.correo_Destino);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.botonEnviar);
+            this.Controls.Add(this.botonAdjuntar);
+            this.Controls.Add(this.correo_Texto);
+            this.Controls.Add(this.correo_Asunto);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -166,12 +166,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox correo_Asunto;
+        private System.Windows.Forms.TextBox correo_Texto;
+        private System.Windows.Forms.Button botonAdjuntar;
+        private System.Windows.Forms.Button botonEnviar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox correo_Destino;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox listaCuentas;
     }

@@ -260,8 +260,13 @@ namespace formPrincipal
             else // esta visible el form de correo
             {
                 pCorreo.Id = Convert.ToInt32(correo_id.Text);
-                
-                // CARGAR LOS DEMAS VALORES!!!
+                pCorreo.Asunto = correo_asunto.Text;
+                pCorreo.CuentaDestino = correo_cuentaDestino.Text;
+                pCorreo.CuentaOrigen = correo_cuentaOrigen.Text;
+                pCorreo.Fecha = Convert.ToDateTime(correo_fecha.Text);
+                pCorreo.Texto = correo_texto.Text;
+                //pCorreo.Leido = Convert.ToInt32();
+                // pCorreo.TipoCorreo = 
 
             }
             string path;
@@ -341,7 +346,7 @@ namespace formPrincipal
 
             // Falta marcar el correo como leido en la base y en la lista!!
 
-            textBox1.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
+            correo_texto.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
             correo_asunto.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
             correo_cuentaDestino.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
             correo_cuentaOrigen.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
@@ -363,7 +368,7 @@ namespace formPrincipal
 
             // Falta marcar el correo como leido en la base y en la lista!!
 
-            textBox1.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
+            correo_texto.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
             correo_asunto.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
             correo_cuentaDestino.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
             correo_cuentaOrigen.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
@@ -428,6 +433,60 @@ namespace formPrincipal
             listaCuentas.SelectedIndex = listaCuentas.Items.Count - 1;
 
 
+        }
+
+        private void botonReenviar_Click(object sender, EventArgs e)
+        {
+            CorreoDTO pCorreo = new CorreoDTO();
+
+
+            if (listaEnviados.Visible)
+            {
+                //Busca el indice de la fila seleccionada en la lista de correos enviados.
+                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
+                // entonces tomamos el primer elemento.
+                int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
+                pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
+                pCorreo.Asunto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
+                pCorreo.CuentaDestino = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
+                pCorreo.CuentaOrigen = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
+                pCorreo.Fecha = Convert.ToDateTime(listaEnviados.Rows[indexSelected].Cells["fecha"].Value);
+                //pCorreo.Leido = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
+                pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
+                //pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
+
+
+            }
+            else if (listaRecibidos.Visible)
+            {
+                //Busca el indice de la fila seleccionada en la lista de correos recibidos.
+                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
+                // entonces tomamos el primer elemento.
+                int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
+                pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
+                pCorreo.Asunto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
+                pCorreo.CuentaDestino = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
+                pCorreo.CuentaOrigen = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
+                pCorreo.Fecha = Convert.ToDateTime(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
+                //pCorreo.Leido = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value);
+                pCorreo.Texto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
+                //pCorreo.TipoCorreo = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["tipoCorreoR"].Value);
+            }
+            else // esta visible el form de correo
+            {
+                pCorreo.Id = Convert.ToInt32(correo_id.Text);
+                pCorreo.Asunto = correo_asunto.Text;
+                pCorreo.CuentaDestino = correo_cuentaDestino.Text;
+                pCorreo.CuentaOrigen = correo_cuentaOrigen.Text;
+                pCorreo.Fecha = Convert.ToDateTime(correo_fecha.Text);
+                pCorreo.Texto = correo_texto.Text;
+                //pCorreo.Leido = Convert.ToInt32();
+               // pCorreo.TipoCorreo = 
+
+            }
+
+            Form frm = new formEnvioCorreo(pCorreo);
+            frm.ShowDialog();
         }
 
     }

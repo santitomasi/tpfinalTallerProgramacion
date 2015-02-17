@@ -68,10 +68,9 @@ namespace CorreoServicio
             for (int i = cantidadMensajes; i > 0; i--)      
             {
                 mensaje = pop.GetMessage(i);
-                CorreoDTO correo = new CorreoDTO();
                 mCorreos.Add(new CorreoDTO()
                 {
-                    Fecha = Convert.ToDateTime(mensaje.Headers.DateSent),
+                    Fecha = Convert.ToDateTime(mensaje.Headers.Date),
                     TipoCorreo = "Recibido",
                     Texto = mensaje.ToMailMessage().Body,                    
                     CuentaOrigen = mensaje.Headers.From.Address,
@@ -81,6 +80,7 @@ namespace CorreoServicio
                     ServicioId = mensaje.Headers.MessageId
                 });
             }
+            
             return mCorreos;
         }
   

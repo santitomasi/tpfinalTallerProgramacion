@@ -68,6 +68,13 @@ namespace Controladores
                 cuenta.Nombre = pNombre;
                 return factory.CuentaDAO.ObtenerCuenta(cuenta);
             }
+            catch (Exception exception)
+            {
+                factory.RollBack();
+
+                //Se relanza la excepción porque en este punto no se puede tratar
+                throw exception;
+            }
             finally
             {
                 //Haya o no un error, se cierra la transacción.
@@ -91,6 +98,13 @@ namespace Controladores
                 cuenta.Id = pId;
                 return factory.CuentaDAO.ObtenerCuenta(cuenta);
             }
+            catch (Exception exception)
+            {
+                factory.RollBack();
+
+                //Se relanza la excepción porque en este punto no se puede tratar
+                throw exception;
+            }
             finally
             {
                 //Haya o no un error, se cierra la transacción.
@@ -112,6 +126,13 @@ namespace Controladores
 
                 //Se devuelven las cuentas
                 return factory.CuentaDAO.ObtenerCuentas();
+            }
+            catch (Exception exception)
+            {
+                factory.RollBack();
+
+                //Se relanza la excepción porque en este punto no se puede tratar
+                throw exception;
             }
             finally
             {

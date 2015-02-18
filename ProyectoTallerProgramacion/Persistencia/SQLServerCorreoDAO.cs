@@ -208,9 +208,9 @@ namespace Persistencia.SQLServer
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
                 comando.CommandText = @"update Correo set fecha=@Fecha,tipocorreo=@TipoCorreo,cuentaOrigen=@CuentaOrigen,
-                                        cuentaDestino=@Destino,texto=@Texto,asunto=@Asunto,leido=@Leido,
-                                        correoServicioId@correoServicioId 
-                                        where correoId = @Id or correoServicioId = @correoServicioId";
+                                        cuentaDestino=@Destino,texto=@Texto,asunto=@Asunto,leido=@Leido, correoServicioId = @correoServicioId 
+                                         where correoId = @Id or correoServicioId = @correoServicioId";
+                comando.Parameters.AddWithValue("@Id", pCorreo.Id);
                 comando.Parameters.AddWithValue("@Fecha", pCorreo.Fecha);
                 comando.Parameters.AddWithValue("@TipoCorreo", pCorreo.TipoCorreo);
                 comando.Parameters.AddWithValue("@CuentaOrigen", pCorreo.CuentaOrigen);

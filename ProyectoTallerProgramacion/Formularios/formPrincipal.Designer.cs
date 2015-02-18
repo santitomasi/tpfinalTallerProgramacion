@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.administrarCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +54,9 @@
             this.opcionesExportar = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.panelCorreo = new System.Windows.Forms.Panel();
+            this.correo_tipocorreo = new System.Windows.Forms.TextBox();
+            this.correo_servicioid = new System.Windows.Forms.TextBox();
+            this.correo_leido = new System.Windows.Forms.TextBox();
             this.correo_id = new System.Windows.Forms.TextBox();
             this.correo_cuentaDestino = new System.Windows.Forms.Label();
             this.correo_fecha = new System.Windows.Forms.Label();
@@ -62,14 +65,6 @@
             this.correo_cuentaOrigen = new System.Windows.Forms.Label();
             this.correo_asunto = new System.Windows.Forms.Label();
             this.listaRecibidos = new System.Windows.Forms.DataGridView();
-            this.correoIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoCorreoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.asuntoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaOrigenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaDestinoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listaEnviados = new System.Windows.Forms.DataGridView();
             this.correoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,12 +74,22 @@
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.texto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.btActualizar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.botonReenviar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.correoIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoCorreoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asuntoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaOrigenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaDestinoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicioIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.opcionesExportar.SuspendLayout();
             this.panelCorreo.SuspendLayout();
@@ -246,6 +251,9 @@
             // 
             this.panelCorreo.BackColor = System.Drawing.SystemColors.Window;
             this.panelCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCorreo.Controls.Add(this.correo_tipocorreo);
+            this.panelCorreo.Controls.Add(this.correo_servicioid);
+            this.panelCorreo.Controls.Add(this.correo_leido);
             this.panelCorreo.Controls.Add(this.correo_id);
             this.panelCorreo.Controls.Add(this.correo_texto);
             this.panelCorreo.Controls.Add(this.correo_cuentaDestino);
@@ -259,11 +267,35 @@
             this.panelCorreo.Size = new System.Drawing.Size(817, 488);
             this.panelCorreo.TabIndex = 34;
             // 
+            // correo_tipocorreo
+            // 
+            this.correo_tipocorreo.Location = new System.Drawing.Point(763, 32);
+            this.correo_tipocorreo.Name = "correo_tipocorreo";
+            this.correo_tipocorreo.Size = new System.Drawing.Size(22, 20);
+            this.correo_tipocorreo.TabIndex = 19;
+            this.correo_tipocorreo.Visible = false;
+            // 
+            // correo_servicioid
+            // 
+            this.correo_servicioid.Location = new System.Drawing.Point(792, 32);
+            this.correo_servicioid.Name = "correo_servicioid";
+            this.correo_servicioid.Size = new System.Drawing.Size(20, 20);
+            this.correo_servicioid.TabIndex = 18;
+            this.correo_servicioid.Visible = false;
+            // 
+            // correo_leido
+            // 
+            this.correo_leido.Location = new System.Drawing.Point(763, 6);
+            this.correo_leido.Name = "correo_leido";
+            this.correo_leido.Size = new System.Drawing.Size(22, 20);
+            this.correo_leido.TabIndex = 17;
+            this.correo_leido.Visible = false;
+            // 
             // correo_id
             // 
-            this.correo_id.Location = new System.Drawing.Point(766, 29);
+            this.correo_id.Location = new System.Drawing.Point(792, 6);
             this.correo_id.Name = "correo_id";
-            this.correo_id.Size = new System.Drawing.Size(46, 20);
+            this.correo_id.Size = new System.Drawing.Size(20, 20);
             this.correo_id.TabIndex = 16;
             this.correo_id.Visible = false;
             // 
@@ -337,14 +369,14 @@
             this.listaRecibidos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listaRecibidos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.listaRecibidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaRecibidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaRecibidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.listaRecibidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaRecibidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.correoIdR,
@@ -354,83 +386,34 @@
             this.cuentaDestinoR,
             this.fechaR,
             this.textoR,
-            this.leidoR});
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaRecibidos.DefaultCellStyle = dataGridViewCellStyle32;
+            this.leidoR,
+            this.servicioIdR});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaRecibidos.DefaultCellStyle = dataGridViewCellStyle2;
             this.listaRecibidos.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listaRecibidos.Location = new System.Drawing.Point(152, 27);
             this.listaRecibidos.Name = "listaRecibidos";
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaRecibidos.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaRecibidos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.listaRecibidos.RowHeadersVisible = false;
             this.listaRecibidos.RowHeadersWidth = 20;
-            this.listaRecibidos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.listaRecibidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaRecibidos.Size = new System.Drawing.Size(817, 488);
             this.listaRecibidos.TabIndex = 38;
             this.listaRecibidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellClick);
             this.listaRecibidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellDoubleClick);
-            // 
-            // correoIdR
-            // 
-            this.correoIdR.HeaderText = "Correo ID";
-            this.correoIdR.Name = "correoIdR";
-            this.correoIdR.Visible = false;
-            // 
-            // tipoCorreoR
-            // 
-            this.tipoCorreoR.HeaderText = "Tipo Correo";
-            this.tipoCorreoR.Name = "tipoCorreoR";
-            this.tipoCorreoR.Visible = false;
-            // 
-            // asuntoR
-            // 
-            this.asuntoR.HeaderText = "Asunto";
-            this.asuntoR.Name = "asuntoR";
-            this.asuntoR.ReadOnly = true;
-            // 
-            // cuentaOrigenR
-            // 
-            this.cuentaOrigenR.HeaderText = "De";
-            this.cuentaOrigenR.Name = "cuentaOrigenR";
-            this.cuentaOrigenR.ReadOnly = true;
-            // 
-            // cuentaDestinoR
-            // 
-            this.cuentaDestinoR.HeaderText = "Para";
-            this.cuentaDestinoR.Name = "cuentaDestinoR";
-            // 
-            // fechaR
-            // 
-            this.fechaR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.fechaR.HeaderText = "Fecha";
-            this.fechaR.Name = "fechaR";
-            this.fechaR.ReadOnly = true;
-            this.fechaR.Width = 70;
-            // 
-            // textoR
-            // 
-            this.textoR.HeaderText = "Mensaje";
-            this.textoR.Name = "textoR";
-            this.textoR.Visible = false;
-            // 
-            // leidoR
-            // 
-            this.leidoR.HeaderText = "Leido";
-            this.leidoR.Name = "leidoR";
-            this.leidoR.Visible = false;
             // 
             // listaEnviados
             // 
@@ -442,14 +425,14 @@
             this.listaEnviados.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listaEnviados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.listaEnviados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaEnviados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaEnviados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.listaEnviados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaEnviados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.correoId,
@@ -459,28 +442,29 @@
             this.cuentaDestino,
             this.Fecha,
             this.texto,
-            this.leido});
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaEnviados.DefaultCellStyle = dataGridViewCellStyle35;
+            this.leido,
+            this.servicioId});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaEnviados.DefaultCellStyle = dataGridViewCellStyle5;
             this.listaEnviados.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listaEnviados.Location = new System.Drawing.Point(152, 27);
             this.listaEnviados.MultiSelect = false;
             this.listaEnviados.Name = "listaEnviados";
             this.listaEnviados.ReadOnly = true;
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaEnviados.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaEnviados.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.listaEnviados.RowHeadersVisible = false;
             this.listaEnviados.RowHeadersWidth = 20;
             this.listaEnviados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -544,6 +528,13 @@
             this.leido.Name = "leido";
             this.leido.ReadOnly = true;
             this.leido.Visible = false;
+            // 
+            // servicioId
+            // 
+            this.servicioId.HeaderText = "ServicioId";
+            this.servicioId.Name = "servicioId";
+            this.servicioId.ReadOnly = true;
+            this.servicioId.Visible = false;
             // 
             // button10
             // 
@@ -654,6 +645,61 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // correoIdR
+            // 
+            this.correoIdR.HeaderText = "Correo ID";
+            this.correoIdR.Name = "correoIdR";
+            this.correoIdR.Visible = false;
+            // 
+            // tipoCorreoR
+            // 
+            this.tipoCorreoR.HeaderText = "Tipo Correo";
+            this.tipoCorreoR.Name = "tipoCorreoR";
+            this.tipoCorreoR.Visible = false;
+            // 
+            // asuntoR
+            // 
+            this.asuntoR.HeaderText = "Asunto";
+            this.asuntoR.Name = "asuntoR";
+            this.asuntoR.ReadOnly = true;
+            // 
+            // cuentaOrigenR
+            // 
+            this.cuentaOrigenR.HeaderText = "De";
+            this.cuentaOrigenR.Name = "cuentaOrigenR";
+            this.cuentaOrigenR.ReadOnly = true;
+            // 
+            // cuentaDestinoR
+            // 
+            this.cuentaDestinoR.HeaderText = "Para";
+            this.cuentaDestinoR.Name = "cuentaDestinoR";
+            // 
+            // fechaR
+            // 
+            this.fechaR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.fechaR.HeaderText = "Fecha";
+            this.fechaR.Name = "fechaR";
+            this.fechaR.ReadOnly = true;
+            this.fechaR.Width = 70;
+            // 
+            // textoR
+            // 
+            this.textoR.HeaderText = "Mensaje";
+            this.textoR.Name = "textoR";
+            this.textoR.Visible = false;
+            // 
+            // leidoR
+            // 
+            this.leidoR.HeaderText = "Leido";
+            this.leidoR.Name = "leidoR";
+            this.leidoR.Visible = false;
+            // 
+            // servicioIdR
+            // 
+            this.servicioIdR.HeaderText = "ServicioIdR";
+            this.servicioIdR.Name = "servicioIdR";
+            this.servicioIdR.Visible = false;
+            // 
             // formPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -670,9 +716,9 @@
             this.Controls.Add(this.botonReenviar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.listaRecibidos);
             this.Controls.Add(this.panelCorreo);
             this.Controls.Add(this.listaEnviados);
-            this.Controls.Add(this.listaRecibidos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formPrincipal";
@@ -726,14 +772,6 @@
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem1;
         private System.Windows.Forms.TextBox correo_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn correoIdR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoCorreoR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn asuntoR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaOrigenR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaDestinoR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn textoR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn leidoR;
         private System.Windows.Forms.DataGridViewTextBoxColumn correoId;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoCorreo;
         private System.Windows.Forms.DataGridViewTextBoxColumn asunto;
@@ -742,6 +780,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn texto;
         private System.Windows.Forms.DataGridViewTextBoxColumn leido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn servicioId;
+        private System.Windows.Forms.TextBox correo_tipocorreo;
+        private System.Windows.Forms.TextBox correo_servicioid;
+        private System.Windows.Forms.TextBox correo_leido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn correoIdR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoCorreoR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn asuntoR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaOrigenR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaDestinoR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn textoR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn leidoR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn servicioIdR;
 
     }
 }

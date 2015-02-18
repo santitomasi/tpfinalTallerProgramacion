@@ -109,9 +109,11 @@ namespace formPrincipal
                     listaCuentas.Items.Add(aCuenta.Nombre);
                 }
             }
-            catch
+            catch (Exception exeption)
             {
                 // VER QUE HACER ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                MessageBox.Show(exeption.Message);
+                MessageBox.Show(exeption.InnerException.Message);
             }
             finally
             {
@@ -136,7 +138,7 @@ namespace formPrincipal
             {
                 object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, 
                                    aCorreo.Fecha.ToString("dddd, dd ") + "de " + aCorreo.Fecha.ToString("MMMM") + " de " + 
-                                   aCorreo.Fecha.ToString("yyyy"), aCorreo.Texto, aCorreo.Leido };
+                                   aCorreo.Fecha.ToString("yyyy"), aCorreo.Texto, aCorreo.Leido, aCorreo.ServicioId };
                 if (aCorreo.TipoCorreo == "Enviado")
                 {                    
                     listaEnviados.Rows.Add(row);
@@ -171,7 +173,7 @@ namespace formPrincipal
             {
                 object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, 
                                    aCorreo.Fecha.ToString("dddd, dd ") + "de " + aCorreo.Fecha.ToString("MMMM") + " de " + 
-                                   aCorreo.Fecha.ToString("yyyy"), aCorreo.Texto, aCorreo.Leido };
+                                   aCorreo.Fecha.ToString("yyyy"), aCorreo.Texto, aCorreo.Leido, aCorreo.ServicioId };
                 if (aCorreo.TipoCorreo == "Enviado")
                 {
                     listaEnviados.Rows.Add(row);                
@@ -243,8 +245,7 @@ namespace formPrincipal
                 pCorreo.Leido = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
                 pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
                 pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
-
-
+                pCorreo.ServicioId = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["servicioId"].Value); 
             }
             else if (listaRecibidos.Visible)
             {
@@ -260,6 +261,7 @@ namespace formPrincipal
                 pCorreo.Leido = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value);
                 pCorreo.Texto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
                 pCorreo.TipoCorreo = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["tipoCorreoR"].Value);
+                pCorreo.ServicioId = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["servicioIdR"].Value); 
             }
             else // esta visible el form de correo
             {
@@ -353,18 +355,51 @@ namespace formPrincipal
         private void listaEnviados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int indexSelected = e.RowIndex;
+            CorreoDTO pCorreo = new CorreoDTO();
 
-            // Falta marcar el correo como leido en la base y en la lista!!
+            // Marco como leido el correo en la lista
+            listaEnviados.Rows[indexSelected].Cells["leido"].Value = 1;
+            listaEnviados.Rows[indexSelected].DefaultCellStyle.BackColor = Color.Lavender;
 
-            correo_texto.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
-            correo_asunto.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
-            correo_cuentaDestino.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
-            correo_cuentaOrigen.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
-            correo_fecha.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["Fecha"].Value);
-            correo_id.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
+            //Carga los datos desde la grilla al objeto pCorreo
+            pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
+            pCorreo.Asunto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
+            pCorreo.CuentaDestino = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
+            pCorreo.CuentaOrigen = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
+            pCorreo.Fecha = Convert.ToDateTime(listaEnviados.Rows[indexSelected].Cells["fecha"].Value);
+            pCorreo.Leido = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
+            pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
+            pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
+            pCorreo.ServicioId = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["servicioId"].Value);
+
+
+            correo_texto.Text = pCorreo.Texto;
+            correo_asunto.Text = pCorreo.Asunto;
+            correo_cuentaDestino.Text = pCorreo.CuentaDestino;
+            correo_cuentaOrigen.Text = pCorreo.CuentaOrigen;
+            //copia el string de la fecha sin convertirlo a datatime
+            correo_fecha.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["fecha"].Value);
+            correo_id.Text = Convert.ToString(pCorreo.Id);
+            correo_leido.Text = Convert.ToString(pCorreo.Leido);
+            correo_servicioid.Text = pCorreo.ServicioId;
+            correo_tipocorreo.Text = pCorreo.TipoCorreo;
+
+            try
+            {
+                // Marco como leido el correo en la base
+                FachadaCorreo.Instancia.ModificarCorreo(pCorreo);
+            }
+            catch( Exception exeption)
+            {
+                MessageBox.Show(exeption.Message);
+                MessageBox.Show(exeption.InnerException.Message);
+            }
             panelCorreo.Visible = true;
             listaEnviados.Visible = false;
             opcionesExportar.Visible = true;
+
+
+
         }
 
         /// <summary>
@@ -375,15 +410,46 @@ namespace formPrincipal
         private void listaRecibidos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int indexSelected = e.RowIndex;
+            CorreoDTO pCorreo = new CorreoDTO();
+            
+            // Marco como leido el correo en la lista
+            listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value = 1;
+            listaRecibidos.Rows[indexSelected].DefaultCellStyle.BackColor = Color.Lavender;
 
-            // Falta marcar el correo como leido en la base y en la lista!!
+            pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
+            pCorreo.Asunto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
+            pCorreo.CuentaDestino = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
+            pCorreo.CuentaOrigen = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
+            pCorreo.Fecha = Convert.ToDateTime(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
+            pCorreo.Leido = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value);
+            pCorreo.Texto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
+            pCorreo.TipoCorreo = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["tipoCorreoR"].Value);
+            pCorreo.ServicioId = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["servicioIdR"].Value);
 
-            correo_texto.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
-            correo_asunto.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
-            correo_cuentaDestino.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
-            correo_cuentaOrigen.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
+
+            correo_texto.Text = pCorreo.Texto;
+            correo_asunto.Text = pCorreo.Asunto;
+            correo_cuentaDestino.Text = pCorreo.CuentaDestino;
+            correo_cuentaOrigen.Text = pCorreo.CuentaOrigen;
+            //copia el string de la fecha sin convertirlo a datatime
             correo_fecha.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
-            correo_id.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
+            correo_id.Text = Convert.ToString(pCorreo.Id);
+            correo_leido.Text = Convert.ToString(pCorreo.Leido);
+            correo_servicioid.Text = pCorreo.ServicioId;
+            correo_tipocorreo.Text = pCorreo.TipoCorreo;
+
+            try
+            {
+                // Marco como leido el correo en la base
+                FachadaCorreo.Instancia.ModificarCorreo(pCorreo);
+            }                        
+            catch( Exception exeption)
+            {
+                MessageBox.Show(exeption.Message);
+                MessageBox.Show(exeption.InnerException.Message);
+            }
+
+
             panelCorreo.Visible = true;
             listaRecibidos.Visible = false;
             opcionesExportar.Visible = true;

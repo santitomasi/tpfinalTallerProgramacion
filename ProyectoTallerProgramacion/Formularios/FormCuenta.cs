@@ -110,25 +110,25 @@ namespace formPrincipal
         /// <param name="e"></param>
         private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //PREGUNTAR SI ESTA SEGuROOOOOOOOOOOOOOOOOOOOOOOOOOO
-            //
+            if (MessageBox.Show("¿Está seguro que desea eliminar esta cuenta?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-            if (cuenta_id.Text == "")
-            {
-                listaCuentas.Rows.Remove(listaCuentas.SelectedRows[0]);
-                // Marca como seleccionada la ultima fila
-                listaCuentas.Rows[listaCuentas.Rows.Count - 1].Selected = true;
-            }
-            else
-            {
-                CuentaDTO pCuenta = new CuentaDTO();
-                pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
-                //MessageBox.Show("Id de la cuenta a borrar: "+pCuenta.Id);
-                FachadaABMCuenta.Instancia.EliminarCuenta(pCuenta);
-                MostrarCuentas();
+            { 
+                if (cuenta_id.Text == "")
+                {
+                    listaCuentas.Rows.Remove(listaCuentas.SelectedRows[0]);
+                    // Marca como seleccionada la ultima fila
+                    listaCuentas.Rows[listaCuentas.Rows.Count - 1].Selected = true;
+                }
+                else
+                {
+                    CuentaDTO pCuenta = new CuentaDTO();
+                    pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
+                    //MessageBox.Show("Id de la cuenta a borrar: "+pCuenta.Id);
+                    FachadaABMCuenta.Instancia.EliminarCuenta(pCuenta);
+                    MostrarCuentas();
+                }
             }
         }
-
 
         /// <summary>
         /// Metodo para cargar la informacion de las cuentas.

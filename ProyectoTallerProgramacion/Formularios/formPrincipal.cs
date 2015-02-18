@@ -384,44 +384,44 @@ namespace formPrincipal
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            //
-            // PREGUNTAR SI DESEA ELIMINAR!!!!!!
-            //
+            if (MessageBox.Show("¿Está seguro que desea eliminar este correo?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-            if (listaEnviados.Visible) 
-            {
-                //Busca el indice de la fila seleccionada en la lista de correos enviados.
-                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
-                // entonces tomamos el primer elemento.
-                int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
-                CorreoDTO pCorreo = new CorreoDTO();
-                pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
-                MessageBox.Show(Convert.ToString(pCorreo.Id));
-                FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
+            { 
+                if (listaEnviados.Visible) 
+                {
+                    //Busca el indice de la fila seleccionada en la lista de correos enviados.
+                    // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
+                    // entonces tomamos el primer elemento.
+                    int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
+                    CorreoDTO pCorreo = new CorreoDTO();
+                    pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
+                    MessageBox.Show(Convert.ToString(pCorreo.Id));
+                    FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
 
-                MessageBox.Show("Eliminado con exito!");
+                    MessageBox.Show("Eliminado con exito!");
 
                 
-            }
-            else if (listaRecibidos.Visible)
-            {
-                //Busca el indice de la fila seleccionada en la lista de correos recibidos.
-                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
-                // entonces tomamos el primer elemento.
-                int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
-                CorreoDTO pCorreo = new CorreoDTO();
-                pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
-                FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
-                MessageBox.Show("Eliminado con exito!");
-            }
-            else // esta visible el form de correo
-            {
-                CorreoDTO pCorreo = new CorreoDTO();
-                pCorreo.Id = Convert.ToInt32(correo_id.Text);
-                FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
-                MessageBox.Show("Eliminado con exito!");
-            }
+                }
+                else if (listaRecibidos.Visible)
+                {
+                    //Busca el indice de la fila seleccionada en la lista de correos recibidos.
+                    // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
+                    // entonces tomamos el primer elemento.
+                    int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
+                    CorreoDTO pCorreo = new CorreoDTO();
+                    pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
+                    FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
+                    MessageBox.Show("Eliminado con exito!");
+                }
+                else // esta visible el form de correo
+                {
+                    CorreoDTO pCorreo = new CorreoDTO();
+                    pCorreo.Id = Convert.ToInt32(correo_id.Text);
+                    FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
+                    MessageBox.Show("Eliminado con exito!");
+                }
 
+            }
 
             //
             //REVISAR ESTO!!!! EL METODO DE CARGAR CUENTAS DEBERIA SER INDEPENDIENTE DEL EVENTO SELECTEDINDEXCHANGED

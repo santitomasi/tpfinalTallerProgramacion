@@ -93,7 +93,7 @@ namespace CorreoServicio
 
                 mCorreos.Add(new CorreoDTO()
                 {
-                    Fecha = Convert.ToDateTime(mensaje.Headers.Date),
+                    Fecha = mensaje.Headers.DateSent,
                     TipoCorreo = "Recibido",
                     Texto = cuerpo,
                     CuentaOrigen = mensaje.Headers.From.Address,

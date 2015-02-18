@@ -62,11 +62,14 @@ namespace formPrincipal
                 // Actualiza el valor del campo CuentaOrigen. Se pasa con el nombre de la cuenta pero se debe guardar con la direccion.
                 //REVISAR ESTOOOOO ^
                 pCorreo.CuentaOrigen = FachadaABMCuenta.Instancia.ObtenerCuenta(pCorreo.CuentaOrigen).Direccion;
+                //Setea el valor del campo servicioid
+                pCorreo.ServicioId = "Correo enviado por el Cliente de Correo";
                 FachadaCorreo.Instancia.CrearCorreo(pCorreo);
             }
             catch (Exception exception) //CONSIDERAR  EXCEPCIONes DE PERSISTENCIA y de envio.
             {
                 MessageBox.Show(exception.Message);
+                MessageBox.Show(exception.InnerException.Message);
             }
             
             MessageBox.Show("Enviado con exito!");

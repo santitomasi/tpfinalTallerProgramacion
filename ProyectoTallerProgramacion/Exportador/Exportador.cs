@@ -40,6 +40,7 @@ namespace Exportador
         /// </summary>
         /// <param name="pCorreo">correo a exportar.</param>
         /// <param name="pRuta">ruta donde exportar el correo.</param>
-        public abstract void Exportar(CorreoDTO pCorreo, string pRuta);
+        /// <param name="pNombre">nombre con el que se quiere guardar el correo</param>
+        public abstract void Exportar(CorreoDTO pCorreo, string pRuta, string pNombre);
     }
 }

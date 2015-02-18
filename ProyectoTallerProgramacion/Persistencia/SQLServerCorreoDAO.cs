@@ -154,8 +154,7 @@ namespace Persistencia.SQLServer
         /// </summary>
         /// <param name="pCorreo"></param>
         public void AgregarCorreo(CorreoDTO pCorreo)
-        {
-            
+        {           
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
@@ -181,7 +180,7 @@ namespace Persistencia.SQLServer
         /// <summary>
         /// Metodo para eliminar los datos de un Correo en la Base de Datos.
         /// </summary>
-        /// <param name="pCorreo"></param>
+        /// <param name="pCorreo">Dato de tipo Correo a ser eliminado de la Base de Datos.</param>
         public void EliminarCorreo(CorreoDTO pCorreo)
         {
             try
@@ -196,6 +195,36 @@ namespace Persistencia.SQLServer
             catch (SqlException pSqlException)
             {
                 throw new DAOException("Error en la eliminacion de un correo", pSqlException);
+            }
+        }
+
+        /// <summary>
+        /// Metodo para modificar un correo en la Base de Datos.
+        /// </summary>
+        /// <param name="pCorreo">Dato de tipo Correo a ser modificado en la Base de Datos.</param>
+        public void ModificarCorreo(CorreoDTO pCorreo)
+        {
+            try
+            {
+                SqlCommand comando = this.iConexion.CreateCommand();
+                comando.CommandText = @"update Correo set fecha=@Fecha,tipocorreo=@TipoCorreo,cuentaOrigen=@CuentaOrigen,
+                                        cuentaDestino=@Destino,texto=@Texto,asunto=@Asunto,leido=@Leido,
+                                        correoServicioId@correoServicioId 
+                                        where correoId = @Id or correoServicioId = @correoServicioId";
+                comando.Parameters.AddWithValue("@Fecha", pCorreo.Fecha);
+                comando.Parameters.AddWithValue("@TipoCorreo", pCorreo.TipoCorreo);
+                comando.Parameters.AddWithValue("@CuentaOrigen", pCorreo.CuentaOrigen);
+                comando.Parameters.AddWithValue("@Destino", pCorreo.CuentaDestino);
+                comando.Parameters.AddWithValue("@Texto", pCorreo.Texto);
+                comando.Parameters.AddWithValue("@Asunto", pCorreo.Asunto);
+                comando.Parameters.AddWithValue("@Leido", pCorreo.Leido);
+                comando.Parameters.AddWithValue("@correoServicioId", pCorreo.ServicioId);
+                comando.Transaction = iTransaccion;
+                comando.ExecuteNonQuery();
+            }
+            catch (SqlException pSqlException)
+            {
+                throw new DAOException("Error en la actualización de datos de un correo", pSqlException);
             }
         }
     }

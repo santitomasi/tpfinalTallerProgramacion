@@ -25,7 +25,8 @@ namespace Exportador
         /// </summary>
         /// <param name="pCorreo">correo a ser exportado.</param>
         /// <param name="pRuta">ruta en donde se exportará el correo.</param>
-        public override void Exportar(CorreoDTO pCorreo,string pRuta)
+        /// <param name="pNombre">nombre con el que se quiere guardar el correo</param>
+        public override void Exportar(CorreoDTO pCorreo,string pRuta,string pNombre)
         {
             //Formamos un array de string para luego escribir en el archivo.
             string[] lines = {"De: <" + pCorreo.CuentaOrigen + ">", "Para: <" + pCorreo.CuentaDestino + ">", 
@@ -33,7 +34,7 @@ namespace Exportador
                                  "de " + pCorreo.Fecha.ToString("MMMM") + " de " + pCorreo.Fecha.ToString("yyyy"), 
                                  " ", pCorreo.Texto};
             //Creamos y escribimos el archivo en la ruta especificada por el usuario.
-            System.IO.File.WriteAllLines(pRuta + "\\" + pCorreo.Asunto +".txt", lines);
+            System.IO.File.WriteAllLines(pRuta + "\\" + pNombre + ".txt", lines);           
         }
 
     }

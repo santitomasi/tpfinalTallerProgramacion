@@ -134,7 +134,9 @@ namespace formPrincipal
             listaRecibidos.Rows.Clear();
             foreach (CorreoDTO aCorreo in FachadaCorreo.Instancia.ListarCorreos())
             {
-                object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, Convert.ToString(aCorreo.Fecha), aCorreo.Texto, aCorreo.Leido };
+                object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, 
+                                   aCorreo.Fecha.ToString("dddd, dd ") + "de " + aCorreo.Fecha.ToString("MMMM") + " de " + 
+                                   aCorreo.Fecha.ToString("yyyy"), aCorreo.Texto, aCorreo.Leido };
                 if (aCorreo.TipoCorreo == "Enviado")
                 {                    
                     listaEnviados.Rows.Add(row);
@@ -167,7 +169,9 @@ namespace formPrincipal
             listaRecibidos.Rows.Clear();
             foreach (CorreoDTO aCorreo in FachadaCorreo.Instancia.ListarCorreos(pCuenta))
             {
-                object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, Convert.ToString(aCorreo.Fecha), aCorreo.Texto, aCorreo.Leido };
+                object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, 
+                                   aCorreo.Fecha.ToString("dddd, dd ") + "de " + aCorreo.Fecha.ToString("MMMM") + " de " + 
+                                   aCorreo.Fecha.ToString("yyyy"), aCorreo.Texto, aCorreo.Leido };
                 if (aCorreo.TipoCorreo == "Enviado")
                 {
                     listaEnviados.Rows.Add(row);                
@@ -276,15 +280,21 @@ namespace formPrincipal
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 path = folderBrowserDialog1.SelectedPath;
-                
+                //crea el nombre en base del asunto del correo, eliminando los caracteres invalidos como nombre de archivo.
+                string pNombre = pCorreo.Asunto;
+                char[] invalidchars = Path.GetInvalidFileNameChars();
+                foreach (char cChar in invalidchars)
+                {
+                    pNombre = pNombre.Replace(cChar, '_');
+                }
                 if (radioButton1.Checked == true)
                 {
-                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo,path,radioButton1.Text);
+                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo,path,radioButton1.Text, pNombre);
                     
                 }
                 else
                 {
-                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo,path,radioButton2.Text);                    
+                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo, path, radioButton2.Text, pNombre);                    
                 }
             }
         }

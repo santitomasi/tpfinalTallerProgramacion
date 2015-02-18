@@ -68,11 +68,31 @@ namespace CorreoServicio
             for (int i = cantidadMensajes; i > 0; i--)      
             {
                 mensaje = pop.GetMessage(i);
+
+                // obtengo el texto del cuerpo del correo.
+                string cuerpo = "";
+                OpenPop.Mime.MessagePart texto = mensaje.FindFirstPlainTextVersion();
+                if (texto != null)
+                {
+                    // We found some plaintext!
+                    cuerpo = texto.GetBodyAsText();
+                }
+                else
+                {
+                    // Might include a part holding html instead
+                    OpenPop.Mime.MessagePart html = mensaje.FindFirstHtmlVersion();
+                    if (html != null)
+                    {
+                        // We found some html!
+                        cuerpo = html.GetBodyAsText();
+                    }
+                }
+
                 mCorreos.Add(new CorreoDTO()
                 {
-                    Fecha = Convert.ToDateTime(mensaje.Headers.DateSent),
+                    Fecha = mensaje.Headers.DateSent,
                     TipoCorreo = "Recibido",
-                    Texto = mensaje.ToMailMessage().Body,                    
+                    Texto = cuerpo,                    
                     CuentaOrigen = mensaje.Headers.From.Address,
                     CuentaDestino = pCuenta.Direccion,    // Reemplazar esto!!!
                     Asunto = mensaje.Headers.Subject,

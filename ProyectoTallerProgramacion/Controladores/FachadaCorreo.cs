@@ -37,10 +37,11 @@ namespace Controladores
         /// <param name="pCorreo">correo a exportarse.</param>
         /// <param name="pRuta">ruta en donde exportarse el correo.</param>
         /// <param name="pExportador">nombre del exportador a ser utilizado.</param>
-        public void ExportarCorreo(CorreoDTO pCorreo,string pRuta, string pExportador)
+        /// <param name="pNombre">nombre con el que se quiere guardar el correo</param>
+        public void ExportarCorreo(CorreoDTO pCorreo,string pRuta, string pExportador, string pNombre)
         {            
             Exportador.IExportador exportador = fabricaExportadores.GetExportador(pExportador);
-            exportador.Exportar(pCorreo,pRuta);
+            exportador.Exportar(pCorreo,pRuta,pNombre);
         }
 
         /// <summary>
@@ -185,7 +186,7 @@ namespace Controladores
         /// <summary>
         /// Método para eliminar un correo.
         /// </summary>
-        /// <param name="pCorreo">Clase DTO con los datos del correo a eliminar.</param>
+        /// <param name="pCorreo">Objeto DTO con los datos del correo a eliminar.</param>
         public void EliminarCorreo(CorreoDTO pCorreo)
         {
             try
@@ -194,6 +195,34 @@ namespace Controladores
                 factory.IniciarConexion();
                 factory.ComenzarTransaccion();
                 factory.CorreoDAO.EliminarCorreo(pCorreo);
+                factory.Commit();
+            }
+            catch (Exception e)
+            {
+                factory.RollBack();
+
+                //Se relanza la excepción porque en este punto no se puede tratar
+                throw e;
+            }
+            finally
+            {
+                // Haya o no un error, se cierra la transacción.
+                factory.FinalizarConexion();
+            }
+        }
+
+        /// <summary>
+        /// Método para modificar un correo.
+        /// </summary>
+        /// <param name="pCorreo">Objeto DTO con los datos del correo a modificar.</param>
+        public void ModificarCorreo(CorreoDTO pCorreo)
+        {
+            try
+            {
+                factory = DAOFactory.Instancia;
+                factory.IniciarConexion();
+                factory.ComenzarTransaccion();
+                factory.CorreoDAO.ModificarCorreo(pCorreo);
                 factory.Commit();
             }
             catch (Exception e)

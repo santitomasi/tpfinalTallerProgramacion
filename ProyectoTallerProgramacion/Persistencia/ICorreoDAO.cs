@@ -25,6 +25,12 @@ namespace Persistencia
         void EliminarCorreo(CorreoDTO pCorreo);
 
         /// <summary>
+        /// Metodo para modificar un correo en la Base de Datos.
+        /// </summary>
+        /// <param name="pCorreo">Dato de tipo Correo a ser modificado en la Base de Datos.</param>
+        void ModificarCorreo(CorreoDTO pCorreo);
+
+        /// <summary>
         /// Metodo para obtener los correos de la Base de Datos.
         /// </summary>
         /// <returns>Retorna una lista de correos con todos los corros de la base de datos.</returns>

@@ -25,7 +25,8 @@ namespace Exportador
         /// </summary>
         /// <param name="pCorreo">correo a ser exportado.</param>
         /// <param name="pRuta">ruta donde se ubicará el correo exportado.</param>
-        public override void Exportar(CorreoDTO pCorreo, string pRuta)
+        /// <param name="pNombre">nombre con el que se quiere guardar el correo</param>
+        public override void Exportar(CorreoDTO pCorreo, string pRuta, string pNombre)
         {
             MailMessage correo = new MailMessage();
             correo.From = new MailAddress(pCorreo.CuentaOrigen);

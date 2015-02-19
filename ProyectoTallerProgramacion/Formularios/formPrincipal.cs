@@ -18,20 +18,29 @@ namespace formPrincipal
 {
     public partial class formPrincipal : Form
     {
-        private static List<OpenPop.Mime.Message> mensajes;
-
+        /// <summary>
+        /// Metodo que se dispara cuando se abre el formulario.
+        /// </summary>
         public formPrincipal()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Metodo que se dispara al hacer click en el boton "Redactar".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             Form frm = new formEnvioCorreo();
             frm.ShowDialog();
         }
 
-
+        /// <summary>
+        /// Metodo para descargar los correos de una cuenta.
+        /// </summary>
+        /// <param name="pCuenta"></param>
         private void ActualizarCuenta(CuentaDTO pCuenta)
         {
             try
@@ -48,6 +57,11 @@ namespace formPrincipal
         }
 
 
+        /// <summary>
+        /// Metodo que se dispara al hacer click en el boton "Actualizar".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btActualizar_Click(object sender, EventArgs e)
         {
             progressBar1.Visible = true;          
@@ -78,11 +92,12 @@ namespace formPrincipal
             progressBar1.Visible = false;
         }
          
-        private void agregarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            listaCuentas.Visible = false;
-        }
 
+        /// <summary>
+        /// Metodo que se dispara cuando se hace visible la barra de progreso.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void progressBar_VisibleChanged(object sender, EventArgs e)
         {
             //Pop3Client pop = new Pop3Client();
@@ -195,6 +210,11 @@ namespace formPrincipal
             }
         }
 
+        /// <summary>
+        /// Metodo que se dispara cuando se carga el formulario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void formPrincipal_Load(object sender, EventArgs e)
         {
             MostrarCuentas();
@@ -226,6 +246,11 @@ namespace formPrincipal
             //opcionesExportar.Visible = false;
         }
 
+        /// <summary>
+        /// Metodo que se dispara al hacer click en el boton "Exportar".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button6_Click(object sender, EventArgs e)
         {
             CorreoDTO pCorreo = new CorreoDTO();
@@ -301,6 +326,12 @@ namespace formPrincipal
             }
         }
 
+        /// <summary>
+        /// Metodo que abre el formulario de administracion de cuentas.
+        /// Se dispara al hacer click en el elemento del menu "Administrar cuentas".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void configuracionCuentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frm = new FormCuenta();
@@ -332,20 +363,6 @@ namespace formPrincipal
             panelCorreo.Visible = false;
             //opcionesExportar.Visible = false;
         }
-
-
-        private void listaRecibidos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Método en desuso
-        }
-
-
-        private void listaEnviados_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Método en desuso
-        }
-
-
 
         /// <summary>
         /// Método que se dispara al hacer doble click sobre un correo de la lista de correos Enviados
@@ -397,9 +414,6 @@ namespace formPrincipal
             panelCorreo.Visible = true;
             listaEnviados.Visible = false;
             opcionesExportar.Visible = true;
-
-
-
         }
 
         /// <summary>
@@ -437,7 +451,6 @@ namespace formPrincipal
             correo_leido.Text = Convert.ToString(pCorreo.Leido);
             correo_servicioid.Text = pCorreo.ServicioId;
             correo_tipocorreo.Text = pCorreo.TipoCorreo;
-
             try
             {
                 // Marco como leido el correo en la base
@@ -449,7 +462,6 @@ namespace formPrincipal
                 MessageBox.Show(exeption.InnerException.Message);
             }
 
-
             panelCorreo.Visible = true;
             listaRecibidos.Visible = false;
             opcionesExportar.Visible = true;
@@ -458,6 +470,11 @@ namespace formPrincipal
             //radioButton2.Visible = true;
         }
 
+        /// <summary>
+        /// Metodo que se dispara al hacer click en el boton "Eliminar".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Está seguro que desea eliminar este correo?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -507,14 +524,16 @@ namespace formPrincipal
             // actualiza el infice del combobox para que se lence el evento SelectionIndexChanged
             listaCuentas.SelectedIndex = 0;
             listaCuentas.SelectedIndex = listaCuentas.Items.Count - 1;
-
-
         }
 
+        /// <summary>
+        /// Metodo que se dispara al hacer click en el boton "Reenviar".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void botonReenviar_Click(object sender, EventArgs e)
         {
             CorreoDTO pCorreo = new CorreoDTO();
-
 
             if (listaEnviados.Visible)
             {
@@ -530,8 +549,6 @@ namespace formPrincipal
                 //pCorreo.Leido = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
                 pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
                 //pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
-
-
             }
             else if (listaRecibidos.Visible)
             {
@@ -557,7 +574,7 @@ namespace formPrincipal
                 pCorreo.Fecha = Convert.ToDateTime(correo_fecha.Text);
                 pCorreo.Texto = correo_texto.Text;
                 //pCorreo.Leido = Convert.ToInt32();
-               // pCorreo.TipoCorreo = 
+                //pCorreo.TipoCorreo = 
 
             }
 

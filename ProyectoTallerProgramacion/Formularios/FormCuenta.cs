@@ -66,27 +66,18 @@ namespace formPrincipal
                         if (cuenta_id.Text == "")
                         {
                             FachadaABMCuenta.Instancia.CrearCuenta(pCuenta);
-
-
-                            // poner un valor en el campo id, sino si se hace 2 veces click en guardar se produce un error jeje
-                            // En realidad  se deberia actualizar el formulario entero y lesto...
-
+                            MessageBox.Show("Cuenta guardada con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
                             pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
                             FachadaABMCuenta.Instancia.ModificarCuenta(pCuenta);
+                            MessageBox.Show("Cuenta guardada con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     catch (Exception exeption)
                     {
-                        // 
-                        //SqlException pSQLException = (SqlException)exeption.InnerException;
-
-                        //Convert.ToString(pSqlException.Errors[0].Number
-                        // MessageBox.Show( exeption.InnerException.Message);
                         MessageBox.Show(exeption.Message);
-                        //MessageBox.Show(Convert.ToString(pSQLException.Errors[0].Number));
                     }
                 }
                 else
@@ -100,7 +91,7 @@ namespace formPrincipal
                 MessageBox.Show("Verifique las contraseñas");
             }
 
-            
+            MostrarCuentas();
         }
 
         /// <summary>

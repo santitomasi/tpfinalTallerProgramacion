@@ -118,8 +118,10 @@ namespace Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = "select * from Correo where (cuentaOrigen = @Cuenta and tipoCorreo = 'Enviado') or (cuentaDestino = @Cuenta and tipoCorreo = 'Recibido')";
+                comando.CommandText = "select * from Correo where (cuentaOrigen = @Cuenta and tipoCorreo = 'Enviado') or (cuentaDestino = @Cuenta2 and tipoCorreo = 'Recibido')";
                 comando.Parameters.AddWithValue("@Cuenta", pCuenta);
+                // Utilizo el ; porque lasdirecciones de destino se guardan con ;
+                comando.Parameters.AddWithValue("@Cuenta2", pCuenta + "; ");
                 DataTable tabla = new DataTable();
                 using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
                 {

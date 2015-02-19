@@ -65,6 +65,7 @@ namespace formPrincipal
                 //Setea el valor del campo servicioid
                 pCorreo.ServicioId = "Correo enviado por el Cliente de Correo";
                 FachadaCorreo.Instancia.CrearCorreo(pCorreo);
+                MessageBox.Show("Enviado con exito!");
             }
             catch (Exception exception) //CONSIDERAR  EXCEPCIONes DE PERSISTENCIA y de envio.
             {
@@ -72,7 +73,6 @@ namespace formPrincipal
                 MessageBox.Show(exception.InnerException.Message);
             }
             
-            MessageBox.Show("Enviado con exito!");
 
             this.Close();
         }

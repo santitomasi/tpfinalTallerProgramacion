@@ -98,10 +98,10 @@ namespace CorreoServicio
                 }
 
                 // Armar el string de cuenta destino con las cuentas destinatarias.
-                string destino = "";
+                string pDestino = "";
                 foreach (OpenPop.Mime.Header.RfcMailAddress mailAdres in mensaje.Headers.To)
                 {
-                    destino = destino + mailAdres.Address;
+                    pDestino = pDestino + mailAdres.Address + "; ";
                 }
 
                 mCorreos.Add(new CorreoDTO()
@@ -110,9 +110,9 @@ namespace CorreoServicio
                     TipoCorreo = pTipoCorreo,
                     Texto = cuerpo,                    
                     CuentaOrigen = mensaje.Headers.From.Address,
-                    CuentaDestino = destino,    // Reemplazar esto!!!
+                    CuentaDestino = pDestino,    // Reemplazar esto!!!
                     Asunto = mensaje.Headers.Subject,
-                    Leido = 0,
+                    Leido = false,
                     ServicioId = mensaje.Headers.MessageId
                 });
             }

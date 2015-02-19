@@ -36,11 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listaCuentas = new System.Windows.Forms.DataGridView();
-            this.cuentaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuenta_contraseña2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -51,6 +46,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listaServicios = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.cuentaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mostrar = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.listaCuentas)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -101,11 +102,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(202, 75);
+            this.label1.Location = new System.Drawing.Point(193, 75);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Usuario:";
+            this.label1.Text = "Dirección:";
             // 
             // listaCuentas
             // 
@@ -132,40 +133,6 @@
             this.listaCuentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_CellClick);
             this.listaCuentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_CellDoubleClick);
             this.listaCuentas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_RowEnter);
-            // 
-            // cuentaId
-            // 
-            this.cuentaId.HeaderText = "ID";
-            this.cuentaId.Name = "cuentaId";
-            this.cuentaId.ReadOnly = true;
-            this.cuentaId.Visible = false;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 200;
-            // 
-            // usuario
-            // 
-            this.usuario.HeaderText = "Usuario";
-            this.usuario.Name = "usuario";
-            this.usuario.ReadOnly = true;
-            this.usuario.Width = 250;
-            // 
-            // contraseña
-            // 
-            this.contraseña.HeaderText = "Contraseña";
-            this.contraseña.Name = "contraseña";
-            this.contraseña.ReadOnly = true;
-            this.contraseña.Width = 200;
-            // 
-            // servicio
-            // 
-            this.servicio.HeaderText = "Servicio";
-            this.servicio.Name = "servicio";
-            this.servicio.ReadOnly = true;
             // 
             // cuenta_contraseña2
             // 
@@ -255,12 +222,59 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "ejemplo: usuario@servicio.com";
             // 
+            // cuentaId
+            // 
+            this.cuentaId.HeaderText = "ID";
+            this.cuentaId.Name = "cuentaId";
+            this.cuentaId.ReadOnly = true;
+            this.cuentaId.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Width = 250;
+            // 
+            // usuario
+            // 
+            this.usuario.HeaderText = "Dirección";
+            this.usuario.Name = "usuario";
+            this.usuario.ReadOnly = true;
+            this.usuario.Width = 300;
+            // 
+            // contraseña
+            // 
+            this.contraseña.HeaderText = "Contraseña";
+            this.contraseña.Name = "contraseña";
+            this.contraseña.ReadOnly = true;
+            this.contraseña.Visible = false;
+            this.contraseña.Width = 200;
+            // 
+            // servicio
+            // 
+            this.servicio.HeaderText = "Servicio";
+            this.servicio.Name = "servicio";
+            this.servicio.ReadOnly = true;
+            // 
+            // mostrar
+            // 
+            this.mostrar.AutoSize = true;
+            this.mostrar.Location = new System.Drawing.Point(451, 135);
+            this.mostrar.Name = "mostrar";
+            this.mostrar.Size = new System.Drawing.Size(115, 17);
+            this.mostrar.TabIndex = 6;
+            this.mostrar.Text = "Mostrar Caracteres";
+            this.mostrar.UseVisualStyleBackColor = true;
+            this.mostrar.CheckedChanged += new System.EventHandler(this.mostrar_CheckedChanged);
+            // 
             // FormCuenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(656, 349);
+            this.Controls.Add(this.mostrar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listaServicios);
             this.Controls.Add(this.cuenta_id);
@@ -305,11 +319,12 @@
         private System.Windows.Forms.TextBox cuenta_id;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox listaServicios;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuentaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn contraseña;
         private System.Windows.Forms.DataGridViewTextBoxColumn servicio;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox mostrar;
     }
 }

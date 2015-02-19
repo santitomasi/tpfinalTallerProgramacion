@@ -161,6 +161,12 @@ namespace formPrincipal
         {
             CargarServicios();
             MostrarCuentas();
+            // Si la lista esta vacía inserta una fila
+            if (listaCuentas.RowCount == 0)
+            {
+                object[] row = { "", "", "", "" };
+                listaCuentas.Rows.Add(row);
+             }
         }
 
         /// <summary>
@@ -274,6 +280,20 @@ namespace formPrincipal
         {
             //marca la fila como seleccionada, para no perder la fila seleccionada actual.
             listaCuentas.Rows[e.RowIndex].Selected = true;
+        }
+
+        private void mostrar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mostrar.Checked == true)
+            {
+                cuenta_contraseña.UseSystemPasswordChar = false;
+                cuenta_contraseña2.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                cuenta_contraseña.UseSystemPasswordChar = true;
+                cuenta_contraseña2.UseSystemPasswordChar = true;
+            }
         }
 
 

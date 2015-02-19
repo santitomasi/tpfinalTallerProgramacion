@@ -104,7 +104,7 @@ namespace CorreoServicio
                 string pDestino = "";
                 foreach (OpenPop.Mime.Header.RfcMailAddress mailAdres in mensaje.Headers.To)
                 {
-                    pDestino = pDestino + mailAdres.Address;
+                        pDestino = pDestino + mailAdres.Address + "; ";
                 }
 
                 mCorreos.Add(new CorreoDTO()
@@ -115,7 +115,7 @@ namespace CorreoServicio
                     CuentaOrigen = mensaje.Headers.From.Address,
                     CuentaDestino = pDestino,
                     Asunto = mensaje.Headers.Subject,
-                    Leido = 0,        
+                    Leido = false,        
                     ServicioId = mensaje.Headers.MessageId
        
                 });

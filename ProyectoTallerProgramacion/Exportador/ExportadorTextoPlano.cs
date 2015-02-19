@@ -31,7 +31,8 @@ namespace Exportador
             //Formamos un array de string para luego escribir en el archivo.
             string[] lines = {"De: <" + pCorreo.CuentaOrigen + ">", "Para: <" + pCorreo.CuentaDestino + ">", 
                                  "Asunto: " + pCorreo.Asunto, "Fecha: " + pCorreo.Fecha.ToString("dddd, dd ") +
-                                 "de " + pCorreo.Fecha.ToString("MMMM") + " de " + pCorreo.Fecha.ToString("yyyy"), 
+                                 "de " + pCorreo.Fecha.ToString("MMMM") + " de " + pCorreo.Fecha.ToString("yyyy")
+                                 + pCorreo.Fecha.ToString(" HH:mm"), 
                                  " ", pCorreo.Texto};
             //Creamos y escribimos el archivo en la ruta especificada por el usuario.
             System.IO.File.WriteAllLines(pRuta + "\\" + pNombre + ".txt", lines);           

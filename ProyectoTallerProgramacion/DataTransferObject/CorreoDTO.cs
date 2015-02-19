@@ -54,7 +54,7 @@ namespace DataTransferObject
         /// <summary>
         /// Atributo leido.
         /// </summary>
-        private int iLeido;
+        private bool iLeido;
 
         /// <summary>
         /// Atributo para archivos adjuntos.
@@ -150,7 +150,7 @@ namespace DataTransferObject
         /// <summary>
         /// Propiedad de lectura y escritura del atributo leído.
         /// </summary>
-        public int Leido
+        public bool Leido
         {
             get { return this.iLeido; }
             set { this.iLeido = value; }

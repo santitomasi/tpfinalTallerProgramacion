@@ -153,11 +153,12 @@ namespace formPrincipal
             {
                 object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, 
                                    aCorreo.Fecha.ToString("dddd, dd ") + "de " + aCorreo.Fecha.ToString("MMMM") + " de " + 
-                                   aCorreo.Fecha.ToString("yyyy"), aCorreo.Texto, aCorreo.Leido, aCorreo.ServicioId };
+                                   aCorreo.Fecha.ToString("yyyy") + aCorreo.Fecha.ToString(" HH:mm"),
+                                   aCorreo.Texto, aCorreo.Leido, aCorreo.ServicioId };
                 if (aCorreo.TipoCorreo == "Enviado")
                 {                    
                     listaEnviados.Rows.Add(row);
-                    if (aCorreo.Leido != 0)
+                    if (aCorreo.Leido != false)
                     {
                         int posicion = listaEnviados.Rows.Count - 1;
                         listaEnviados.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
@@ -166,7 +167,7 @@ namespace formPrincipal
                 else
                 {
                     listaRecibidos.Rows.Add(row);
-                    if (aCorreo.Leido != 0)
+                    if (aCorreo.Leido != false)
                     {
                         int posicion = listaRecibidos.Rows.Count - 1;
                         listaRecibidos.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
@@ -188,11 +189,12 @@ namespace formPrincipal
             {
                 object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, 
                                    aCorreo.Fecha.ToString("dddd, dd ") + "de " + aCorreo.Fecha.ToString("MMMM") + " de " + 
-                                   aCorreo.Fecha.ToString("yyyy"), aCorreo.Texto, aCorreo.Leido, aCorreo.ServicioId };
+                                   aCorreo.Fecha.ToString("yyyy") + aCorreo.Fecha.ToString(" HH:mm"),
+                                   aCorreo.Texto, aCorreo.Leido, aCorreo.ServicioId };
                 if (aCorreo.TipoCorreo == "Enviado")
                 {
                     listaEnviados.Rows.Add(row);                
-                    if (aCorreo.Leido != 0)
+                    if (aCorreo.Leido != false)
                     {
                         int posicion = listaEnviados.Rows.Count - 1;
                         listaEnviados.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
@@ -201,7 +203,7 @@ namespace formPrincipal
                 else
                 {
                     listaRecibidos.Rows.Add(row);
-                    if (aCorreo.Leido != 0)
+                    if (aCorreo.Leido != false)
                     {
                         int posicion = listaRecibidos.Rows.Count - 1;
                         listaRecibidos.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
@@ -267,7 +269,7 @@ namespace formPrincipal
                 pCorreo.CuentaDestino = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
                 pCorreo.CuentaOrigen = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
                 pCorreo.Fecha = Convert.ToDateTime(listaEnviados.Rows[indexSelected].Cells["fecha"].Value);
-                pCorreo.Leido = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
+                pCorreo.Leido = Convert.ToBoolean(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
                 pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
                 pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
                 pCorreo.ServicioId = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["servicioId"].Value); 
@@ -283,7 +285,7 @@ namespace formPrincipal
                 pCorreo.CuentaDestino = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
                 pCorreo.CuentaOrigen = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
                 pCorreo.Fecha = Convert.ToDateTime(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
-                pCorreo.Leido = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value);
+                pCorreo.Leido = Convert.ToBoolean(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value);
                 pCorreo.Texto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
                 pCorreo.TipoCorreo = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["tipoCorreoR"].Value);
                 pCorreo.ServicioId = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["servicioIdR"].Value); 
@@ -384,7 +386,7 @@ namespace formPrincipal
             pCorreo.CuentaDestino = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
             pCorreo.CuentaOrigen = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
             pCorreo.Fecha = Convert.ToDateTime(listaEnviados.Rows[indexSelected].Cells["fecha"].Value);
-            pCorreo.Leido = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
+            pCorreo.Leido = Convert.ToBoolean(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
             pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
             pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
             pCorreo.ServicioId = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["servicioId"].Value);
@@ -435,7 +437,7 @@ namespace formPrincipal
             pCorreo.CuentaDestino = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
             pCorreo.CuentaOrigen = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
             pCorreo.Fecha = Convert.ToDateTime(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
-            pCorreo.Leido = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value);
+            pCorreo.Leido = Convert.ToBoolean(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value);
             pCorreo.Texto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
             pCorreo.TipoCorreo = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["tipoCorreoR"].Value);
             pCorreo.ServicioId = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["servicioIdR"].Value);
@@ -581,6 +583,7 @@ namespace formPrincipal
             Form frm = new formEnvioCorreo(pCorreo);
             frm.ShowDialog();
         }
+
 
     }
 }

@@ -43,7 +43,7 @@ namespace Persistencia.SQLServer
         /// <returns>False si el correo no existe en la base, true de lo contrario.</returns>
         public bool Existe(CorreoDTO pCorreo)
         {
-            bool encontrado = false;
+            bool encontrado = false;         
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
@@ -95,7 +95,7 @@ namespace Persistencia.SQLServer
                             CuentaOrigen = Convert.ToString(fila["cuentaOrigen"]),
                             CuentaDestino = Convert.ToString(fila["cuentaDestino"]),
                             Asunto = Convert.ToString(fila["Asunto"]),
-                            Leido = Convert.ToInt32(fila["leido"]),
+                            Leido = Convert.ToBoolean(fila["leido"]),
                             ServicioId = Convert.ToString(fila["correoServicioId"])
                         });
                     }
@@ -135,7 +135,7 @@ namespace Persistencia.SQLServer
                            CuentaOrigen = Convert.ToString(fila["cuentaOrigen"]),
                            CuentaDestino = Convert.ToString(fila["cuentaDestino"]),
                            Asunto = Convert.ToString(fila["Asunto"]),
-                           Leido = Convert.ToInt32(fila["leido"]),
+                           Leido = Convert.ToBoolean(fila["leido"]),
                            ServicioId = Convert.ToString(fila["correoServicioId"])
                         });
                         
@@ -154,7 +154,7 @@ namespace Persistencia.SQLServer
         /// </summary>
         /// <param name="pCorreo"></param>
         public void AgregarCorreo(CorreoDTO pCorreo)
-        {           
+        {
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();

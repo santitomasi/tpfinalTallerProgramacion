@@ -43,7 +43,7 @@ namespace formPrincipal
         private void button1_Click(object sender, EventArgs e)
         {
             CorreoDTO pCorreo = new CorreoDTO();
-            pCorreo.Leido = 0;
+            pCorreo.Leido = false;
             pCorreo.CuentaOrigen = Convert.ToString(listaCuentas.SelectedItem);
             pCorreo.CuentaDestino = correo_Destino.Text;
             pCorreo.Asunto = correo_Asunto.Text;

@@ -54,17 +54,27 @@
             this.opcionesExportar = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.panelCorreo = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.correo_cuentaOrigen = new System.Windows.Forms.TextBox();
+            this.correo_cuentaDestino = new System.Windows.Forms.TextBox();
             this.correo_tipocorreo = new System.Windows.Forms.TextBox();
             this.correo_servicioid = new System.Windows.Forms.TextBox();
             this.correo_leido = new System.Windows.Forms.TextBox();
             this.correo_id = new System.Windows.Forms.TextBox();
-            this.correo_cuentaDestino = new System.Windows.Forms.Label();
             this.correo_fecha = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.correo_cuentaOrigen = new System.Windows.Forms.Label();
             this.correo_asunto = new System.Windows.Forms.Label();
             this.listaRecibidos = new System.Windows.Forms.DataGridView();
+            this.correoIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoCorreoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asuntoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaOrigenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaDestinoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicioIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listaEnviados = new System.Windows.Forms.DataGridView();
             this.correoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,15 +91,6 @@
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.botonReenviar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.correoIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoCorreoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.asuntoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaOrigenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaDestinoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.servicioIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.opcionesExportar.SuspendLayout();
             this.panelCorreo.SuspendLayout();
@@ -153,12 +154,12 @@
             // 
             this.correo_texto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.correo_texto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correo_texto.Location = new System.Drawing.Point(41, 77);
+            this.correo_texto.Location = new System.Drawing.Point(41, 116);
             this.correo_texto.Multiline = true;
             this.correo_texto.Name = "correo_texto";
             this.correo_texto.ReadOnly = true;
             this.correo_texto.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.correo_texto.Size = new System.Drawing.Size(745, 338);
+            this.correo_texto.Size = new System.Drawing.Size(745, 303);
             this.correo_texto.TabIndex = 8;
             // 
             // contextMenuStrip1
@@ -251,21 +252,50 @@
             // 
             this.panelCorreo.BackColor = System.Drawing.SystemColors.Window;
             this.panelCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCorreo.Controls.Add(this.label1);
+            this.panelCorreo.Controls.Add(this.correo_cuentaOrigen);
+            this.panelCorreo.Controls.Add(this.correo_cuentaDestino);
             this.panelCorreo.Controls.Add(this.correo_tipocorreo);
             this.panelCorreo.Controls.Add(this.correo_servicioid);
             this.panelCorreo.Controls.Add(this.correo_leido);
             this.panelCorreo.Controls.Add(this.correo_id);
             this.panelCorreo.Controls.Add(this.correo_texto);
-            this.panelCorreo.Controls.Add(this.correo_cuentaDestino);
             this.panelCorreo.Controls.Add(this.correo_fecha);
             this.panelCorreo.Controls.Add(this.label7);
             this.panelCorreo.Controls.Add(this.label5);
-            this.panelCorreo.Controls.Add(this.correo_cuentaOrigen);
             this.panelCorreo.Controls.Add(this.correo_asunto);
             this.panelCorreo.Location = new System.Drawing.Point(152, 27);
             this.panelCorreo.Name = "panelCorreo";
             this.panelCorreo.Size = new System.Drawing.Size(817, 488);
             this.panelCorreo.TabIndex = 34;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(38, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 18);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Fecha:";
+            // 
+            // correo_cuentaOrigen
+            // 
+            this.correo_cuentaOrigen.Location = new System.Drawing.Point(103, 26);
+            this.correo_cuentaOrigen.Name = "correo_cuentaOrigen";
+            this.correo_cuentaOrigen.ReadOnly = true;
+            this.correo_cuentaOrigen.Size = new System.Drawing.Size(311, 20);
+            this.correo_cuentaOrigen.TabIndex = 21;
+            // 
+            // correo_cuentaDestino
+            // 
+            this.correo_cuentaDestino.Location = new System.Drawing.Point(103, 53);
+            this.correo_cuentaDestino.Multiline = true;
+            this.correo_cuentaDestino.Name = "correo_cuentaDestino";
+            this.correo_cuentaDestino.ReadOnly = true;
+            this.correo_cuentaDestino.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.correo_cuentaDestino.Size = new System.Drawing.Size(682, 35);
+            this.correo_cuentaDestino.TabIndex = 20;
             // 
             // correo_tipocorreo
             // 
@@ -299,21 +329,11 @@
             this.correo_id.TabIndex = 16;
             this.correo_id.Visible = false;
             // 
-            // correo_cuentaDestino
-            // 
-            this.correo_cuentaDestino.AutoSize = true;
-            this.correo_cuentaDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correo_cuentaDestino.Location = new System.Drawing.Point(89, 52);
-            this.correo_cuentaDestino.Name = "correo_cuentaDestino";
-            this.correo_cuentaDestino.Size = new System.Drawing.Size(59, 18);
-            this.correo_cuentaDestino.TabIndex = 14;
-            this.correo_cuentaDestino.Text = "Destino";
-            // 
             // correo_fecha
             // 
             this.correo_fecha.AutoSize = true;
             this.correo_fecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correo_fecha.Location = new System.Drawing.Point(526, 52);
+            this.correo_fecha.Location = new System.Drawing.Point(100, 95);
             this.correo_fecha.Name = "correo_fecha";
             this.correo_fecha.Size = new System.Drawing.Size(54, 18);
             this.correo_fecha.TabIndex = 13;
@@ -338,16 +358,6 @@
             this.label5.Size = new System.Drawing.Size(39, 18);
             this.label5.TabIndex = 11;
             this.label5.Text = "De: ";
-            // 
-            // correo_cuentaOrigen
-            // 
-            this.correo_cuentaOrigen.AutoSize = true;
-            this.correo_cuentaOrigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correo_cuentaOrigen.Location = new System.Drawing.Point(74, 28);
-            this.correo_cuentaOrigen.Name = "correo_cuentaOrigen";
-            this.correo_cuentaOrigen.Size = new System.Drawing.Size(52, 18);
-            this.correo_cuentaOrigen.TabIndex = 10;
-            this.correo_cuentaOrigen.Text = "Origen";
             // 
             // correo_asunto
             // 
@@ -413,6 +423,61 @@
             this.listaRecibidos.Size = new System.Drawing.Size(817, 488);
             this.listaRecibidos.TabIndex = 38;
             this.listaRecibidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellDoubleClick);
+            // 
+            // correoIdR
+            // 
+            this.correoIdR.HeaderText = "Correo ID";
+            this.correoIdR.Name = "correoIdR";
+            this.correoIdR.Visible = false;
+            // 
+            // tipoCorreoR
+            // 
+            this.tipoCorreoR.HeaderText = "Tipo Correo";
+            this.tipoCorreoR.Name = "tipoCorreoR";
+            this.tipoCorreoR.Visible = false;
+            // 
+            // asuntoR
+            // 
+            this.asuntoR.HeaderText = "Asunto";
+            this.asuntoR.Name = "asuntoR";
+            this.asuntoR.ReadOnly = true;
+            // 
+            // cuentaOrigenR
+            // 
+            this.cuentaOrigenR.HeaderText = "De";
+            this.cuentaOrigenR.Name = "cuentaOrigenR";
+            this.cuentaOrigenR.ReadOnly = true;
+            // 
+            // cuentaDestinoR
+            // 
+            this.cuentaDestinoR.HeaderText = "Para";
+            this.cuentaDestinoR.Name = "cuentaDestinoR";
+            // 
+            // fechaR
+            // 
+            this.fechaR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.fechaR.HeaderText = "Fecha";
+            this.fechaR.Name = "fechaR";
+            this.fechaR.ReadOnly = true;
+            this.fechaR.Width = 70;
+            // 
+            // textoR
+            // 
+            this.textoR.HeaderText = "Mensaje";
+            this.textoR.Name = "textoR";
+            this.textoR.Visible = false;
+            // 
+            // leidoR
+            // 
+            this.leidoR.HeaderText = "Leido";
+            this.leidoR.Name = "leidoR";
+            this.leidoR.Visible = false;
+            // 
+            // servicioIdR
+            // 
+            this.servicioIdR.HeaderText = "ServicioIdR";
+            this.servicioIdR.Name = "servicioIdR";
+            this.servicioIdR.Visible = false;
             // 
             // listaEnviados
             // 
@@ -643,61 +708,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // correoIdR
-            // 
-            this.correoIdR.HeaderText = "Correo ID";
-            this.correoIdR.Name = "correoIdR";
-            this.correoIdR.Visible = false;
-            // 
-            // tipoCorreoR
-            // 
-            this.tipoCorreoR.HeaderText = "Tipo Correo";
-            this.tipoCorreoR.Name = "tipoCorreoR";
-            this.tipoCorreoR.Visible = false;
-            // 
-            // asuntoR
-            // 
-            this.asuntoR.HeaderText = "Asunto";
-            this.asuntoR.Name = "asuntoR";
-            this.asuntoR.ReadOnly = true;
-            // 
-            // cuentaOrigenR
-            // 
-            this.cuentaOrigenR.HeaderText = "De";
-            this.cuentaOrigenR.Name = "cuentaOrigenR";
-            this.cuentaOrigenR.ReadOnly = true;
-            // 
-            // cuentaDestinoR
-            // 
-            this.cuentaDestinoR.HeaderText = "Para";
-            this.cuentaDestinoR.Name = "cuentaDestinoR";
-            // 
-            // fechaR
-            // 
-            this.fechaR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.fechaR.HeaderText = "Fecha";
-            this.fechaR.Name = "fechaR";
-            this.fechaR.ReadOnly = true;
-            this.fechaR.Width = 70;
-            // 
-            // textoR
-            // 
-            this.textoR.HeaderText = "Mensaje";
-            this.textoR.Name = "textoR";
-            this.textoR.Visible = false;
-            // 
-            // leidoR
-            // 
-            this.leidoR.HeaderText = "Leido";
-            this.leidoR.Name = "leidoR";
-            this.leidoR.Visible = false;
-            // 
-            // servicioIdR
-            // 
-            this.servicioIdR.HeaderText = "ServicioIdR";
-            this.servicioIdR.Name = "servicioIdR";
-            this.servicioIdR.Visible = false;
-            // 
             // formPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -714,9 +724,9 @@
             this.Controls.Add(this.botonReenviar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.listaEnviados);
             this.Controls.Add(this.listaRecibidos);
             this.Controls.Add(this.panelCorreo);
-            this.Controls.Add(this.listaEnviados);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formPrincipal";
@@ -754,11 +764,9 @@
         private System.Windows.Forms.ToolStripMenuItem configuraciónDeCuentasToolStripMenuItem;
         private System.Windows.Forms.Panel panelCorreo;
         private System.Windows.Forms.Label correo_asunto;
-        private System.Windows.Forms.Label correo_cuentaOrigen;
         private System.Windows.Forms.Label correo_fecha;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label correo_cuentaDestino;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.DataGridView listaRecibidos;
@@ -791,6 +799,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn textoR;
         private System.Windows.Forms.DataGridViewTextBoxColumn leidoR;
         private System.Windows.Forms.DataGridViewTextBoxColumn servicioIdR;
+        private System.Windows.Forms.TextBox correo_cuentaDestino;
+        private System.Windows.Forms.TextBox correo_cuentaOrigen;
+        private System.Windows.Forms.Label label1;
 
     }
 }

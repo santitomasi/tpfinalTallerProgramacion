@@ -28,7 +28,7 @@ namespace Persistencia.SQLServer
         /// </summary>
        // private string STRING_CONEXION = "Data Source=USER-PC; Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
        // private string STRING_CONEXION = @"Data Source=DANILO-PC\SQLEXPRESS; Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
-        private string STRING_CONEXION = @"Data Source=DANILO-PC\SQLEXPRESS; Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
+        private string STRING_CONEXION = @"Data Source=ACER-V3-571; Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
        
         // POR   FABOR  ACTIVE  SU  CADENA  DE  CONEXION  PERO  NO  BORRE  LA  DE  LOS  DEMAS!!!!!!!!  GRACIAS :)
 

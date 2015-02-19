@@ -7,8 +7,8 @@
     <ProjectGuid>{D0127C49-3CE6-4846-91C3-AD1273440535}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Exportador</RootNamespace>
-    <AssemblyName>Exportador</AssemblyName>
+    <RootNamespace>Exportacion</RootNamespace>
+    <AssemblyName>Exportacion</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

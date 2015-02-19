@@ -24,7 +24,7 @@ namespace Controladores
         /// <summary>
         /// Atributo que almacena la instancia del administrador de exportadores-
         /// </summary>
-        Exportador.FabricaExportadores fabricaExportadores = Exportador.FabricaExportadores.Instancia;
+        FabricaExportadores fabricaExportadores = FabricaExportadores.Instancia;
 
         /// <summary>
         /// Atributo DAOFactory para interactuar con la Base de Datos.
@@ -40,7 +40,7 @@ namespace Controladores
         /// <param name="pNombre">nombre con el que se quiere guardar el correo</param>
         public void ExportarCorreo(CorreoDTO pCorreo,string pRuta, string pExportador, string pNombre)
         {            
-            Exportador.IExportador exportador = fabricaExportadores.GetExportador(pExportador);
+            IExportador exportador = fabricaExportadores.GetExportador(pExportador);
             exportador.Exportar(pCorreo,pRuta,pNombre);
         }
 

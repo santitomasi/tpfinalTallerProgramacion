@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DataTransferObject;
 using System.Net.Mail;
 
-namespace Exportador
+namespace Exportacion
 {
     /// <summary>
     /// Clase utilizada para exportar un correo al sistema de archivos en formato EML.

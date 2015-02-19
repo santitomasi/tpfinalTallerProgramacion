@@ -9,7 +9,7 @@ namespace Excepciones
     /// <summary>
     /// Excepcion que representa una excepcion general del programa.
     /// </summary>
-    class GeneralException : Exception
+    public class GeneralException : Exception
     {
         /// <summary>
         /// Constructor de la clase GeneralException.

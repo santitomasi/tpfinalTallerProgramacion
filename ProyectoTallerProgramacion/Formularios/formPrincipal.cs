@@ -27,7 +27,7 @@ namespace formPrincipal
         }
 
         /// <summary>
-        /// Metodo que se dispara al hacer click en el boton "Redactar".
+        /// Metodo que se dispara al hacer click en el boton "Redactar" para enviar un correo.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -35,6 +35,8 @@ namespace formPrincipal
         {
             Form frm = new formEnvioCorreo();
             frm.ShowDialog();
+            // Actualiza las listas Recibidos y Enviados
+            MostrarCorreos();
         }
 
         /// <summary>
@@ -80,9 +82,9 @@ namespace formPrincipal
                 {
                     ActualizarCuenta(aCuenta); 
                 }
-            }     
-
-            // HAY QUE REFREZCAR EL FORM ENTERO ACA, O POR LO MENOS LA LISTA
+            }
+            // Actualiza las listas Recibidos y Enviados
+            MostrarCorreos();
         }
          
         /// <summary>
@@ -121,14 +123,34 @@ namespace formPrincipal
             //Borra las filas de los DataGridView antes de cargar los correos.
             listaEnviados.Rows.Clear();
             listaRecibidos.Rows.Clear();
-            foreach (CorreoDTO aCorreo in FachadaCorreo.Instancia.ListarCorreos())
+
+            //Busca la cuenta seleccionada
+            Int32 filaSeleccionada = listaCuentas.SelectedIndex;
+            string cuentaSeleccionada = Convert.ToString(listaCuentas.Items[filaSeleccionada]);
+
+            //Variable para almacenar los correos a mostrar.
+            IList<CorreoDTO> pCorreos = new List<CorreoDTO>();
+
+
+            if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) // si la cuenta seleccionada es distinta de "Todas las cuentas"
+            {
+                //Carga enla variable pCorreos los correos de la cuenta seleccionada.
+                string pDireccion = FachadaABMCuenta.Instancia.ObtenerCuenta(cuentaSeleccionada).Direccion;
+                pCorreos = FachadaCorreo.Instancia.ListarCorreos(pDireccion);
+            }
+            else
+            {
+                //Carga enla variable pCorreos los correos de todas las cuentas.
+                pCorreos = FachadaCorreo.Instancia.ListarCorreos();
+            }
+            foreach (CorreoDTO aCorreo in pCorreos)
             {
                 object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, 
                                    aCorreo.Fecha.ToString("dddd, dd ") + "de " + aCorreo.Fecha.ToString("MMMM") + " de " + 
                                    aCorreo.Fecha.ToString("yyyy") + aCorreo.Fecha.ToString(" HH:mm"),
                                    aCorreo.Texto, aCorreo.Leido, aCorreo.ServicioId };
                 if (aCorreo.TipoCorreo == "Enviado")
-                {                    
+                {
                     listaEnviados.Rows.Add(row);
                     if (aCorreo.Leido != false)
                     {
@@ -145,44 +167,19 @@ namespace formPrincipal
                         listaRecibidos.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
                     }
                 }
-                
             }
         }
 
-        /// <summary>
-        /// Metodo para cargar la informacion de los correos de la cuenta <paramref name="pCuenta"/>.
-        /// </summary>
-        private void MostrarCorreos(string pCuenta)
-        {
+      //  /// <summary>
+      //  /// Metodo para cargar la informacion de los correos de la cuenta <paramref name="pCuenta"/>.
+     //   /// </summary>
+     //   private void MostrarCorreos(string pCuenta)
+      //  {
             //Borra las filas de los DataGridView antes de cargar los correos.
-            listaEnviados.Rows.Clear();
-            listaRecibidos.Rows.Clear();
-            foreach (CorreoDTO aCorreo in FachadaCorreo.Instancia.ListarCorreos(pCuenta))
-            {
-                object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, 
-                                   aCorreo.Fecha.ToString("dddd, dd ") + "de " + aCorreo.Fecha.ToString("MMMM") + " de " + 
-                                   aCorreo.Fecha.ToString("yyyy") + aCorreo.Fecha.ToString(" HH:mm"),
-                                   aCorreo.Texto, aCorreo.Leido, aCorreo.ServicioId };
-                if (aCorreo.TipoCorreo == "Enviado")
-                {
-                    listaEnviados.Rows.Add(row);                
-                    if (aCorreo.Leido != false)
-                    {
-                        int posicion = listaEnviados.Rows.Count - 1;
-                        listaEnviados.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
-                    }
-                }
-                else
-                {
-                    listaRecibidos.Rows.Add(row);
-                    if (aCorreo.Leido != false)
-                    {
-                        int posicion = listaRecibidos.Rows.Count - 1;
-                        listaRecibidos.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
-                    }
-                }
-            }
-        }
+      //      listaEnviados.Rows.Clear();
+       //     listaRecibidos.Rows.Clear();
+
+ //       }
 
         /// <summary>
         /// Metodo que se dispara cuando se carga el formulario.
@@ -202,17 +199,9 @@ namespace formPrincipal
         /// <param name="e"></param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Int32 row = listaCuentas.SelectedIndex;
-            string cuentaSeleccionada = Convert.ToString(listaCuentas.Items[row]);
-            if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) // si la cuenta seleccionada es distinta de "Todas las cuentas"
-            {
-                MostrarCorreos(FachadaABMCuenta.Instancia.ObtenerCuenta(cuentaSeleccionada).Direccion);
-            }
-            else
-            {
-                MostrarCorreos();
-            }
-            //Siempre al cargar una o todas las cuentas muestra la lista de correos recibidos.
+            // Muestra los correos de la cuenta seleccionada
+            MostrarCorreos();            
+            //Siempre al cargar los correos de una o todas las cuentas muestra la lista de correos recibidos.
             listaEnviados.Visible = false;
             listaRecibidos.Visible = true;
             panelCorreo.Visible = false;
@@ -308,6 +297,7 @@ namespace formPrincipal
         {
             Form frm = new FormCuenta();
             frm.ShowDialog();
+            MostrarCuentas();
         }
 
         /// <summary>
@@ -363,7 +353,7 @@ namespace formPrincipal
             correo_asunto.Text = pCorreo.Asunto;
             correo_cuentaDestino.Text = pCorreo.CuentaDestino;
             correo_cuentaOrigen.Text = pCorreo.CuentaOrigen;
-            //copia el string de la fecha sin convertirlo a datatime
+            //copia el string de la fecha sin convertirlo a datatime porque es para mostrarlo en el form
             correo_fecha.Text = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["fecha"].Value);
             correo_id.Text = Convert.ToString(pCorreo.Id);
             correo_leido.Text = Convert.ToString(pCorreo.Leido);
@@ -413,7 +403,7 @@ namespace formPrincipal
             correo_asunto.Text = pCorreo.Asunto;
             correo_cuentaDestino.Text = pCorreo.CuentaDestino;
             correo_cuentaOrigen.Text = pCorreo.CuentaOrigen;
-            //copia el string de la fecha sin convertirlo a datatime
+            //copia el string de la fecha sin convertirlo a datatime porque es para mostrarlo en el form
             correo_fecha.Text = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
             correo_id.Text = Convert.ToString(pCorreo.Id);
             correo_leido.Text = Convert.ToString(pCorreo.Leido);
@@ -479,15 +469,8 @@ namespace formPrincipal
                     MessageBox.Show("Eliminado con exito!");
                 }
             }
-
-            //
-            // REVISAR ESTO!!!! EL METODO DE CARGAR CUENTAS DEBERIA SER INDEPENDIENTE DEL EVENTO SELECTEDINDEXCHANGED
-            // LO CUAL FACILITARIA EL PODER LLAMARLO DESDE CUALQUIER LADO
-            //
-
-            //Actualiza el infice del combobox para que se lence el evento SelectionIndexChanged
-            listaCuentas.SelectedIndex = 0;
-            listaCuentas.SelectedIndex = listaCuentas.Items.Count - 1;
+            // Actualiza las listas Recibidos y Enviados
+            MostrarCorreos(); 
         }
 
         /// <summary>
@@ -542,6 +525,8 @@ namespace formPrincipal
             }
             Form frm = new formEnvioCorreo(pCorreo);
             frm.ShowDialog();
+            // Actualiza las listas Recibidos y Enviados
+            MostrarCorreos();
         }
 
 

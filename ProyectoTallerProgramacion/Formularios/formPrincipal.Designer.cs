@@ -420,6 +420,7 @@
             this.listaRecibidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaRecibidos.Size = new System.Drawing.Size(817, 488);
             this.listaRecibidos.TabIndex = 38;
+            this.listaRecibidos.TabStop = false;
             this.listaRecibidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellDoubleClick);
             // 
             // correoIdR
@@ -534,6 +535,7 @@
             this.listaEnviados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaEnviados.Size = new System.Drawing.Size(817, 488);
             this.listaEnviados.TabIndex = 10;
+            this.listaEnviados.TabStop = false;
             this.listaEnviados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellDoubleClick);
             // 
             // correoId
@@ -732,9 +734,9 @@
             this.Controls.Add(this.botonReenviar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelCorreo);
             this.Controls.Add(this.listaEnviados);
             this.Controls.Add(this.listaRecibidos);
-            this.Controls.Add(this.panelCorreo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formPrincipal";

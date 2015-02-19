@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exportador
+namespace Exportacion
 {
     /// <summary>
     /// Clase singleton utilizada para crear y mantener una instancia de cada implementación de IExportador.

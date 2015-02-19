@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataTransferObject;
 
-namespace Exportador
+namespace Exportacion
 {
     /// <summary>
     /// Clase abstracta que sirve de base para los distintos exportadores que se deseen implementar.

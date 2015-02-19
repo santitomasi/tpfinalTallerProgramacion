@@ -90,7 +90,7 @@ namespace formPrincipal
             {
                 MessageBox.Show("Verifique las contraseñas");
             }
-
+            // Actualiza la lista de cuentas
             MostrarCuentas();
         }
 
@@ -116,6 +116,7 @@ namespace formPrincipal
                     pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
                     //MessageBox.Show("Id de la cuenta a borrar: "+pCuenta.Id);
                     FachadaABMCuenta.Instancia.EliminarCuenta(pCuenta);
+                    // Actualiza la lista de cuentas
                     MostrarCuentas();
                 }
             }
@@ -286,10 +287,6 @@ namespace formPrincipal
                 cuenta_contraseña2.UseSystemPasswordChar = true;
             }
         }
-
-
-
-
 
     }
 }

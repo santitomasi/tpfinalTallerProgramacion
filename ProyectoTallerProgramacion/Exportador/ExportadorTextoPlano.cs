@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DataTransferObject;
 using System.IO;
 
-namespace Exportador
+namespace Exportacion
 {
     /// <summary>
     /// Clase utilizada para exportar un correo al sistema de archivos en Texto Plano.

@@ -47,7 +47,7 @@
             this.label1.Location = new System.Drawing.Point(47, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 1;
             this.label1.Text = "Cuenta:";
             // 
             // label2
@@ -56,7 +56,7 @@
             this.label2.Location = new System.Drawing.Point(48, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Asunto:";
             // 
             // correo_Asunto
@@ -64,7 +64,7 @@
             this.correo_Asunto.Location = new System.Drawing.Point(97, 71);
             this.correo_Asunto.Name = "correo_Asunto";
             this.correo_Asunto.Size = new System.Drawing.Size(382, 20);
-            this.correo_Asunto.TabIndex = 3;
+            this.correo_Asunto.TabIndex = 5;
             // 
             // correo_Texto
             // 
@@ -72,7 +72,7 @@
             this.correo_Texto.Multiline = true;
             this.correo_Texto.Name = "correo_Texto";
             this.correo_Texto.Size = new System.Drawing.Size(451, 265);
-            this.correo_Texto.TabIndex = 5;
+            this.correo_Texto.TabIndex = 6;
             // 
             // botonAdjuntar
             // 
@@ -84,7 +84,7 @@
             this.botonAdjuntar.Location = new System.Drawing.Point(28, 368);
             this.botonAdjuntar.Name = "botonAdjuntar";
             this.botonAdjuntar.Size = new System.Drawing.Size(191, 39);
-            this.botonAdjuntar.TabIndex = 6;
+            this.botonAdjuntar.TabIndex = 8;
             this.botonAdjuntar.Text = "Agregar archivo adjunto";
             this.botonAdjuntar.UseVisualStyleBackColor = true;
             this.botonAdjuntar.Click += new System.EventHandler(this.button2_Click);
@@ -100,7 +100,7 @@
             this.botonEnviar.Location = new System.Drawing.Point(358, 368);
             this.botonEnviar.Name = "botonEnviar";
             this.botonEnviar.Size = new System.Drawing.Size(121, 39);
-            this.botonEnviar.TabIndex = 7;
+            this.botonEnviar.TabIndex = 9;
             this.botonEnviar.Text = "Enviar";
             this.botonEnviar.UseVisualStyleBackColor = false;
             this.botonEnviar.Click += new System.EventHandler(this.button1_Click);
@@ -118,7 +118,7 @@
             this.correo_Destino.Location = new System.Drawing.Point(97, 45);
             this.correo_Destino.Name = "correo_Destino";
             this.correo_Destino.Size = new System.Drawing.Size(382, 20);
-            this.correo_Destino.TabIndex = 10;
+            this.correo_Destino.TabIndex = 4;
             // 
             // label4
             // 
@@ -126,7 +126,7 @@
             this.label4.Location = new System.Drawing.Point(25, 48);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
-            this.label4.TabIndex = 9;
+            this.label4.TabIndex = 0;
             this.label4.Text = "Destinatario:";
             // 
             // listaCuentas
@@ -135,7 +135,7 @@
             this.listaCuentas.Location = new System.Drawing.Point(97, 17);
             this.listaCuentas.Name = "listaCuentas";
             this.listaCuentas.Size = new System.Drawing.Size(382, 21);
-            this.listaCuentas.TabIndex = 11;
+            this.listaCuentas.TabIndex = 3;
             // 
             // formEnvioCorreo
             // 

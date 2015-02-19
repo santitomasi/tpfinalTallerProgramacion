@@ -1,7 +1,7 @@
 USE [BBDDTaller]
 GO
 
-/****** Object:  Table [dbo].[Correo]    Script Date: 02/19/2015 17:35:43 ******/
+/****** Object:  Table [dbo].[Correo]    Script Date: 02/19/2015 19:07:14 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -25,10 +25,6 @@ CREATE TABLE [dbo].[Correo](
  CONSTRAINT [PK_Correo] PRIMARY KEY CLUSTERED 
 (
 	[correoId] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
- CONSTRAINT [Unique_Correo_ServicioId] UNIQUE NONCLUSTERED 
-(
-	[correoServicioId] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 

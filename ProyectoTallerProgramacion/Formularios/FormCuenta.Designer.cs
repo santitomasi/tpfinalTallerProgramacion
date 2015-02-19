@@ -36,6 +36,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listaCuentas = new System.Windows.Forms.DataGridView();
+            this.cuentaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuenta_contraseña2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -46,11 +51,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listaServicios = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cuentaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mostrar = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.listaCuentas)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -133,6 +133,41 @@
             this.listaCuentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_CellClick);
             this.listaCuentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_CellDoubleClick);
             this.listaCuentas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCuentas_RowEnter);
+            // 
+            // cuentaId
+            // 
+            this.cuentaId.HeaderText = "ID";
+            this.cuentaId.Name = "cuentaId";
+            this.cuentaId.ReadOnly = true;
+            this.cuentaId.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Width = 250;
+            // 
+            // usuario
+            // 
+            this.usuario.HeaderText = "Dirección";
+            this.usuario.Name = "usuario";
+            this.usuario.ReadOnly = true;
+            this.usuario.Width = 300;
+            // 
+            // contraseña
+            // 
+            this.contraseña.HeaderText = "Contraseña";
+            this.contraseña.Name = "contraseña";
+            this.contraseña.ReadOnly = true;
+            this.contraseña.Visible = false;
+            this.contraseña.Width = 200;
+            // 
+            // servicio
+            // 
+            this.servicio.HeaderText = "Servicio";
+            this.servicio.Name = "servicio";
+            this.servicio.ReadOnly = true;
             // 
             // cuenta_contraseña2
             // 
@@ -222,41 +257,6 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "ejemplo: usuario@servicio.com";
             // 
-            // cuentaId
-            // 
-            this.cuentaId.HeaderText = "ID";
-            this.cuentaId.Name = "cuentaId";
-            this.cuentaId.ReadOnly = true;
-            this.cuentaId.Visible = false;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 250;
-            // 
-            // usuario
-            // 
-            this.usuario.HeaderText = "Dirección";
-            this.usuario.Name = "usuario";
-            this.usuario.ReadOnly = true;
-            this.usuario.Width = 300;
-            // 
-            // contraseña
-            // 
-            this.contraseña.HeaderText = "Contraseña";
-            this.contraseña.Name = "contraseña";
-            this.contraseña.ReadOnly = true;
-            this.contraseña.Visible = false;
-            this.contraseña.Width = 200;
-            // 
-            // servicio
-            // 
-            this.servicio.HeaderText = "Servicio";
-            this.servicio.Name = "servicio";
-            this.servicio.ReadOnly = true;
-            // 
             // mostrar
             // 
             this.mostrar.AutoSize = true;
@@ -291,7 +291,7 @@
             this.Controls.Add(this.cuenta_contraseña);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCuenta";
-            this.Text = "FormCuenta";
+            this.Text = "Administrar Cuentas";
             this.Load += new System.EventHandler(this.FormCuenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.listaCuentas)).EndInit();
             this.menuStrip1.ResumeLayout(false);

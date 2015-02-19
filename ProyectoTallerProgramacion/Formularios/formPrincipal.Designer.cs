@@ -283,7 +283,7 @@
             this.correo_cuentaOrigen.Name = "correo_cuentaOrigen";
             this.correo_cuentaOrigen.ReadOnly = true;
             this.correo_cuentaOrigen.Size = new System.Drawing.Size(311, 20);
-            this.correo_cuentaOrigen.TabIndex = 7;
+            this.correo_cuentaOrigen.TabIndex = 5;
             // 
             // correo_cuentaDestino
             // 
@@ -300,7 +300,7 @@
             this.correo_tipocorreo.Location = new System.Drawing.Point(763, 32);
             this.correo_tipocorreo.Name = "correo_tipocorreo";
             this.correo_tipocorreo.Size = new System.Drawing.Size(22, 20);
-            this.correo_tipocorreo.TabIndex = 11;
+            this.correo_tipocorreo.TabIndex = 10;
             this.correo_tipocorreo.Visible = false;
             // 
             // correo_servicioid
@@ -308,7 +308,7 @@
             this.correo_servicioid.Location = new System.Drawing.Point(792, 32);
             this.correo_servicioid.Name = "correo_servicioid";
             this.correo_servicioid.Size = new System.Drawing.Size(20, 20);
-            this.correo_servicioid.TabIndex = 10;
+            this.correo_servicioid.TabIndex = 11;
             this.correo_servicioid.Visible = false;
             // 
             // correo_leido
@@ -334,7 +334,7 @@
             this.correo_fecha.Location = new System.Drawing.Point(100, 95);
             this.correo_fecha.Name = "correo_fecha";
             this.correo_fecha.Size = new System.Drawing.Size(54, 18);
-            this.correo_fecha.TabIndex = 5;
+            this.correo_fecha.TabIndex = 7;
             this.correo_fecha.Text = "Fecha";
             // 
             // label7
@@ -533,7 +533,7 @@
             this.listaEnviados.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.listaEnviados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaEnviados.Size = new System.Drawing.Size(817, 488);
-            this.listaEnviados.TabIndex = 0;
+            this.listaEnviados.TabIndex = 10;
             this.listaEnviados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellDoubleClick);
             // 
             // correoId

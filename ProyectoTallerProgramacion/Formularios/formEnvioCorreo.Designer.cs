@@ -155,7 +155,7 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formEnvioCorreo";
-            this.Text = "formEnvioCorreo";
+            this.Text = "Redactar";
             this.Load += new System.EventHandler(this.formEnvioCorreo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

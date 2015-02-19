@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAOException.cs" />
     <Compile Include="DAOFactory.cs" />
     <Compile Include="ICorreoDAO.cs" />
     <Compile Include="ICuentaDAO.cs" />
@@ -52,6 +51,10 @@
     <ProjectReference Include="..\DataTransferObject\DataTransferObject.csproj">
       <Project>{eed775d4-1eaf-4961-88ba-5c0f227db624}</Project>
       <Name>DataTransferObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Excepciones\Excepciones.csproj">
+      <Project>{f8c24114-ab11-4794-b53f-0205888a1cb2}</Project>
+      <Name>Excepciones</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

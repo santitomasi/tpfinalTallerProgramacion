@@ -108,6 +108,10 @@
       <Project>{eed775d4-1eaf-4961-88ba-5c0f227db624}</Project>
       <Name>DataTransferObject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Excepciones\Excepciones.csproj">
+      <Project>{f8c24114-ab11-4794-b53f-0205888a1cb2}</Project>
+      <Name>Excepciones</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Persistencia\Persistencia.csproj">
       <Project>{e12416f4-b399-4375-969a-3870ef16f7f7}</Project>
       <Name>Persistencia</Name>

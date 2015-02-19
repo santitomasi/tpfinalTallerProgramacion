@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Excepciones;
 
-namespace Exportacion
+namespace Persistencia
 {
     /// <summary>
-    /// Excepción que representa un error en la capa de Exportacion.
+    /// Excepción que representa un error en la capa DAO
     /// </summary>
-    public class ExportadorException : Exception
+    public class DAOException : GeneralException
     {
         /// <summary>
-        /// Constructor de la clase ExportadorException.
+        /// Constructor de la clase DAOException.
         /// </summary>
         /// <param name="pDescripcion">Descripcion de la excepción.</param>
         /// <param name="pExcepcion">Excepción relacionada a la excepción a crear.</param>
-        public ExportadorException(string pDescripcion, Exception pExcepcion) : base(pDescripcion, pExcepcion) { }
+        public DAOException(string pDescripcion, Exception pExcepcion) : base(pDescripcion, pExcepcion) { }
 
         /// <summary>
-        /// Constructor de la clase ExportadorException.
+        /// Constructor de la clase DAOException.
         /// </summary>
         /// <param name="pDescripcion">Descripcion de la excepción.</param>
-        public ExportadorException(string pDescripcion) : base(pDescripcion) { }
+        public DAOException(string pDescripcion) : base(pDescripcion) { }
     }
 }

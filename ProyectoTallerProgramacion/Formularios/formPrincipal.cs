@@ -50,8 +50,8 @@ namespace formPrincipal
             catch (Exception exeption)
             {
                 // crear una excepcion para esto!!!
+                
                 MessageBox.Show(exeption.Message);
-
                 MessageBox.Show(exeption.InnerException.Message);
             }
         }
@@ -64,14 +64,11 @@ namespace formPrincipal
         /// <param name="e"></param>
         private void btActualizar_Click(object sender, EventArgs e)
         {
-            progressBar1.Visible = true;          
-        //  progressBar1.PerformStep();                
-
             //Busca la o las cuentas seleccionadas en listaCuentas
             Int32 row = listaCuentas.SelectedIndex;
             string cuentaSeleccionada = Convert.ToString(listaCuentas.Items[row]);
 
-            // si la cuenta seleccionada es distinta de "Todas las cuentas"
+            // Si la cuenta seleccionada es distinta de "Todas las cuentas"
             if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) 
             {
                 CuentaDTO pCuenta = FachadaABMCuenta.Instancia.ObtenerCuenta(cuentaSeleccionada);
@@ -85,33 +82,9 @@ namespace formPrincipal
                 }
             }     
 
-
             // HAY QUE REFREZCAR EL FORM ENTERO ACA, O POR LO MENOS LA LISTA
-
-
-            progressBar1.Visible = false;
         }
          
-
-        /// <summary>
-        /// Metodo que se dispara cuando se hace visible la barra de progreso.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void progressBar_VisibleChanged(object sender, EventArgs e)
-        {
-            //Pop3Client pop = new Pop3Client();
-            //pop.Connect("pop.gmail.com", 995, true);
-            //pop.Authenticate("santiagotommasi92", "marlou1006");
-            //int cantidadMensajes = pop.GetMessageCount();
-            //mensajes = new List<OpenPop.Mime.Message>(cantidadMensajes);
-         
-            //progressBar1.Minimum = 1;
-            //progressBar1.Maximum = cantidadMensajes;
-            //progressBar1.Value = 1;
-            //progressBar1.Step = 1;
-        }
-
         /// <summary>
         /// Metodo para cargar la informacion de las cuentas.
         /// </summary>
@@ -127,6 +100,7 @@ namespace formPrincipal
             catch (Exception exeption)
             {
                 // VER QUE HACER ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                
                 MessageBox.Show(exeption.Message);
                 MessageBox.Show(exeption.InnerException.Message);
             }
@@ -137,8 +111,6 @@ namespace formPrincipal
                 // marca como seleccionada a la opción Todas las cuentas.
                 listaCuentas.SelectedIndex = listaCuentas.Items.Count-1;
             }
-            
-            
         }
 
         /// <summary>
@@ -240,12 +212,10 @@ namespace formPrincipal
             {
                 MostrarCorreos();
             }
-
             //Siempre al cargar una o todas las cuentas muestra la lista de correos recibidos.
             listaEnviados.Visible = false;
             listaRecibidos.Visible = true;
             panelCorreo.Visible = false;
-            //opcionesExportar.Visible = false;
         }
 
         /// <summary>
@@ -256,8 +226,7 @@ namespace formPrincipal
         private void button6_Click(object sender, EventArgs e)
         {
             CorreoDTO pCorreo = new CorreoDTO();
-
-
+            
             if (listaEnviados.Visible)
             {
                 //Busca el indice de la fila seleccionada en la lista de correos enviados.
@@ -298,11 +267,13 @@ namespace formPrincipal
                 pCorreo.CuentaOrigen = correo_cuentaOrigen.Text;
                 pCorreo.Fecha = Convert.ToDateTime(correo_fecha.Text);
                 pCorreo.Texto = correo_texto.Text;
+                
                 //pCorreo.Leido = Convert.ToInt32();
                 // pCorreo.TipoCorreo = 
 
             }
             string path;
+            
             //listaRecibidos.Rows[indexSelected].
 
             FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
@@ -319,7 +290,6 @@ namespace formPrincipal
                 if (radioButton1.Checked == true)
                 {
                     FachadaCorreo.Instancia.ExportarCorreo(pCorreo,path,radioButton1.Text, pNombre);
-                    
                 }
                 else
                 {
@@ -350,7 +320,6 @@ namespace formPrincipal
             listaEnviados.Visible = false;
             listaRecibidos.Visible = true;
             panelCorreo.Visible = false;
-            //opcionesExportar.Visible = false;
         }
 
         /// <summary>
@@ -363,7 +332,6 @@ namespace formPrincipal
             listaEnviados.Visible = true;
             listaRecibidos.Visible = false;
             panelCorreo.Visible = false;
-            //opcionesExportar.Visible = false;
         }
 
         /// <summary>
@@ -390,7 +358,6 @@ namespace formPrincipal
             pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
             pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
             pCorreo.ServicioId = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["servicioId"].Value);
-
 
             correo_texto.Text = pCorreo.Texto;
             correo_asunto.Text = pCorreo.Asunto;
@@ -442,7 +409,6 @@ namespace formPrincipal
             pCorreo.TipoCorreo = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["tipoCorreoR"].Value);
             pCorreo.ServicioId = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["servicioIdR"].Value);
 
-
             correo_texto.Text = pCorreo.Texto;
             correo_asunto.Text = pCorreo.Asunto;
             correo_cuentaDestino.Text = pCorreo.CuentaDestino;
@@ -467,9 +433,6 @@ namespace formPrincipal
             panelCorreo.Visible = true;
             listaRecibidos.Visible = false;
             opcionesExportar.Visible = true;
-            //label6.Visible = true;
-            //radioButton1.Visible = true;
-            //radioButton2.Visible = true;
         }
 
         /// <summary>
@@ -479,8 +442,10 @@ namespace formPrincipal
         /// <param name="e"></param>
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Está seguro que desea eliminar este correo?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
+            //TRY
+
+            if (MessageBox.Show("¿Está seguro que desea eliminar este correo?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             { 
                 if (listaEnviados.Visible) 
                 {
@@ -494,8 +459,6 @@ namespace formPrincipal
                     FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
 
                     MessageBox.Show("Eliminado con exito!");
-
-                
                 }
                 else if (listaRecibidos.Visible)
                 {
@@ -515,15 +478,14 @@ namespace formPrincipal
                     FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
                     MessageBox.Show("Eliminado con exito!");
                 }
-
             }
 
             //
-            //REVISAR ESTO!!!! EL METODO DE CARGAR CUENTAS DEBERIA SER INDEPENDIENTE DEL EVENTO SELECTEDINDEXCHANGED
+            // REVISAR ESTO!!!! EL METODO DE CARGAR CUENTAS DEBERIA SER INDEPENDIENTE DEL EVENTO SELECTEDINDEXCHANGED
             // LO CUAL FACILITARIA EL PODER LLAMARLO DESDE CUALQUIER LADO
             //
 
-            // actualiza el infice del combobox para que se lence el evento SelectionIndexChanged
+            //Actualiza el infice del combobox para que se lence el evento SelectionIndexChanged
             listaCuentas.SelectedIndex = 0;
             listaCuentas.SelectedIndex = listaCuentas.Items.Count - 1;
         }
@@ -577,9 +539,7 @@ namespace formPrincipal
                 pCorreo.Texto = correo_texto.Text;
                 //pCorreo.Leido = Convert.ToInt32();
                 //pCorreo.TipoCorreo = 
-
             }
-
             Form frm = new formEnvioCorreo(pCorreo);
             frm.ShowDialog();
         }

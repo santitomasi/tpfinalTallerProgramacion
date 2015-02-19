@@ -40,13 +40,13 @@
             this.administrarCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.correo_texto = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.listaCuentas = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -91,6 +91,7 @@
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.botonReenviar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btResponder = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.opcionesExportar.SuspendLayout();
             this.panelCorreo.SuspendLayout();
@@ -126,9 +127,17 @@
             // 
             // ayudaToolStripMenuItem1
             // 
+            this.ayudaToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.acercaDeToolStripMenuItem});
             this.ayudaToolStripMenuItem1.Name = "ayudaToolStripMenuItem1";
             this.ayudaToolStripMenuItem1.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem1.Text = "Ayuda";
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
             // configuraciónDeCuentasToolStripMenuItem
             // 
@@ -160,30 +169,20 @@
             this.correo_texto.ReadOnly = true;
             this.correo_texto.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.correo_texto.Size = new System.Drawing.Size(745, 303);
-            this.correo_texto.TabIndex = 8;
+            this.correo_texto.TabIndex = 4;
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.AccessibleName = "";
-            this.progressBar1.Location = new System.Drawing.Point(622, 4);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(316, 17);
-            this.progressBar1.TabIndex = 12;
-            this.progressBar1.Visible = false;
-            this.progressBar1.VisibleChanged += new System.EventHandler(this.progressBar_VisibleChanged);
-            // 
             // listaCuentas
             // 
             this.listaCuentas.FormattingEnabled = true;
-            this.listaCuentas.Location = new System.Drawing.Point(12, 27);
+            this.listaCuentas.Location = new System.Drawing.Point(12, 34);
             this.listaCuentas.Name = "listaCuentas";
             this.listaCuentas.Size = new System.Drawing.Size(134, 21);
-            this.listaCuentas.TabIndex = 26;
+            this.listaCuentas.TabIndex = 1;
             this.listaCuentas.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label6
@@ -192,7 +191,7 @@
             this.label6.Location = new System.Drawing.Point(6, 29);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 13);
-            this.label6.TabIndex = 29;
+            this.label6.TabIndex = 0;
             this.label6.Text = "Seleccione formato:";
             // 
             // radioButton2
@@ -201,7 +200,7 @@
             this.radioButton2.Location = new System.Drawing.Point(39, 75);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(47, 17);
-            this.radioButton2.TabIndex = 31;
+            this.radioButton2.TabIndex = 2;
             this.radioButton2.Text = "EML";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
@@ -212,7 +211,7 @@
             this.radioButton1.Location = new System.Drawing.Point(39, 52);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(82, 17);
-            this.radioButton1.TabIndex = 30;
+            this.radioButton1.TabIndex = 1;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Texto Plano";
             this.radioButton1.UseVisualStyleBackColor = true;
@@ -223,10 +222,10 @@
             this.opcionesExportar.Controls.Add(this.button6);
             this.opcionesExportar.Controls.Add(this.radioButton1);
             this.opcionesExportar.Controls.Add(this.radioButton2);
-            this.opcionesExportar.Location = new System.Drawing.Point(12, 354);
+            this.opcionesExportar.Location = new System.Drawing.Point(8, 351);
             this.opcionesExportar.Name = "opcionesExportar";
-            this.opcionesExportar.Size = new System.Drawing.Size(134, 135);
-            this.opcionesExportar.TabIndex = 33;
+            this.opcionesExportar.Size = new System.Drawing.Size(138, 135);
+            this.opcionesExportar.TabIndex = 9;
             this.opcionesExportar.TabStop = false;
             this.opcionesExportar.Text = "Exportar";
             // 
@@ -238,12 +237,11 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(5, 100);
+            this.button6.Location = new System.Drawing.Point(1, 100);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(122, 29);
-            this.button6.TabIndex = 39;
+            this.button6.Size = new System.Drawing.Size(131, 29);
+            this.button6.TabIndex = 3;
             this.button6.Text = "Exportar";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -276,7 +274,7 @@
             this.label1.Location = new System.Drawing.Point(38, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 18);
-            this.label1.TabIndex = 22;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Fecha:";
             // 
             // correo_cuentaOrigen
@@ -285,7 +283,7 @@
             this.correo_cuentaOrigen.Name = "correo_cuentaOrigen";
             this.correo_cuentaOrigen.ReadOnly = true;
             this.correo_cuentaOrigen.Size = new System.Drawing.Size(311, 20);
-            this.correo_cuentaOrigen.TabIndex = 21;
+            this.correo_cuentaOrigen.TabIndex = 7;
             // 
             // correo_cuentaDestino
             // 
@@ -295,14 +293,14 @@
             this.correo_cuentaDestino.ReadOnly = true;
             this.correo_cuentaDestino.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.correo_cuentaDestino.Size = new System.Drawing.Size(682, 35);
-            this.correo_cuentaDestino.TabIndex = 20;
+            this.correo_cuentaDestino.TabIndex = 6;
             // 
             // correo_tipocorreo
             // 
             this.correo_tipocorreo.Location = new System.Drawing.Point(763, 32);
             this.correo_tipocorreo.Name = "correo_tipocorreo";
             this.correo_tipocorreo.Size = new System.Drawing.Size(22, 20);
-            this.correo_tipocorreo.TabIndex = 19;
+            this.correo_tipocorreo.TabIndex = 11;
             this.correo_tipocorreo.Visible = false;
             // 
             // correo_servicioid
@@ -310,7 +308,7 @@
             this.correo_servicioid.Location = new System.Drawing.Point(792, 32);
             this.correo_servicioid.Name = "correo_servicioid";
             this.correo_servicioid.Size = new System.Drawing.Size(20, 20);
-            this.correo_servicioid.TabIndex = 18;
+            this.correo_servicioid.TabIndex = 10;
             this.correo_servicioid.Visible = false;
             // 
             // correo_leido
@@ -318,7 +316,7 @@
             this.correo_leido.Location = new System.Drawing.Point(763, 6);
             this.correo_leido.Name = "correo_leido";
             this.correo_leido.Size = new System.Drawing.Size(22, 20);
-            this.correo_leido.TabIndex = 17;
+            this.correo_leido.TabIndex = 8;
             this.correo_leido.Visible = false;
             // 
             // correo_id
@@ -326,7 +324,7 @@
             this.correo_id.Location = new System.Drawing.Point(792, 6);
             this.correo_id.Name = "correo_id";
             this.correo_id.Size = new System.Drawing.Size(20, 20);
-            this.correo_id.TabIndex = 16;
+            this.correo_id.TabIndex = 9;
             this.correo_id.Visible = false;
             // 
             // correo_fecha
@@ -336,7 +334,7 @@
             this.correo_fecha.Location = new System.Drawing.Point(100, 95);
             this.correo_fecha.Name = "correo_fecha";
             this.correo_fecha.Size = new System.Drawing.Size(54, 18);
-            this.correo_fecha.TabIndex = 13;
+            this.correo_fecha.TabIndex = 5;
             this.correo_fecha.Text = "Fecha";
             // 
             // label7
@@ -346,7 +344,7 @@
             this.label7.Location = new System.Drawing.Point(39, 52);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 18);
-            this.label7.TabIndex = 12;
+            this.label7.TabIndex = 2;
             this.label7.Text = "Para:";
             // 
             // label5
@@ -356,7 +354,7 @@
             this.label5.Location = new System.Drawing.Point(38, 28);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 18);
-            this.label5.TabIndex = 11;
+            this.label5.TabIndex = 1;
             this.label5.Text = "De: ";
             // 
             // correo_asunto
@@ -367,7 +365,7 @@
             this.correo_asunto.MaximumSize = new System.Drawing.Size(750, 20);
             this.correo_asunto.Name = "correo_asunto";
             this.correo_asunto.Size = new System.Drawing.Size(66, 20);
-            this.correo_asunto.TabIndex = 9;
+            this.correo_asunto.TabIndex = 0;
             this.correo_asunto.Text = "Asunto";
             // 
             // listaRecibidos
@@ -535,7 +533,7 @@
             this.listaEnviados.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.listaEnviados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaEnviados.Size = new System.Drawing.Size(817, 488);
-            this.listaEnviados.TabIndex = 37;
+            this.listaEnviados.TabIndex = 0;
             this.listaEnviados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEnviados_CellDoubleClick);
             // 
             // correoId
@@ -607,13 +605,12 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
             this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(9, 178);
+            this.button10.Location = new System.Drawing.Point(9, 174);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(131, 37);
-            this.button10.TabIndex = 36;
-            this.button10.Text = "     Enviados";
+            this.button10.Size = new System.Drawing.Size(131, 29);
+            this.button10.TabIndex = 5;
+            this.button10.Text = "Enviados";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
@@ -625,13 +622,12 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
             this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(9, 133);
+            this.button9.Location = new System.Drawing.Point(9, 139);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(131, 39);
-            this.button9.TabIndex = 35;
-            this.button9.Text = "      Recibidos";
+            this.button9.Size = new System.Drawing.Size(131, 29);
+            this.button9.TabIndex = 4;
+            this.button9.Text = "Recibidos";
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
@@ -643,13 +639,12 @@
             this.btActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btActualizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btActualizar.Image")));
             this.btActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btActualizar.Location = new System.Drawing.Point(12, 55);
+            this.btActualizar.Location = new System.Drawing.Point(9, 70);
             this.btActualizar.Name = "btActualizar";
             this.btActualizar.Size = new System.Drawing.Size(131, 29);
-            this.btActualizar.TabIndex = 11;
-            this.btActualizar.Text = "    Actualizar";
+            this.btActualizar.TabIndex = 2;
+            this.btActualizar.Text = "Actualizar";
             this.btActualizar.UseVisualStyleBackColor = false;
             this.btActualizar.Click += new System.EventHandler(this.btActualizar_Click);
             // 
@@ -661,13 +656,12 @@
             this.buttonEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("buttonEliminar.Image")));
             this.buttonEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonEliminar.Location = new System.Drawing.Point(9, 221);
+            this.buttonEliminar.Location = new System.Drawing.Point(9, 209);
             this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(131, 37);
-            this.buttonEliminar.TabIndex = 7;
-            this.buttonEliminar.Text = "   Eliminar";
+            this.buttonEliminar.Size = new System.Drawing.Size(131, 29);
+            this.buttonEliminar.TabIndex = 6;
+            this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = false;
             this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
@@ -679,13 +673,12 @@
             this.botonReenviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonReenviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonReenviar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.botonReenviar.Image = ((System.Drawing.Image)(resources.GetObject("botonReenviar.Image")));
             this.botonReenviar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.botonReenviar.Location = new System.Drawing.Point(12, 264);
+            this.botonReenviar.Location = new System.Drawing.Point(9, 244);
             this.botonReenviar.Name = "botonReenviar";
-            this.botonReenviar.Size = new System.Drawing.Size(128, 33);
-            this.botonReenviar.TabIndex = 6;
-            this.botonReenviar.Text = "   Reenviar";
+            this.botonReenviar.Size = new System.Drawing.Size(131, 29);
+            this.botonReenviar.TabIndex = 7;
+            this.botonReenviar.Text = "Reenviar";
             this.botonReenviar.UseVisualStyleBackColor = false;
             this.botonReenviar.Click += new System.EventHandler(this.botonReenviar_Click);
             // 
@@ -698,15 +691,30 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(9, 90);
+            this.button1.Location = new System.Drawing.Point(9, 104);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 37);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "   Redactar";
+            this.button1.Size = new System.Drawing.Size(131, 29);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Redactar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btResponder
+            // 
+            this.btResponder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btResponder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btResponder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btResponder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btResponder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btResponder.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btResponder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btResponder.Location = new System.Drawing.Point(9, 279);
+            this.btResponder.Name = "btResponder";
+            this.btResponder.Size = new System.Drawing.Size(131, 29);
+            this.btResponder.TabIndex = 8;
+            this.btResponder.Text = "Responder";
+            this.btResponder.UseVisualStyleBackColor = false;
             // 
             // formPrincipal
             // 
@@ -714,11 +722,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(981, 518);
+            this.Controls.Add(this.btResponder);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.opcionesExportar);
             this.Controls.Add(this.listaCuentas);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btActualizar);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.botonReenviar);
@@ -755,7 +763,6 @@
         private System.Windows.Forms.TextBox correo_texto;
         private System.Windows.Forms.Button btActualizar;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ComboBox listaCuentas;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RadioButton radioButton2;
@@ -802,6 +809,8 @@
         private System.Windows.Forms.TextBox correo_cuentaDestino;
         private System.Windows.Forms.TextBox correo_cuentaOrigen;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btResponder;
+        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
 
     }
 }

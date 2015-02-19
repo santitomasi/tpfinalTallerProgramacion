@@ -1,7 +1,7 @@
 USE [BBDDTaller]
 GO
 
-/****** Object:  Table [dbo].[Correo]    Script Date: 02/19/2015 09:48:57 ******/
+/****** Object:  Table [dbo].[Correo]    Script Date: 02/17/2015 11:47:51 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -17,9 +17,9 @@ CREATE TABLE [dbo].[Correo](
 	[fecha] [date] NOT NULL,
 	[texto] [text] NOT NULL,
 	[cuentaOrigen] [varchar](50) NOT NULL,
-	[cuentaDestino] [varchar](max) NOT NULL,
+	[cuentaDestino] [varchar](50) NOT NULL,
 	[asunto] [varchar](max) NOT NULL,
-	[leido] [bit] NULL,
+	[leido] [int] NULL,
 	[correoServicioId] [varchar](200) NOT NULL,
  CONSTRAINT [PK_Correo] PRIMARY KEY CLUSTERED 
 (

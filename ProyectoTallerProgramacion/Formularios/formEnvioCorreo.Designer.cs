@@ -39,6 +39,7 @@
             this.correo_Destino = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.listaCuentas = new System.Windows.Forms.ComboBox();
+            this.mensajeEnviando = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -137,12 +138,26 @@
             this.listaCuentas.Size = new System.Drawing.Size(382, 21);
             this.listaCuentas.TabIndex = 3;
             // 
+            // mensajeEnviando
+            // 
+            this.mensajeEnviando.BackColor = System.Drawing.Color.Orange;
+            this.mensajeEnviando.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.mensajeEnviando.Location = new System.Drawing.Point(97, 143);
+            this.mensajeEnviando.Multiline = true;
+            this.mensajeEnviando.Name = "mensajeEnviando";
+            this.mensajeEnviando.Size = new System.Drawing.Size(280, 71);
+            this.mensajeEnviando.TabIndex = 10;
+            this.mensajeEnviando.Text = "\r\nEnviando el correo...\r\n\r\nPor Favor espere mientras su correo es enviado";
+            this.mensajeEnviando.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mensajeEnviando.Visible = false;
+            // 
             // formEnvioCorreo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(502, 424);
+            this.Controls.Add(this.mensajeEnviando);
             this.Controls.Add(this.listaCuentas);
             this.Controls.Add(this.correo_Destino);
             this.Controls.Add(this.label4);
@@ -174,5 +189,6 @@
         private System.Windows.Forms.TextBox correo_Destino;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox listaCuentas;
+        private System.Windows.Forms.TextBox mensajeEnviando;
     }
 }

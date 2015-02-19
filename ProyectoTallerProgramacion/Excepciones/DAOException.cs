@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Excepciones;
 
-namespace Persistencia
+namespace Excepciones
 {
     /// <summary>
     /// Excepción que representa un error en la capa DAO

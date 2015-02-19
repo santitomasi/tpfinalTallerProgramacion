@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using DataTransferObject;
+using Excepciones;
 
 namespace Persistencia.SQLServer
 {
@@ -96,7 +97,8 @@ namespace Persistencia.SQLServer
                             CuentaDestino = Convert.ToString(fila["cuentaDestino"]),
                             Asunto = Convert.ToString(fila["Asunto"]),
                             Leido = Convert.ToBoolean(fila["leido"]),
-                            ServicioId = Convert.ToString(fila["correoServicioId"])
+                            ServicioId = Convert.ToString(fila["correoServicioId"]),
+                            Eliminado = Convert.ToBoolean(fila["eliminado"]) 
                         });
                     }
                 }
@@ -138,7 +140,8 @@ namespace Persistencia.SQLServer
                            CuentaDestino = Convert.ToString(fila["cuentaDestino"]),
                            Asunto = Convert.ToString(fila["Asunto"]),
                            Leido = Convert.ToBoolean(fila["leido"]),
-                           ServicioId = Convert.ToString(fila["correoServicioId"])
+                           ServicioId = Convert.ToString(fila["correoServicioId"]),
+                           Eliminado = Convert.ToBoolean(fila["eliminado"])
                         });
                         
                     }
@@ -160,8 +163,8 @@ namespace Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"insert into Correo(fecha,tipocorreo,cuentaOrigen,cuentaDestino,texto,asunto,leido,correoServicioId) 
-                                        values(@Fecha,@TipoCorreo,@CuentaOrigen,@Destino,@Texto,@Asunto,@Leido,@correoServicioId)";
+                comando.CommandText = @"insert into Correo(fecha,tipocorreo,cuentaOrigen,cuentaDestino,texto,asunto,leido,correoServicioId, eliminado) 
+                                        values(@Fecha,@TipoCorreo,@CuentaOrigen,@Destino,@Texto,@Asunto,@Leido,@correoServicioId,@eliminado)";
                 comando.Parameters.AddWithValue("@Fecha", pCorreo.Fecha);
                 comando.Parameters.AddWithValue("@TipoCorreo", pCorreo.TipoCorreo);
                 comando.Parameters.AddWithValue("@CuentaOrigen", pCorreo.CuentaOrigen);
@@ -170,6 +173,7 @@ namespace Persistencia.SQLServer
                 comando.Parameters.AddWithValue("@Asunto", pCorreo.Asunto);
                 comando.Parameters.AddWithValue("@Leido", pCorreo.Leido);
                 comando.Parameters.AddWithValue("@correoServicioId", pCorreo.ServicioId);
+                comando.Parameters.AddWithValue("@eliminado", pCorreo.Eliminado);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
             }
@@ -183,7 +187,7 @@ namespace Persistencia.SQLServer
         /// Metodo para eliminar los datos de un Correo en la Base de Datos.
         /// </summary>
         /// <param name="pCorreo">Dato de tipo Correo a ser eliminado de la Base de Datos.</param>
-        public void EliminarCorreo(CorreoDTO pCorreo)
+        public void EliminarCorreoBD(CorreoDTO pCorreo)
         {
             try
             {
@@ -191,6 +195,26 @@ namespace Persistencia.SQLServer
                 comando.CommandText = @"delete from adjunto where correoId = @Id;
                                             delete from Correo where correoId = @Id;";
                 comando.Parameters.AddWithValue("@ID", pCorreo.Id);                
+                comando.Transaction = iTransaccion;
+                comando.ExecuteNonQuery();
+            }
+            catch (SqlException pSqlException)
+            {
+                throw new DAOException("Error en la eliminacion de un correo", pSqlException);
+            }
+        }
+
+        /// <summary>
+        /// Metodo para marcar como eliminado un correo en la Base de Datos.
+        /// </summary>
+        /// <param name="pCorreo">Dato de tipo Correo a ser marcado como eliminado en la Base de Datos.</param>
+        public void EliminarCorreo(CorreoDTO pCorreo)
+        {
+            try
+            {
+                SqlCommand comando = this.iConexion.CreateCommand();
+                comando.CommandText = @"update Correo set eliminado = 1 where correoId = @Id;";
+                comando.Parameters.AddWithValue("@ID", pCorreo.Id);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
             }
@@ -210,7 +234,8 @@ namespace Persistencia.SQLServer
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
                 comando.CommandText = @"update Correo set fecha=@Fecha,tipocorreo=@TipoCorreo,cuentaOrigen=@CuentaOrigen,
-                                        cuentaDestino=@Destino,texto=@Texto,asunto=@Asunto,leido=@Leido, correoServicioId = @correoServicioId 
+                                        cuentaDestino=@Destino,texto=@Texto,asunto=@Asunto,leido=@Leido, 
+                                        correoServicioId = @correoServicioId, eliminado = @eliminado
                                          where correoId = @Id or correoServicioId = @correoServicioId";
                 comando.Parameters.AddWithValue("@Id", pCorreo.Id);
                 comando.Parameters.AddWithValue("@Fecha", pCorreo.Fecha);
@@ -221,6 +246,7 @@ namespace Persistencia.SQLServer
                 comando.Parameters.AddWithValue("@Asunto", pCorreo.Asunto);
                 comando.Parameters.AddWithValue("@Leido", pCorreo.Leido);
                 comando.Parameters.AddWithValue("@correoServicioId", pCorreo.ServicioId);
+                comando.Parameters.AddWithValue("@eliminado", pCorreo.Eliminado);
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
             }

@@ -19,10 +19,16 @@ namespace Persistencia
         void AgregarCorreo(CorreoDTO pCorreo);
 
         /// <summary>
+        /// Metodo para marcar como eliminado un correo en la Base de Datos.
+        /// </summary>
+        /// <param name="pCorreo">Dato de tipo Correo a ser marcado como eliminado en la Base de Datos.</param>
+        void EliminarCorreo(CorreoDTO pCorreo);
+
+        /// <summary>
         /// Metodo para eliminar un correo de la Base de Datos.
         /// </summary>
         /// <param name="pCorreo">Dato de tipo Correo a ser eliminado de la Base de Datos.</param>
-        void EliminarCorreo(CorreoDTO pCorreo);
+        void EliminarCorreoBD(CorreoDTO pCorreo);
 
         /// <summary>
         /// Metodo para modificar un correo en la Base de Datos.

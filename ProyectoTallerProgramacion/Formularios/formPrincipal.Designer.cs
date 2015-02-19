@@ -54,6 +54,7 @@
             this.opcionesExportar = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.panelCorreo = new System.Windows.Forms.Panel();
+            this.correo_eliminado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.correo_cuentaOrigen = new System.Windows.Forms.TextBox();
             this.correo_cuentaDestino = new System.Windows.Forms.TextBox();
@@ -75,6 +76,7 @@
             this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.servicioIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eliminadoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listaEnviados = new System.Windows.Forms.DataGridView();
             this.correoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +87,7 @@
             this.texto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.servicioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eliminado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.btActualizar = new System.Windows.Forms.Button();
@@ -92,6 +95,7 @@
             this.botonReenviar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btResponder = new System.Windows.Forms.Button();
+            this.mensajeActualizando = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.opcionesExportar.SuspendLayout();
             this.panelCorreo.SuspendLayout();
@@ -250,6 +254,7 @@
             // 
             this.panelCorreo.BackColor = System.Drawing.SystemColors.Window;
             this.panelCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCorreo.Controls.Add(this.correo_eliminado);
             this.panelCorreo.Controls.Add(this.label1);
             this.panelCorreo.Controls.Add(this.correo_cuentaOrigen);
             this.panelCorreo.Controls.Add(this.correo_cuentaDestino);
@@ -266,6 +271,14 @@
             this.panelCorreo.Name = "panelCorreo";
             this.panelCorreo.Size = new System.Drawing.Size(817, 488);
             this.panelCorreo.TabIndex = 34;
+            // 
+            // correo_eliminado
+            // 
+            this.correo_eliminado.Location = new System.Drawing.Point(791, 58);
+            this.correo_eliminado.Name = "correo_eliminado";
+            this.correo_eliminado.Size = new System.Drawing.Size(20, 20);
+            this.correo_eliminado.TabIndex = 12;
+            this.correo_eliminado.Visible = false;
             // 
             // label1
             // 
@@ -292,7 +305,7 @@
             this.correo_cuentaDestino.Name = "correo_cuentaDestino";
             this.correo_cuentaDestino.ReadOnly = true;
             this.correo_cuentaDestino.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.correo_cuentaDestino.Size = new System.Drawing.Size(682, 35);
+            this.correo_cuentaDestino.Size = new System.Drawing.Size(683, 35);
             this.correo_cuentaDestino.TabIndex = 6;
             // 
             // correo_tipocorreo
@@ -395,7 +408,8 @@
             this.fechaR,
             this.textoR,
             this.leidoR,
-            this.servicioIdR});
+            this.servicioIdR,
+            this.eliminadoR});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -478,6 +492,12 @@
             this.servicioIdR.Name = "servicioIdR";
             this.servicioIdR.Visible = false;
             // 
+            // eliminadoR
+            // 
+            this.eliminadoR.HeaderText = "Eliminado";
+            this.eliminadoR.Name = "eliminadoR";
+            this.eliminadoR.Visible = false;
+            // 
             // listaEnviados
             // 
             this.listaEnviados.AllowUserToAddRows = false;
@@ -506,7 +526,8 @@
             this.Fecha,
             this.texto,
             this.leido,
-            this.servicioId});
+            this.servicioId,
+            this.eliminado});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -598,6 +619,13 @@
             this.servicioId.Name = "servicioId";
             this.servicioId.ReadOnly = true;
             this.servicioId.Visible = false;
+            // 
+            // eliminado
+            // 
+            this.eliminado.HeaderText = "Eliminado";
+            this.eliminado.Name = "eliminado";
+            this.eliminado.ReadOnly = true;
+            this.eliminado.Visible = false;
             // 
             // button10
             // 
@@ -717,6 +745,21 @@
             this.btResponder.TabIndex = 8;
             this.btResponder.Text = "Responder";
             this.btResponder.UseVisualStyleBackColor = false;
+            this.btResponder.Click += new System.EventHandler(this.btResponder_Click);
+            // 
+            // mensajeActualizando
+            // 
+            this.mensajeActualizando.BackColor = System.Drawing.Color.Orange;
+            this.mensajeActualizando.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.mensajeActualizando.Location = new System.Drawing.Point(350, 224);
+            this.mensajeActualizando.Multiline = true;
+            this.mensajeActualizando.Name = "mensajeActualizando";
+            this.mensajeActualizando.Size = new System.Drawing.Size(280, 71);
+            this.mensajeActualizando.TabIndex = 39;
+            this.mensajeActualizando.Text = "\r\nActualizando su cuenta...\r\n\r\nPor Favor espere mientras su cuenta es actualizada" +
+    "";
+            this.mensajeActualizando.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mensajeActualizando.Visible = false;
             // 
             // formPrincipal
             // 
@@ -724,6 +767,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(981, 518);
+            this.Controls.Add(this.mensajeActualizando);
             this.Controls.Add(this.btResponder);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
@@ -734,9 +778,9 @@
             this.Controls.Add(this.botonReenviar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.panelCorreo);
             this.Controls.Add(this.listaEnviados);
             this.Controls.Add(this.listaRecibidos);
+            this.Controls.Add(this.panelCorreo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formPrincipal";
@@ -787,18 +831,14 @@
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem1;
         private System.Windows.Forms.TextBox correo_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn correoId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoCorreo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn asunto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaOrigen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaDestino;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn texto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn leido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn servicioId;
         private System.Windows.Forms.TextBox correo_tipocorreo;
         private System.Windows.Forms.TextBox correo_servicioid;
         private System.Windows.Forms.TextBox correo_leido;
+        private System.Windows.Forms.TextBox correo_cuentaDestino;
+        private System.Windows.Forms.TextBox correo_cuentaOrigen;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btResponder;
+        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn correoIdR;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoCorreoR;
         private System.Windows.Forms.DataGridViewTextBoxColumn asuntoR;
@@ -808,11 +848,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn textoR;
         private System.Windows.Forms.DataGridViewTextBoxColumn leidoR;
         private System.Windows.Forms.DataGridViewTextBoxColumn servicioIdR;
-        private System.Windows.Forms.TextBox correo_cuentaDestino;
-        private System.Windows.Forms.TextBox correo_cuentaOrigen;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btResponder;
-        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eliminadoR;
+        private System.Windows.Forms.TextBox correo_eliminado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn correoId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoCorreo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn asunto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaOrigen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentaDestino;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn texto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn leido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn servicioId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eliminado;
+        private System.Windows.Forms.TextBox mensajeActualizando;
 
     }
 }

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Excepciones;
 
-namespace CorreoServicio
+namespace Excepciones
 {
     /// <summary>
     /// Excepción que representa un error en la capa de CorreoServicio.

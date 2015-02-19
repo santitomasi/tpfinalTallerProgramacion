@@ -42,6 +42,9 @@ namespace formPrincipal
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            //Muestra el mensje de información al usuario
+            mensajeEnviando.Visible = true;
+
             CorreoDTO pCorreo = new CorreoDTO();
             pCorreo.Leido = false;
             pCorreo.CuentaOrigen = Convert.ToString(listaCuentas.SelectedItem);
@@ -51,6 +54,7 @@ namespace formPrincipal
             pCorreo.Texto = correo_Texto.Text;
             pCorreo.TipoCorreo = "Enviado";
             pCorreo.Adjuntos = archivos;
+            pCorreo.Eliminado = false;
 
             try
             {
@@ -72,8 +76,9 @@ namespace formPrincipal
                 MessageBox.Show(exception.Message);
                 MessageBox.Show(exception.InnerException.Message);
             }
-            
 
+            //Oculta el mensje de información al usuario
+            mensajeEnviando.Visible = false;
             this.Close();
         }
 

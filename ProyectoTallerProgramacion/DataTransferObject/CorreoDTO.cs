@@ -57,6 +57,11 @@ namespace DataTransferObject
         private bool iLeido;
 
         /// <summary>
+        /// Atributo eliminado.
+        /// </summary>
+        private bool iEliminado;
+
+        /// <summary>
         /// Atributo para archivos adjuntos.
         /// </summary>
         private List<string> iAdjuntos;
@@ -154,6 +159,15 @@ namespace DataTransferObject
         {
             get { return this.iLeido; }
             set { this.iLeido = value; }
+        }
+
+        /// <summary>
+        /// Propiedad de lectura y escritura del atributo leído.
+        /// </summary>
+        public bool Eliminado
+        {
+            get { return this.iEliminado; }
+            set { this.iEliminado = value; }
         }
 
         /// <summary>

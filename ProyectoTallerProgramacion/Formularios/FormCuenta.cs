@@ -114,6 +114,7 @@ namespace formPrincipal
                 {
                     CuentaDTO pCuenta = new CuentaDTO();
                     pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
+                    pCuenta.Direccion = Convert.ToString(cuenta_usuario);
                     //MessageBox.Show("Id de la cuenta a borrar: "+pCuenta.Id);
                     FachadaABMCuenta.Instancia.EliminarCuenta(pCuenta);
                     // Actualiza la lista de cuentas

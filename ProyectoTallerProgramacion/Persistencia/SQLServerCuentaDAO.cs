@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using DataTransferObject;
 using System.Data;
+using Excepciones;
 
 namespace Persistencia.SQLServer
 {
@@ -171,8 +172,13 @@ namespace Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = @"delete from Cuenta where cuentaId = @ID";
+                comando.CommandText = @"delete from Cuenta where cuentaId = @ID; 
+                                        delete from Correo where (cuentaOrigen = @Cuenta and tipocorreo = 'Enviado') 
+                                                            or (cuentaDestino = @Cuenta2 and tipocorreo = 'Recibido');";
                 comando.Parameters.AddWithValue("@ID", pCuentaCorreo.Id);
+                comando.Parameters.AddWithValue("@Cuenta", pCuentaCorreo.Direccion);
+                // agrega ; a la direccion porque las direcciones de cuentasDestino se guardan con ;
+                comando.Parameters.AddWithValue("@Cuenta2", pCuentaCorreo.Direccion + "; ");
                 comando.Transaction = iTransaccion;
                 comando.ExecuteNonQuery();
             }

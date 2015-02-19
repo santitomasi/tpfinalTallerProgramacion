@@ -12,6 +12,7 @@ using System.IO;
 using DataTransferObject;
 using OpenPop.Pop3;
 using Controladores;
+using Excepciones;
 
 
 namespace formPrincipal
@@ -25,7 +26,7 @@ namespace formPrincipal
         {
             InitializeComponent();
         }
-
+        
         /// <summary>
         /// Metodo que se dispara al hacer click en el boton "Redactar" para enviar un correo.
         /// </summary>
@@ -69,7 +70,8 @@ namespace formPrincipal
             //Busca la o las cuentas seleccionadas en listaCuentas
             Int32 row = listaCuentas.SelectedIndex;
             string cuentaSeleccionada = Convert.ToString(listaCuentas.Items[row]);
-
+            //Muestra el mensaje de información al usuario
+            mensajeActualizando.Visible = true;
             // Si la cuenta seleccionada es distinta de "Todas las cuentas"
             if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) 
             {
@@ -83,6 +85,8 @@ namespace formPrincipal
                     ActualizarCuenta(aCuenta); 
                 }
             }
+            //Oculta el mensaje de información al usuario
+            mensajeActualizando.Visible = false;
             // Actualiza las listas Recibidos y Enviados
             MostrarCorreos();
         }
@@ -92,6 +96,7 @@ namespace formPrincipal
         /// </summary>
         private void MostrarCuentas()
         {
+            listaCuentas.Items.Clear();
             try
             {
                 foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
@@ -145,41 +150,34 @@ namespace formPrincipal
             }
             foreach (CorreoDTO aCorreo in pCorreos)
             {
-                object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, 
+                if (aCorreo.Eliminado == false)
+                {
+                    object[] row = { aCorreo.Id, aCorreo.TipoCorreo, aCorreo.Asunto, aCorreo.CuentaOrigen, aCorreo.CuentaDestino, 
                                    aCorreo.Fecha.ToString("dddd, dd ") + "de " + aCorreo.Fecha.ToString("MMMM") + " de " + 
                                    aCorreo.Fecha.ToString("yyyy") + aCorreo.Fecha.ToString(" HH:mm"),
-                                   aCorreo.Texto, aCorreo.Leido, aCorreo.ServicioId };
-                if (aCorreo.TipoCorreo == "Enviado")
-                {
-                    listaEnviados.Rows.Add(row);
-                    if (aCorreo.Leido != false)
+                                   aCorreo.Texto, aCorreo.Leido, aCorreo.ServicioId, aCorreo.Eliminado };
+                    if (aCorreo.TipoCorreo == "Enviado")
                     {
-                        int posicion = listaEnviados.Rows.Count - 1;
-                        listaEnviados.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
+                        listaEnviados.Rows.Add(row);
+                        if (aCorreo.Leido != false)
+                        {
+                            int posicion = listaEnviados.Rows.Count - 1;
+                            listaEnviados.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
+                        }
                     }
-                }
-                else
-                {
-                    listaRecibidos.Rows.Add(row);
-                    if (aCorreo.Leido != false)
+                    else
                     {
-                        int posicion = listaRecibidos.Rows.Count - 1;
-                        listaRecibidos.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
+                        listaRecibidos.Rows.Add(row);
+                        if (aCorreo.Leido != false)
+                        {
+                            int posicion = listaRecibidos.Rows.Count - 1;
+                            listaRecibidos.Rows[posicion].DefaultCellStyle.BackColor = Color.Lavender;
+                        }
                     }
                 }
             }
         }
 
-      //  /// <summary>
-      //  /// Metodo para cargar la informacion de los correos de la cuenta <paramref name="pCuenta"/>.
-     //   /// </summary>
-     //   private void MostrarCorreos(string pCuenta)
-      //  {
-            //Borra las filas de los DataGridView antes de cargar los correos.
-      //      listaEnviados.Rows.Clear();
-       //     listaRecibidos.Rows.Clear();
-
- //       }
 
         /// <summary>
         /// Metodo que se dispara cuando se carga el formulario.
@@ -222,15 +220,11 @@ namespace formPrincipal
                 // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
                 // entonces tomamos el primer elemento.
                 int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);               
-                pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
                 pCorreo.Asunto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
                 pCorreo.CuentaDestino = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
                 pCorreo.CuentaOrigen = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
                 pCorreo.Fecha = Convert.ToDateTime(listaEnviados.Rows[indexSelected].Cells["fecha"].Value);
-                pCorreo.Leido = Convert.ToBoolean(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
                 pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
-                pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
-                pCorreo.ServicioId = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["servicioId"].Value); 
             }
             else if (listaRecibidos.Visible)
             {
@@ -238,33 +232,23 @@ namespace formPrincipal
                 // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
                 // entonces tomamos el primer elemento.
                 int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
-                pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
                 pCorreo.Asunto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
                 pCorreo.CuentaDestino = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
                 pCorreo.CuentaOrigen = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
                 pCorreo.Fecha = Convert.ToDateTime(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
-                pCorreo.Leido = Convert.ToBoolean(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value);
                 pCorreo.Texto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
-                pCorreo.TipoCorreo = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["tipoCorreoR"].Value);
-                pCorreo.ServicioId = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["servicioIdR"].Value); 
             }
             else // esta visible el form de correo
             {
-                pCorreo.Id = Convert.ToInt32(correo_id.Text);
                 pCorreo.Asunto = correo_asunto.Text;
                 pCorreo.CuentaDestino = correo_cuentaDestino.Text;
                 pCorreo.CuentaOrigen = correo_cuentaOrigen.Text;
                 pCorreo.Fecha = Convert.ToDateTime(correo_fecha.Text);
                 pCorreo.Texto = correo_texto.Text;
                 
-                //pCorreo.Leido = Convert.ToInt32();
-                // pCorreo.TipoCorreo = 
-
             }
             string path;
             
-            //listaRecibidos.Rows[indexSelected].
-
             FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -348,6 +332,7 @@ namespace formPrincipal
             pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
             pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
             pCorreo.ServicioId = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["servicioId"].Value);
+            pCorreo.Eliminado = Convert.ToBoolean(listaEnviados.Rows[indexSelected].Cells["eliminado"].Value);
 
             correo_texto.Text = pCorreo.Texto;
             correo_asunto.Text = pCorreo.Asunto;
@@ -359,6 +344,7 @@ namespace formPrincipal
             correo_leido.Text = Convert.ToString(pCorreo.Leido);
             correo_servicioid.Text = pCorreo.ServicioId;
             correo_tipocorreo.Text = pCorreo.TipoCorreo;
+            correo_eliminado.Text = Convert.ToString(pCorreo.Eliminado);
 
             try
             {
@@ -398,6 +384,7 @@ namespace formPrincipal
             pCorreo.Texto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
             pCorreo.TipoCorreo = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["tipoCorreoR"].Value);
             pCorreo.ServicioId = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["servicioIdR"].Value);
+            pCorreo.Eliminado = Convert.ToBoolean(listaRecibidos.Rows[indexSelected].Cells["eliminadoR"].Value);
 
             correo_texto.Text = pCorreo.Texto;
             correo_asunto.Text = pCorreo.Asunto;
@@ -409,6 +396,7 @@ namespace formPrincipal
             correo_leido.Text = Convert.ToString(pCorreo.Leido);
             correo_servicioid.Text = pCorreo.ServicioId;
             correo_tipocorreo.Text = pCorreo.TipoCorreo;
+            correo_eliminado.Text = Convert.ToString(pCorreo.Eliminado);
             try
             {
                 // Marco como leido el correo en la base
@@ -493,9 +481,7 @@ namespace formPrincipal
                 pCorreo.CuentaDestino = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
                 pCorreo.CuentaOrigen = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
                 pCorreo.Fecha = Convert.ToDateTime(listaEnviados.Rows[indexSelected].Cells["fecha"].Value);
-                //pCorreo.Leido = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
                 pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
-                //pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
             }
             else if (listaRecibidos.Visible)
             {
@@ -508,9 +494,7 @@ namespace formPrincipal
                 pCorreo.CuentaDestino = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
                 pCorreo.CuentaOrigen = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
                 pCorreo.Fecha = Convert.ToDateTime(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
-                //pCorreo.Leido = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value);
                 pCorreo.Texto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
-                //pCorreo.TipoCorreo = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["tipoCorreoR"].Value);
             }
             else // esta visible el form de correo
             {
@@ -520,8 +504,45 @@ namespace formPrincipal
                 pCorreo.CuentaOrigen = correo_cuentaOrigen.Text;
                 pCorreo.Fecha = Convert.ToDateTime(correo_fecha.Text);
                 pCorreo.Texto = correo_texto.Text;
-                //pCorreo.Leido = Convert.ToInt32();
-                //pCorreo.TipoCorreo = 
+            }
+            Form frm = new formEnvioCorreo(pCorreo);
+            frm.ShowDialog();
+            // Actualiza las listas Recibidos y Enviados
+            MostrarCorreos();
+        }
+
+        private void btResponder_Click(object sender, EventArgs e)
+        {
+            CorreoDTO pCorreo = new CorreoDTO();
+
+            if (listaEnviados.Visible)
+            {
+                //Busca el indice de la fila seleccionada en la lista de correos enviados.
+                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
+                // entonces tomamos el primer elemento.
+                int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
+                pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
+                pCorreo.Asunto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
+                // Cargo como cuenta destino del nuevo correo a cuenta origen del correo que deseo responder
+                pCorreo.CuentaDestino = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
+            }
+            else if (listaRecibidos.Visible)
+            {
+                //Busca el indice de la fila seleccionada en la lista de correos recibidos.
+                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
+                // entonces tomamos el primer elemento.
+                int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
+                pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
+                pCorreo.Asunto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
+                // Cargo como cuenta destino del nuevo correo a cuenta origen del correo que deseo responder
+                pCorreo.CuentaDestino = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
+                
+            }
+            else // esta visible el form de correo
+            {
+                pCorreo.Id = Convert.ToInt32(correo_id.Text);
+                pCorreo.Asunto = correo_asunto.Text;
+                pCorreo.CuentaDestino = correo_cuentaOrigen.Text;
             }
             Form frm = new formEnvioCorreo(pCorreo);
             frm.ShowDialog();

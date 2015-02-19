@@ -51,10 +51,7 @@ namespace Controladores
         public void EnviarCorreo(CorreoDTO pCorreo)
         {
             CuentaDTO pCuenta = FachadaABMCuenta.Instancia.ObtenerCuenta(pCorreo.CuentaOrigen);
-            ServicioCorreo servicio = (ServicioCorreo) FabricaServicios.Instancia.GetServicio(pCuenta.Servicio);
-            servicio.Contraseña = pCuenta.Contraseña;
-            servicio.Direccion = pCuenta.Direccion;
-            servicio.EnviarCorreo(pCorreo);
+            FabricaServicios.Instancia.GetServicio(pCuenta.Servicio).EnviarCorreo(pCorreo,pCuenta);
         }
 
         /// <summary>

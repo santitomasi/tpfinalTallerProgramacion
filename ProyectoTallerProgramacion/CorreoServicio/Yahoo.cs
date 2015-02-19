@@ -24,14 +24,11 @@ namespace CorreoServicio
         /// Metodo utilizado para enviar un correo.
         /// </summary>
         /// <param name="pCorreo">Correo a ser enviado.</param>
-        public override void EnviarCorreo(CorreoDTO pCorreo)
+        /// <param name="pCuenta">Cuenta con la que se envia el correo</param>
+        public override void EnviarCorreo(CorreoDTO pCorreo, CuentaDTO pCuenta)
         {
             MailMessage correo = new MailMessage();
-
-            // Ver si ponemos iDireccion o pCorreo.CuentaOrigen
-
-            //correo.
-            correo.From = new MailAddress(this.Direccion);  // <--- ¿¿¿Cuenta origen???
+            correo.From = new MailAddress(pCuenta.Direccion);
             correo.To.Add(pCorreo.CuentaDestino);
             correo.Subject = pCorreo.Asunto;
             correo.Body = pCorreo.Texto;
@@ -46,7 +43,7 @@ namespace CorreoServicio
             SmtpClient cliente = new SmtpClient("smtp.mail.yahoo.com");
             cliente.EnableSsl = true;
             cliente.Port = 587; // o 465
-            cliente.Credentials = new System.Net.NetworkCredential(this.Direccion, this.Contraseña);
+            cliente.Credentials = new System.Net.NetworkCredential(pCuenta.Direccion, pCuenta.Contraseña);
 
             //Aca tendriamos que poner un try-catch
             cliente.Send(correo);
@@ -91,13 +88,32 @@ namespace CorreoServicio
                     }
                 }
 
+                string pTipoCorreo;
+                // Determina si el correo es enviado o recibido comparando la direccion de la cuenta con la direccion
+                // que aparece como direccion remitente.
+                if (mensaje.Headers.From.Address == pCuenta.Direccion)
+                {
+                    pTipoCorreo = "Enviado";
+                }
+                else
+                {
+                    pTipoCorreo = "Recibido";
+                }
+
+                // Armar el string de cuenta destino con las cuentas destinatarias.
+                string pDestino = "";
+                foreach (OpenPop.Mime.Header.RfcMailAddress mailAdres in mensaje.Headers.To)
+                {
+                    pDestino = pDestino + mailAdres.Address;
+                }
+
                 mCorreos.Add(new CorreoDTO()
                 {
                     Fecha = mensaje.Headers.DateSent,
-                    TipoCorreo = "Recibido",
+                    TipoCorreo = pTipoCorreo,
                     Texto = cuerpo,
                     CuentaOrigen = mensaje.Headers.From.Address,
-                    CuentaDestino = pCuenta.Direccion,    // ver si usamos esto o los tributos iDireccion e iContraseña (hay que cargarlos desde la fachada)
+                    CuentaDestino = pDestino,
                     Asunto = mensaje.Headers.Subject,
                     Leido = 0,        
                     ServicioId = mensaje.Headers.MessageId

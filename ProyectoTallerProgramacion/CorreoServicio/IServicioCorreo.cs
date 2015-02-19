@@ -23,7 +23,8 @@ namespace CorreoServicio
         /// <summary>
         /// Metodo para enviar un correo.
         /// </summary>
-        /// <param name="pCorreo">correo a ser enviado.</param>
-        void EnviarCorreo(CorreoDTO pCorreo);
+        /// <param name="pCorreo">Correo a ser enviado.</param>
+        /// <param name="pCuenta">Cuenta con la que se envia el correo</param>
+        void EnviarCorreo(CorreoDTO pCorreo, CuentaDTO pCuenta);
     }
 }

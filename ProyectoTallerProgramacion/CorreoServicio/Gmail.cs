@@ -24,13 +24,14 @@ namespace CorreoServicio
         /// Metodo utilizado para enviar un correo.
         /// </summary>
         /// <param name="pCorreo">Correo a ser enviado.</param>
-        public override void EnviarCorreo(CorreoDTO pCorreo)
+        /// <param name="pCuenta">Cuenta con la que se envia el correo</param>
+        public override void EnviarCorreo(CorreoDTO pCorreo, CuentaDTO pCuenta)
         {
             MailMessage correo = new MailMessage();
             
             // Ver si ponemos iDireccion o pCorreo.CuentaOrigen
 
-            correo.From = new MailAddress(this.Direccion);
+            correo.From = new MailAddress(pCuenta.Direccion);
             correo.To.Add(pCorreo.CuentaDestino);
             correo.Subject = pCorreo.Asunto;
             correo.Body = pCorreo.Texto;            
@@ -45,7 +46,7 @@ namespace CorreoServicio
             SmtpClient cliente = new SmtpClient("smtp.gmail.com");
             cliente.EnableSsl = true;
             cliente.Port = 587;
-            cliente.Credentials = new System.Net.NetworkCredential(this.Direccion,this.Contraseña);
+            cliente.Credentials = new System.Net.NetworkCredential(pCuenta.Direccion, pCuenta.Contraseña);
 
             //Aca tendriamos que poner un try-catch
             cliente.Send(correo);
@@ -72,29 +73,44 @@ namespace CorreoServicio
                 // obtengo el texto del cuerpo del correo.
                 string cuerpo = "";
                 OpenPop.Mime.MessagePart texto = mensaje.FindFirstPlainTextVersion();
-                if (texto != null)
-                {
-                    // We found some plaintext!
+                if (texto != null) // El correo posee texto plano
+                {                   
                     cuerpo = texto.GetBodyAsText();
                 }
                 else
                 {
-                    // Might include a part holding html instead
                     OpenPop.Mime.MessagePart html = mensaje.FindFirstHtmlVersion();
-                    if (html != null)
+                    if (html != null)// El correo tiene texto en html
                     {
-                        // We found some html!
                         cuerpo = html.GetBodyAsText();
                     }
+                }
+                string pTipoCorreo;
+                // Determina si el correo es enviado o recibido comparando la direccion de la cuenta con la direccion
+                 // que aparece como direccion remitente.
+                if (mensaje.Headers.From.Address == pCuenta.Direccion)
+                {
+                    pTipoCorreo = "Enviado";
+                }
+                else
+                {
+                    pTipoCorreo = "Recibido";
+                }
+
+                // Armar el string de cuenta destino con las cuentas destinatarias.
+                string destino = "";
+                foreach (OpenPop.Mime.Header.RfcMailAddress mailAdres in mensaje.Headers.To)
+                {
+                    destino = destino + mailAdres.Address;
                 }
 
                 mCorreos.Add(new CorreoDTO()
                 {
                     Fecha = mensaje.Headers.DateSent,
-                    TipoCorreo = "Recibido",
+                    TipoCorreo = pTipoCorreo,
                     Texto = cuerpo,                    
                     CuentaOrigen = mensaje.Headers.From.Address,
-                    CuentaDestino = pCuenta.Direccion,    // Reemplazar esto!!!
+                    CuentaDestino = destino,    // Reemplazar esto!!!
                     Asunto = mensaje.Headers.Subject,
                     Leido = 0,
                     ServicioId = mensaje.Headers.MessageId

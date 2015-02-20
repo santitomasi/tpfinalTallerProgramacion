@@ -320,12 +320,17 @@ namespace Formularios
                 }
                 else
                 {
-                    pFormato = rbtEML.Text;                    
+                    pFormato = rbtEML.Text;
+                    // Cambia caracteres no validos en formato de asunto para EML
+                    foreach (char cChar in invalidchars)
+                    {
+                        pCorreo.Asunto = pCorreo.Asunto.Replace(cChar, '_');
+                    }
                 }
                 try
                 {
                     FachadaCorreo.Instancia.ExportarCorreo(pCorreo, path, pFormato, pNombre);
-                    MessageBox.Show("Exportado con exito.", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Exportado con exito.", "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception exeption)
                 {

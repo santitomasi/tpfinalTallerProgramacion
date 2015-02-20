@@ -65,7 +65,7 @@ namespace Persistencia.SQLServer
             }
             catch (SqlException pSqlException)
             {
-                throw new DAOException("Error en la busqueda del correo", pSqlException);
+                throw new DAOException("Error en la busqueda de un correo. Revise la configuración de su servidor de Base de Datos y el nombre de su base de datos. Para más información consulte el manual de PostApp.", pSqlException);
             }
         }
 
@@ -105,7 +105,7 @@ namespace Persistencia.SQLServer
             }
             catch (SqlException pSqlException)
             {
-                throw new DAOException("Error en la obtención de datos de correo", pSqlException);
+                throw new DAOException("Error en la obtención de datos de correo. Revise la configuración de su servidor de Base de Datos y el nombre de su base de datos. Para más información consulte el manual de PostApp.", pSqlException);
             }
         }
 
@@ -149,7 +149,7 @@ namespace Persistencia.SQLServer
             }
             catch (SqlException pSqlException)
             {
-                throw new DAOException("Error en la obtención de datos de correo", pSqlException);
+                throw new DAOException("Error en la obtención de datos de correo. Revise la configuración de su servidor de Base de Datos y el nombre de su base de datos. Para más información consulte el manual de PostApp.", pSqlException);
             }
         }
 
@@ -178,7 +178,7 @@ namespace Persistencia.SQLServer
             }
             catch (SqlException pSqlException)
             {
-                throw new DAOException("Error en la inserción de datos de correo", pSqlException);
+                throw new DAOException("Error en la inserción de datos de correo. Revise la configuración de su servidor de Base de Datos y el nombre de su base de datos. Para más información consulte el manual de PostApp.", pSqlException);
             }
         }
 
@@ -199,7 +199,7 @@ namespace Persistencia.SQLServer
             }
             catch (SqlException pSqlException)
             {
-                throw new DAOException("Error en la eliminacion de un correo", pSqlException);
+                throw new DAOException("Error en la eliminacion de un correo. Revise la configuración de su servidor de Base de Datos y el nombre de su base de datos. Para más información consulte el manual de PostApp.", pSqlException);
             }
         }
 
@@ -219,7 +219,7 @@ namespace Persistencia.SQLServer
             }
             catch (SqlException pSqlException)
             {
-                throw new DAOException("Error en la eliminacion de un correo", pSqlException);
+                throw new DAOException("Error en la eliminacion de un correo. Revise la configuración de su servidor de Base de Datos y el nombre de su base de datos. Para más información consulte el manual de PostApp.", pSqlException);
             }
         }
 
@@ -251,7 +251,7 @@ namespace Persistencia.SQLServer
             }
             catch (SqlException pSqlException)
             {
-                throw new DAOException("Error en la actualización de datos de un correo", pSqlException);
+                throw new DAOException("Error en la actualización de datos de un correo. Revise la configuración de su servidor de Base de Datos y el nombre de su base de datos. Para más información consulte el manual de PostApp.", pSqlException);
             }
         }
     }

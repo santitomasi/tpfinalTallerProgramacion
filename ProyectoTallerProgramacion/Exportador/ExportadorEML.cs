@@ -55,7 +55,7 @@ namespace Exportacion
             }
             catch (SmtpException exeption)    // Cuando no hay un error con el smtpClient en la exportacion.
             {
-                throw new ServicioCorreoException("No se pudo exportar su correo. Reinicie PostApp y vuelva a intentarlo.", exeption);
+                throw new ExportadorException("No se pudo exportar su correo. Reinicie PostApp y vuelva a intentarlo.", exeption);
             }
             catch (Exception exception)  // Demás problemas.
             {

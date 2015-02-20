@@ -101,10 +101,10 @@ namespace Persistencia.SQLServer
             }
             catch (SqlException pSqlException)
             {
-                throw new DAOException("Error en la obtención de datos de cuenta de correo", pSqlException);
+                throw new DAOException("Error en la obtención de datos de cuenta de correo. Revise la configuración de su servidor de Base de Datos y el nombre de su base de datos. Para más información consulte el manual de PostApp.", pSqlException);
             }
         }
-
+        
         /// <summary>
         /// Metodo para insertar la informacion de una cuenta de correo en la Base de Datos.
         /// </summary>
@@ -127,9 +127,9 @@ namespace Persistencia.SQLServer
             {
                 if (pSqlException.Errors[0].Number == 2627)
                 {
-                    throw new DAOException("Error de datos duplicados. Crear una excepcion aparete para esto!!", pSqlException);
+                    throw new DAOException("Error de datos duplicados. No puede crear 2 cuentas con el mismo nombre. Modifique el nombre y vuelva a intentarlo.", pSqlException);
                 }
-                throw new DAOException("Error en la inserción de datos de Cuenta de correo", pSqlException);
+                throw new DAOException("Error en la inserción de datos de Cuenta de correo. Revise la configuración de su servidor de Base de Datos y el nombre de su base de datos. Para más información consulte el manual de PostApp.", pSqlException);
             }
         }
 
@@ -157,9 +157,9 @@ namespace Persistencia.SQLServer
             {
                 if (pSqlException.Errors[0].Number == 2627)
                 {
-                    throw new DAOException("Error de datos duplicados. Crear una excepcion aparete para esto!!", pSqlException);
+                    throw new DAOException("Error de datos duplicados. Modifique el nombre y vuelva a intentarlo.", pSqlException);
                 }
-                throw new DAOException("Error en la actualizacion de datos de cuenta de correo", pSqlException);
+                throw new DAOException("Error en la actualizacion de datos de cuenta de correo. Revise la configuración de su servidor de Base de Datos y el nombre de su base de datos. Para más información consulte el manual de PostApp.", pSqlException);
             }
         }
 
@@ -184,7 +184,7 @@ namespace Persistencia.SQLServer
             }
             catch (SqlException pSqlException)
             {
-                throw new DAOException("Error en la eliminacion de una cuenta de correo", pSqlException);
+                throw new DAOException("Error en la eliminacion de una cuenta de correo. Revise la configuración de su servidor de Base de Datos y el nombre de su base de datos. Para más información consulte el manual de PostApp.", pSqlException);
             }
         }
     }

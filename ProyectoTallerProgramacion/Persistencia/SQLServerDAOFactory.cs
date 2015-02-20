@@ -27,7 +27,7 @@ namespace Persistencia.SQLServer
         /// <summary>
         /// Atributo que mantiene la cadena de conexion con la Base de Datos SQLServer.
         /// </summary>
-        private string STRING_CONEXION = @"Data Source= (local); Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
+        private string STRING_CONEXION = @"Data Source= (locall); Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
 
         /// <summary>
         /// Propiedad de solo lectura que devuelve una instancia de la clase CorreoDAO.
@@ -50,8 +50,16 @@ namespace Persistencia.SQLServer
         /// </summary>
         public override void IniciarConexion()
         {
-            this.iConexion = new SqlConnection(STRING_CONEXION);
-            iConexion.Open();
+            try
+            {
+                this.iConexion = new SqlConnection(STRING_CONEXION);
+                iConexion.Open();       
+            }
+            catch (SqlException exception)   
+            {
+                throw new DAOException("Hubo un problema al conectarse con la Base de Datos. Revise la configuración de su servidor y el nombre de su base de datos. Para más información consulte el manual de PostApp.",exception);
+            }
+            
         }
 
         /// <summary>
@@ -63,7 +71,14 @@ namespace Persistencia.SQLServer
             {
                 throw new DAOException("No se puede iniciar una transacción sin una conexión abierta.");
             }
-            this.iTransaccion = this.iConexion.BeginTransaction();
+            try
+            {
+                this.iTransaccion = this.iConexion.BeginTransaction();
+            }
+            catch (SqlException exception)  // Esta excepción es solo para el tiempo de diseño. No llega al usuario.
+            {
+                throw new DAOException("Hubo un problema al iniciar una transacción en la Base de Datos.", exception);
+            }        
         }
 
         /// <summary>
@@ -73,7 +88,14 @@ namespace Persistencia.SQLServer
         {
             if (this.iConexion != null)
             {
-                this.iConexion.Close();
+                try
+                {
+                    this.iConexion.Close();
+                }
+                catch (SqlException exception)  // Esta excepción es solo para el tiempo de diseño. No llega al usuario.
+                {
+                    throw new DAOException("Hubo un problema al cerrar una conexión con la Base de Datos.", exception);
+                }   
             }
         }
 
@@ -84,7 +106,14 @@ namespace Persistencia.SQLServer
         {
             if (this.iTransaccion != null)
             {
-                this.iTransaccion.Commit();
+                try
+                {
+                    this.iTransaccion.Commit();
+                }
+                catch (SqlException exception)  // Esta excepción es solo para el tiempo de diseño. No llega al usuario.
+                {
+                    throw new DAOException("Hubo un problema al hacer un commit en la Base de Datos.", exception);
+                }   
             }
         }
 
@@ -95,7 +124,14 @@ namespace Persistencia.SQLServer
         {
             if (this.iTransaccion != null)
             {
-                this.iTransaccion.Rollback();
+                try
+                {
+                    this.iTransaccion.Rollback();
+                }
+                catch (SqlException exception)  // Esta excepción es solo para el tiempo de diseño. No llega al usuario.
+                {
+                    throw new DAOException("Hubo un problema al hacer un Rollback en la Base de Datos.", exception);
+                }                
             }
         }
     }

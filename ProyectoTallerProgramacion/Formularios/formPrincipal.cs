@@ -24,7 +24,7 @@ namespace formPrincipal
         /// </summary>
         public formPrincipal()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
         
         /// <summary>

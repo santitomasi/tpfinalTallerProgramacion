@@ -124,21 +124,21 @@
   <data name="administrarCuentasToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAADaSURBVDhP7ZG9CoFRGMcpKZvJZLMYXIBksBjIROQCXIAS
-        g8lmsZsV5RKUi5DFPfgoTDLx+9c59eQ92ZWnfj1f53nOef9vLPY3q8CY5AFbSEEbznBxcQZ/hRdsQtJp
-        WE1Rd8M+16Kp6aseMd2sxh2ycDIDissm16sipmfrZg3LWnB0i5quVsRPIB1akKeo765AInAgSa0PM6ja
-        fpxkbp63Jy7BCFawhCF0weq080tqZvhA3ADp4AX0/katA0/TG2hJDnqOAl4CfQ7bvyE9Fg4JG7E1lW+E
-        Zn659gYqgUhvw1GApAAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAADQSURBVDhP7dG/CoFRGMfxo6RsJpPNYnABksFiIBORC3AB
+        Sgwmm8VuVpRLUC5CFvfgT2GSie/v7Zw6nMEuv/rUeZ63p/e8z2v+ecsId2yQRAsnnO05jQueWCOIhvVQ
+        atCwq3WeeLUE0Zv14IYMjrYWnUterVsF0bX1Zg0rTRyg4YYapIAxUlH1kRz0rWXE1fhIAj1MUVHDJYYZ
+        3PV2KGKIJRYYoAN/T1tEqcI196hDe3A954o2Hl6vD5NF18pDC/IHffob2sfc0mKDrL74rRjzAiqBSG/+
+        Ib6YAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="configuraciónDeCuentasToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAADaSURBVDhP7ZG9CoFRGMcpKZvJZLMYXIBksBjIROQCXIAS
-        g8lmsZsV5RKUi5DFPfgoTDLx+9c59eQ92ZWnfj1f53nOef9vLPY3q8CY5AFbSEEbznBxcQZ/hRdsQtJp
-        WE1Rd8M+16Kp6aseMd2sxh2ycDIDissm16sipmfrZg3LWnB0i5quVsRPIB1akKeo765AInAgSa0PM6ja
-        fpxkbp63Jy7BCFawhCF0weq080tqZvhA3ADp4AX0/katA0/TG2hJDnqOAl4CfQ7bvyE9Fg4JG7E1lW+E
-        Zn659gYqgUhvw1GApAAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAADQSURBVDhP7dG/CoFRGMfxo6RsJpPNYnABksFiIBORC3AB
+        Sgwmm8VuVpRLUC5CFvfgT2GSie/v7Zw6nMEuv/rUeZ63p/e8z2v+ecsId2yQRAsnnO05jQueWCOIhvVQ
+        atCwq3WeeLUE0Zv14IYMjrYWnUterVsF0bX1Zg0rTRyg4YYapIAxUlH1kRz0rWXE1fhIAj1MUVHDJYYZ
+        3PV2KGKIJRYYoAN/T1tEqcI196hDe3A954o2Hl6vD5NF18pDC/IHffob2sfc0mKDrL74rRjzAiqBSG/+
+        Ib6YAAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -208,7 +208,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>28</value>
+    <value>44</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("PostApp permite administrar cuentas de correo (de solo dos servicios que son: Gmail y Yahoo), enviar y recibir mails, y acceder a información fuera de línea, es decir, permitir la lectura de e-mails descargados cuando no se disponga de conectividad.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("STS - FRCU UTN")]
-[assembly: AssemblyProduct("Cliente de Correo")]
+[assembly: AssemblyProduct("Cliente de correo - PostApp")]
 [assembly: AssemblyCopyright("Copyright © STS 2015")]
 [assembly: AssemblyTrademark("PostApp")]
 [assembly: AssemblyCulture("")]

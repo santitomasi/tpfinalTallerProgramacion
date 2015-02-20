@@ -36,7 +36,6 @@ namespace Persistencia.SQLServer
             this.iTransaccion = pTransaccion;
         }
 
-
         /// <summary>
         /// Metodo para determinar si un correo ya existe en la base de datos.
         /// </summary>

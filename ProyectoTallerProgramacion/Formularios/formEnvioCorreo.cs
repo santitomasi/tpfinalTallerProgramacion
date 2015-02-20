@@ -49,7 +49,7 @@ namespace Formularios
         /// <param name="e"></param>
         private void btEnviar_Click(object sender, EventArgs e)
         {
-            //Muestra el mensje de información al usuario
+            //Muestra el mensaje de información al usuario.
             mensajeEnviando.Visible = true;
             mensajeEnviando.Update();
 
@@ -73,8 +73,9 @@ namespace Formularios
 
                 if (res == DialogResult.OK)
                 {
-                    //recuperando la variable publica del formulario contraseña
-                    pCuenta.Contraseña = f2.varf2; //asignamos al texbox el dato de la variable
+                    // Recuperando la variable publica del formulario contraseña
+                    // asignamos al texbox el dato de la variable
+                    pCuenta.Contraseña = f2.varf2; 
                 }
             }
         //    try
@@ -139,7 +140,7 @@ namespace Formularios
             {
                 // Coloca la opción de Seleccionar Cuenta
                 listaCuentas.Items.Add("Seleccionar Cuenta");
-                // marca como seleccionada a la opción Seleccionar Cuenta.
+                // Marca como seleccionada a la opción Seleccionar Cuenta.
                 listaCuentas.SelectedIndex = listaCuentas.Items.Count - 1;
             }
         }
@@ -169,6 +170,5 @@ namespace Formularios
                 }
             }
         }
-
     }
 }

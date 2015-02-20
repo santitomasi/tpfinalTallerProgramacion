@@ -12,9 +12,13 @@ namespace Formularios
 {
     public partial class FormAyuda : Form
     {
+        /// <summary>
+        /// Constructor del FormAyuda.
+        /// </summary>
         public FormAyuda()
         {
             InitializeComponent();
+            textBox1.TabStop = false;
         }
     }
 }

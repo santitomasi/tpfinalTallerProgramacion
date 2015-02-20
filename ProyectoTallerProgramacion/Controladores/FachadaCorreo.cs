@@ -91,22 +91,17 @@ namespace Controladores
         public void DescargarCorreos(CuentaDTO pCuenta)
         {
             // Obtiene una instancia del servicio al que pertenece la cuenta e invoca al metodo 
-            // Descargar correos pasandole como parametro la cuenta de la cual se desea descargar los correos
+            // DescargarCorreos pasandole como parametro la cuenta de la cual se desea descargar los correos
             IList<CorreoDTO> pCorreos = FabricaServicios.Instancia.GetServicio(pCuenta.Servicio).DescargarCorreos(pCuenta);
 
-            foreach (CorreoDTO pCorreo in pCorreos)     //nose si son necesarios dos ciclos!!!
+            foreach (CorreoDTO pCorreo in pCorreos) 
             {
-                
-                // Ver si el correo no esta ya en la baseeeee ¿¿¿??? 
                 if (!(Existe(pCorreo)))
                 {
                     CrearCorreo(pCorreo);
                 }               
             }
-
         }
-
-
 
         /// <summary>
         /// Metodo para dar de alta un correo.

@@ -26,7 +26,17 @@ namespace Formularios
         {
             InitializeComponent();            
         }
-        
+
+        /// <summary>
+        /// Metodo que se dispara cuando se carga el formulario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void formPrincipal_Load(object sender, EventArgs e)
+        {
+            MostrarCuentas();
+        }
+
         /// <summary>
         /// Metodo que se dispara al hacer click en el boton "Redactar" para enviar un correo.
         /// </summary>
@@ -221,16 +231,6 @@ namespace Formularios
         }
 
         /// <summary>
-        /// Metodo que se dispara cuando se carga el formulario.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void formPrincipal_Load(object sender, EventArgs e)
-        {
-            MostrarCuentas();
-        }
-
-        /// <summary>
         /// Método para mostrar los correos de una cuenta. 
         /// Se dispara al elegir una cuenta en el combobox.
         /// </summary>
@@ -240,7 +240,7 @@ namespace Formularios
         {
             // Muestra los correos de la cuenta seleccionada
             MostrarCorreos();            
-            //Siempre al cargar los correos de una o todas las cuentas muestra la lista de correos recibidos.
+            // Siempre al cargar los correos de una o todas las cuentas muestra la lista de correos recibidos.
             listaEnviados.Visible = false;
             listaRecibidos.Visible = true;
             panelCorreo.Visible = false;
@@ -306,7 +306,6 @@ namespace Formularios
                 if (rbtTextoPlano.Checked == true)
                 {
                     pFormato = rbtTextoPlano.Text;
-
                 }
                 else
                 {
@@ -321,8 +320,6 @@ namespace Formularios
                 {
                     //
                 }
-
-
             }
         }
 
@@ -627,18 +624,7 @@ namespace Formularios
             // Actualizamos las listas Recibidos y Enviados
             MostrarCorreos();
         }
-
-        /// <summary>
-        /// Método que se ejecuta al hacer click sobre Acerca de en el apartado Ayuda del menú principal.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AcercaDe ventanaAcercaDe = new AcercaDe();
-            ventanaAcercaDe.ShowDialog();
-        }
-
+      
         private void buttonLeido_Click(object sender, EventArgs e)
         {
             CorreoDTO pCorreo = new CorreoDTO();
@@ -719,11 +705,26 @@ namespace Formularios
             }
         }
 
-        private void ayudaToolStripMenuItem2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Método que se ejecuta al hacer click sobre "Acerca de" en el apartado "Ayuda" del menú principal.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new FormAyuda();
-            frm.ShowDialog();
+            AcercaDe ventanaAcercaDe = new AcercaDe();
+            ventanaAcercaDe.ShowDialog();
         }
 
+        /// <summary>
+        /// Método que se ejecuta al hacer click sobre "Ver Ayuda" en el apartado "Ayuda" del menú principal.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ayudaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form ventanaAyuda = new FormAyuda();
+            ventanaAyuda.ShowDialog();
+        }
     }
 }

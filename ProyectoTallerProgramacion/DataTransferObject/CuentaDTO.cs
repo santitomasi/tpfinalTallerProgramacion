@@ -50,7 +50,6 @@ namespace DataTransferObject
             return "Método a desarrollar";
         }
         
-        
         /// <summary>
         /// Propiedad de lectura y escritura del ID.
         /// </summary>

@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Kairos")]
-[assembly: AssemblyDescription("Cliente de correo")]
+[assembly: AssemblyTitle("PostApp")]
+[assembly: AssemblyDescription("PostApp permite administrar cuentas de correo (de solo dos servicios que son: Gmail y Yahoo), enviar y recibir mails, y acceder a información fuera de línea, es decir, permitir la lectura de e-mails descargados cuando no se disponga de conectividad.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("STS - FRCU UTN")]
 [assembly: AssemblyProduct("Cliente de Correo")]
 [assembly: AssemblyCopyright("Copyright © STS 2015")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("PostApp")]
 [assembly: AssemblyCulture("")]
 
 // Si establece ComVisible como false, los tipos de este ensamblado no estarán visibles 

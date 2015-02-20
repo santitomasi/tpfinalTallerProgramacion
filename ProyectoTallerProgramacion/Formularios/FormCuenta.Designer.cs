@@ -273,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(656, 349);
             this.Controls.Add(this.mostrar);
             this.Controls.Add(this.label6);
@@ -292,6 +292,7 @@
             this.Controls.Add(this.cuenta_contraseña);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCuenta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar Cuentas";
             this.Load += new System.EventHandler(this.FormCuenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.listaCuentas)).EndInit();

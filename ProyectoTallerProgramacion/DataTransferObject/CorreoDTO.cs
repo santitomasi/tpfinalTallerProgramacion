@@ -162,7 +162,7 @@ namespace DataTransferObject
         }
 
         /// <summary>
-        /// Propiedad de lectura y escritura del atributo leído.
+        /// Propiedad de lectura y escritura del atributo eliminado.
         /// </summary>
         public bool Eliminado
         {

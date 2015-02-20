@@ -12,13 +12,15 @@ using System.IO;
 using DataTransferObject;
 using OpenPop.Pop3;
 using Controladores;
-using Persistencia; // Revisar esto!! Las Excepciones deberian estar aparte!!
 using System.Data.SqlClient;
 
 namespace Formularios
 {
     public partial class FormCuenta : Form
     {
+        /// <summary>
+        /// Constructor del FormCuenta.
+        /// </summary>
         public FormCuenta()
         {
             InitializeComponent();
@@ -84,7 +86,6 @@ namespace Formularios
                 {
                     MessageBox.Show("Debe seleccionar un Servicio");
                 }
- 
             }
             else
             {
@@ -102,7 +103,6 @@ namespace Formularios
         private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Está seguro que desea eliminar esta cuenta?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
             { 
                 if (cuenta_id.Text == "")
                 {
@@ -115,7 +115,6 @@ namespace Formularios
                     CuentaDTO pCuenta = new CuentaDTO();
                     pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
                     pCuenta.Direccion = Convert.ToString(cuenta_usuario);
-                    //MessageBox.Show("Id de la cuenta a borrar: "+pCuenta.Id);
                     FachadaABMCuenta.Instancia.EliminarCuenta(pCuenta);
                     // Actualiza la lista de cuentas
                     MostrarCuentas();
@@ -132,8 +131,7 @@ namespace Formularios
             foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
             {
                 object[] row = { aCuenta.Id, aCuenta.Nombre, aCuenta.Direccion, aCuenta.Contraseña , aCuenta.Servicio};
-               // MessageBox.Show("Id de la cuenta a añadir: " + aCuenta.Id);          
-                 listaCuentas.Rows.Add(row);            
+                listaCuentas.Rows.Add(row);            
             }
         }
 
@@ -150,6 +148,11 @@ namespace Formularios
             listaServicios.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Metodo que se dispara al cargar el formCuenta.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormCuenta_Load(object sender, EventArgs e)
         {
             CargarServicios();
@@ -159,11 +162,12 @@ namespace Formularios
             {
                 object[] row = { "", "", "", "" };
                 listaCuentas.Rows.Add(row);
-             }
+            }
         }
 
         /// <summary>
-        /// Metodo que se dispara al seleccionar una cuenta de listaCuentas, y que muestra la informacion de esa cuenta.
+        /// Metodo que se dispara al seleccionar una cuenta de listaCuentas, y que muestra
+        /// la informacion de esa cuenta.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -210,7 +214,6 @@ namespace Formularios
             listaCuentas.SelectedRows[0].Cells["usuario"].Value = cuenta_usuario.Text;
         }
 
-
         /// <summary>
         /// Método que se ejecuta cuando cambia el valor del TextBox cuenta_contraseña
         /// </summary>
@@ -220,7 +223,6 @@ namespace Formularios
         {
             listaCuentas.SelectedRows[0].Cells["contraseña"].Value = cuenta_contraseña.Text;
         }
-
 
         /// <summary>
         /// Método que se ejecuta cuando cambia el valor del ComboBox listaServicios
@@ -234,7 +236,6 @@ namespace Formularios
             {
                 listaCuentas.SelectedRows[0].Cells["servicio"].Value = Convert.ToString(listaServicios.SelectedItem);
             }
-           
         }
 
         /// <summary>
@@ -275,14 +276,20 @@ namespace Formularios
             listaCuentas.Rows[e.RowIndex].Selected = true;
         }
 
+        /// <summary>
+        /// Metodo que se dispara cuando cambia el valor del CheckBox "mostrar".
+        /// Utilizado para mostrar y ocultar la contraseña de la cuenta.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mostrar_CheckedChanged(object sender, EventArgs e)
         {
-            if (mostrar.Checked == true)
+            if (mostrar.Checked == true) // mostramos las claves
             {
                 cuenta_contraseña.UseSystemPasswordChar = false;
                 cuenta_contraseña2.UseSystemPasswordChar = false;
             }
-            else
+            else  // ocultamos las claves
             {
                 cuenta_contraseña.UseSystemPasswordChar = true;
                 cuenta_contraseña2.UseSystemPasswordChar = true;

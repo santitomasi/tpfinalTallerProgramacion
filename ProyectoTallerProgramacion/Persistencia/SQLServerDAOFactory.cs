@@ -27,11 +27,7 @@ namespace Persistencia.SQLServer
         /// <summary>
         /// Atributo que mantiene la cadena de conexion con la Base de Datos SQLServer.
         /// </summary>
-       // private string STRING_CONEXION = "Data Source=USER-PC; Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
-       // private string STRING_CONEXION = @"Data Source=DANILO-PC\SQLEXPRESS; Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
         private string STRING_CONEXION = @"Data Source= (local); Initial Catalog = BBDDTaller;Integrated Security=True;Pooling=False";
-       
-        // POR   FABOR  ACTIVE  SU  CADENA  DE  CONEXION  PERO  NO  BORRE  LA  DE  LOS  DEMAS!!!!!!!!  GRACIAS :)
 
         /// <summary>
         /// Propiedad de solo lectura que devuelve una instancia de la clase CorreoDAO.

@@ -1,4 +1,4 @@
-﻿namespace formPrincipal
+﻿namespace Formularios
 {
     partial class FormCuenta
     {

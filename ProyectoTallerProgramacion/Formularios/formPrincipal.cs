@@ -15,7 +15,7 @@ using Controladores;
 using Excepciones;
 
 
-namespace formPrincipal
+namespace Formularios
 {
     public partial class formPrincipal : Form
     {

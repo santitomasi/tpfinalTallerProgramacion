@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Controladores;
 using DataTransferObject;
 
-namespace formPrincipal
+namespace Formularios
 {
     public partial class formEnvioCorreo : Form
     {
@@ -105,7 +105,7 @@ namespace formPrincipal
             file.RestoreDirectory = true;
             file.ShowDialog();
             archivos.Add(file.FileName);
-            label3.Text = file.SafeFileName;
+            correo_Adjuntos.Text = correo_Adjuntos.Text + file.FileName + "\r" + "\n";
         }
 
         /// <summary>

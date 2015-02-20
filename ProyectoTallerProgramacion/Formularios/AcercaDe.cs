@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace formPrincipal
+namespace Formularios
 {
     partial class AcercaDe : Form
     {

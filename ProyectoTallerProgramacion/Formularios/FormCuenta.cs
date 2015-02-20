@@ -15,7 +15,7 @@ using Controladores;
 using Persistencia; // Revisar esto!! Las Excepciones deberian estar aparte!!
 using System.Data.SqlClient;
 
-namespace formPrincipal
+namespace Formularios
 {
     public partial class FormCuenta : Form
     {

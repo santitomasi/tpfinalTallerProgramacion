@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("formPrincipal")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Kairos")]
+[assembly: AssemblyDescription("Cliente de correo")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("formPrincipal")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2014")]
+[assembly: AssemblyCompany("STS - FRCU UTN")]
+[assembly: AssemblyProduct("Cliente de Correo")]
+[assembly: AssemblyCopyright("Copyright © STS 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

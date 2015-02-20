@@ -1,4 +1,4 @@
-﻿namespace formPrincipal
+﻿namespace Formularios
 {
     partial class formEnvioCorreo
     {
@@ -40,6 +40,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.listaCuentas = new System.Windows.Forms.ComboBox();
             this.mensajeEnviando = new System.Windows.Forms.TextBox();
+            this.correo_Adjuntos = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -73,7 +75,7 @@
             this.correo_Texto.Multiline = true;
             this.correo_Texto.Name = "correo_Texto";
             this.correo_Texto.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.correo_Texto.Size = new System.Drawing.Size(451, 265);
+            this.correo_Texto.Size = new System.Drawing.Size(451, 234);
             this.correo_Texto.TabIndex = 6;
             // 
             // botonAdjuntar
@@ -83,7 +85,7 @@
             this.botonAdjuntar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonAdjuntar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonAdjuntar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.botonAdjuntar.Location = new System.Drawing.Point(28, 368);
+            this.botonAdjuntar.Location = new System.Drawing.Point(28, 381);
             this.botonAdjuntar.Name = "botonAdjuntar";
             this.botonAdjuntar.Size = new System.Drawing.Size(191, 39);
             this.botonAdjuntar.TabIndex = 8;
@@ -99,7 +101,7 @@
             this.botonEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonEnviar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.botonEnviar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.botonEnviar.Location = new System.Drawing.Point(358, 368);
+            this.botonEnviar.Location = new System.Drawing.Point(358, 381);
             this.botonEnviar.Name = "botonEnviar";
             this.botonEnviar.Size = new System.Drawing.Size(121, 39);
             this.botonEnviar.TabIndex = 9;
@@ -154,12 +156,32 @@
             this.mensajeEnviando.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mensajeEnviando.Visible = false;
             // 
+            // correo_Adjuntos
+            // 
+            this.correo_Adjuntos.Location = new System.Drawing.Point(76, 337);
+            this.correo_Adjuntos.Multiline = true;
+            this.correo_Adjuntos.Name = "correo_Adjuntos";
+            this.correo_Adjuntos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.correo_Adjuntos.Size = new System.Drawing.Size(403, 38);
+            this.correo_Adjuntos.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(25, 337);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Adjuntos:";
+            // 
             // formEnvioCorreo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(502, 424);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.correo_Adjuntos);
             this.Controls.Add(this.mensajeEnviando);
             this.Controls.Add(this.listaCuentas);
             this.Controls.Add(this.correo_Destino);
@@ -193,5 +215,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox listaCuentas;
         private System.Windows.Forms.TextBox mensajeEnviando;
+        private System.Windows.Forms.TextBox correo_Adjuntos;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -68,28 +68,28 @@ namespace Formularios
                         if (cuenta_id.Text == "")
                         {
                             FachadaABMCuenta.Instancia.CrearCuenta(pCuenta);
-                            MessageBox.Show("Cuenta guardada con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Cuenta guardada con éxito", "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
                             pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
                             FachadaABMCuenta.Instancia.ModificarCuenta(pCuenta);
-                            MessageBox.Show("Cuenta guardada con éxito", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Cuenta guardada con éxito", "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     catch (Exception exeption)
                     {
-                        MessageBox.Show(exeption.Message);
+                        MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debe seleccionar un Servicio");
+                    MessageBox.Show("Debe seleccionar un Servicio", "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Verifique las contraseñas");
+                MessageBox.Show("Verifique las contraseñas", "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             // Actualiza la lista de cuentas
             MostrarCuentas();
@@ -102,7 +102,7 @@ namespace Formularios
         /// <param name="e"></param>
         private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Está seguro que desea eliminar esta cuenta?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("¿Está seguro que desea eliminar esta cuenta?", "PostApp", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             { 
                 if (cuenta_id.Text == "")
                 {
@@ -115,7 +115,15 @@ namespace Formularios
                     CuentaDTO pCuenta = new CuentaDTO();
                     pCuenta.Id = Convert.ToInt32(cuenta_id.Text);
                     pCuenta.Direccion = Convert.ToString(cuenta_usuario);
-                    FachadaABMCuenta.Instancia.EliminarCuenta(pCuenta);
+                    try
+                    {
+                        FachadaABMCuenta.Instancia.EliminarCuenta(pCuenta);
+                    }
+                    catch (Exception exeption)
+                    {
+                        MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
                     // Actualiza la lista de cuentas
                     MostrarCuentas();
                 }
@@ -128,10 +136,17 @@ namespace Formularios
         private void MostrarCuentas()
         {
             listaCuentas.Rows.Clear();
-            foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
+            try
             {
-                object[] row = { aCuenta.Id, aCuenta.Nombre, aCuenta.Direccion, aCuenta.Contraseña , aCuenta.Servicio};
-                listaCuentas.Rows.Add(row);            
+                foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
+                {
+                    object[] row = { aCuenta.Id, aCuenta.Nombre, aCuenta.Direccion, aCuenta.Contraseña, aCuenta.Servicio };
+                    listaCuentas.Rows.Add(row);
+                }
+            }
+            catch (Exception exeption)
+            {
+                MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

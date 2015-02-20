@@ -72,8 +72,8 @@ namespace Formularios
                 FachadaCorreo.Instancia.DescargarCorreos(pCuenta);
             }
             catch (Exception exeption)
-            {                
-                 MessageBox.Show(exeption.Message);
+            {
+                MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -90,19 +90,26 @@ namespace Formularios
             //Muestra el mensaje de información al usuario
             mensajeActualizando.Visible = true;
             mensajeActualizando.Update();
-            // Si la cuenta seleccionada es distinta de "Todas las cuentas"
-            if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) 
+            try
             {
-                CuentaDTO pCuenta = FachadaABMCuenta.Instancia.ObtenerCuenta(cuentaSeleccionada);
-                ActualizarCuenta(pCuenta);
-            }
-            else
-            {
-                foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
+                // Si la cuenta seleccionada es distinta de "Todas las cuentas"
+                if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0)
                 {
-                    ActualizarCuenta(aCuenta); 
+                    CuentaDTO pCuenta = FachadaABMCuenta.Instancia.ObtenerCuenta(cuentaSeleccionada);
+                    ActualizarCuenta(pCuenta);
+                }
+                else
+                {
+                    foreach (CuentaDTO aCuenta in FachadaABMCuenta.Instancia.ListarCuentas())
+                    {
+                        ActualizarCuenta(aCuenta);
+                    }
                 }
             }
+            catch (Exception exeption)
+            {
+                MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }        
             //Oculta el mensaje de información al usuario
             mensajeActualizando.Visible = false;
             // Actualiza las listas Recibidos y Enviados
@@ -124,11 +131,8 @@ namespace Formularios
             }
             catch (Exception exeption)
             {
-                // VER QUE HACER ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                
-                MessageBox.Show(exeption.Message);
-                MessageBox.Show(exeption.InnerException.Message);
-            }
+                MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }  
             finally
             {
                 // Coloca la opción de Todas las cuentas
@@ -154,18 +158,25 @@ namespace Formularios
             //Variable para almacenar los correos a mostrar.
             IList<CorreoDTO> pCorreos = new List<CorreoDTO>();
 
+            try
+            {
+                if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) // si la cuenta seleccionada es distinta de "Todas las cuentas"
+                {
+                    //Carga enla variable pCorreos los correos de la cuenta seleccionada.
+                    string pDireccion = FachadaABMCuenta.Instancia.ObtenerCuenta(cuentaSeleccionada).Direccion;
+                    pCorreos = FachadaCorreo.Instancia.ListarCorreos(pDireccion);
+                }
+                else
+                {
+                    //Carga enla variable pCorreos los correos de todas las cuentas.
+                    pCorreos = FachadaCorreo.Instancia.ListarCorreos();
+                }
+            }
+            catch (Exception exeption)
+            {
+                MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }  
 
-            if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) // si la cuenta seleccionada es distinta de "Todas las cuentas"
-            {
-                //Carga enla variable pCorreos los correos de la cuenta seleccionada.
-                string pDireccion = FachadaABMCuenta.Instancia.ObtenerCuenta(cuentaSeleccionada).Direccion;
-                pCorreos = FachadaCorreo.Instancia.ListarCorreos(pDireccion);
-            }
-            else
-            {
-                //Carga enla variable pCorreos los correos de todas las cuentas.
-                pCorreos = FachadaCorreo.Instancia.ListarCorreos();
-            }
             foreach (CorreoDTO aCorreo in pCorreos)
             {
                 if (aCorreo.Eliminado == false)
@@ -316,9 +327,9 @@ namespace Formularios
                     FachadaCorreo.Instancia.ExportarCorreo(pCorreo, path, pFormato, pNombre);
                     MessageBox.Show("Exportado con exito.", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch
+                catch (Exception exeption)
                 {
-                    //
+                    MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -444,14 +455,12 @@ namespace Formularios
                 // Marco como leido el correo en la base
                 FachadaCorreo.Instancia.ModificarCorreo(pCorreo);
             }
-            catch( Exception exeption)
+            catch (Exception exeption)
             {
-                MessageBox.Show(exeption.Message);
-                MessageBox.Show(exeption.InnerException.Message);
+                MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             panelCorreo.Visible = true;
-            listaEnviados.Visible = false;
-            
+            listaEnviados.Visible = false;    
         }
 
         /// <summary>
@@ -497,11 +506,10 @@ namespace Formularios
             {
                 // Marco como leido el correo en la base
                 FachadaCorreo.Instancia.ModificarCorreo(pCorreo);
-            }                        
-            catch( Exception exeption)
+            }
+            catch (Exception exeption)
             {
-                MessageBox.Show(exeption.Message);
-                MessageBox.Show(exeption.InnerException.Message);
+                MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             panelCorreo.Visible = true;
@@ -518,28 +526,34 @@ namespace Formularios
             if (MessageBox.Show("¿Está seguro que desea eliminar este correo?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 CorreoDTO pCorreo = new CorreoDTO();
-
-                if (listaEnviados.Visible) 
+                try
                 {
-                    //Busca el indice de la fila seleccionada en la lista de correos enviados.
-                    int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
-                    pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
-                    MessageBox.Show(Convert.ToString(pCorreo.Id));
-                    FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
+                    if (listaEnviados.Visible)
+                    {
+                        //Busca el indice de la fila seleccionada en la lista de correos enviados.
+                        int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
+                        pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
+                        MessageBox.Show(Convert.ToString(pCorreo.Id));
+                        FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
+                    }
+                    else if (listaRecibidos.Visible)
+                    {
+                        //Busca el indice de la fila seleccionada en la lista de correos recibidos.
+                        int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
+                        pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
+                        FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
+                    }
+                    else // esta visible el form de correo
+                    {
+                        pCorreo.Id = Convert.ToInt32(correo_id.Text);
+                        FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
+                    }
+                    MessageBox.Show("Eliminado con exito.", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if (listaRecibidos.Visible)
+                catch (Exception exeption)
                 {
-                    //Busca el indice de la fila seleccionada en la lista de correos recibidos.
-                    int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
-                    pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
-                    FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
-                }
-                else // esta visible el form de correo
-                {
-                    pCorreo.Id = Convert.ToInt32(correo_id.Text);
-                    FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
-                }
-                MessageBox.Show("Eliminado con exito.", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }                             
             }
             // Actualiza las listas Recibidos y Enviados
             MostrarCorreos(); 
@@ -683,8 +697,7 @@ namespace Formularios
             }
             catch (Exception exeption)
             {
-                MessageBox.Show(exeption.Message);
-                MessageBox.Show(exeption.InnerException.Message);
+                MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             // Actualizamos las listas Recibidos y Enviados
             MostrarCorreos();

@@ -64,22 +64,23 @@ namespace Formularios
             pCorreo.Adjuntos = archivos;
             pCorreo.Eliminado = false;
 
-            //Obtenemos la cuenta con la que se envía el correo
-            CuentaDTO pCuenta = FachadaABMCuenta.Instancia.ObtenerCuenta(pCorreo.CuentaOrigen);
-            if (pCuenta.Contraseña == "" || pCuenta.Contraseña == null)
-            {
-                FormContraseña f2 = new FormContraseña(pCuenta);
-                DialogResult res = f2.ShowDialog(); //abrimos el formulario contraseña como cuadro de dialogo modal
-
-                if (res == DialogResult.OK)
-                {
-                    // Recuperando la variable publica del formulario contraseña
-                    // asignamos al texbox el dato de la variable
-                    pCuenta.Contraseña = f2.varf2; 
-                }
-            }
             try
             {
+                //Obtenemos la cuenta con la que se envía el correo
+                CuentaDTO pCuenta = FachadaABMCuenta.Instancia.ObtenerCuenta(pCorreo.CuentaOrigen);
+                if (pCuenta.Contraseña == "" || pCuenta.Contraseña == null)
+                {
+                    FormContraseña f2 = new FormContraseña(pCuenta);
+                    DialogResult res = f2.ShowDialog(); //abrimos el formulario contraseña como cuadro de dialogo modal
+
+                    if (res == DialogResult.OK)
+                    {
+                        // Recuperando la variable publica del formulario contraseña
+                        // asignamos al texbox el dato de la variable
+                        pCuenta.Contraseña = f2.varf2;
+                    }
+                }
+            
                 //Enviamos el correo.
                 FachadaCorreo.Instancia.EnviarCorreo(pCorreo,pCuenta);
 
@@ -92,9 +93,9 @@ namespace Formularios
                 FachadaCorreo.Instancia.CrearCorreo(pCorreo);
                 MessageBox.Show("Enviado con exito.", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception exception) //CONSIDERAR  EXCEPCIONes DE PERSISTENCIA y de envio.
+            catch (Exception exeption)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             //Oculta el mensaje de información al usuario
@@ -132,9 +133,9 @@ namespace Formularios
                     listaCuentas.Items.Add(aCuenta.Nombre);
                 }
             }
-            catch
+            catch (Exception exeption)
             {
-                // VER QUE HACER ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally
             {
@@ -154,21 +155,28 @@ namespace Formularios
         private void formEnvioCorreo_Load(object sender, EventArgs e)
         {
             MostrarCuentas();
-            if (iCorreo != null)
+            try
             {
-                correo_Destino.Text = iCorreo.CuentaDestino;
-                correo_Asunto.Text = iCorreo.Asunto;
-                correo_Texto.Text = iCorreo.Texto;
-                // Recorre la lista para encontrar el elemento que debe dejar seleccionado
-                for (int i = 0; i < listaCuentas.Items.Count; i++)
+                if (iCorreo != null)
                 {
-                    if (FachadaABMCuenta.Instancia.ObtenerCuenta(Convert.ToString(listaCuentas.Items[i])).Direccion == iCorreo.CuentaOrigen)
+                    correo_Destino.Text = iCorreo.CuentaDestino;
+                    correo_Asunto.Text = iCorreo.Asunto;
+                    correo_Texto.Text = iCorreo.Texto;
+                    // Recorre la lista para encontrar el elemento que debe dejar seleccionado
+                    for (int i = 0; i < listaCuentas.Items.Count; i++)
                     {
-                        listaCuentas.SelectedIndex = i;
-                        break;
+                        if (FachadaABMCuenta.Instancia.ObtenerCuenta(Convert.ToString(listaCuentas.Items[i])).Direccion == iCorreo.CuentaOrigen)
+                        {
+                            listaCuentas.SelectedIndex = i;
+                            break;
+                        }
                     }
                 }
             }
+            catch (Exception exeption)
+            {
+                MessageBox.Show(exeption.Message, "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }        
         }
     }
 }

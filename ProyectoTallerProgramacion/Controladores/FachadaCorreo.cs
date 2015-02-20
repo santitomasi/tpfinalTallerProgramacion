@@ -22,7 +22,7 @@ namespace Controladores
         private static FachadaCorreo cInstancia = null;
 
         /// <summary>
-        /// Atributo que almacena la instancia del administrador de exportadores-
+        /// Atributo que almacena la instancia del administrador de exportadores.
         /// </summary>
         FabricaExportadores fabricaExportadores = FabricaExportadores.Instancia;
 
@@ -85,7 +85,7 @@ namespace Controladores
         }
 
         /// <summary>
-        /// Metodo para descargar los correos de una cuenta y cuargarlos en la base de datos.
+        /// Metodo para descargar los correos de una cuenta y cargarlos en la base de datos.
         /// </summary>
         /// <param name="pCorreo"></param>
         public void DescargarCorreos(CuentaDTO pCuenta)

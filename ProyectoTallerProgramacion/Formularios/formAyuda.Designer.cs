@@ -44,7 +44,7 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(690, 423);
-            this.textBox1.TabIndex = 1;
+            this.textBox1.TabIndex = 0;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // label1
@@ -53,7 +53,7 @@
             this.label1.Location = new System.Drawing.Point(395, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 1;
             // 
             // FormAyuda
             // 

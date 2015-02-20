@@ -49,7 +49,7 @@
             this.btSiguiente.Location = new System.Drawing.Point(85, 197);
             this.btSiguiente.Name = "btSiguiente";
             this.btSiguiente.Size = new System.Drawing.Size(127, 29);
-            this.btSiguiente.TabIndex = 7;
+            this.btSiguiente.TabIndex = 5;
             this.btSiguiente.Text = "Siguiente";
             this.btSiguiente.UseVisualStyleBackColor = false;
             this.btSiguiente.Click += new System.EventHandler(this.btSiguiente_Click);
@@ -61,7 +61,7 @@
             this.label1.Location = new System.Drawing.Point(12, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(293, 18);
-            this.label1.TabIndex = 8;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Ingrese su contraseña para continuar:";
             // 
             // mostrar
@@ -70,7 +70,7 @@
             this.mostrar.Location = new System.Drawing.Point(45, 140);
             this.mostrar.Name = "mostrar";
             this.mostrar.Size = new System.Drawing.Size(115, 17);
-            this.mostrar.TabIndex = 10;
+            this.mostrar.TabIndex = 4;
             this.mostrar.Text = "Mostrar Caracteres";
             this.mostrar.UseVisualStyleBackColor = true;
             this.mostrar.CheckedChanged += new System.EventHandler(this.mostrar_CheckedChanged);
@@ -80,7 +80,7 @@
             this.cuenta_contraseña.Location = new System.Drawing.Point(45, 101);
             this.cuenta_contraseña.Name = "cuenta_contraseña";
             this.cuenta_contraseña.Size = new System.Drawing.Size(188, 20);
-            this.cuenta_contraseña.TabIndex = 9;
+            this.cuenta_contraseña.TabIndex = 3;
             this.cuenta_contraseña.UseSystemPasswordChar = true;
             // 
             // labelCuenta
@@ -90,7 +90,7 @@
             this.labelCuenta.Location = new System.Drawing.Point(42, 68);
             this.labelCuenta.Name = "labelCuenta";
             this.labelCuenta.Size = new System.Drawing.Size(60, 16);
-            this.labelCuenta.TabIndex = 11;
+            this.labelCuenta.TabIndex = 1;
             this.labelCuenta.Text = "Cuenta:";
             this.labelCuenta.Visible = false;
             // 
@@ -101,7 +101,7 @@
             this.labelDireccion.Location = new System.Drawing.Point(108, 68);
             this.labelDireccion.Name = "labelDireccion";
             this.labelDireccion.Size = new System.Drawing.Size(72, 16);
-            this.labelDireccion.TabIndex = 12;
+            this.labelDireccion.TabIndex = 2;
             this.labelDireccion.Text = "direccion";
             this.labelDireccion.Visible = false;
             // 
@@ -118,7 +118,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btSiguiente);
             this.Name = "FormContraseña";
-            this.Text = "FormContraseña";
+            this.Text = "Contraseña";
             this.Load += new System.EventHandler(this.FormContraseña_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

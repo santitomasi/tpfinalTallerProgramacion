@@ -308,6 +308,44 @@ namespace formPrincipal
         }
 
         /// <summary>
+        /// Método que se ejecuta cuando una celda de la lista de correos recibidos toma foco.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listaRecibidos_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexSelected = e.RowIndex;
+            // Revisa el atributo leido del correo seleccionado en la lista
+            if (Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value) == 1)
+            {
+                buttonLeido.Text = "No Leído";
+            }
+            else
+            {
+                buttonLeido.Text = "Leído";
+            }
+        }
+
+        /// <summary>
+        /// Método que se ejecuta cuando una celda de la lista de correos enviados toma foco.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listaEnviados_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexSelected = e.RowIndex;
+            // Revisa el atributo leido del correo seleccionado en la lista
+            if (Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["leido"].Value) == 1)
+            {
+                buttonLeido.Text = "No Leído";
+            }
+            else
+            {
+                buttonLeido.Text = "Leído";
+            }
+        }
+
+        /// <summary>
         /// Método que se dispara al hacer doble click sobre un correo de la lista de correos Enviados
         /// </summary>
         /// <param name="sender"></param>
@@ -320,6 +358,9 @@ namespace formPrincipal
             // Marco como leido el correo en la lista
             listaEnviados.Rows[indexSelected].Cells["leido"].Value = 1;
             listaEnviados.Rows[indexSelected].DefaultCellStyle.BackColor = Color.Lavender;
+
+            //Actualiza el texto del botón Leido/NoLeido
+            buttonLeido.Text = "No Leído";
 
             //Carga los datos desde la grilla al objeto pCorreo
             pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
@@ -374,6 +415,9 @@ namespace formPrincipal
             listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value = 1;
             listaRecibidos.Rows[indexSelected].DefaultCellStyle.BackColor = Color.Lavender;
 
+            //Actualiza el texto del botón Leido/NoLeido
+            buttonLeido.Text = "No Leído";
+
             pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
             pCorreo.Asunto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
             pCorreo.CuentaDestino = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
@@ -426,8 +470,6 @@ namespace formPrincipal
                 if (listaEnviados.Visible) 
                 {
                     //Busca el indice de la fila seleccionada en la lista de correos enviados.
-                    // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
-                    // entonces tomamos el primer elemento.
                     int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
                     pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
                     MessageBox.Show(Convert.ToString(pCorreo.Id));
@@ -436,8 +478,6 @@ namespace formPrincipal
                 else if (listaRecibidos.Visible)
                 {
                     //Busca el indice de la fila seleccionada en la lista de correos recibidos.
-                    // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
-                    // entonces tomamos el primer elemento.
                     int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
                     pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
                     FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
@@ -465,8 +505,6 @@ namespace formPrincipal
             if (listaEnviados.Visible)
             {
                 //Busca el indice de la fila seleccionada en la lista de correos enviados.
-                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
-                // entonces tomamos el primer elemento.
                 int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
                 pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
                 pCorreo.Asunto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
@@ -478,8 +516,6 @@ namespace formPrincipal
             else if (listaRecibidos.Visible)
             {
                 //Busca el indice de la fila seleccionada en la lista de correos recibidos.
-                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
-                // entonces tomamos el primer elemento.
                 int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
                 pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
                 pCorreo.Asunto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
@@ -510,8 +546,6 @@ namespace formPrincipal
             if (listaEnviados.Visible)
             {
                 //Busca el indice de la fila seleccionada en la lista de correos enviados.
-                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
-                // entonces tomamos el primer elemento.
                 int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
                 pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
                 pCorreo.Asunto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
@@ -521,8 +555,6 @@ namespace formPrincipal
             else if (listaRecibidos.Visible)
             {
                 //Busca el indice de la fila seleccionada en la lista de correos recibidos.
-                // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
-                // entonces tomamos el primer elemento.
                 int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
                 pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
                 pCorreo.Asunto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
@@ -540,5 +572,100 @@ namespace formPrincipal
             // Actualizamos las listas Recibidos y Enviados
             MostrarCorreos();
         }
+
+        /// <summary>
+        /// Método que se ejecuta al hacer click sobre Acerca de en el apartado Ayuda del menú principal.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AcercaDe ventanaAcercaDe = new AcercaDe();
+            ventanaAcercaDe.ShowDialog();
+        }
+
+        private void buttonLeido_Click(object sender, EventArgs e)
+        {
+            CorreoDTO pCorreo = new CorreoDTO();
+
+            if (listaEnviados.Visible)
+            {
+                //Busca el indice de la fila seleccionada en la lista de correos enviados.
+                int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
+                pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
+                pCorreo.Asunto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["asunto"].Value);
+                pCorreo.CuentaDestino = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaDestino"].Value);
+                pCorreo.CuentaOrigen = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["cuentaOrigen"].Value);
+                pCorreo.Fecha = Convert.ToDateTime(listaEnviados.Rows[indexSelected].Cells["fecha"].Value);
+                pCorreo.Texto = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["texto"].Value);
+                pCorreo.Eliminado = Convert.ToBoolean(listaEnviados.Rows[indexSelected].Cells["eliminado"].Value);
+                pCorreo.Leido = Convert.ToBoolean(listaEnviados.Rows[indexSelected].Cells["leido"].Value);
+                pCorreo.ServicioId = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["servicioId"].Value);
+                pCorreo.TipoCorreo = Convert.ToString(listaEnviados.Rows[indexSelected].Cells["tipoCorreo"].Value);
+            }
+            else if (listaRecibidos.Visible)
+            {
+                //Busca el indice de la fila seleccionada en la lista de correos recibidos.
+                int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
+                pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
+                pCorreo.Asunto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
+                pCorreo.CuentaDestino = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaDestinoR"].Value);
+                pCorreo.CuentaOrigen = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
+                pCorreo.Fecha = Convert.ToDateTime(listaRecibidos.Rows[indexSelected].Cells["fechaR"].Value);
+                pCorreo.Texto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["textoR"].Value);
+                pCorreo.Eliminado = Convert.ToBoolean(listaRecibidos.Rows[indexSelected].Cells["eliminadoR"].Value);
+                pCorreo.Leido = Convert.ToBoolean(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value);
+                pCorreo.ServicioId = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["servicioIdR"].Value);
+                pCorreo.TipoCorreo = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["tipoCorreoR"].Value);
+            }
+            else // esta visible el form de correo
+            {
+                pCorreo.Id = Convert.ToInt32(correo_id.Text);
+                pCorreo.Asunto = correo_asunto.Text;
+                pCorreo.CuentaDestino = correo_cuentaDestino.Text;
+                pCorreo.CuentaOrigen = correo_cuentaOrigen.Text;
+                pCorreo.Fecha = Convert.ToDateTime(correo_fecha.Text);
+                pCorreo.Texto = correo_texto.Text;
+                pCorreo.Eliminado = Convert.ToBoolean(correo_eliminado.Text);
+                pCorreo.Leido = Convert.ToBoolean(correo_leido.Text);
+                pCorreo.ServicioId = correo_servicioid.Text;
+                pCorreo.TipoCorreo = correo_tipocorreo.Text;
+            }
+
+            //Cambia el valor del atributo leido del correo
+            pCorreo.Leido = !pCorreo.Leido;
+
+            try
+            {
+                // Guardo la modificacion en la base
+                FachadaCorreo.Instancia.ModificarCorreo(pCorreo);
+            }
+            catch (Exception exeption)
+            {
+                MessageBox.Show(exeption.Message);
+                MessageBox.Show(exeption.InnerException.Message);
+            }
+            // Actualizamos las listas Recibidos y Enviados
+            MostrarCorreos();
+
+            // Si se estaba viendo el correo en el panel de correo, se pasa a la lista que lo contiene.
+            // Se busca el tipo de correo y se marca como visible la lista correspondiente
+            if (panelCorreo.Visible == true)
+            {
+                panelCorreo.Visible = false;
+                if (pCorreo.TipoCorreo == "Recibido")
+                {
+                    listaRecibidos.Visible = true;
+                }
+                else 
+                {
+                    listaEnviados.Visible = true;
+                }
+            }
+        }
+
+
+
+
     }
 }

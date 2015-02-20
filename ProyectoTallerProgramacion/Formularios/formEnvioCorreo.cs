@@ -68,7 +68,7 @@ namespace Formularios
             CuentaDTO pCuenta = FachadaABMCuenta.Instancia.ObtenerCuenta(pCorreo.CuentaOrigen);
             if (pCuenta.Contraseña == "" || pCuenta.Contraseña == null)
             {
-                FormContraseña f2 = new FormContraseña();
+                FormContraseña f2 = new FormContraseña(pCuenta);
                 DialogResult res = f2.ShowDialog(); //abrimos el formulario contraseña como cuadro de dialogo modal
 
                 if (res == DialogResult.OK)
@@ -78,8 +78,8 @@ namespace Formularios
                     pCuenta.Contraseña = f2.varf2; 
                 }
             }
-        //    try
-        //    {
+            try
+            {
                 //Enviamos el correo.
                 FachadaCorreo.Instancia.EnviarCorreo(pCorreo,pCuenta);
 
@@ -91,11 +91,11 @@ namespace Formularios
                 pCorreo.ServicioId = "Correo enviado por el Cliente de Correo";
                 FachadaCorreo.Instancia.CrearCorreo(pCorreo);
                 MessageBox.Show("Enviado con exito.", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //    catch (Exception exception) //CONSIDERAR  EXCEPCIONes DE PERSISTENCIA y de envio.
-        //    {
-         //       MessageBox.Show(exception.Message);
-        //    }
+            }
+            catch (Exception exception) //CONSIDERAR  EXCEPCIONes DE PERSISTENCIA y de envio.
+            {
+                MessageBox.Show(exception.Message);
+            }
 
             //Oculta el mensaje de información al usuario
             mensajeEnviando.Visible = false;

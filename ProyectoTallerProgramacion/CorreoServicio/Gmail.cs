@@ -49,19 +49,18 @@ namespace CorreoServicio
                 cliente.Credentials = new System.Net.NetworkCredential(pCuenta.Direccion, pCuenta.Contraseña);
                 cliente.Send(correo);
             }
-            catch (FormatException exeption) //cuando no esta bien el formato del destino
+            catch (FormatException exeption) //Cuando no esta bien el formato del destino
             {
-                throw new ServicioCorreoException("No se pudo elviar su correo. Revise el formato del destinatario y vuelva a intentarlo.", exeption);
+                throw new ServicioCorreoException("No se pudo enviar su correo. Revise el formato del destinatario y vuelva a intentarlo.", exeption);
             }
-            catch (SmtpException exeption)    // cuando no hay conexion da esta.
+            catch (SmtpException exeption)    // Cuando no hay conexion o estan mal los datos de la cuenta.
             {
-                throw new ServicioCorreoException("No se pudo elviar su correo. Revise la conexion a Internet y vuelva a intentarlo.", exeption);
+                throw new ServicioCorreoException("No se pudo enviar su correo. Revise la conexion a Internet y sus datos de conexión y vuelva a intentarlo.", exeption);
             }
             catch (Exception exeption) // Otras
             {
-                throw new ServicioCorreoException("No se pudo elviar su correo.", exeption);
+                throw new ServicioCorreoException("No se pudo enviar su correo.", exeption);
             }
-            // Revisar que exepcion da cuando tenes mal la contraseña
         }
 
         /// <summary>

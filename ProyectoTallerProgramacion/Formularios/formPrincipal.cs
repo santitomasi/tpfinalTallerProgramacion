@@ -58,7 +58,7 @@ namespace Formularios
         {
             if (pCuenta.Contraseña == "" || pCuenta.Contraseña == null)
             {
-                FormContraseña f2 = new FormContraseña(); 
+                FormContraseña f2 = new FormContraseña(pCuenta); 
                 DialogResult res = f2.ShowDialog(); //abrimos el formulario contraseña como cuadro de dialogo modal
 
                 if (res == DialogResult.OK)

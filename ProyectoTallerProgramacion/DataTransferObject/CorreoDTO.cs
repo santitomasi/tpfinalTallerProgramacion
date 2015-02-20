@@ -72,15 +72,6 @@ namespace DataTransferObject
         public CorreoDTO() {}
 
         /// <summary>
-        /// Metodo que devuelve el correo en formato string.
-        /// </summary>
-        /// <returns></returns>
-        public string toString()
-        {
-            return "falta desarrollar el metodo";
-        }
-
-        /// <summary>
         /// Propiedad de lectura y escritura del ID.
         /// </summary>
         public int Id

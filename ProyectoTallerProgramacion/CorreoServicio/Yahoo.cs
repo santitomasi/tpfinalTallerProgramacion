@@ -76,7 +76,7 @@ namespace CorreoServicio
             try
             {
                 pop.Connect("pop.mail.yahoo.com", 995, true);
-                pop.Authenticate(pCuenta.Direccion, pCuenta.Contraseña);  // ver si usamos esto o los tributos iDireccion e iContraseña (hay que cargarlos desde la fachada)
+                pop.Authenticate(pCuenta.Direccion, pCuenta.Contraseña); 
                 int cantidadMensajes = pop.GetMessageCount();
 
                 for (int i = cantidadMensajes; i > 0; i--)

@@ -538,7 +538,6 @@ namespace Formularios
                         //Busca el indice de la fila seleccionada en la lista de correos enviados.
                         int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
                         pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
-                        MessageBox.Show(Convert.ToString(pCorreo.Id));
                         FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
                     }
                     else if (listaRecibidos.Visible)
@@ -553,7 +552,7 @@ namespace Formularios
                         pCorreo.Id = Convert.ToInt32(correo_id.Text);
                         FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
                     }
-                    MessageBox.Show("Eliminado con exito.", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Eliminado con exito.", "PostApp", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception exeption)
                 {

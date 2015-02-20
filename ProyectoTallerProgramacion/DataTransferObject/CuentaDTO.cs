@@ -42,15 +42,6 @@ namespace DataTransferObject
         public CuentaDTO() {}
 
         /// <summary>
-        /// Metodo que devuelva la cuenta en formato String.
-        /// </summary>
-        /// <returns></returns>
-        public string toString()
-        {
-            return "Método a desarrollar";
-        }
-        
-        /// <summary>
         /// Propiedad de lectura y escritura del ID.
         /// </summary>
         public int Id

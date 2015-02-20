@@ -122,7 +122,7 @@ namespace CorreoServicio
                         TipoCorreo = pTipoCorreo,
                         Texto = cuerpo,
                         CuentaOrigen = mensaje.Headers.From.Address,
-                        CuentaDestino = pDestino,    // Reemplazar esto!!!
+                        CuentaDestino = pDestino,    
                         Asunto = mensaje.Headers.Subject,
                         Leido = false,
                         ServicioId = mensaje.Headers.MessageId

@@ -40,6 +40,7 @@
             this.administrarCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ayudaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +98,6 @@
             this.mensajeActualizando = new System.Windows.Forms.TextBox();
             this.btActualizar = new System.Windows.Forms.Button();
             this.btLeido = new System.Windows.Forms.Button();
-            this.ayudaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelCorreo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEnviados)).BeginInit();
@@ -138,6 +138,13 @@
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
+            // 
+            // ayudaToolStripMenuItem2
+            // 
+            this.ayudaToolStripMenuItem2.Name = "ayudaToolStripMenuItem2";
+            this.ayudaToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.ayudaToolStripMenuItem2.Text = "Ver la Ayuda";
+            this.ayudaToolStripMenuItem2.Click += new System.EventHandler(this.ayudaToolStripMenuItem2_Click);
             // 
             // configuraciónDeCuentasToolStripMenuItem
             // 
@@ -183,7 +190,7 @@
             this.listaCuentas.Location = new System.Drawing.Point(12, 27);
             this.listaCuentas.Name = "listaCuentas";
             this.listaCuentas.Size = new System.Drawing.Size(134, 21);
-            this.listaCuentas.TabIndex = 1;
+            this.listaCuentas.TabIndex = 0;
             this.listaCuentas.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // labelFormato
@@ -192,7 +199,7 @@
             this.labelFormato.Location = new System.Drawing.Point(12, 386);
             this.labelFormato.Name = "labelFormato";
             this.labelFormato.Size = new System.Drawing.Size(101, 13);
-            this.labelFormato.TabIndex = 0;
+            this.labelFormato.TabIndex = 9;
             this.labelFormato.Text = "Seleccione formato:";
             this.labelFormato.Visible = false;
             // 
@@ -202,7 +209,7 @@
             this.rbtEML.Location = new System.Drawing.Point(47, 434);
             this.rbtEML.Name = "rbtEML";
             this.rbtEML.Size = new System.Drawing.Size(47, 17);
-            this.rbtEML.TabIndex = 2;
+            this.rbtEML.TabIndex = 11;
             this.rbtEML.Text = "EML";
             this.rbtEML.UseVisualStyleBackColor = true;
             this.rbtEML.Visible = false;
@@ -214,7 +221,7 @@
             this.rbtTextoPlano.Location = new System.Drawing.Point(47, 411);
             this.rbtTextoPlano.Name = "rbtTextoPlano";
             this.rbtTextoPlano.Size = new System.Drawing.Size(82, 17);
-            this.rbtTextoPlano.TabIndex = 1;
+            this.rbtTextoPlano.TabIndex = 10;
             this.rbtTextoPlano.TabStop = true;
             this.rbtTextoPlano.Text = "Texto Plano";
             this.rbtTextoPlano.UseVisualStyleBackColor = true;
@@ -232,7 +239,7 @@
             this.btExportar.Location = new System.Drawing.Point(15, 457);
             this.btExportar.Name = "btExportar";
             this.btExportar.Size = new System.Drawing.Size(127, 29);
-            this.btExportar.TabIndex = 3;
+            this.btExportar.TabIndex = 12;
             this.btExportar.Text = "Exportar";
             this.btExportar.UseVisualStyleBackColor = false;
             this.btExportar.Visible = false;
@@ -654,7 +661,7 @@
             this.btEnviados.Location = new System.Drawing.Point(15, 132);
             this.btEnviados.Name = "btEnviados";
             this.btEnviados.Size = new System.Drawing.Size(127, 29);
-            this.btEnviados.TabIndex = 5;
+            this.btEnviados.TabIndex = 3;
             this.btEnviados.Text = "Enviados";
             this.btEnviados.UseVisualStyleBackColor = false;
             this.btEnviados.Visible = false;
@@ -690,7 +697,7 @@
             this.btEliminar.Location = new System.Drawing.Point(15, 217);
             this.btEliminar.Name = "btEliminar";
             this.btEliminar.Size = new System.Drawing.Size(127, 29);
-            this.btEliminar.TabIndex = 6;
+            this.btEliminar.TabIndex = 5;
             this.btEliminar.Text = "Eliminar";
             this.btEliminar.UseVisualStyleBackColor = false;
             this.btEliminar.Visible = false;
@@ -708,7 +715,7 @@
             this.btReenviar.Location = new System.Drawing.Point(15, 245);
             this.btReenviar.Name = "btReenviar";
             this.btReenviar.Size = new System.Drawing.Size(127, 29);
-            this.btReenviar.TabIndex = 7;
+            this.btReenviar.TabIndex = 6;
             this.btReenviar.Text = "Reenviar";
             this.btReenviar.UseVisualStyleBackColor = false;
             this.btReenviar.Visible = false;
@@ -727,7 +734,7 @@
             this.btRedactar.Location = new System.Drawing.Point(15, 79);
             this.btRedactar.Name = "btRedactar";
             this.btRedactar.Size = new System.Drawing.Size(127, 29);
-            this.btRedactar.TabIndex = 3;
+            this.btRedactar.TabIndex = 2;
             this.btRedactar.Text = "Redactar";
             this.btRedactar.UseVisualStyleBackColor = false;
             this.btRedactar.Click += new System.EventHandler(this.btRedactar_Click);
@@ -744,7 +751,7 @@
             this.btResponder.Location = new System.Drawing.Point(15, 273);
             this.btResponder.Name = "btResponder";
             this.btResponder.Size = new System.Drawing.Size(127, 29);
-            this.btResponder.TabIndex = 8;
+            this.btResponder.TabIndex = 7;
             this.btResponder.Text = "Responder";
             this.btResponder.UseVisualStyleBackColor = false;
             this.btResponder.Visible = false;
@@ -777,7 +784,7 @@
             this.btActualizar.Location = new System.Drawing.Point(15, 52);
             this.btActualizar.Name = "btActualizar";
             this.btActualizar.Size = new System.Drawing.Size(127, 29);
-            this.btActualizar.TabIndex = 2;
+            this.btActualizar.TabIndex = 1;
             this.btActualizar.Text = "Actualizar";
             this.btActualizar.UseVisualStyleBackColor = false;
             this.btActualizar.Click += new System.EventHandler(this.btActualizar_Click);
@@ -794,17 +801,11 @@
             this.btLeido.Location = new System.Drawing.Point(15, 299);
             this.btLeido.Name = "btLeido";
             this.btLeido.Size = new System.Drawing.Size(127, 29);
-            this.btLeido.TabIndex = 40;
+            this.btLeido.TabIndex = 8;
             this.btLeido.Text = "Leído";
             this.btLeido.UseVisualStyleBackColor = false;
             this.btLeido.Visible = false;
             this.btLeido.Click += new System.EventHandler(this.buttonLeido_Click);
-            // 
-            // ayudaToolStripMenuItem2
-            // 
-            this.ayudaToolStripMenuItem2.Name = "ayudaToolStripMenuItem2";
-            this.ayudaToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.ayudaToolStripMenuItem2.Text = "Ver la Ayuda";
             // 
             // formPrincipal
             // 

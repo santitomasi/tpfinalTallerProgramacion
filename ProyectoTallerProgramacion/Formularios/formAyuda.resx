@@ -117,99 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>- Acceso al programa:
+Al arrancar el programa lo primero que se verá será la pantalla de Gestor de correos. Si no existen cuentas creadas, lo primero que hay que hacer es clickear el botón Administrar Cuentas en la barra de menúes, lo que abre la ventana Administrar Cuentas (ver a continuación).
+
+- Ventana Administrar Cuentas:
+Aquí se gestionan las cuentas. Si se desea crear una cuenta se hace click en el botón Nueva de la barra de menúes (esto no es necesario si no existen cuentas creadas hasta el momento). Se deben completar los campos solicitados:
+  Nombre: nombre con el que se identificará a la cuenta.
+  Dirección: dirección de la cuenta de correo.
+  Servicio: servicio al que corresponde la cuenta (Gmail o Yahoo).
+  Contraseña: la contraseña correspondiente a la dirección de correo. Se puede observar lo escrito tildando el cuadro ‘Mostrar caracteres’.
+  Validar Contraseña: verificación de la contraseña ingresada. Se puede observar lo escrito tildando el cuadro ‘Mostrar caracteres’.
+Una vez completados los campos se hace click en el botón Guardar de la barra de menúes, para guardar la nueva cuenta.
+En la parte inferior de esta pantalla se observa una lista con las cuentas creadas hasta el momento (Nombre, Dirección y Servicio). Al seleccionar una de ellas, se la puede editar (modificando algunos de sus campos) en la parte superior de esta pantalla. También se la puede eliminar, haciendo click en el botón Borrar de la barra de menúes.
+
+- Ventana Gestor de correos:
+Dentro de esta ventana podemos ir a “Administrar Cuentas” (explicado antes), “Ver ayuda”, “Acerca de” (información del programa) y gestionar los correos. 
+Con respecto a esto último, al comienzo se muestran todos los correos de todas las cuentas, en una lista de correos (con el asunto, el emisor, el destinatario y la fecha). A la izquierda existen una serie de botones que cumplen diferentes funciones sobre los correos de la cuenta seleccionada en la lista desplegable que se encuentra sobre dichos botones:
+  Actualizar: actualiza los correos de una cuenta en particular si ésta está seleccionada en el menú desplegable. En el caso que ninguna cuenta se encuentre seleccionada, actualiza todas las cuentas. Actualizar consiste en descargar los correos del servicio, aquellos que aún no estén descargados en PostApp. Además, si una cuenta fue creada sin contraseña, al momento de actualizarse, el programa pedirá la misma para continuar (la cual no se guardará en el programa, solo es usada provisoriamente).
+  Redactar: abre la ventana Redactar (ver adelante).
+  Enviados: muestra los correos enviados (que han sido descargados antes) de la cuenta seleccionada.
+  Recibidos: muestra los correos recibidos (que han sido descargados antes) de la cuenta seleccionada.
+  Eliminar: permite eliminar un correo, previamente seleccionado de la lista de correos. Cabe aclarar que ésta eliminación es solo de PostApp, pero no del servicio de correo.
+  Reenviar: permite reenviar un correo, previamente seleccionado de la lista de correos.
+  Responder: permite responder un correo, previamente seleccionado de la lista de correos.
+  Leído/No leído: permite marcar un correo como leído, si el correo se encuentra marcado como leído permite desmarcarlo.
+En la parte inferior izquierda se encuentra la opción de exportar el correo seleccionado en 2 tipos de formato a seleccionar: Texto plano y EML. Al clickear el botón Exportar, se abre una ventana para elegir el lugar a donde se desea exportar.
+Al hacer doble click sobre un correo, éste se abre para poder leerlo.
+
+- Ventana Redactar:
+En esta ventana se redacta un correo a ser enviado. Aquí es necesario detallar la cuenta desde la que se quiere enviar el correo, la dirección del destinatario y el asunto. Debajo de esto se escribe el cuerpo del correo. En la parte inferior izquierda se encuentra la opción Agregar archivo adjunto, para incluir algún archivo en el correo (al clickear esta opción se abre una ventana para buscar el archivo que se desea adjuntar). Una vez redactado el correo, para enviarlo se selecciona la opción Enviar en la parte inferior derecha. Si la cuenta seleccionada fue creada sin contraseña, para continuar con el envío del correo, PostApp pedirá el ingreso de una contraseña (la cual no se guardará en el programa, solo es usada provisoriamente).
+
+
+</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="administrarCuentasToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAADaSURBVDhP7ZG9CoFRGMcpKZvJZLMYXIBksBjIROQCXIAS
-        g8lmsZsV5RKUi5DFPfgoTDLx+9c59eQ92ZWnfj1f53nOef9vLPY3q8CY5AFbSEEbznBxcQZ/hRdsQtJp
-        WE1Rd8M+16Kp6aseMd2sxh2ycDIDissm16sipmfrZg3LWnB0i5quVsRPIB1akKeo765AInAgSa0PM6ja
-        fpxkbp63Jy7BCFawhCF0weq080tqZvhA3ADp4AX0/katA0/TG2hJDnqOAl4CfQ7bvyE9Fg4JG7E1lW+E
-        Zn659gYqgUhvw1GApAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="configuraciónDeCuentasToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAADaSURBVDhP7ZG9CoFRGMcpKZvJZLMYXIBksBjIROQCXIAS
-        g8lmsZsV5RKUi5DFPfgoTDLx+9c59eQ92ZWnfj1f53nOef9vLPY3q8CY5AFbSEEbznBxcQZ/hRdsQtJp
-        WE1Rd8M+16Kp6aseMd2sxh2ycDIDissm16sipmfrZg3LWnB0i5quVsRPIB1akKeo765AInAgSa0PM6ja
-        fpxkbp63Jy7BCFawhCF0weq080tqZvhA3ADp4AX0/katA0/TG2hJDnqOAl4CfQ7bvyE9Fg4JG7E1lW+E
-        Zn659gYqgUhvw1GApAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 17</value>
-  </metadata>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>253, 17</value>
-  </metadata>
-  <metadata name="correoId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="tipoCorreo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="asunto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cuentaOrigen.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cuentaDestino.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Fecha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="texto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="leido.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="servicioId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="eliminado.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="correoIdR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="tipoCorreoR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="asuntoR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cuentaOrigenR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cuentaDestinoR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="fechaR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="textoR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="leidoR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="servicioIdR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="eliminadoR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
-  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAgIAAAAEAIAAoCAEAFgAAACgAAACAAAAAAAEAAAEAIAAAAAAAAAABABILAAASCwAAAAAAAAAA

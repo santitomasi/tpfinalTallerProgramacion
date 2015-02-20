@@ -719,5 +719,11 @@ namespace Formularios
             }
         }
 
+        private void ayudaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form frm = new FormAyuda();
+            frm.ShowDialog();
+        }
+
     }
 }

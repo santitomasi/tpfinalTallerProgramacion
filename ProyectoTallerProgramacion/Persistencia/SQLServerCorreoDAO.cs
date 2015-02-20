@@ -79,7 +79,7 @@ namespace Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = "select * from Correo";
+                comando.CommandText = "select * from Correo where eliminado = 0";
                 DataTable tabla = new DataTable();
                 using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
                 {
@@ -119,7 +119,7 @@ namespace Persistencia.SQLServer
             try
             {
                 SqlCommand comando = this.iConexion.CreateCommand();
-                comando.CommandText = "select * from Correo where (cuentaOrigen = @Cuenta and tipoCorreo = 'Enviado') or (cuentaDestino = @Cuenta2 and tipoCorreo = 'Recibido')";
+                comando.CommandText = "select * from Correo where ((cuentaOrigen = @Cuenta and tipoCorreo = 'Enviado') or (cuentaDestino = @Cuenta2 and tipoCorreo = 'Recibido')) and (eliminado = 0)";
                 comando.Parameters.AddWithValue("@Cuenta", pCuenta);
                 // Utilizo el ; porque lasdirecciones de destino se guardan con ;
                 comando.Parameters.AddWithValue("@Cuenta2", pCuenta + "; ");

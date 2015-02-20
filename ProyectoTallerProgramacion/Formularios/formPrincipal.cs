@@ -62,11 +62,8 @@ namespace Formularios
                 FachadaCorreo.Instancia.DescargarCorreos(pCuenta);
             }
             catch (Exception exeption)
-            {
-                // crear una excepcion para esto!!!
-                
-                MessageBox.Show(exeption.Message);
-                MessageBox.Show(exeption.InnerException.Message);
+            {                
+                 MessageBox.Show(exeption.Message);
             }
         }
 
@@ -305,14 +302,27 @@ namespace Formularios
                     pNombre = pNombre.Replace(cChar, '_');
                 }
                 pCorreo.CuentaDestino = pCorreo.CuentaDestino.Replace(";", "");
+                string pFormato;
                 if (rbtTextoPlano.Checked == true)
                 {
-                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo, path, rbtTextoPlano.Text, pNombre);
+                    pFormato = rbtTextoPlano.Text;
+
                 }
                 else
                 {
-                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo, path, rbtEML.Text, pNombre);                    
+                    pFormato = rbtEML.Text;                    
                 }
+                try
+                {
+                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo, path, pFormato, pNombre);
+                    MessageBox.Show("Exportado con exito.", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    //
+                }
+
+
             }
         }
 
@@ -532,7 +542,7 @@ namespace Formularios
                     pCorreo.Id = Convert.ToInt32(correo_id.Text);
                     FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
                 }
-                MessageBox.Show("Eliminado con exito!");
+                MessageBox.Show("Eliminado con exito.", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             // Actualiza las listas Recibidos y Enviados
             MostrarCorreos(); 

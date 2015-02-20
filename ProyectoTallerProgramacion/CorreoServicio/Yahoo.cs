@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DataTransferObject;
 using System.Net.Mail;
 using OpenPop.Pop3;
+using Excepciones;
 
 namespace CorreoServicio
 {
@@ -28,25 +29,30 @@ namespace CorreoServicio
         public override void EnviarCorreo(CorreoDTO pCorreo, CuentaDTO pCuenta)
         {
             MailMessage correo = new MailMessage();
-            correo.From = new MailAddress(pCuenta.Direccion);
-            correo.To.Add(pCorreo.CuentaDestino);
-            correo.Subject = pCorreo.Asunto;
-            correo.Body = pCorreo.Texto;
-            if (pCorreo.Adjuntos != null) 
+            try
             {
-                foreach (string archivo in pCorreo.Adjuntos)
+                correo.From = new MailAddress(pCuenta.Direccion);
+                correo.To.Add(pCorreo.CuentaDestino);
+                correo.Subject = pCorreo.Asunto;
+                correo.Body = pCorreo.Texto;
+                if (pCorreo.Adjuntos != null)
                 {
-                    Attachment attach = new Attachment(@archivo);
-                    correo.Attachments.Add(attach);
+                    foreach (string archivo in pCorreo.Adjuntos)
+                    {
+                        Attachment attach = new Attachment(@archivo);
+                        correo.Attachments.Add(attach);
+                    }
                 }
+                SmtpClient cliente = new SmtpClient("smtp.mail.yahoo.com");
+                cliente.EnableSsl = true;
+                cliente.Port = 587; // o 465
+                cliente.Credentials = new System.Net.NetworkCredential(pCuenta.Direccion, pCuenta.Contraseña);
+                cliente.Send(correo);
             }
-            SmtpClient cliente = new SmtpClient("smtp.mail.yahoo.com");
-            cliente.EnableSsl = true;
-            cliente.Port = 587; // o 465
-            cliente.Credentials = new System.Net.NetworkCredential(pCuenta.Direccion, pCuenta.Contraseña);
-
-            //Aca tendriamos que poner un try-catch
-            cliente.Send(correo);
+            catch
+            {
+                //
+            }           
         }
 
         /// <summary>
@@ -57,72 +63,82 @@ namespace CorreoServicio
         public override IList<CorreoDTO> DescargarCorreos(CuentaDTO pCuenta)
         {
             Pop3Client pop = new Pop3Client();
-            pop.Connect("pop.mail.yahoo.com", 995, true);
-            pop.Authenticate(pCuenta.Direccion, pCuenta.Contraseña);  // ver si usamos esto o los tributos iDireccion e iContraseña (hay que cargarlos desde la fachada)
-            int cantidadMensajes = pop.GetMessageCount();
-            List<CorreoDTO> mCorreos = new List<CorreoDTO>();
             OpenPop.Mime.Message mensaje;
-
-            for (int i = cantidadMensajes; i > 0; i--)
+            List<CorreoDTO> mCorreos = new List<CorreoDTO>();
+            try
             {
-                mensaje = pop.GetMessage(i);
+                pop.Connect("pop.mail.yahoo.com", 995, true);
+                pop.Authenticate(pCuenta.Direccion, pCuenta.Contraseña);  // ver si usamos esto o los tributos iDireccion e iContraseña (hay que cargarlos desde la fachada)
+                int cantidadMensajes = pop.GetMessageCount();
 
-
-                
-                // obtengo el texto del cuerpo del correo.
-                string cuerpo = "";
-                OpenPop.Mime.MessagePart texto = mensaje.FindFirstPlainTextVersion();
-                if (texto != null)
+                for (int i = cantidadMensajes; i > 0; i--)
                 {
-                    // We found some plaintext!
-                    cuerpo = texto.GetBodyAsText();
-                }
-                else
-                {
-                    // Might include a part holding html instead
-                    OpenPop.Mime.MessagePart html = mensaje.FindFirstHtmlVersion();
-                    if (html != null)
+                    mensaje = pop.GetMessage(i);
+                    // obtengo el texto del cuerpo del correo.
+                    string cuerpo = "";
+                    OpenPop.Mime.MessagePart texto = mensaje.FindFirstPlainTextVersion();
+                    if (texto != null)
                     {
-                        // We found some html!
-                        cuerpo = html.GetBodyAsText();
+                        // We found some plaintext!
+                        cuerpo = texto.GetBodyAsText();
                     }
-                }
+                    else
+                    {
+                        // Might include a part holding html instead
+                        OpenPop.Mime.MessagePart html = mensaje.FindFirstHtmlVersion();
+                        if (html != null)
+                        {
+                            // We found some html!
+                            cuerpo = html.GetBodyAsText();
+                        }
+                    }
 
-                string pTipoCorreo;
-                // Determina si el correo es enviado o recibido comparando la direccion de la cuenta con la direccion
-                // que aparece como direccion remitente.
-                if (mensaje.Headers.From.Address == pCuenta.Direccion)
-                {
-                    pTipoCorreo = "Enviado";
-                }
-                else
-                {
-                    pTipoCorreo = "Recibido";
-                }
+                    string pTipoCorreo;
+                    // Determina si el correo es enviado o recibido comparando la direccion de la cuenta con la direccion
+                    // que aparece como direccion remitente.
+                    if (mensaje.Headers.From.Address == pCuenta.Direccion)
+                    {
+                        pTipoCorreo = "Enviado";
+                    }
+                    else
+                    {
+                        pTipoCorreo = "Recibido";
+                    }
 
-                // Armar el string de cuenta destino con las cuentas destinatarias.
-                string pDestino = "";
-                foreach (OpenPop.Mime.Header.RfcMailAddress mailAdres in mensaje.Headers.To)
-                {
+                    // Armar el string de cuenta destino con las cuentas destinatarias.
+                    string pDestino = "";
+                    foreach (OpenPop.Mime.Header.RfcMailAddress mailAdres in mensaje.Headers.To)
+                    {
                         pDestino = pDestino + mailAdres.Address + "; ";
+                    }
+
+                    mCorreos.Add(new CorreoDTO()
+                    {
+                        Fecha = mensaje.Headers.DateSent,
+                        TipoCorreo = pTipoCorreo,
+                        Texto = cuerpo,
+                        CuentaOrigen = mensaje.Headers.From.Address,
+                        CuentaDestino = pDestino,
+                        Asunto = mensaje.Headers.Subject,
+                        Leido = false,
+                        ServicioId = mensaje.Headers.MessageId
+
+                    });
                 }
-
-                mCorreos.Add(new CorreoDTO()
-                {
-                    Fecha = mensaje.Headers.DateSent,
-                    TipoCorreo = pTipoCorreo,
-                    Texto = cuerpo,
-                    CuentaOrigen = mensaje.Headers.From.Address,
-                    CuentaDestino = pDestino,
-                    Asunto = mensaje.Headers.Subject,
-                    Leido = false,        
-                    ServicioId = mensaje.Headers.MessageId
-       
-                });
             }
-
-            return mCorreos;
-
+            catch (OpenPop.Pop3.Exceptions.InvalidLoginException exeption) // Excepcion que se lanza cuando hay un  problema con los datos del usuario y no se puede realizar el login
+            {
+                throw new ServicioCorreoException("No se pudo actualizar la cuenta " + pCuenta.Direccion + ". Hubo un problema en el acceso a la cuenta. Revise sus datos y vuelva a intentarlo.", exeption);
+            }
+            catch (OpenPop.Pop3.Exceptions.PopServerNotFoundException exeption) // Excepcion que se lanza al no poder conectarse con el servidor
+            {
+                throw new ServicioCorreoException("No se pudo actualizar la cuenta " + pCuenta.Direccion + ". Hubo un error de acceso al servidor. Revise su conexion o intentelo más tarde.", exeption);
+            }
+            catch (Exception exeption)
+            {
+                throw new ServicioCorreoException("No se pudo actualizar la cuenta " + pCuenta.Direccion + ". ", exeption);
+            }
+            return mCorreos;      
         }
   
 

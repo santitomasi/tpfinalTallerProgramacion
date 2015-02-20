@@ -77,8 +77,8 @@ namespace Formularios
                     pCuenta.Contraseña = f2.varf2; //asignamos al texbox el dato de la variable
                 }
             }
-            try
-            {
+        //    try
+        //    {
                 //Enviamos el correo.
                 FachadaCorreo.Instancia.EnviarCorreo(pCorreo,pCuenta);
 
@@ -89,13 +89,12 @@ namespace Formularios
                 //Setea el valor del campo servicioid
                 pCorreo.ServicioId = "Correo enviado por el Cliente de Correo";
                 FachadaCorreo.Instancia.CrearCorreo(pCorreo);
-                MessageBox.Show("Enviado con exito!", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception exception) //CONSIDERAR  EXCEPCIONes DE PERSISTENCIA y de envio.
-            {
-                MessageBox.Show(exception.Message);
-                MessageBox.Show(exception.InnerException.Message);
-            }
+                MessageBox.Show("Enviado con exito.", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //    catch (Exception exception) //CONSIDERAR  EXCEPCIONes DE PERSISTENCIA y de envio.
+        //    {
+         //       MessageBox.Show(exception.Message);
+        //    }
 
             //Oculta el mensaje de información al usuario
             mensajeEnviando.Visible = false;

@@ -64,15 +64,27 @@ namespace Formularios
             pCorreo.Adjuntos = archivos;
             pCorreo.Eliminado = false;
 
+            //Obtenemos la cuenta con la que se envía el correo
+            CuentaDTO pCuenta = FachadaABMCuenta.Instancia.ObtenerCuenta(pCorreo.CuentaOrigen);
+            if (pCuenta.Contraseña == "" || pCuenta.Contraseña == null)
+            {
+                FormContraseña f2 = new FormContraseña();
+                DialogResult res = f2.ShowDialog(); //abrimos el formulario contraseña como cuadro de dialogo modal
+
+                if (res == DialogResult.OK)
+                {
+                    //recuperando la variable publica del formulario contraseña
+                    pCuenta.Contraseña = f2.varf2; //asignamos al texbox el dato de la variable
+                }
+            }
             try
             {
                 //Enviamos el correo.
-                FachadaCorreo.Instancia.EnviarCorreo(pCorreo);
+                FachadaCorreo.Instancia.EnviarCorreo(pCorreo,pCuenta);
 
                 //Guardamos el correo en la base de datos.
 
-                // Actualiza el valor del campo CuentaOrigen. Se pasa con el nombre de la cuenta pero se debe guardar con la direccion.
-                //REVISAR ESTOOOOO ^
+                // Actualiza el valor del campo CuentaOrigen, ya que tiene el nombre de la cuenta pero se debe guardar con la direccion.
                 pCorreo.CuentaOrigen = FachadaABMCuenta.Instancia.ObtenerCuenta(pCorreo.CuentaOrigen).Direccion;
                 //Setea el valor del campo servicioid
                 pCorreo.ServicioId = "Correo enviado por el Cliente de Correo";
@@ -105,7 +117,7 @@ namespace Formularios
             file.RestoreDirectory = true;
             file.ShowDialog();
             archivos.Add(file.FileName);
-            correo_Adjuntos.Text = correo_Adjuntos.Text + file.FileName + "\r" + "\n";
+            correo_Adjuntos.Text = correo_Adjuntos.Text + file.SafeFileName + "\r" + "\n";
         }
 
         /// <summary>

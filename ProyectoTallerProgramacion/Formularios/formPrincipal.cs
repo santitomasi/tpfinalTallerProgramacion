@@ -46,6 +46,17 @@ namespace Formularios
         /// <param name="pCuenta"></param>
         private void ActualizarCuenta(CuentaDTO pCuenta)
         {
+            if (pCuenta.Contraseña == "" || pCuenta.Contraseña == null)
+            {
+                FormContraseña f2 = new FormContraseña(); 
+                DialogResult res = f2.ShowDialog(); //abrimos el formulario contraseña como cuadro de dialogo modal
+
+                if (res == DialogResult.OK)
+                {
+                    //recuperando la variable publica del formulario contraseña
+                    pCuenta.Contraseña = f2.varf2; //asignamos al texbox el dato de la variable
+                }
+            }
             try
             {
                 FachadaCorreo.Instancia.DescargarCorreos(pCuenta);
@@ -176,6 +187,40 @@ namespace Formularios
                     }
                 }
             }
+            if (pCorreos.Count > 0)
+            {
+                // Si hay correos cargados y las opciones específicas sobre un correo estan ocultas, las muestra todas. 
+                if (btEnviados.Visible == false)
+                {
+                    btEnviados.Visible = true;
+                    btEliminar.Visible = true;
+                    btExportar.Visible = true;
+                    btRecibidos.Visible = true;
+                    btResponder.Visible = true;
+                    btReenviar.Visible = true;
+                    rbtEML.Visible = true;
+                    rbtTextoPlano.Visible = true;
+                    labelFormato.Visible = true;
+                    btLeido.Visible = true;
+                }
+            }
+            else           
+            {
+                // Si no hay correos cargados y las opciones específicas sobre un correo estan visibles, las oculta todas. 
+                if (btEnviados.Visible == true)
+                {
+                    btEnviados.Visible = false;
+                    btEliminar.Visible = false;
+                    btExportar.Visible = false;
+                    btRecibidos.Visible = false;
+                    btResponder.Visible = false;
+                    btReenviar.Visible = false;
+                    rbtEML.Visible = false;
+                    rbtTextoPlano.Visible = false;
+                    labelFormato.Visible = false;
+                    btLeido.Visible = false;
+                }
+            }
         }
 
         /// <summary>
@@ -259,6 +304,7 @@ namespace Formularios
                 {
                     pNombre = pNombre.Replace(cChar, '_');
                 }
+                pCorreo.CuentaDestino = pCorreo.CuentaDestino.Replace(";", "");
                 if (rbtTextoPlano.Checked == true)
                 {
                     FachadaCorreo.Instancia.ExportarCorreo(pCorreo, path, rbtTextoPlano.Text, pNombre);
@@ -318,11 +364,11 @@ namespace Formularios
             // Revisa el atributo leido del correo seleccionado en la lista
             if (Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["leidoR"].Value) == 1)
             {
-                buttonLeido.Text = "No Leído";
+                btLeido.Text = "No Leído";
             }
             else
             {
-                buttonLeido.Text = "Leído";
+                btLeido.Text = "Leído";
             }
         }
 
@@ -337,11 +383,11 @@ namespace Formularios
             // Revisa el atributo leido del correo seleccionado en la lista
             if (Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["leido"].Value) == 1)
             {
-                buttonLeido.Text = "No Leído";
+                btLeido.Text = "No Leído";
             }
             else
             {
-                buttonLeido.Text = "Leído";
+                btLeido.Text = "Leído";
             }
         }
 
@@ -360,7 +406,7 @@ namespace Formularios
             listaEnviados.Rows[indexSelected].DefaultCellStyle.BackColor = Color.Lavender;
 
             //Actualiza el texto del botón Leido/NoLeido
-            buttonLeido.Text = "No Leído";
+            btLeido.Text = "No Leído";
 
             //Carga los datos desde la grilla al objeto pCorreo
             pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
@@ -398,7 +444,7 @@ namespace Formularios
             }
             panelCorreo.Visible = true;
             listaEnviados.Visible = false;
-            opcionesExportar.Visible = true;
+            
         }
 
         /// <summary>
@@ -416,7 +462,7 @@ namespace Formularios
             listaRecibidos.Rows[indexSelected].DefaultCellStyle.BackColor = Color.Lavender;
 
             //Actualiza el texto del botón Leido/NoLeido
-            buttonLeido.Text = "No Leído";
+            btLeido.Text = "No Leído";
 
             pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
             pCorreo.Asunto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
@@ -453,7 +499,6 @@ namespace Formularios
 
             panelCorreo.Visible = true;
             listaRecibidos.Visible = false;
-            opcionesExportar.Visible = true;
         }
 
         /// <summary>
@@ -663,9 +708,6 @@ namespace Formularios
                 }
             }
         }
-
-
-
 
     }
 }

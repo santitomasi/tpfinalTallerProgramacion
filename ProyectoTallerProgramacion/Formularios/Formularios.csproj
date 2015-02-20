@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenPop">
       <HintPath>..\packages\OpenPop.NET.2.0.6.1076\lib\net40\OpenPop.dll</HintPath>
@@ -52,6 +55,12 @@
     </Compile>
     <Compile Include="AcercaDe.Designer.cs">
       <DependentUpon>AcercaDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormContraseña.Designer.cs">
+      <DependentUpon>FormContraseña.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCuenta.cs">
       <SubType>Form</SubType>
@@ -75,6 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AcercaDe.resx">
       <DependentUpon>AcercaDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormContraseña.resx">
+      <DependentUpon>FormContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCuenta.resx">
       <DependentUpon>FormCuenta.cs</DependentUpon>

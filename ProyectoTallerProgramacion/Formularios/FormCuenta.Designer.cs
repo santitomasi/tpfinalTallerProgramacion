@@ -241,6 +241,7 @@
             // 
             // listaServicios
             // 
+            this.listaServicios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.listaServicios.FormattingEnabled = true;
             this.listaServicios.Location = new System.Drawing.Point(254, 102);
             this.listaServicios.Name = "listaServicios";

@@ -38,7 +38,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.administrarCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.opcionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,10 +47,9 @@
             this.correo_texto = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.listaCuentas = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelFormato = new System.Windows.Forms.Label();
             this.rbtEML = new System.Windows.Forms.RadioButton();
             this.rbtTextoPlano = new System.Windows.Forms.RadioButton();
-            this.opcionesExportar = new System.Windows.Forms.GroupBox();
             this.btExportar = new System.Windows.Forms.Button();
             this.panelCorreo = new System.Windows.Forms.Panel();
             this.correo_Adjuntos = new System.Windows.Forms.TextBox();
@@ -93,14 +91,14 @@
             this.btEnviados = new System.Windows.Forms.Button();
             this.btRecibidos = new System.Windows.Forms.Button();
             this.btEliminar = new System.Windows.Forms.Button();
-            this.botonReenviar = new System.Windows.Forms.Button();
+            this.btReenviar = new System.Windows.Forms.Button();
             this.btRedactar = new System.Windows.Forms.Button();
             this.btResponder = new System.Windows.Forms.Button();
             this.mensajeActualizando = new System.Windows.Forms.TextBox();
             this.btActualizar = new System.Windows.Forms.Button();
-            this.buttonLeido = new System.Windows.Forms.Button();
+            this.btLeido = new System.Windows.Forms.Button();
+            this.ayudaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            this.opcionesExportar.SuspendLayout();
             this.panelCorreo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEnviados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaRecibidos)).BeginInit();
@@ -110,7 +108,6 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.administrarCuentasToolStripMenuItem,
-            this.opcionesToolStripMenuItem1,
             this.ayudaToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -126,16 +123,11 @@
             this.administrarCuentasToolStripMenuItem.Text = "Administrar Cuentas";
             this.administrarCuentasToolStripMenuItem.Click += new System.EventHandler(this.configuracionCuentasToolStripMenuItem_Click);
             // 
-            // opcionesToolStripMenuItem1
-            // 
-            this.opcionesToolStripMenuItem1.Name = "opcionesToolStripMenuItem1";
-            this.opcionesToolStripMenuItem1.Size = new System.Drawing.Size(69, 20);
-            this.opcionesToolStripMenuItem1.Text = "Opciones";
-            // 
             // ayudaToolStripMenuItem1
             // 
             this.ayudaToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.acercaDeToolStripMenuItem});
+            this.acercaDeToolStripMenuItem,
+            this.ayudaToolStripMenuItem2});
             this.ayudaToolStripMenuItem1.Name = "ayudaToolStripMenuItem1";
             this.ayudaToolStripMenuItem1.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem1.Text = "Ayuda";
@@ -143,7 +135,7 @@
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
@@ -186,6 +178,7 @@
             // 
             // listaCuentas
             // 
+            this.listaCuentas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.listaCuentas.FormattingEnabled = true;
             this.listaCuentas.Location = new System.Drawing.Point(12, 27);
             this.listaCuentas.Name = "listaCuentas";
@@ -193,49 +186,39 @@
             this.listaCuentas.TabIndex = 1;
             this.listaCuentas.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // label6
+            // labelFormato
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Seleccione formato:";
+            this.labelFormato.AutoSize = true;
+            this.labelFormato.Location = new System.Drawing.Point(12, 386);
+            this.labelFormato.Name = "labelFormato";
+            this.labelFormato.Size = new System.Drawing.Size(101, 13);
+            this.labelFormato.TabIndex = 0;
+            this.labelFormato.Text = "Seleccione formato:";
+            this.labelFormato.Visible = false;
             // 
             // rbtEML
             // 
             this.rbtEML.AutoSize = true;
-            this.rbtEML.Location = new System.Drawing.Point(39, 72);
+            this.rbtEML.Location = new System.Drawing.Point(47, 434);
             this.rbtEML.Name = "rbtEML";
             this.rbtEML.Size = new System.Drawing.Size(47, 17);
             this.rbtEML.TabIndex = 2;
             this.rbtEML.Text = "EML";
             this.rbtEML.UseVisualStyleBackColor = true;
+            this.rbtEML.Visible = false;
             // 
             // rbtTextoPlano
             // 
             this.rbtTextoPlano.AutoSize = true;
             this.rbtTextoPlano.Checked = true;
-            this.rbtTextoPlano.Location = new System.Drawing.Point(39, 49);
+            this.rbtTextoPlano.Location = new System.Drawing.Point(47, 411);
             this.rbtTextoPlano.Name = "rbtTextoPlano";
             this.rbtTextoPlano.Size = new System.Drawing.Size(82, 17);
             this.rbtTextoPlano.TabIndex = 1;
             this.rbtTextoPlano.TabStop = true;
             this.rbtTextoPlano.Text = "Texto Plano";
             this.rbtTextoPlano.UseVisualStyleBackColor = true;
-            // 
-            // opcionesExportar
-            // 
-            this.opcionesExportar.Controls.Add(this.label6);
-            this.opcionesExportar.Controls.Add(this.btExportar);
-            this.opcionesExportar.Controls.Add(this.rbtTextoPlano);
-            this.opcionesExportar.Controls.Add(this.rbtEML);
-            this.opcionesExportar.Location = new System.Drawing.Point(11, 347);
-            this.opcionesExportar.Name = "opcionesExportar";
-            this.opcionesExportar.Size = new System.Drawing.Size(135, 128);
-            this.opcionesExportar.TabIndex = 9;
-            this.opcionesExportar.TabStop = false;
-            this.opcionesExportar.Text = "Exportar";
+            this.rbtTextoPlano.Visible = false;
             // 
             // btExportar
             // 
@@ -246,12 +229,13 @@
             this.btExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btExportar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btExportar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btExportar.Location = new System.Drawing.Point(4, 95);
+            this.btExportar.Location = new System.Drawing.Point(15, 457);
             this.btExportar.Name = "btExportar";
             this.btExportar.Size = new System.Drawing.Size(127, 29);
             this.btExportar.TabIndex = 3;
             this.btExportar.Text = "Exportar";
             this.btExportar.UseVisualStyleBackColor = false;
+            this.btExportar.Visible = false;
             this.btExportar.Click += new System.EventHandler(this.btExportar_Click);
             // 
             // panelCorreo
@@ -673,6 +657,7 @@
             this.btEnviados.TabIndex = 5;
             this.btEnviados.Text = "Enviados";
             this.btEnviados.UseVisualStyleBackColor = false;
+            this.btEnviados.Visible = false;
             this.btEnviados.Click += new System.EventHandler(this.btEnviados_Click);
             // 
             // btRecibidos
@@ -690,6 +675,7 @@
             this.btRecibidos.TabIndex = 4;
             this.btRecibidos.Text = "Recibidos";
             this.btRecibidos.UseVisualStyleBackColor = false;
+            this.btRecibidos.Visible = false;
             this.btRecibidos.Click += new System.EventHandler(this.btRecibidos_Click);
             // 
             // btEliminar
@@ -707,24 +693,26 @@
             this.btEliminar.TabIndex = 6;
             this.btEliminar.Text = "Eliminar";
             this.btEliminar.UseVisualStyleBackColor = false;
+            this.btEliminar.Visible = false;
             this.btEliminar.Click += new System.EventHandler(this.btEliminar_Click);
             // 
-            // botonReenviar
+            // btReenviar
             // 
-            this.botonReenviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
-            this.botonReenviar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonReenviar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.botonReenviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.botonReenviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonReenviar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.botonReenviar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.botonReenviar.Location = new System.Drawing.Point(15, 245);
-            this.botonReenviar.Name = "botonReenviar";
-            this.botonReenviar.Size = new System.Drawing.Size(127, 29);
-            this.botonReenviar.TabIndex = 7;
-            this.botonReenviar.Text = "Reenviar";
-            this.botonReenviar.UseVisualStyleBackColor = false;
-            this.botonReenviar.Click += new System.EventHandler(this.botonReenviar_Click);
+            this.btReenviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.btReenviar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btReenviar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btReenviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btReenviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btReenviar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btReenviar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btReenviar.Location = new System.Drawing.Point(15, 245);
+            this.btReenviar.Name = "btReenviar";
+            this.btReenviar.Size = new System.Drawing.Size(127, 29);
+            this.btReenviar.TabIndex = 7;
+            this.btReenviar.Text = "Reenviar";
+            this.btReenviar.UseVisualStyleBackColor = false;
+            this.btReenviar.Visible = false;
+            this.btReenviar.Click += new System.EventHandler(this.botonReenviar_Click);
             // 
             // btRedactar
             // 
@@ -759,6 +747,7 @@
             this.btResponder.TabIndex = 8;
             this.btResponder.Text = "Responder";
             this.btResponder.UseVisualStyleBackColor = false;
+            this.btResponder.Visible = false;
             this.btResponder.Click += new System.EventHandler(this.btResponder_Click);
             // 
             // mensajeActualizando
@@ -793,22 +782,29 @@
             this.btActualizar.UseVisualStyleBackColor = false;
             this.btActualizar.Click += new System.EventHandler(this.btActualizar_Click);
             // 
-            // buttonLeido
+            // btLeido
             // 
-            this.buttonLeido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
-            this.buttonLeido.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonLeido.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.buttonLeido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLeido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLeido.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonLeido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonLeido.Location = new System.Drawing.Point(15, 299);
-            this.buttonLeido.Name = "buttonLeido";
-            this.buttonLeido.Size = new System.Drawing.Size(127, 29);
-            this.buttonLeido.TabIndex = 40;
-            this.buttonLeido.Text = "Leído";
-            this.buttonLeido.UseVisualStyleBackColor = false;
-            this.buttonLeido.Click += new System.EventHandler(this.buttonLeido_Click);
+            this.btLeido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.btLeido.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btLeido.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btLeido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btLeido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLeido.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btLeido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btLeido.Location = new System.Drawing.Point(15, 299);
+            this.btLeido.Name = "btLeido";
+            this.btLeido.Size = new System.Drawing.Size(127, 29);
+            this.btLeido.TabIndex = 40;
+            this.btLeido.Text = "Leído";
+            this.btLeido.UseVisualStyleBackColor = false;
+            this.btLeido.Visible = false;
+            this.btLeido.Click += new System.EventHandler(this.buttonLeido_Click);
+            // 
+            // ayudaToolStripMenuItem2
+            // 
+            this.ayudaToolStripMenuItem2.Name = "ayudaToolStripMenuItem2";
+            this.ayudaToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.ayudaToolStripMenuItem2.Text = "Ver la Ayuda";
             // 
             // formPrincipal
             // 
@@ -816,21 +812,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(978, 518);
-            this.Controls.Add(this.buttonLeido);
+            this.Controls.Add(this.labelFormato);
+            this.Controls.Add(this.btLeido);
+            this.Controls.Add(this.btExportar);
             this.Controls.Add(this.btRedactar);
+            this.Controls.Add(this.rbtTextoPlano);
             this.Controls.Add(this.btRecibidos);
+            this.Controls.Add(this.rbtEML);
             this.Controls.Add(this.btActualizar);
             this.Controls.Add(this.btEliminar);
             this.Controls.Add(this.btEnviados);
-            this.Controls.Add(this.botonReenviar);
+            this.Controls.Add(this.btReenviar);
             this.Controls.Add(this.mensajeActualizando);
-            this.Controls.Add(this.opcionesExportar);
             this.Controls.Add(this.btResponder);
             this.Controls.Add(this.listaCuentas);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.listaRecibidos);
             this.Controls.Add(this.listaEnviados);
             this.Controls.Add(this.panelCorreo);
+            this.Controls.Add(this.listaRecibidos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formPrincipal";
@@ -838,8 +837,6 @@
             this.Load += new System.EventHandler(this.formPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.opcionesExportar.ResumeLayout(false);
-            this.opcionesExportar.PerformLayout();
             this.panelCorreo.ResumeLayout(false);
             this.panelCorreo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEnviados)).EndInit();
@@ -853,16 +850,15 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button btRedactar;
-        private System.Windows.Forms.Button botonReenviar;
+        private System.Windows.Forms.Button btReenviar;
         private System.Windows.Forms.Button btEliminar;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.TextBox correo_texto;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ComboBox listaCuentas;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelFormato;
         private System.Windows.Forms.RadioButton rbtEML;
         private System.Windows.Forms.RadioButton rbtTextoPlano;
-        private System.Windows.Forms.GroupBox opcionesExportar;
         private System.Windows.Forms.ToolStripMenuItem configuraciónDeCuentasToolStripMenuItem;
         private System.Windows.Forms.Panel panelCorreo;
         private System.Windows.Forms.Label correo_asunto;
@@ -877,7 +873,6 @@
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarCuentasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem1;
         private System.Windows.Forms.TextBox correo_id;
         private System.Windows.Forms.TextBox correo_tipocorreo;
@@ -911,9 +906,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn eliminado;
         private System.Windows.Forms.TextBox mensajeActualizando;
         private System.Windows.Forms.Button btActualizar;
-        private System.Windows.Forms.Button buttonLeido;
+        private System.Windows.Forms.Button btLeido;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox correo_Adjuntos;
+        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem2;
 
     }
 }

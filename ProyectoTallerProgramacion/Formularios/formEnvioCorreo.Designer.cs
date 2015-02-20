@@ -135,6 +135,7 @@
             // 
             // listaCuentas
             // 
+            this.listaCuentas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.listaCuentas.FormattingEnabled = true;
             this.listaCuentas.Location = new System.Drawing.Point(97, 17);
             this.listaCuentas.Name = "listaCuentas";

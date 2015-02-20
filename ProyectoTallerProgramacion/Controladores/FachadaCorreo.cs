@@ -48,9 +48,8 @@ namespace Controladores
         /// Metodo para enviar un correo.
         /// </summary>
         /// <param name="pCorreo"></param>
-        public void EnviarCorreo(CorreoDTO pCorreo)
+        public void EnviarCorreo(CorreoDTO pCorreo, CuentaDTO pCuenta)
         {
-            CuentaDTO pCuenta = FachadaABMCuenta.Instancia.ObtenerCuenta(pCorreo.CuentaOrigen);
             FabricaServicios.Instancia.GetServicio(pCuenta.Servicio).EnviarCorreo(pCorreo,pCuenta);
         }
 

@@ -14,7 +14,14 @@ namespace formPrincipal
 {
     public partial class formEnvioCorreo : Form
     {
+        /// <summary>
+        /// Atributo para guardar los adjuntos de un correo.
+        /// </summary>
         private List<string> archivos = new List<string>();
+
+        /// <summary>
+        /// Atributo Correo de tipo CorreoDTO.
+        /// </summary>
         private CorreoDTO iCorreo;
 
         /// <summary>
@@ -40,10 +47,11 @@ namespace formPrincipal
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        private void btEnviar_Click(object sender, EventArgs e)
         {
             //Muestra el mensje de información al usuario
             mensajeEnviando.Visible = true;
+            mensajeEnviando.Update();
 
             CorreoDTO pCorreo = new CorreoDTO();
             pCorreo.Leido = false;
@@ -69,7 +77,7 @@ namespace formPrincipal
                 //Setea el valor del campo servicioid
                 pCorreo.ServicioId = "Correo enviado por el Cliente de Correo";
                 FachadaCorreo.Instancia.CrearCorreo(pCorreo);
-                MessageBox.Show("Enviado con exito!");
+                MessageBox.Show("Enviado con exito!", "Envio de mail", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception exception) //CONSIDERAR  EXCEPCIONes DE PERSISTENCIA y de envio.
             {
@@ -77,7 +85,7 @@ namespace formPrincipal
                 MessageBox.Show(exception.InnerException.Message);
             }
 
-            //Oculta el mensje de información al usuario
+            //Oculta el mensaje de información al usuario
             mensajeEnviando.Visible = false;
             this.Close();
         }
@@ -87,7 +95,7 @@ namespace formPrincipal
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e)
+        private void btAdjunto_Click(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();
             file.Title = "Seleccione Archivo";
@@ -149,7 +157,7 @@ namespace formPrincipal
                     }
                 }
             }
-            
         }
+
     }
 }

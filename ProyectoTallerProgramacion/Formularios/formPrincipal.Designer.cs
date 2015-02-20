@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.administrarCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,34 +49,11 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.listaCuentas = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbtEML = new System.Windows.Forms.RadioButton();
+            this.rbtTextoPlano = new System.Windows.Forms.RadioButton();
             this.opcionesExportar = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btExportar = new System.Windows.Forms.Button();
             this.panelCorreo = new System.Windows.Forms.Panel();
-            this.correo_eliminado = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.correo_cuentaOrigen = new System.Windows.Forms.TextBox();
-            this.correo_cuentaDestino = new System.Windows.Forms.TextBox();
-            this.correo_tipocorreo = new System.Windows.Forms.TextBox();
-            this.correo_servicioid = new System.Windows.Forms.TextBox();
-            this.correo_leido = new System.Windows.Forms.TextBox();
-            this.correo_id = new System.Windows.Forms.TextBox();
-            this.correo_fecha = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.correo_asunto = new System.Windows.Forms.Label();
-            this.listaRecibidos = new System.Windows.Forms.DataGridView();
-            this.correoIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoCorreoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.asuntoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaOrigenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaDestinoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.servicioIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eliminadoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listaEnviados = new System.Windows.Forms.DataGridView();
             this.correoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,19 +65,48 @@
             this.leido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.servicioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eliminado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.correo_eliminado = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.correo_cuentaOrigen = new System.Windows.Forms.TextBox();
+            this.correo_tipocorreo = new System.Windows.Forms.TextBox();
+            this.correo_servicioid = new System.Windows.Forms.TextBox();
+            this.correo_leido = new System.Windows.Forms.TextBox();
+            this.correo_id = new System.Windows.Forms.TextBox();
+            this.correo_fecha = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.correo_asunto = new System.Windows.Forms.Label();
+            this.correo_cuentaDestino = new System.Windows.Forms.TextBox();
+            this.listaRecibidos = new System.Windows.Forms.DataGridView();
+            this.correoIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoCorreoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asuntoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaOrigenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaDestinoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leidoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicioIdR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eliminadoR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btEnviados = new System.Windows.Forms.Button();
+            this.btRecibidos = new System.Windows.Forms.Button();
             this.btActualizar = new System.Windows.Forms.Button();
-            this.buttonEliminar = new System.Windows.Forms.Button();
+            this.btEliminar = new System.Windows.Forms.Button();
             this.botonReenviar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btRedactar = new System.Windows.Forms.Button();
             this.btResponder = new System.Windows.Forms.Button();
             this.mensajeActualizando = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             this.opcionesExportar.SuspendLayout();
             this.panelCorreo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listaRecibidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaEnviados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaRecibidos)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -111,7 +117,7 @@
             this.ayudaToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(981, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(978, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -192,72 +198,72 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 29);
+            this.label6.Location = new System.Drawing.Point(6, 26);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "Seleccione formato:";
             // 
-            // radioButton2
+            // rbtEML
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(39, 75);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 17);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.Text = "EML";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbtEML.AutoSize = true;
+            this.rbtEML.Location = new System.Drawing.Point(39, 72);
+            this.rbtEML.Name = "rbtEML";
+            this.rbtEML.Size = new System.Drawing.Size(47, 17);
+            this.rbtEML.TabIndex = 2;
+            this.rbtEML.Text = "EML";
+            this.rbtEML.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbtTextoPlano
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(39, 52);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(82, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Texto Plano";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbtTextoPlano.AutoSize = true;
+            this.rbtTextoPlano.Checked = true;
+            this.rbtTextoPlano.Location = new System.Drawing.Point(39, 49);
+            this.rbtTextoPlano.Name = "rbtTextoPlano";
+            this.rbtTextoPlano.Size = new System.Drawing.Size(82, 17);
+            this.rbtTextoPlano.TabIndex = 1;
+            this.rbtTextoPlano.TabStop = true;
+            this.rbtTextoPlano.Text = "Texto Plano";
+            this.rbtTextoPlano.UseVisualStyleBackColor = true;
             // 
             // opcionesExportar
             // 
             this.opcionesExportar.Controls.Add(this.label6);
-            this.opcionesExportar.Controls.Add(this.button6);
-            this.opcionesExportar.Controls.Add(this.radioButton1);
-            this.opcionesExportar.Controls.Add(this.radioButton2);
-            this.opcionesExportar.Location = new System.Drawing.Point(8, 351);
+            this.opcionesExportar.Controls.Add(this.btExportar);
+            this.opcionesExportar.Controls.Add(this.rbtTextoPlano);
+            this.opcionesExportar.Controls.Add(this.rbtEML);
+            this.opcionesExportar.Location = new System.Drawing.Point(11, 347);
             this.opcionesExportar.Name = "opcionesExportar";
-            this.opcionesExportar.Size = new System.Drawing.Size(138, 135);
+            this.opcionesExportar.Size = new System.Drawing.Size(135, 128);
             this.opcionesExportar.TabIndex = 9;
             this.opcionesExportar.TabStop = false;
             this.opcionesExportar.Text = "Exportar";
             // 
-            // button6
+            // btExportar
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(1, 100);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(131, 29);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "Exportar";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btExportar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.btExportar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btExportar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btExportar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btExportar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btExportar.Location = new System.Drawing.Point(2, 95);
+            this.btExportar.Name = "btExportar";
+            this.btExportar.Size = new System.Drawing.Size(131, 29);
+            this.btExportar.TabIndex = 3;
+            this.btExportar.Text = "Exportar";
+            this.btExportar.UseVisualStyleBackColor = false;
+            this.btExportar.Click += new System.EventHandler(this.btExportar_Click);
             // 
             // panelCorreo
             // 
             this.panelCorreo.BackColor = System.Drawing.SystemColors.Window;
             this.panelCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCorreo.Controls.Add(this.listaEnviados);
             this.panelCorreo.Controls.Add(this.correo_eliminado);
             this.panelCorreo.Controls.Add(this.label1);
             this.panelCorreo.Controls.Add(this.correo_cuentaOrigen);
-            this.panelCorreo.Controls.Add(this.correo_cuentaDestino);
             this.panelCorreo.Controls.Add(this.correo_tipocorreo);
             this.panelCorreo.Controls.Add(this.correo_servicioid);
             this.panelCorreo.Controls.Add(this.correo_leido);
@@ -267,236 +273,11 @@
             this.panelCorreo.Controls.Add(this.label7);
             this.panelCorreo.Controls.Add(this.label5);
             this.panelCorreo.Controls.Add(this.correo_asunto);
+            this.panelCorreo.Controls.Add(this.correo_cuentaDestino);
             this.panelCorreo.Location = new System.Drawing.Point(152, 27);
             this.panelCorreo.Name = "panelCorreo";
             this.panelCorreo.Size = new System.Drawing.Size(817, 488);
             this.panelCorreo.TabIndex = 34;
-            // 
-            // correo_eliminado
-            // 
-            this.correo_eliminado.Location = new System.Drawing.Point(791, 58);
-            this.correo_eliminado.Name = "correo_eliminado";
-            this.correo_eliminado.Size = new System.Drawing.Size(20, 20);
-            this.correo_eliminado.TabIndex = 12;
-            this.correo_eliminado.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 95);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 18);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Fecha:";
-            // 
-            // correo_cuentaOrigen
-            // 
-            this.correo_cuentaOrigen.Location = new System.Drawing.Point(103, 26);
-            this.correo_cuentaOrigen.Name = "correo_cuentaOrigen";
-            this.correo_cuentaOrigen.ReadOnly = true;
-            this.correo_cuentaOrigen.Size = new System.Drawing.Size(311, 20);
-            this.correo_cuentaOrigen.TabIndex = 5;
-            // 
-            // correo_cuentaDestino
-            // 
-            this.correo_cuentaDestino.Location = new System.Drawing.Point(103, 53);
-            this.correo_cuentaDestino.Multiline = true;
-            this.correo_cuentaDestino.Name = "correo_cuentaDestino";
-            this.correo_cuentaDestino.ReadOnly = true;
-            this.correo_cuentaDestino.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.correo_cuentaDestino.Size = new System.Drawing.Size(683, 35);
-            this.correo_cuentaDestino.TabIndex = 6;
-            // 
-            // correo_tipocorreo
-            // 
-            this.correo_tipocorreo.Location = new System.Drawing.Point(763, 32);
-            this.correo_tipocorreo.Name = "correo_tipocorreo";
-            this.correo_tipocorreo.Size = new System.Drawing.Size(22, 20);
-            this.correo_tipocorreo.TabIndex = 10;
-            this.correo_tipocorreo.Visible = false;
-            // 
-            // correo_servicioid
-            // 
-            this.correo_servicioid.Location = new System.Drawing.Point(792, 32);
-            this.correo_servicioid.Name = "correo_servicioid";
-            this.correo_servicioid.Size = new System.Drawing.Size(20, 20);
-            this.correo_servicioid.TabIndex = 11;
-            this.correo_servicioid.Visible = false;
-            // 
-            // correo_leido
-            // 
-            this.correo_leido.Location = new System.Drawing.Point(763, 6);
-            this.correo_leido.Name = "correo_leido";
-            this.correo_leido.Size = new System.Drawing.Size(22, 20);
-            this.correo_leido.TabIndex = 8;
-            this.correo_leido.Visible = false;
-            // 
-            // correo_id
-            // 
-            this.correo_id.Location = new System.Drawing.Point(792, 6);
-            this.correo_id.Name = "correo_id";
-            this.correo_id.Size = new System.Drawing.Size(20, 20);
-            this.correo_id.TabIndex = 9;
-            this.correo_id.Visible = false;
-            // 
-            // correo_fecha
-            // 
-            this.correo_fecha.AutoSize = true;
-            this.correo_fecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correo_fecha.Location = new System.Drawing.Point(100, 95);
-            this.correo_fecha.Name = "correo_fecha";
-            this.correo_fecha.Size = new System.Drawing.Size(54, 18);
-            this.correo_fecha.TabIndex = 7;
-            this.correo_fecha.Text = "Fecha";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(39, 52);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 18);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Para:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(38, 28);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 18);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "De: ";
-            // 
-            // correo_asunto
-            // 
-            this.correo_asunto.AutoSize = true;
-            this.correo_asunto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correo_asunto.Location = new System.Drawing.Point(38, 4);
-            this.correo_asunto.MaximumSize = new System.Drawing.Size(750, 20);
-            this.correo_asunto.Name = "correo_asunto";
-            this.correo_asunto.Size = new System.Drawing.Size(66, 20);
-            this.correo_asunto.TabIndex = 0;
-            this.correo_asunto.Text = "Asunto";
-            // 
-            // listaRecibidos
-            // 
-            this.listaRecibidos.AllowUserToAddRows = false;
-            this.listaRecibidos.AllowUserToResizeColumns = false;
-            this.listaRecibidos.AllowUserToResizeRows = false;
-            this.listaRecibidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.listaRecibidos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.listaRecibidos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.listaRecibidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaRecibidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.listaRecibidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listaRecibidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.correoIdR,
-            this.tipoCorreoR,
-            this.asuntoR,
-            this.cuentaOrigenR,
-            this.cuentaDestinoR,
-            this.fechaR,
-            this.textoR,
-            this.leidoR,
-            this.servicioIdR,
-            this.eliminadoR});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaRecibidos.DefaultCellStyle = dataGridViewCellStyle2;
-            this.listaRecibidos.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.listaRecibidos.Location = new System.Drawing.Point(152, 27);
-            this.listaRecibidos.Name = "listaRecibidos";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaRecibidos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.listaRecibidos.RowHeadersVisible = false;
-            this.listaRecibidos.RowHeadersWidth = 20;
-            this.listaRecibidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaRecibidos.Size = new System.Drawing.Size(817, 488);
-            this.listaRecibidos.TabIndex = 38;
-            this.listaRecibidos.TabStop = false;
-            this.listaRecibidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellDoubleClick);
-            // 
-            // correoIdR
-            // 
-            this.correoIdR.HeaderText = "Correo ID";
-            this.correoIdR.Name = "correoIdR";
-            this.correoIdR.Visible = false;
-            // 
-            // tipoCorreoR
-            // 
-            this.tipoCorreoR.HeaderText = "Tipo Correo";
-            this.tipoCorreoR.Name = "tipoCorreoR";
-            this.tipoCorreoR.Visible = false;
-            // 
-            // asuntoR
-            // 
-            this.asuntoR.HeaderText = "Asunto";
-            this.asuntoR.Name = "asuntoR";
-            this.asuntoR.ReadOnly = true;
-            // 
-            // cuentaOrigenR
-            // 
-            this.cuentaOrigenR.HeaderText = "De";
-            this.cuentaOrigenR.Name = "cuentaOrigenR";
-            this.cuentaOrigenR.ReadOnly = true;
-            // 
-            // cuentaDestinoR
-            // 
-            this.cuentaDestinoR.HeaderText = "Para";
-            this.cuentaDestinoR.Name = "cuentaDestinoR";
-            // 
-            // fechaR
-            // 
-            this.fechaR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.fechaR.HeaderText = "Fecha";
-            this.fechaR.Name = "fechaR";
-            this.fechaR.ReadOnly = true;
-            this.fechaR.Width = 70;
-            // 
-            // textoR
-            // 
-            this.textoR.HeaderText = "Mensaje";
-            this.textoR.Name = "textoR";
-            this.textoR.Visible = false;
-            // 
-            // leidoR
-            // 
-            this.leidoR.HeaderText = "Leido";
-            this.leidoR.Name = "leidoR";
-            this.leidoR.Visible = false;
-            // 
-            // servicioIdR
-            // 
-            this.servicioIdR.HeaderText = "ServicioIdR";
-            this.servicioIdR.Name = "servicioIdR";
-            this.servicioIdR.Visible = false;
-            // 
-            // eliminadoR
-            // 
-            this.eliminadoR.HeaderText = "Eliminado";
-            this.eliminadoR.Name = "eliminadoR";
-            this.eliminadoR.Visible = false;
             // 
             // listaEnviados
             // 
@@ -508,14 +289,14 @@
             this.listaEnviados.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listaEnviados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.listaEnviados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaEnviados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaEnviados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.listaEnviados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaEnviados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.correoId,
@@ -528,27 +309,27 @@
             this.leido,
             this.servicioId,
             this.eliminado});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaEnviados.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaEnviados.DefaultCellStyle = dataGridViewCellStyle8;
             this.listaEnviados.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.listaEnviados.Location = new System.Drawing.Point(152, 27);
+            this.listaEnviados.Location = new System.Drawing.Point(3, 3);
             this.listaEnviados.MultiSelect = false;
             this.listaEnviados.Name = "listaEnviados";
             this.listaEnviados.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaEnviados.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaEnviados.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.listaEnviados.RowHeadersVisible = false;
             this.listaEnviados.RowHeadersWidth = 20;
             this.listaEnviados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -627,50 +408,276 @@
             this.eliminado.ReadOnly = true;
             this.eliminado.Visible = false;
             // 
-            // button10
+            // correo_eliminado
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(9, 174);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(131, 29);
-            this.button10.TabIndex = 5;
-            this.button10.Text = "Enviados";
-            this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.correo_eliminado.Location = new System.Drawing.Point(791, 58);
+            this.correo_eliminado.Name = "correo_eliminado";
+            this.correo_eliminado.Size = new System.Drawing.Size(20, 20);
+            this.correo_eliminado.TabIndex = 12;
+            this.correo_eliminado.Visible = false;
             // 
-            // button9
+            // label1
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(9, 139);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(131, 29);
-            this.button9.TabIndex = 4;
-            this.button9.Text = "Recibidos";
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(38, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 18);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Fecha:";
+            // 
+            // correo_cuentaOrigen
+            // 
+            this.correo_cuentaOrigen.Location = new System.Drawing.Point(103, 26);
+            this.correo_cuentaOrigen.Name = "correo_cuentaOrigen";
+            this.correo_cuentaOrigen.ReadOnly = true;
+            this.correo_cuentaOrigen.Size = new System.Drawing.Size(311, 20);
+            this.correo_cuentaOrigen.TabIndex = 5;
+            // 
+            // correo_tipocorreo
+            // 
+            this.correo_tipocorreo.Location = new System.Drawing.Point(763, 32);
+            this.correo_tipocorreo.Name = "correo_tipocorreo";
+            this.correo_tipocorreo.Size = new System.Drawing.Size(22, 20);
+            this.correo_tipocorreo.TabIndex = 10;
+            this.correo_tipocorreo.Visible = false;
+            // 
+            // correo_servicioid
+            // 
+            this.correo_servicioid.Location = new System.Drawing.Point(792, 32);
+            this.correo_servicioid.Name = "correo_servicioid";
+            this.correo_servicioid.Size = new System.Drawing.Size(20, 20);
+            this.correo_servicioid.TabIndex = 11;
+            this.correo_servicioid.Visible = false;
+            // 
+            // correo_leido
+            // 
+            this.correo_leido.Location = new System.Drawing.Point(763, 6);
+            this.correo_leido.Name = "correo_leido";
+            this.correo_leido.Size = new System.Drawing.Size(22, 20);
+            this.correo_leido.TabIndex = 8;
+            this.correo_leido.Visible = false;
+            // 
+            // correo_id
+            // 
+            this.correo_id.Location = new System.Drawing.Point(792, 6);
+            this.correo_id.Name = "correo_id";
+            this.correo_id.Size = new System.Drawing.Size(20, 20);
+            this.correo_id.TabIndex = 9;
+            this.correo_id.Visible = false;
+            // 
+            // correo_fecha
+            // 
+            this.correo_fecha.AutoSize = true;
+            this.correo_fecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.correo_fecha.Location = new System.Drawing.Point(100, 95);
+            this.correo_fecha.Name = "correo_fecha";
+            this.correo_fecha.Size = new System.Drawing.Size(54, 18);
+            this.correo_fecha.TabIndex = 7;
+            this.correo_fecha.Text = "Fecha";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(39, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 18);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Para:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(38, 28);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 18);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "De: ";
+            // 
+            // correo_asunto
+            // 
+            this.correo_asunto.AutoSize = true;
+            this.correo_asunto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.correo_asunto.Location = new System.Drawing.Point(38, 4);
+            this.correo_asunto.MaximumSize = new System.Drawing.Size(750, 20);
+            this.correo_asunto.Name = "correo_asunto";
+            this.correo_asunto.Size = new System.Drawing.Size(66, 20);
+            this.correo_asunto.TabIndex = 0;
+            this.correo_asunto.Text = "Asunto";
+            // 
+            // correo_cuentaDestino
+            // 
+            this.correo_cuentaDestino.Location = new System.Drawing.Point(103, 53);
+            this.correo_cuentaDestino.Multiline = true;
+            this.correo_cuentaDestino.Name = "correo_cuentaDestino";
+            this.correo_cuentaDestino.ReadOnly = true;
+            this.correo_cuentaDestino.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.correo_cuentaDestino.Size = new System.Drawing.Size(683, 35);
+            this.correo_cuentaDestino.TabIndex = 6;
+            // 
+            // listaRecibidos
+            // 
+            this.listaRecibidos.AllowUserToAddRows = false;
+            this.listaRecibidos.AllowUserToResizeColumns = false;
+            this.listaRecibidos.AllowUserToResizeRows = false;
+            this.listaRecibidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listaRecibidos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.listaRecibidos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.listaRecibidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaRecibidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.listaRecibidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaRecibidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.correoIdR,
+            this.tipoCorreoR,
+            this.asuntoR,
+            this.cuentaOrigenR,
+            this.cuentaDestinoR,
+            this.fechaR,
+            this.textoR,
+            this.leidoR,
+            this.servicioIdR,
+            this.eliminadoR});
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaRecibidos.DefaultCellStyle = dataGridViewCellStyle11;
+            this.listaRecibidos.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.listaRecibidos.Location = new System.Drawing.Point(152, 27);
+            this.listaRecibidos.Name = "listaRecibidos";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaRecibidos.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.listaRecibidos.RowHeadersVisible = false;
+            this.listaRecibidos.RowHeadersWidth = 20;
+            this.listaRecibidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listaRecibidos.Size = new System.Drawing.Size(817, 488);
+            this.listaRecibidos.TabIndex = 38;
+            this.listaRecibidos.TabStop = false;
+            this.listaRecibidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaRecibidos_CellDoubleClick);
+            // 
+            // correoIdR
+            // 
+            this.correoIdR.HeaderText = "Correo ID";
+            this.correoIdR.Name = "correoIdR";
+            this.correoIdR.Visible = false;
+            // 
+            // tipoCorreoR
+            // 
+            this.tipoCorreoR.HeaderText = "Tipo Correo";
+            this.tipoCorreoR.Name = "tipoCorreoR";
+            this.tipoCorreoR.Visible = false;
+            // 
+            // asuntoR
+            // 
+            this.asuntoR.HeaderText = "Asunto";
+            this.asuntoR.Name = "asuntoR";
+            this.asuntoR.ReadOnly = true;
+            // 
+            // cuentaOrigenR
+            // 
+            this.cuentaOrigenR.HeaderText = "De";
+            this.cuentaOrigenR.Name = "cuentaOrigenR";
+            this.cuentaOrigenR.ReadOnly = true;
+            // 
+            // cuentaDestinoR
+            // 
+            this.cuentaDestinoR.HeaderText = "Para";
+            this.cuentaDestinoR.Name = "cuentaDestinoR";
+            // 
+            // fechaR
+            // 
+            this.fechaR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.fechaR.HeaderText = "Fecha";
+            this.fechaR.Name = "fechaR";
+            this.fechaR.ReadOnly = true;
+            this.fechaR.Width = 70;
+            // 
+            // textoR
+            // 
+            this.textoR.HeaderText = "Mensaje";
+            this.textoR.Name = "textoR";
+            this.textoR.Visible = false;
+            // 
+            // leidoR
+            // 
+            this.leidoR.HeaderText = "Leido";
+            this.leidoR.Name = "leidoR";
+            this.leidoR.Visible = false;
+            // 
+            // servicioIdR
+            // 
+            this.servicioIdR.HeaderText = "ServicioIdR";
+            this.servicioIdR.Name = "servicioIdR";
+            this.servicioIdR.Visible = false;
+            // 
+            // eliminadoR
+            // 
+            this.eliminadoR.HeaderText = "Eliminado";
+            this.eliminadoR.Name = "eliminadoR";
+            this.eliminadoR.Visible = false;
+            // 
+            // btEnviados
+            // 
+            this.btEnviados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.btEnviados.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btEnviados.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btEnviados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btEnviados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEnviados.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btEnviados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btEnviados.Location = new System.Drawing.Point(2, 39);
+            this.btEnviados.Name = "btEnviados";
+            this.btEnviados.Size = new System.Drawing.Size(131, 29);
+            this.btEnviados.TabIndex = 5;
+            this.btEnviados.Text = "Enviados";
+            this.btEnviados.UseVisualStyleBackColor = false;
+            this.btEnviados.Click += new System.EventHandler(this.btEnviados_Click);
+            // 
+            // btRecibidos
+            // 
+            this.btRecibidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.btRecibidos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btRecibidos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btRecibidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRecibidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btRecibidos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btRecibidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btRecibidos.Location = new System.Drawing.Point(2, 9);
+            this.btRecibidos.Name = "btRecibidos";
+            this.btRecibidos.Size = new System.Drawing.Size(131, 29);
+            this.btRecibidos.TabIndex = 4;
+            this.btRecibidos.Text = "Recibidos";
+            this.btRecibidos.UseVisualStyleBackColor = false;
+            this.btRecibidos.Click += new System.EventHandler(this.btRecibidos_Click);
             // 
             // btActualizar
             // 
-            this.btActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.btActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btActualizar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btActualizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btActualizar.Location = new System.Drawing.Point(9, 70);
+            this.btActualizar.Location = new System.Drawing.Point(2, 10);
             this.btActualizar.Name = "btActualizar";
             this.btActualizar.Size = new System.Drawing.Size(131, 29);
             this.btActualizar.TabIndex = 2;
@@ -678,33 +685,33 @@
             this.btActualizar.UseVisualStyleBackColor = false;
             this.btActualizar.Click += new System.EventHandler(this.btActualizar_Click);
             // 
-            // buttonEliminar
+            // btEliminar
             // 
-            this.buttonEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.buttonEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonEliminar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.buttonEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonEliminar.Location = new System.Drawing.Point(9, 209);
-            this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(131, 29);
-            this.buttonEliminar.TabIndex = 6;
-            this.buttonEliminar.Text = "Eliminar";
-            this.buttonEliminar.UseVisualStyleBackColor = false;
-            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
+            this.btEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.btEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btEliminar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btEliminar.Location = new System.Drawing.Point(2, 39);
+            this.btEliminar.Name = "btEliminar";
+            this.btEliminar.Size = new System.Drawing.Size(131, 29);
+            this.btEliminar.TabIndex = 6;
+            this.btEliminar.Text = "Eliminar";
+            this.btEliminar.UseVisualStyleBackColor = false;
+            this.btEliminar.Click += new System.EventHandler(this.btEliminar_Click);
             // 
             // botonReenviar
             // 
-            this.botonReenviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.botonReenviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.botonReenviar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonReenviar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.botonReenviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonReenviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonReenviar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.botonReenviar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.botonReenviar.Location = new System.Drawing.Point(9, 244);
+            this.botonReenviar.Location = new System.Drawing.Point(2, 67);
             this.botonReenviar.Name = "botonReenviar";
             this.botonReenviar.Size = new System.Drawing.Size(131, 29);
             this.botonReenviar.TabIndex = 7;
@@ -712,34 +719,34 @@
             this.botonReenviar.UseVisualStyleBackColor = false;
             this.botonReenviar.Click += new System.EventHandler(this.botonReenviar_Click);
             // 
-            // button1
+            // btRedactar
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(9, 104);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 29);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Redactar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btRedactar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.btRedactar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btRedactar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btRedactar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btRedactar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRedactar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btRedactar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btRedactar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btRedactar.Location = new System.Drawing.Point(2, 11);
+            this.btRedactar.Name = "btRedactar";
+            this.btRedactar.Size = new System.Drawing.Size(131, 29);
+            this.btRedactar.TabIndex = 3;
+            this.btRedactar.Text = "Redactar";
+            this.btRedactar.UseVisualStyleBackColor = false;
+            this.btRedactar.Click += new System.EventHandler(this.btRedactar_Click);
             // 
             // btResponder
             // 
-            this.btResponder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btResponder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.btResponder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btResponder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btResponder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btResponder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btResponder.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btResponder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btResponder.Location = new System.Drawing.Point(9, 279);
+            this.btResponder.Location = new System.Drawing.Point(2, 93);
             this.btResponder.Name = "btResponder";
             this.btResponder.Size = new System.Drawing.Size(131, 29);
             this.btResponder.TabIndex = 8;
@@ -749,38 +756,68 @@
             // 
             // mensajeActualizando
             // 
-            this.mensajeActualizando.BackColor = System.Drawing.Color.Orange;
-            this.mensajeActualizando.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.mensajeActualizando.Location = new System.Drawing.Point(350, 224);
+            this.mensajeActualizando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.mensajeActualizando.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mensajeActualizando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mensajeActualizando.ForeColor = System.Drawing.Color.Black;
+            this.mensajeActualizando.Location = new System.Drawing.Point(310, 234);
             this.mensajeActualizando.Multiline = true;
             this.mensajeActualizando.Name = "mensajeActualizando";
-            this.mensajeActualizando.Size = new System.Drawing.Size(280, 71);
+            this.mensajeActualizando.Size = new System.Drawing.Size(517, 47);
             this.mensajeActualizando.TabIndex = 39;
-            this.mensajeActualizando.Text = "\r\nActualizando su cuenta...\r\n\r\nPor Favor espere mientras su cuenta es actualizada" +
-    "";
+            this.mensajeActualizando.Text = "\r\nPor favor espere mientras su cuenta es actualizada\r\n\r\n";
             this.mensajeActualizando.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mensajeActualizando.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.groupBox1.Controls.Add(this.btRecibidos);
+            this.groupBox1.Controls.Add(this.btEnviados);
+            this.groupBox1.Location = new System.Drawing.Point(11, 109);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(135, 70);
+            this.groupBox1.TabIndex = 40;
+            this.groupBox1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.groupBox2.Controls.Add(this.btRedactar);
+            this.groupBox2.Controls.Add(this.btEliminar);
+            this.groupBox2.Controls.Add(this.botonReenviar);
+            this.groupBox2.Controls.Add(this.btResponder);
+            this.groupBox2.Location = new System.Drawing.Point(12, 185);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(135, 126);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.groupBox3.Controls.Add(this.btActualizar);
+            this.groupBox3.Location = new System.Drawing.Point(11, 64);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(135, 42);
+            this.groupBox3.TabIndex = 41;
+            this.groupBox3.TabStop = false;
             // 
             // formPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(981, 518);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.ClientSize = new System.Drawing.Size(978, 518);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.mensajeActualizando);
-            this.Controls.Add(this.btResponder);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
             this.Controls.Add(this.opcionesExportar);
             this.Controls.Add(this.listaCuentas);
-            this.Controls.Add(this.btActualizar);
-            this.Controls.Add(this.buttonEliminar);
-            this.Controls.Add(this.botonReenviar);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.listaEnviados);
-            this.Controls.Add(this.listaRecibidos);
             this.Controls.Add(this.panelCorreo);
+            this.Controls.Add(this.listaRecibidos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formPrincipal";
@@ -792,8 +829,11 @@
             this.opcionesExportar.PerformLayout();
             this.panelCorreo.ResumeLayout(false);
             this.panelCorreo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listaRecibidos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaEnviados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaRecibidos)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -802,17 +842,17 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btRedactar;
         private System.Windows.Forms.Button botonReenviar;
-        private System.Windows.Forms.Button buttonEliminar;
+        private System.Windows.Forms.Button btEliminar;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.TextBox correo_texto;
         private System.Windows.Forms.Button btActualizar;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ComboBox listaCuentas;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbtEML;
+        private System.Windows.Forms.RadioButton rbtTextoPlano;
         private System.Windows.Forms.GroupBox opcionesExportar;
         private System.Windows.Forms.ToolStripMenuItem configuraciónDeCuentasToolStripMenuItem;
         private System.Windows.Forms.Panel panelCorreo;
@@ -820,10 +860,10 @@
         private System.Windows.Forms.Label correo_fecha;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btRecibidos;
+        private System.Windows.Forms.Button btEnviados;
         private System.Windows.Forms.DataGridView listaRecibidos;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btExportar;
         private System.Windows.Forms.DataGridView listaEnviados;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
@@ -861,6 +901,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn servicioId;
         private System.Windows.Forms.DataGridViewTextBoxColumn eliminado;
         private System.Windows.Forms.TextBox mensajeActualizando;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
 
     }
 }

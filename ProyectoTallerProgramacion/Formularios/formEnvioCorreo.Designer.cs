@@ -72,6 +72,7 @@
             this.correo_Texto.Location = new System.Drawing.Point(28, 97);
             this.correo_Texto.Multiline = true;
             this.correo_Texto.Name = "correo_Texto";
+            this.correo_Texto.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.correo_Texto.Size = new System.Drawing.Size(451, 265);
             this.correo_Texto.TabIndex = 6;
             // 
@@ -88,7 +89,7 @@
             this.botonAdjuntar.TabIndex = 8;
             this.botonAdjuntar.Text = "Agregar archivo adjunto";
             this.botonAdjuntar.UseVisualStyleBackColor = true;
-            this.botonAdjuntar.Click += new System.EventHandler(this.button2_Click);
+            this.botonAdjuntar.Click += new System.EventHandler(this.btAdjunto_Click);
             // 
             // botonEnviar
             // 
@@ -104,12 +105,12 @@
             this.botonEnviar.TabIndex = 9;
             this.botonEnviar.Text = "Enviar";
             this.botonEnviar.UseVisualStyleBackColor = false;
-            this.botonEnviar.Click += new System.EventHandler(this.button1_Click);
+            this.botonEnviar.Click += new System.EventHandler(this.btEnviar_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(176, 381);
+            this.label3.Location = new System.Drawing.Point(234, 381);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 8;
@@ -140,14 +141,16 @@
             // 
             // mensajeEnviando
             // 
-            this.mensajeEnviando.BackColor = System.Drawing.Color.Orange;
+            this.mensajeEnviando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.mensajeEnviando.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mensajeEnviando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mensajeEnviando.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.mensajeEnviando.Location = new System.Drawing.Point(97, 143);
+            this.mensajeEnviando.Location = new System.Drawing.Point(72, 192);
             this.mensajeEnviando.Multiline = true;
             this.mensajeEnviando.Name = "mensajeEnviando";
-            this.mensajeEnviando.Size = new System.Drawing.Size(280, 71);
+            this.mensajeEnviando.Size = new System.Drawing.Size(359, 49);
             this.mensajeEnviando.TabIndex = 10;
-            this.mensajeEnviando.Text = "\r\nEnviando el correo...\r\n\r\nPor Favor espere mientras su correo es enviado";
+            this.mensajeEnviando.Text = "\r\nPor Favor espere mientras su correo es enviado";
             this.mensajeEnviando.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mensajeEnviando.Visible = false;
             // 
@@ -155,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(502, 424);
             this.Controls.Add(this.mensajeEnviando);
             this.Controls.Add(this.listaCuentas);

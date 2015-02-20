@@ -32,7 +32,7 @@ namespace formPrincipal
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        private void btRedactar_Click(object sender, EventArgs e)
         {
             Form frm = new formEnvioCorreo();
             frm.ShowDialog();
@@ -59,7 +59,6 @@ namespace formPrincipal
             }
         }
 
-
         /// <summary>
         /// Metodo que se dispara al hacer click en el boton "Actualizar".
         /// </summary>
@@ -72,6 +71,7 @@ namespace formPrincipal
             string cuentaSeleccionada = Convert.ToString(listaCuentas.Items[row]);
             //Muestra el mensaje de información al usuario
             mensajeActualizando.Visible = true;
+            mensajeActualizando.Update();
             // Si la cuenta seleccionada es distinta de "Todas las cuentas"
             if (cuentaSeleccionada.CompareTo("Todas las cuentas") != 0) 
             {
@@ -178,7 +178,6 @@ namespace formPrincipal
             }
         }
 
-
         /// <summary>
         /// Metodo que se dispara cuando se carga el formulario.
         /// </summary>
@@ -210,7 +209,7 @@ namespace formPrincipal
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button6_Click(object sender, EventArgs e)
+        private void btExportar_Click(object sender, EventArgs e)
         {
             CorreoDTO pCorreo = new CorreoDTO();
             
@@ -260,13 +259,13 @@ namespace formPrincipal
                 {
                     pNombre = pNombre.Replace(cChar, '_');
                 }
-                if (radioButton1.Checked == true)
+                if (rbtTextoPlano.Checked == true)
                 {
-                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo,path,radioButton1.Text, pNombre);
+                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo, path, rbtTextoPlano.Text, pNombre);
                 }
                 else
                 {
-                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo, path, radioButton2.Text, pNombre);                    
+                    FachadaCorreo.Instancia.ExportarCorreo(pCorreo, path, rbtEML.Text, pNombre);                    
                 }
             }
         }
@@ -289,7 +288,7 @@ namespace formPrincipal
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button9_Click(object sender, EventArgs e)
+        private void btRecibidos_Click(object sender, EventArgs e)
         {
             listaEnviados.Visible = false;
             listaRecibidos.Visible = true;
@@ -301,7 +300,7 @@ namespace formPrincipal
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button10_Click(object sender, EventArgs e)
+        private void btEnviados_Click(object sender, EventArgs e)
         {
             listaEnviados.Visible = true;
             listaRecibidos.Visible = false;
@@ -418,25 +417,21 @@ namespace formPrincipal
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        private void btEliminar_Click(object sender, EventArgs e)
         {
-
-            //TRY
-
             if (MessageBox.Show("¿Está seguro que desea eliminar este correo?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            { 
+            {
+                CorreoDTO pCorreo = new CorreoDTO();
+
                 if (listaEnviados.Visible) 
                 {
                     //Busca el indice de la fila seleccionada en la lista de correos enviados.
                     // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
                     // entonces tomamos el primer elemento.
                     int indexSelected = listaEnviados.Rows.IndexOf(listaEnviados.CurrentRow);
-                    CorreoDTO pCorreo = new CorreoDTO();
                     pCorreo.Id = Convert.ToInt32(listaEnviados.Rows[indexSelected].Cells["correoId"].Value);
                     MessageBox.Show(Convert.ToString(pCorreo.Id));
                     FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
-
-                    MessageBox.Show("Eliminado con exito!");
                 }
                 else if (listaRecibidos.Visible)
                 {
@@ -444,18 +439,15 @@ namespace formPrincipal
                     // como el método SelectedRows devuelve una lista, pero nosotros tenemos una sola fila seleccionada,
                     // entonces tomamos el primer elemento.
                     int indexSelected = listaRecibidos.Rows.IndexOf(listaRecibidos.CurrentRow);
-                    CorreoDTO pCorreo = new CorreoDTO();
                     pCorreo.Id = Convert.ToInt32(listaRecibidos.Rows[indexSelected].Cells["correoIdR"].Value);
                     FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
-                    MessageBox.Show("Eliminado con exito!");
                 }
                 else // esta visible el form de correo
                 {
-                    CorreoDTO pCorreo = new CorreoDTO();
                     pCorreo.Id = Convert.ToInt32(correo_id.Text);
                     FachadaCorreo.Instancia.EliminarCorreo(pCorreo);
-                    MessageBox.Show("Eliminado con exito!");
                 }
+                MessageBox.Show("Eliminado con exito!");
             }
             // Actualiza las listas Recibidos y Enviados
             MostrarCorreos(); 
@@ -507,7 +499,7 @@ namespace formPrincipal
             }
             Form frm = new formEnvioCorreo(pCorreo);
             frm.ShowDialog();
-            // Actualiza las listas Recibidos y Enviados
+            // Actualizamos las listas Recibidos y Enviados
             MostrarCorreos();
         }
 
@@ -536,7 +528,6 @@ namespace formPrincipal
                 pCorreo.Asunto = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["asuntoR"].Value);
                 // Cargo como cuenta destino del nuevo correo a cuenta origen del correo que deseo responder
                 pCorreo.CuentaDestino = Convert.ToString(listaRecibidos.Rows[indexSelected].Cells["cuentaOrigenR"].Value);
-                
             }
             else // esta visible el form de correo
             {
@@ -546,10 +537,8 @@ namespace formPrincipal
             }
             Form frm = new formEnvioCorreo(pCorreo);
             frm.ShowDialog();
-            // Actualiza las listas Recibidos y Enviados
+            // Actualizamos las listas Recibidos y Enviados
             MostrarCorreos();
         }
-
-
     }
 }
